@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,113 +6,90 @@
     <!-- @ICON -->
     <link rel="shortcut icon" href="<?= base_url('assets/img/logo.png') ?>" type="image/x-icon">
     <!-- @CSS FILES LINKS -->
-    <link rel="stylesheet" href=" <?= base_url('assets/css/library.css') ?>">
-    <link rel="stylesheet" href=" <?= base_url('assets/css/navbar.css') ?>">
-    <link rel="stylesheet" href=" <?= base_url('assets/css/footer.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/library.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/navbar.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/footer.css') ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    
+
     <title>Gear Library</title>
 </head>
 
 <body>
 
-<!-- @PHP CODE HEADER - this includes header.php file on every website that has this code -->
-    <!-- includes the header file that contains navbar -->
-    <?php echo view("includes/header.php"); ?> 
-<!-- @END PHP CODE HEADER -->
+<!-- @HEADER -->
+<?php echo view("includes/header.php"); ?>
+<!-- @END HEADER -->
 
+<!-- @SECTION - Library Main Content -->
+<div class="library">
+    <div class="library-title">
+        <h2>Gear Library</h2>
 
-<!-- @SECTION 1 - library main content -->
-    <div class="library">
-        <div class="library-title">
-            <h2>Gear Libary</h2>
-
-            <div class="search">
-                <input type="text" placeholder="Search Gear">
-                <button><i class="fa-solid fa-search"></i></button>
-            </div>
+        <div class="search">
+            <input type="text" placeholder="Search Gear">
+            <button><i class="fa-solid fa-search"></i></button>
         </div>
+    </div>
 
-        <div class="bg">
-            <div class="category">
-                <p>Vanilla Series</p>
-            </div>
-            
-            <div class="card-container">
-                <?php if(!empty($categories)) :?>
-                    <?php foreach($categories as $index => $category) :?>
-                        <!-- container -->
-                        <div class="library-card" data-modal-target="#modal-<?= $index; ?>" title="A category for gears, click view to see the gears under this category">
-                            <img class="bgimg" src="<?= base_url('assets/img/categoryBG.png'); ?>" alt="no gear background is set" title="A category for gears, click view to see the gears under this category">
-
+    <div class="bg">
+        <div class="card-container">
+            <?php if (!empty($categories)) : ?>
+                <?php foreach ($categories as $category) : ?>
+                    <!-- Category Cards -->
+                    <div class="library-card" title="Click to view all gears in this category">
+                        <a href="<?= base_url('library/category/' . $category['category_id']) ?>">
+                            <img class="bgimg" src="<?= base_url('assets/img/categoryBG.png'); ?>" alt="Category Image">
                             <div class="info">
-                                <h3 title="A category for gears, click view to see the gears under this category"><?= esc($category['category']) ?></h3>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, recusandae eaque, ab quaerat corrupti ex molestiae adipisci quibusdam consequuntur ipsam amet. Nulla eos corrupti, rem omnis officiis repudiandae placeat reprehenderit?</p>
+                                <h3><?= esc($category['category']) ?></h3>
+                                <p>Click to view all gears under this category.</p>
                             </div>
-                         </div>
-    
-                        <!-- @MODAL -->
-                        <!-- Modal with unique ID -->
-                        <div class="modal" id="modal-<?= $index; ?>">
-                            <div class="modal-content">
-                                <div class="modal-left">
-                                    <!-- Filter gears for the current category -->
-                                    <?php 
-                                        $gearsForCategory = array_filter($gearsPerCategory, function($gear) use ($category) {
-                                            return $gear['category_id'] == $category['category_id'];
-                                        });
-                                    ?>
-                                    <!-- displaying gears per category -->
-                                    <?php if (!empty($gearsForCategory)) : ?>
-                                        <?php foreach ($gearsForCategory as $gear) : ?>
-                                            <div class="img-block">
-                                                <a href="<?= esc($gear['image_url']) ?>" title="click the image to view" target="_blank">
-                                                    <img title="click to view image" src="<?= esc($gear['image_url']) ?>" height="200px" alt="<?= esc($gear['product_name']) ?>">
-                                                </a>
-                                            </div>
-
-                                            <div class="onHover">
-                                                <div class="details">
-                                                    <h2><?= esc($gear['product_name']) ?></h2>
-                                                    <p><?= esc($gear['description']) ?></p>
-                                                </div>
-
-                                                <a class="shopBtn" href="<?= base_url('/shop#'. $gear['product_id']) ?>">Browse in Shop</a>
-                                            </div>
-                                        <?php endforeach; ?>
-                                    <?php else : ?>
-                                        <div class="no-gears">
-                                            <p>No gears available for this category.</p>
-                                        </div>
-                                    <?php endif; ?>
-                                </div>
-
-                                <div class="modal-right">
-
-                                </div>
-                            </div>
-                        </div> 
-                        <!-- @END MODAL -->
-                        <?php endforeach; ?>
-                            <div id="overlay"></div>
-                        <?php else :?>
-
-                        <div class="library-card">
-                            <h3 style="color: red;">No Categories</h3>
-                        </div>
-                <?php endif; ?>
-            </div>
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+            <?php else : ?>
+                <div class="library-card">
+                    <h3 style="color: red;">No Categories Available</h3>
+                </div>
+            <?php endif; ?>
         </div>
-    </div> 
-<!-- @END SECTION 1 -->
+    </div>
+</div>
 
+<!-- See All Gears Button -->
+<div class="see-all">
+    <a href="<?= base_url('library/all-gears') ?>" class="see-all-btn">See All Gears</a>
+</div>
 
-<!-- @PHP CODE FOOTER - this includes footer.php file on every website that has this code -->
-    <?php echo view("includes/footer.php"); ?> 
-<!-- @PHP CODE END FOOTER -->
+<!-- @END SECTION -->
+
+<!-- @FOOTER -->
+<?php echo view("includes/footer.php"); ?>
+<!-- @END FOOTER -->
 
 <!-- @SCRIPTS -->
 <script src="<?= base_url('assets/js/category.js') ?>"></script>
+
+<style>
+    .see-all {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .see-all-btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background 0.3s ease;
+    }
+
+    .see-all-btn:hover {
+        background-color: #0056b3;
+    }
+</style>
 
 </body>
 </html>

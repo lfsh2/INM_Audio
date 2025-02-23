@@ -10,9 +10,12 @@ use CodeIgniter\Router\RouteCollection;
 ## ---------------------------------------------------------------------
 // Home page Routing
 $routes->group('', function($routes) {
-    $routes->get('/', 'HomeController::home'); 
+    $routes->get('/', 'HomeController::home');
     $routes->get('/home', 'HomeController::home');
     $routes->get('/library', 'HomeController::library');
+    $routes->get('library', 'LibraryController::index');
+    $routes->get('library/all-gears', 'LibraryController::allGears');
+    $routes->get('library/category/(:num)', 'LibraryController::category/$1');
     $routes->get('/community', 'HomeController::community');
     $routes->get('/customize', 'HomeController::customize');
     $routes->get('/login', 'HomeController::login');
