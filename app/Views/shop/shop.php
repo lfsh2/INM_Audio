@@ -58,7 +58,6 @@
                     <?php endif;?>
                 </div>
             </div>
-            
 
             <?php if(isset($gears) && !empty($gears)) :?>
                 <?php foreach($gears as $index => $gear) :?>
@@ -67,8 +66,7 @@
 
                         <div class="info">
                             <h3><?= esc($gear['product_name']) ?></h3>
-
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio beatae consectetur suscipit animi quisquam nemo voluptates nisi rem nobis officiis. Exercitationem, quos provident quae atque accusamus harum saepe tenetur vero!</p>
+                            <p><?= esc(data: $gear['description'])?></p>
                         </div>
                         
                         <div class="button">
@@ -99,6 +97,7 @@
                             </div>
                         </div>
                     </div>  
+
 
                 <!-- MODAL -->
                 <div class="modal" id="modal-<?= $index; ?>">

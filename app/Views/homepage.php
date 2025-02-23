@@ -76,11 +76,11 @@
                     </div>
 
                     <div class="txt-block">
-                        <p class="top">HEART OF TONE</p>
+                        <p class="top">Vanilla Series</p>
 
-                        <h1>CALYPSO</h1>
+                        <h1>INM1 Vanilla</h1>
 
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia laudantium eaque, cupiditate assumenda expedita ratione, corporis placeat, vero dignissimos sunt ea tenetur voluptates rerum libero quis voluptate quae nostrum beatae!</p>
+                        <p>Stylish design with premium quality of sound that is perfect for casual listener, budget audiophiles with neutral tuning and vibrant sound.</p>
                     </div>
                 </div>
 
@@ -90,11 +90,12 @@
                     </div>
 
                     <div class="txt-block">
-                        <p>HEART OF TONE</p>
+                        <p>Vanilla Series</p>
 
-                        <h1>CALYPSO</h1>
+                        <h1>INM1 Vanilla Classic</h1>
 
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia laudantium eaque, cupiditate assumenda expedita ratione, corporis placeat, vero dignissimos sunt ea tenetur voluptates rerum libero quis voluptate quae nostrum beatae!</p>
+                        <p>Designed for live musicians, vocalists, and performers who need a reliable and balanced stage monitoring experience. And also perfect for singers, guitarists, and instrumentalists who need detailed and uncolored sound on stage.
+                        </p>
                     </div>
                 </div>
                 <div class="details modal" id="modal-3">
@@ -103,11 +104,11 @@
                     </div>
 
                     <div class="txt-block">
-                        <p>HEART OF TONE</p>
+                        <p>Stage Series</p>
 
-                        <h1>CALYPSO</h1>
+                        <h1>INM3 Stage 2 for 3 </h1>
 
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia laudantium eaque, cupiditate assumenda expedita ratione, corporis placeat, vero dignissimos sunt ea tenetur voluptates rerum libero quis voluptate quae nostrum beatae!</p>
+                        <p>Designed for musicians and performers who need precise monitoring with strong low-end support.</p>
                     </div>
                 </div>
                 <div class="details modal" id="modal-4">
@@ -116,11 +117,11 @@
                     </div>
 
                     <div class="txt-block">
-                        <p>HEART OF TONE</p>
+                        <p>Personalized Stage Series</p>
 
-                        <h1>CALYPSO</h1>
+                        <h1>Pearl of the North</h1>
 
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia laudantium eaque, cupiditate assumenda expedita ratione, corporis placeat, vero dignissimos sunt ea tenetur voluptates rerum libero quis voluptate quae nostrum beatae!</p>
+                        <p>Designed and Costumized specialized for the specific user that preffered more clarity and bit bassy that like make of the pearl sound.</p>
                     </div>
                 </div>
                 <div class="details modal" id="modal-5">
@@ -129,11 +130,11 @@
                     </div>
 
                     <div class="txt-block">
-                        <p>HEART OF TONE</p>
+                        <p>Personalized Vanilla Series</p>
 
-                        <h1>CALYPSO</h1>
+                        <h1>Google Dino</h1>
 
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia laudantium eaque, cupiditate assumenda expedita ratione, corporis placeat, vero dignissimos sunt ea tenetur voluptates rerum libero quis voluptate quae nostrum beatae!</p>
+                        <p>Inspired in Google Dino and specialized for daily listening, casual users, and music lovers seeking for an enjoyable, balanced sound</p>
                     </div>
                 </div>
                 <div class="details modal" id="modal-6">
@@ -142,11 +143,11 @@
                     </div>
 
                     <div class="txt-block">
-                        <p>HEART OF TONE</p>
+                        <p>Personalized Stage Series</p>
 
-                        <h1>CALYPSO</h1>
+                        <h1>QDC Remini</h1>
 
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia laudantium eaque, cupiditate assumenda expedita ratione, corporis placeat, vero dignissimos sunt ea tenetur voluptates rerum libero quis voluptate quae nostrum beatae!</p>
+                        <p>Designed for performers and musicians who need clear, impactful, and engaging audio for live monitoring and studio use and combined with the pearlscent and stars deisgn that makes more attractive looking.</p>
                     </div>
                 </div>
                 
