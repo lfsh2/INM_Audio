@@ -54,277 +54,90 @@ html, body {
 
     .bg {
         .category {
-            padding: 5px 20px;
+            padding: 10px 20px;
             border-bottom: 1px solid black;
+            font-size: 1.2rem;
         }
-        .card-container {
+    }
+    .card-container {
+        width: 100%;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        flex-wrap: wrap;
+
+        a {
             width: 100%;
+            text-decoration: none;
+            color: black;
+        }
+
+        .library-card {
+            width: 280px;
+            height: 420px;
+            max-width: 350px;
             padding: 10px;
+            border: 1px solid black;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            align-items: start;
+            flex-direction: column;
+            flex-grow: 1;
             gap: 20px;
-            flex-wrap: wrap;
+            cursor: pointer;
 
-            .library-card {
-                width: 280px;
-                height: 420px;
-                padding: 10px;
-                border: 1px solid black;
+            img {
+                width: 100%;
+                height: 60%;
+                object-fit: cover;
+            }
+
+            .info {
                 display: flex;
-                justify-content: space-between;
-                align-items: start;
+                gap: 10px;
                 flex-direction: column;
-                cursor: pointer;
-
-                img {
-                    width: 100%;
-                    aspect-ratio: 1/1;
-                    object-fit: cover;
-                }
-
-                .info {
-                    display: flex;
-                    gap: 5px;
-                    flex-direction: column;
-                    
-                    p {
-                        height: 80px;
-                        overflow: auto;
-                    }
-                }
-            }
-        }
-        
-        .modal {
-            max-width: 700px;
-            width: 100%;
-            max-height: 430px;
-            height: 100%;
-            padding: 10px;
-            background-color: white;
-            transform: translate(-50%, -50%) scale(0);
-            transition: 300ms;
-            z-index: 10;
-            overflow: hidden;
-            overflow-y: scroll;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            
-            .modal-content {
-                height: 100%;
-                position: relative;
                 
-                .no-gears {
-                    width: 400px;
-                    height: 100%;
-                    background: white;
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    text-align: center;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
-
-                .modal-left {
-                    width: 50%;
-                    height: 100%;
-                    border: 1px solid black;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: start;
-                    flex-direction: column;
-
-                    .img-block {
-                        width: 100%;
-                        height: 50%;
-                        background: black;
-
-                        img {
-                            width: 100%;
-                            height: 100%;
-                            object-fit: contain;
-                        }
-                    }
-
-                    .onHover {
-                        height: 50%;
-                        padding: 5px;
-                        display: flex;
-                        justify-content: space-around;
-                        flex-direction: column;
-
-                        .details {
-                            h2 {
-                                text-align: center;
-                                padding-bottom: 10px;
-                            }
-                            
-                            p {
-                                height: 70px;
-                                overflow: auto;
-                            }
-                        }
-
-                        a {
-                            text-decoration: none;
-                            text-align: center  ;
-                        }
-                    }
-                }
-
-                .modal-right {
-                    width: 50%;
+                p {
+                    height: 80px;
+                    overflow: auto;
                 }
             }
         }
-        .modal.active {
-            z-index: 3;
-            transform: translate(-50%, -50%) scale(1);
-        }
-        /* .modal{
-            width: 700px;
-            height: 500px;
-            max-width: 90%;
-            border: 1px solid  rgba(104, 104, 104, 0.678);
-            border-radius: 1px;
-            transform: translate(-50%, -50%) scale(0);
-            transition: 200ms ease-in-out;
-            z-index: 10;
-            background-color: #d2d2d2;
-            position: fixed;
-            top: 52%;
-            left: 50%;
-            overflow: hidden;
-            overflow-y: scroll;
-        }
-        .modal.active{
-            z-index: 3;
-            transform: translate(-50%, -50%) scale(1);
-        }
-    
-        .modal-header {
-            background-color: #202020;
-            height: 80px;
-            width: auto;
-            display: flex;
-            position: sticky;
-            top: 0;
-            z-index: 1;
-            justify-content: space-between;
-            align-items: center;
-            scrollbar-gutter: 0;      
 
-            .title {
-                padding-left: 30px;
+        .prestige {
+            width: 100%;
+            height: 500px;
+            max-width: 100%;
+            position: relative;
+
+            img {
+                height: 100%;
+            }
+
+            .info {
+                width: 50%;
+                position: absolute;
+                bottom: 20px;
+                left: 20px;
                 color: white;
             }
-            .close-button{
-                width: 50px;
-                position: absolute;
-                background: transparent;
-                font-size: 1.5rem;
-                opacity: 1;
-                top: 50%;
-                right: 10px;
-                transform: translateY(-50%);
-                text-align: center;
-            }
-            .close-button:hover { color: darkred; background-color: #202020;}
         }
 
-        .modal-body{
-            padding: 20px;
+        .see .info {
+            height: 50%;
             display: flex;
-            justify-content: space-between;
-            gap: 20px;
+            justify-content: center;
+            align-items: center;
+        }
 
-            .gears:hover {
-                transform: scale(1.1); 
-                background-color:#202020;
-                border-radius: 5px;
-            }      
-
-            .gears:hover .onHover{
-                display: block;
-                transform: translate(0, 100px);             
-            }
-
-            .gears:hover .con .shopBtn {
-                display: block;
-            }
-
-            .gears {
-                background-color: transparent;
-                border: 1px solid #3f3f3f69;
-                height: 320px;
-                display: flex;
-                flex-direction: column;
-                transition: 200ms;
-                
-                .con {
-                    padding: 3px;
-
-                    a {
-                        img {
-                            width: 310px;
-                            height: 310px;
-                        }
-                    }
-                    
-                    .shopBtn {
-                        color: rgb(255, 193, 148);
-                        border: 1px solid white;
-                        padding: 10px;
-                        padding-inline: 25px;
-                        border-radius: 3px;
-                        width: 200px;
-                        text-align: center;
-                        text-decoration: none;
-                        position: relative;
-                        bottom: 20%;
-                        left: 50%;
-                        transform: translateX(-50%);
-                        display: none;
-                        transition: 1000ms;
-                    }
-                    .shopBtn:hover {
-                        color: white;
-                        background: black;
-                        border-radius: 5px;
-                    }
-                }
-
-                .onHover {
-                    background: #000000bb;
-                    display: none;
-                    padding: 10px;
-                    position: relative;
-                    top: -450px;
-                }
-                h3{
-                    font-size: 23px;
-                    font-weight: 600;
-                    color: white;
-                    position: relative;
-                    top: 0px;
-                }
-                p{
-                    color: rgb(207, 207, 207);
-                    font-weight: 100;
-                    font-size: 13px;
-                    position: relative;
-                    top: 10px;
-                }
-            }
-        } */
+        .no {
+            border: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
     }
 }             
 #overlay{

@@ -21,7 +21,6 @@ class LibraryController extends Controller
         return view('library', $data);
     }
 
-    // Display gears by category
     public function category($category_id)
     {
         $data['category'] = $this->libraryModel->getCategoryById($category_id);
@@ -33,4 +32,15 @@ class LibraryController extends Controller
 
         return view('category_gears', $data);
     }
+    public function allGears()
+{
+    $data['gears'] = $this->libraryModel->getAllGears();
+
+    if (empty($data['gears'])) {
+        return redirect()->to('/library')->with('error', 'No gears found.');
+    }
+
+    return view('all_gears', $data);
+}
+
 }

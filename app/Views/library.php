@@ -33,12 +33,25 @@
 
     <div class="bg">
         <div class="card-container">
+            <?php 
+            $categoryImages = [
+                'Vanilla Series' => 'vanilla.jpg',
+                'Stage Series' => 'stage.jpg',
+                'Personalized Series' => 'personalized.jpg',
+                'Prestige Series' => 'prestige.jpg',
+            ];
+            ?>
+
             <?php if (!empty($categories)) : ?>
                 <?php foreach ($categories as $category) : ?>
+                    <!-- Get the correct image for each category -->
+                    <?php 
+                        $image = $categoryImages[$category['category']] ?? 'default.png'; 
+                    ?>
                     <!-- Category Cards -->
                     <div class="library-card" title="Click to view all gears in this category">
-                        <a href="<?= base_url('library/category/' . $category['category_id']) ?>">
-                            <img class="bgimg" src="<?= base_url('assets/img/categoryBG.png'); ?>" alt="Category Image">
+                        <a href="<?= base_url('library/category/' . $category['category_id']) ?>" target="_blank">
+                            <img class="bgimg" src="<?= base_url('assets/img/categories/' . $image); ?>" alt="<?= esc($category['category']) ?> Image">
                             <div class="info">
                                 <h3><?= esc($category['category']) ?></h3>
                                 <p>Click to view all gears under this category.</p>
@@ -51,13 +64,17 @@
                     <h3 style="color: red;">No Categories Available</h3>
                 </div>
             <?php endif; ?>
+
+            <div class="library-card see" title="Click to view all gears in this category">
+                <a href="<?= base_url('library/all-gears')?>" target="_blank">
+                    <img class="bgimg" src="<?= base_url('assets/img/seeall.jpg'); ?>" alt="Category Image">
+                    <div class="info">
+                        <h3>See All Gears</h3>
+                    </div>
+                </a>
+            </div>
         </div>
     </div>
-</div>
-
-<!-- See All Gears Button -->
-<div class="see-all">
-    <a href="<?= base_url('library/all-gears') ?>" class="see-all-btn">See All Gears</a>
 </div>
 
 <!-- @END SECTION -->
@@ -68,28 +85,5 @@
 
 <!-- @SCRIPTS -->
 <script src="<?= base_url('assets/js/category.js') ?>"></script>
-
-<style>
-    .see-all {
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-    .see-all-btn {
-        display: inline-block;
-        padding: 10px 20px;
-        background-color: #007bff;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 5px;
-        font-weight: bold;
-        transition: background 0.3s ease;
-    }
-
-    .see-all-btn:hover {
-        background-color: #0056b3;
-    }
-</style>
-
 </body>
 </html>

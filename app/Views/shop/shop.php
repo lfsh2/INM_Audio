@@ -27,6 +27,14 @@
                 <?php if(session()->getFlashData('lowstock')) : ?>
                     <span style="width: 300px; color: red;"><?= session()->getFlashdata('lowstock')?></span>
                 <?php endif; ?>
+                
+                <div class="validation">
+                    <?php if(session()->getFlashdata('successAddToCart')) :?>
+                        <span style="width: 300px; color: green; text-align: center;"><?= session()->getFlashdata('successAddToCart')?></span>
+                    <?php else :?>
+                        <span style="width: 450px; text-align: center;"></span>
+                    <?php endif;?>
+                </div>
 
                 <form action="<?= base_url('/searchGears') ?>" method="get">
                     <input type="search" name="search" placeholder="Search Gear">
@@ -49,14 +57,6 @@
         <div class="card-container"> 
             <div class="category">
                 <p>Vanilla Series</p>
-
-                <div class="validation">
-                    <?php if(session()->getFlashdata('successAddToCart')) :?>
-                        <span style="width: 300px; color: green; text-align: center;"><?= session()->getFlashdata('successAddToCart')?></span>
-                    <?php else :?>
-                        <span style="width: 450px; text-align: center;"></span>
-                    <?php endif;?>
-                </div>
             </div>
 
             <?php if(isset($gears) && !empty($gears)) :?>
@@ -98,61 +98,90 @@
                         </div>
                     </div>  
 
-
                 <!-- MODAL -->
-                <div class="modal" id="modal-<?= $index; ?>">
-                    <div class="modal-content">
-                        <div class="modal-left">
-                            <img src="<?= esc($gear['image_url']) ?>"alt="<?= esc($gear['product_name']) ?>">
-                        </div>
+                    <div class="modal" id="modal-<?= $index; ?>">
+                        <div class="modal-content">
+                            <div class="modal-left">
+                                <img src="<?= esc($gear['image_url']) ?>"alt="<?= esc($gear['product_name']) ?>">
+                            </div>
 
-                        <form class="modal-right" action="<?= base_url('/cart/add/'. $gear['product_id']) ?>" method="post">
-                            <input type="hidden" name="price" id="price" value="<?= $gear['price'] ?>">
+                            <form class="modal-right" action="<?= base_url('/cart/add/'. $gear['product_id']) ?>" method="post">
+                                <input type="hidden" name="price" id="price" value="<?= $gear['price'] ?>">
 
-                            <div class="product-details">
-                                <h3><?= esc($gear['product_name']) ?></h3>
-                                <p>Price: ₱<?= esc($gear['price']) ?></p>
-                                <p style="<?= ($gear['stock_quantity'] > 15) ? "black" : "red"; ?>">Stocks: <?= esc($gear['stock_quantity']) ?></p>
+                                <div class="product-details">
+                                    <h3><?= esc($gear['product_name']) ?></h3>
+                                    <p>Price: ₱<?= esc($gear['price']) ?></p>
+                                    <p style="<?= ($gear['stock_quantity'] > 15) ? "black" : "red"; ?>">Stocks: <?= esc($gear['stock_quantity']) ?></p>
 
-                                <div class="quantity">
-                                    <label for="quantity">Quantity</label>
-                                    <div class="control">
-                                        <button type="button" onclick="decreaseValue(<?= $index; ?>)">-</button>
-                                        <input type="number" name="quantity" id="quantity-<?= $index ?>" value="<?= ($gear['stock_quantity'] == 0) ? 0 : 1; ?>" min="1" readonly>
-                                        <button type="button" onclick="increaseValue(<?= $index; ?>)">+</button>
+                                    <div class="quantity">
+                                        <label for="quantity">Quantity</label>
+                                        <div class="control">
+                                            <button type="button" onclick="decreaseValue(<?= $index; ?>)">-</button>
+                                            <input type="number" name="quantity" id="quantity-<?= $index ?>" value="<?= ($gear['stock_quantity'] == 0) ? 0 : 1; ?>" min="1" readonly>
+                                            <button type="button" onclick="increaseValue(<?= $index; ?>)">+</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="cart-button">
+                                        <?php if($gear['stock_quantity'] > 0) :?>
+                                            <button type="submit"><i class="fa-solid fa-cart-shopping"></i>Add to Cart</button>
+                                        <?php else :?>
+                                            <p style="color: red;">No Stocks</p>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
-
-                                <div class="cart-button">
-                                    <?php if($gear['stock_quantity'] > 0) :?>
-                                        <button type="submit"><i class="fa-solid fa-cart-shopping"></i>Add to Cart</button>
-                                    <?php else :?>
-                                        <p style="color: red;">No Stocks</p>
-                                    <?php endif; ?>
-                                </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
-                </div>
 
-                <div id="overlay"></div>
+                    <div id="overlay"></div>
 
                 <?php endforeach;?>
+                    <div class="library-card prestige" id="<?= esc($gear['product_id']) ?>">
+                        <img src="<?= esc($gear['image_url']) ?>" alt="">
+
+                        <div class="group">
+                            <div class="info">
+                                <h3><?= esc($gear['product_name']) ?></h3>
+                                <p><?= esc(data: $gear['description'])?></p>
+                            </div>
+                            
+                            <div class="button">
+                                <p>₱<?= esc($gear['price']) ?></p>
+    
+                                <div class="buy-block">
+                                    <button data-modal-target="#modal-<?= $index; ?>" class="btn" title="buy or add to cart">Buy</button>
+    
+                                    <a href="<?= base_url('/bookmark/' . $gear['product_id']) ?>" >
+                                        <?php 
+                                            $isBookmarked = false; 
+                                            if ($isBookmark && !empty($isBookmark)): 
+                                                foreach ($isBookmark as $bookmark): 
+                                                    if ($bookmark['product_id'] == $gear['product_id']): 
+                                                        $isBookmarked = true; 
+                                                        break; 
+                                                    endif; 
+                                                endforeach; 
+                                            endif; 
+                                        ?>
+        
+                                        <?php if ($isBookmarked): ?>
+                                            <img class="bookmark" src="<?= base_url('assets/img/icons/bookmark.png') ?>" title="saved to likes" alt="saved to likes">
+                                        <?php else: ?>
+                                            <img class="bookmark" src="<?= base_url('assets/img/icons/save-instagram.png') ?>" title="save to likes" alt="save to likes">
+                                        <?php endif; ?>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
             <?php else: ?>
                 <div class="library-card">
                     <h3 style="color: red;">Gears are not available at the mean time</h3>
                 </div>
             <?php endif;?>
         </div>
-        
-        
-    <div id="overlay"></div>
-    <div class="modal" id="modal">
-        
     </div>
-
-    
-</div>
 
 <!-- this includes header.php file on every website that has this code -->
     <?php 
@@ -161,8 +190,6 @@
     
 <!-- scripts -->
 <script>
-
-
      // Increase quantity for the specific product
      function increaseValue(index) {
         var quantityInput = document.getElementById('quantity-' + index);
