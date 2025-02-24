@@ -1,487 +1,138 @@
-@import url('https://fonts.googleapis.com/css2?family=Abel&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Montserrat:wght@100..900&display=swap');
+
 ::-webkit-scrollbar {
     display: none;
 }
-*{
+
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: Montserrat;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .comm-container {
     width: 100%;
-    
-    .comm-title{
-        h2{
-            padding-top: 70px;
-            padding-left: 90px;
-            padding-bottom: 20px;
-            font-size: 2em;
-            font-family: Montserrat;
-            font-weight: 300;
-            letter-spacing: .30em;
-        }
-    }
-
-    .community-container {
-        width: 100%;
-        padding: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        .review-container {
-            width: 100%;
-            height: 300px;
-            display: flex;
-            justify-content: space-between;
-            align-content: center;
-            gap: 10px;
-
-            .img-block {
-                width: 300px;
-                aspect-ratio: 1/1;
-                background: black;
-                
-                img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                }
-            }
-
-            .reviews {
-                height: 100%;
-                padding: 10px;
-                border: 1px solid black;
-                flex-grow: 1;
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-                overflow-y: auto;
-
-                .review-block {
-                    width: 100%;
-                    height: 150px;
-                    display: flex;
-                    justify-content: start;
-                    align-items: center;
-                    gap: 10px;
-                }
-
-                .user-profile {
-                    width: 150px;
-                    height: 100%;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    flex-direction: column;
-                    gap: 5px;
-                    
-                    img {
-                        width: 100px;
-                        height: 100px;
-                        border: 1px solid black;
-                        border-radius: 50%;
-                        object-fit: cover;
-                    }
-                }
-
-                .user-review {
-                    width: 75%;
-                }
-            }
-        }
-    }
+    padding: 20px;
 }
 
-/* 
-.rating-container {
+.comm-title h2 {
+    padding-top: 70px;
+    padding-left: 90px;
+    padding-bottom: 20px;
+    font-size: 2em;
+    font-weight: 300;
+    letter-spacing: .30em;
+}
+
+/* Container for each product review */
+.review-item {
     display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 20px;
+    border-bottom: 1px solid #ddd;
+    padding: 20px;
+    width: 100%;
+}
+
+/* Left side - Product image and name */
+.product-info {
+    flex: 1;
+    text-align: center;
+    max-width: 200px;
+}
+
+.product-info img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.product-info h3 {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* Right side - Comments section */
+.comments-section {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
     gap: 10px;
-    font-size: 40px;
-    color: #ccc;
-    cursor: pointer;
 }
 
-.star {
-    transition: color 0.3s;
+/* Comment box */
+.comment {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #f9f9f9;
 }
 
-.star:hover,
-.star.hover {
-    color: darkgoldenrod;
-}
-
-.star.selected {
-    color: darkgoldenrod;
-}
-
-#rating-value {
-    font-weight: bold;
-}
-
-
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    justify-content: center;
+/* User profile */
+.user-profile {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    z-index: 999;
-
-    .modal-content {
-        position: relative;
-        background-color: white;
-        width: 80%;
-        height: 80%;
-        overflow-y: auto;
-        border-radius: 8px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-
-        .modal-header {
-           display: flex;
-           justify-content: space-between;
-           align-items: center;
-           margin: 15px;
-
-            .close-button {
-                background: none;
-                border: none;
-                font-size: 30px;
-                cursor: pointer;
-                position: relative;
-                right: 0;
-            }
-        }
-
-        .modal-body {
-            position: relative;
-            margin-top: 1px;
-            margin-bottom: 1px;
-
-            border: 1px solid gray;
-            padding: 10px 3px;
-            margin-inline: 10px;
-            height: 100%;
-            border-radius: 3px;
-            display: flex;
-            flex-direction: column;
-            
-            .comment-item {
-                position: relative;
-                margin-bottom: 20px;
-                padding: 10px;
-                border-bottom: 1px solid #949494;
-                background-color: #9999994e;
-
-                p {
-                    margin: 0;
-                    font-weight: bold;
-                    margin: 5px 0;
-                    font-size: 10px;
-                    line-height: 15px;
-                    word-wrap: break-word;
-                    color: #222;
-                }
-            }
-            p .span {
-                color: #565656;
-            }
-            p strong { 
-                font-size: 17px;
-                color:teal;
-            }
-            p small {
-                color: gray;
-            }
-        }
-        .modal-footer {
-            position: sticky;
-            bottom: 0;
-            right: 0;
-            left: 0;
-            padding-inline: 10px;
-            background-color: white;
-            border-top: 1px solid gray;
-            padding-block: 5px;
-            form {
-                display: flex;
-                justify-content: center;
-                gap: 10px;
-                textarea {
-                    resize: none;
-                    width: 400px;
-                    height: 100px;
-                    padding: 5px;
-                }
-                textarea:focus { background-color: rgba(128, 128, 128, 0.226);}
-                button {
-                    padding: 10px;
-                    height: 50px;
-                    border: 1px solid gray;
-                    cursor: pointer;
-                    transition: 150ms;
-                    border-radius: 5px;
-                }
-                button:hover {
-                    background-color: rgb(61, 145, 255);
-                    color: white;
-                }
-                a {
-                    text-decoration: none;
-                    cursor: pointer;
-                    padding: 10px;
-                    height: 40px;
-                    background: #222;
-                    color: white;
-                    border: 1px solid gray;
-                    transition: 150ms;
-                    border-radius: 5px;
-                }
-                a:hover {
-                    background-color: rgb(255, 61, 61);
-                    color: white;
-                }
-            }
-        }
-    }
+    text-align: center;
+    gap: 5px;
+    min-width: 80px;
 }
 
-#overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
+.user-profile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #ccc;
+}
+
+/* User name */
+.user-profile p {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Rating stars */
+.rating {
+    color: orange;
+    font-size: 14px;
+}
+
+/* Comment text */
+.comment-text {
+    font-size: 14px;
+    color: #333;
+    flex-grow: 1;
+}
+
+/* Add comment input box */
+.add-comment input {
     width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: none;
-    z-index: 998;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 14px;
 }
 
-
-
-html, body {
-    -ms-overflow-style: none;
-}
-
-*{
-    scrollbar-width: none; 
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-
-}
-.bg {
-    background-image: url("../img/sbg.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    .bg2 {
-        padding-top: 30px;
-        padding-bottom: 100px;
-        background-color: #222;
-        opacity: .8;
-        color: rgb(255, 255, 255);
-    }
-}
-.comm-container{
-    width: 100%;
-    
-    .comm-title{
-        h2{
-            padding-top: 70px;
-            padding-left: 90px;
-            padding-bottom: 20px;
-            font-size: 2em;
-            font-family: Montserrat;
-            font-weight: 300;
-            letter-spacing: .30em;
-        }
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .review-item {
+        flex-direction: column;
+        align-items: center;
     }
 
+    .product-info {
+        max-width: 100%;
+    }
 
-    .comm-block {
+    .comments-section {
         width: 100%;
-        padding: 10px;
-        background-color: #22222213;
-        padding-inline: 50px;
-
-        .picture-block {
-            width: 100%;
-            padding: 10px;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
-            justify-content: center;
-            align-items: center;
-            gap: 5px;
-            
-            .comm-picture {
-                width: 100%;
-                height: 300px;
-                border: 1px solid red;
-                border-radius: 5px;
-                overflow: hidden;
-                position: relative;
-                background: none;
-                border: none;
-                cursor: pointer;
-                background-color: #000000;
-
-                img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    filter: grayscale(50%);
-                    transition: all 500ms; 
-                    opacity: 0.3;
-                }
-
-                p {
-                    color: white;
-                    font-size: 1.5rem;
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    transition: all 500ms;
-                }
-            }
-
-            .comm-picture:hover  {
-                border: 2px solid teal;
-                img {
-                    opacity: 1;
-                    transform: scale(1.2);
-                    filter: grayscale(0);
-                }
-                p {
-                    opacity: 0;
-                }
-            }
-        }
-    }
-    .reviews{
-        .review-title{
-            h2{
-                padding-top: 40px;
-                padding-bottom: 40px;
-                padding-left: 90px;
-                font-size: 2em;
-                font-weight: 300;
-                letter-spacing: .30em;
-            }
-        }
-    }
-
-    .comm-reviews {
-        width: 95%;
-        padding: 10px 0;
-        margin: auto;
-
-        .comment {
-            width: 100%;
-            height: auto;
-            padding: 20px;
-            display: none;
-
-            .card-blocks {
-                width: 100%;
-                height: 100%;
-                overflow-y: auto;
-            }
-            
-            .card {
-                width: 100%;
-                margin: 20px 0;
-                padding: 10px;
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
-                border: 1px solid rgba(0, 0, 0, 0.5);
-                box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
-
-                .user {
-                    width: 100%;
-                    display: flex;
-                    justify-content: start;
-                    align-items: center;
-
-                    img {
-                        width: 50px;
-                        height: 50px;
-                        border-radius: 50%;
-                        object-fit: cover;
-                    }
-                }
-            }
-
-            .comment-input {
-                width: 40%;
-                margin: 20px 0;
-                position: relative;
-
-                input {
-                    width: 100%;
-                    padding: 10px;
-                    border-radius: 5px;
-                    border: 1px solid black;
-                    color: black;
-                }
-
-                button {
-                    border: none;
-                    outline: none;
-                    position: absolute;
-                    top: 50%;
-                    right: 8px;
-                    transform: translateY(-50%);
-                }
-            }
-        }
     }
 }
-
-@media (max-width: 992px) {
-    .comm-container {
-        .comm-title {
-            h2 {
-                padding-left: 0;
-                text-align: center;
-            }
-        }
-
-        .comm-block {
-            .picture-block {
-                flex-wrap: wrap;
-
-                .comm-picture {
-                    width: 100%;
-                }
-            }
-        }
-
-        .reviews {
-            .review-title {
-                h2 {
-                    padding-left: 0;
-                    text-align: center;
-                }
-            }
-        }
-
-        .comm-reviews {
-            .comment {
-                padding: 10px;
-
-                .comment-input {
-                    width: 100%;
-                }
-            }
-        }
-    }
-} */

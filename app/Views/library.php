@@ -50,7 +50,7 @@
                     ?>
                     <!-- Category Cards -->
                     <div class="library-card" title="Click to view all gears in this category">
-                        <a href="<?= base_url('library/category/' . $category['category_id']) ?>" target="_blank">
+                        <a href="<?= base_url('library/category/' . $category['category_id']) ?>">
                             <img class="bgimg" src="<?= base_url('assets/img/categories/' . $image); ?>" alt="<?= esc($category['category']) ?> Image">
                             <div class="info">
                                 <h3><?= esc($category['category']) ?></h3>
@@ -66,7 +66,7 @@
             <?php endif; ?>
 
             <div class="library-card see" title="Click to view all gears in this category">
-                <a href="<?= base_url('library/all-gears')?>" target="_blank">
+                <a href="<?= base_url('library/all-gears')?>">
                     <img class="bgimg" src="<?= base_url('assets/img/seeall.jpg'); ?>" alt="Category Image">
                     <div class="info">
                         <h3>See All Gears</h3>

@@ -61,6 +61,7 @@
 
             <?php if(isset($gears) && !empty($gears)) :?>
                 <?php foreach($gears as $index => $gear) :?>
+    <?php if ($gear['category'] === 'Personalized Series') continue; ?> 
                     <div class="library-card" id="<?= esc($gear['product_id']) ?>">
                         <img src="<?= esc($gear['image_url']) ?>" alt="">
 
