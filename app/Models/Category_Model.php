@@ -18,6 +18,9 @@ class Category_Model extends Model
         return $this->findAll();
     }
 
+    public function orderByCategory() {
+        
+    }
 
 // get category by field/column
     public function getCategory($field, $toGet) 

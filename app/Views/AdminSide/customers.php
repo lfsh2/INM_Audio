@@ -3,16 +3,14 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="shortcut icon" href="<?= base_url('assets/img/logo.png') ?>" type="image/x-icon">
 	<!-- Boxicons -->
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
 	<link rel="stylesheet" href="<?= base_url('Admin/css/dashboard1.css') ?>">
 	<link rel="stylesheet" href="<?= base_url('Admin/css/customer.css') ?>">
 	<link rel="stylesheet" href="<?= base_url('Admin/css/notifModal.css') ?>">
-
-
-	<title>User</title>
+	<title>Users</title>
 </head>
 <body>
 
@@ -26,25 +24,10 @@
 
 	<!-- CONTENT -->
 	<section id="content">	
-		<nav>
-			<i class='bx bx-menu' ></i>
-			<!-- <a href="#" class="nav-link">Categories</a> -->
-			<form action="#">
-				<div class="form-input">
-					<!-- <input type="search" placeholder="Search..."> -->
-					<button type="submit" class="search-btn"><i class='bx bx-submit' disabled></i></button>
-				</div>
-			</form>
-			<label for="switch-mode">Theme</label>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
-			<button class="notification open-modal1">
-				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
-			</button>
-		</nav>
+		<?php echo view('AdminSide/includes/topNavbar') ?>
+
 		<!-- MAIN -->
-		<main>
+		<main class="customers">
 			<div class="head-title">
 				<div class="left">
 					<h1>Users</h1>
@@ -61,10 +44,10 @@
 			</div>
 
 
-			<div class="table">
+			<div class="admin-table">
 				<form action="" method="get">
-					<input type="search" name="search" id="search" value="<?= $search ?>">
-					<button type="submit">Search</button>
+					<input type="search" name="search" id="search" value="<?= $search ?>" placeholder="Search">
+					<button type="submit"><i class='bx bx-search-alt-2'></i></button>
 				</form>
 
 				<table>

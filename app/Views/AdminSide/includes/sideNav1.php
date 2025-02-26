@@ -1,11 +1,12 @@
 <!-- SIDEBAR -->
 <section id="sidebar">
-    <a href="#" class="brand">
-        <!-- <img src="<?= base_url("admin/img/icons/logo.png") ?>" alt="" style="width: 50px;"> -->
-        <span class="text" style="margin-left: 20px;">INM Admin Panel</span>
-    </a>
+    <li>
+        <a href="#" class="brand">
+            <span class="text">INM Admin Panel</span>
+        </a>
+    </li>
     <ul class="side-menu top">
-        <li class="active">
+        <li>
             <a href="<?= base_url('/admin/dashboard') ?>">
                 <i class='bx bxs-dashboard' ></i>
                 <span class="text">Dashboard</span>

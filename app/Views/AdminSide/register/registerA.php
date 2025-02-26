@@ -4,8 +4,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>INM Admin - admin registration(admin)</title>
+  <link rel="shortcut icon" href="<?= base_url('assets/img/logo.png') ?>" type="image/x-icon">
+  <title>INM Admin Registration</title>
   <link rel="shortcut icon" type="image/png" href="<?= base_url('assets/css/logo.png') ?>" />
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="<?= base_url('Admin/css/dashboard1.css') ?>">
   <link rel="stylesheet" href="<?= base_url('Admin_Side_Assets/css/styles.min.css') ?>" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
@@ -65,6 +69,14 @@
 </head>
 
 <body>
+<!-- SIDEBAR -->
+<?php echo view('AdminSide/includes/sideNav1') ?>
+<!-- SIDEBAR -->
+
+	<!-- CONTENT -->
+	<section id="content">	
+		<?php echo view('AdminSide/includes/topNavbar') ?>
+
     <?php if (session()->getFlashdata('success')) :?>
         <div class="popup" id="popup" onload="showPopUp('<?php echo session()->getFlashdata('success'); ?>')">
           <div id="popupMessage" class="<?= session()->getFlashdata('success') ?>"><?php session()->getFlashdata('success') ?></div>
@@ -80,7 +92,7 @@
     <?php endif ;?>
 
     
-<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
     <div class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
       <div class="d-flex align-items-center justify-content-center w-100">
@@ -131,13 +143,12 @@
   </div>
 
 
-    <!-- Overlay -->
-    <div class="overlay" id="overlay"></div>
-    <div class="popup" id="popup">
-        <div id="popupMessage"></div>
-        <button onclick="closePopup()">Close</button>
-    </div>
-
+  <!-- Overlay -->
+  <div class="overlay" id="overlay"></div>
+  <div class="popup" id="popup">
+      <div id="popupMessage"></div>
+      <button onclick="closePopup()">Close</button>
+  </div>
 
     <script>
         function showPopup(message, type) {

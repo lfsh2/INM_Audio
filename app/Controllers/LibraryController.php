@@ -40,7 +40,7 @@ class LibraryController extends Controller
         return redirect()->to('/library')->with('error', 'No gears found.');
     }
 
-    return view('all_gears', $data);
+    return view('all-gears', $data);
 }
 
 }

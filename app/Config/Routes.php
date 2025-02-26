@@ -14,7 +14,8 @@ $routes->group('', function($routes) {
     $routes->get('/home', 'HomeController::home');
     $routes->get('/library', 'HomeController::library');
     $routes->get('library', 'LibraryController::index');
-    $routes->get('library/all-gears', 'LibraryController::allGears');
+    $routes->get('library/all-gears', 'LibraryController::allGears/$1');
+    $routes->get('library/all-gears', 'LibraryGearComparisonController::allGears');
     $routes->get('library/category/(:num)', 'LibraryController::category/$1');
     $routes->get('/community', 'HomeController::community');
     $routes->get('/customize', 'HomeController::customize');
@@ -22,6 +23,9 @@ $routes->group('', function($routes) {
     $routes->get('/signup', 'HomeController::signup');
     $routes->get('/community/reviewDelete/(:num)', 'HomeController::deleteReview/$1');
     $routes->post('/community/reviewProduct/(:num)', 'HomeController::rateReviewProduct/$1');
+
+    // new routes
+    $routes->get('/library/comparison', 'GearComparisonController::getComparison');
 });
 
 

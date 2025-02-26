@@ -7,7 +7,6 @@
     <link rel="stylesheet" href=" <?= base_url('assets/css/navbar.css') ?>">
     <link rel="stylesheet" href=" <?= base_url('assets/css/footer.css') ?>">
     <link rel="shortcut icon" href="<?= base_url('assets/img/logo.png') ?>" type="image/x-icon">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <title>INM Shop</title>
     <script defer src="<?= base_url('assets/js/script2.js') ?>"></script>
