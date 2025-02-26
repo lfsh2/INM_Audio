@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="shortcut icon" href="<?= base_url('assets/img/logo.png') ?>" type="image/x-icon">
 	<!-- Boxicons -->
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
@@ -16,7 +16,7 @@
 		.pic { width: 100px; height: 100px; border-radius: 50px; border: 1px solid black;}
 
 	</style>
-	<title>User's</title>
+	<title>Users</title>
 </head>
 <body>
 
@@ -29,36 +29,13 @@
 
 	<!-- CONTENT -->
 	<section id="content">	
-		<nav>
-			<i class='bx bx-menu' ></i>
-			<!-- <a href="#" class="nav-link">Categories</a> -->
-			<form action="#">
-				<div class="form-input">
-					<!-- <input type="search" placeholder="Search..."> -->
-					<button type="submit" class="search-btn"><i class='bx bx-submit' disabled></i></button>
-				</div>
-			</form>
-			<label for="switch-mode">Theme</label>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
-			<button class="notification open-modal1">
-				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
-			</button>
-		</nav>
+		<?php echo view('AdminSide/includes/topNavbar') ?>
+
 		<!-- MAIN -->
-		<main>
-            <?php ?>
+		<main class="customers">
 			<div class="head-title">
 				<div class="left">
-					<a href="<?= base_url('/admin/customers') ?>">
-						<button>Back</button>
-					</a>
 					<h1>User Info</h1>
-					<br><br>
-					<img class="pic" src="data:image/jpeg;base64,<?= base64_encode($userInfo['profile_pic']) ?>" alt="">
-					<h2><?= $userInfo['username'] ?></h2>
-					<p><?= $userInfo['firstname'] . $userInfo['lastname'] ?></p>
 					<ul class="breadcrumb">
 						<!-- <li>
 							<a href="#">Dashboard</a>
@@ -68,53 +45,60 @@
 							<a class="active" href="#">Home</a>
 						</li> -->
 					</ul>
-
-					<div class="info">
-						<p><?= $userInfo['email'] ?></p>
-						<p><?= $userInfo['phone_number'] ?></p>
-						<p><?= $userInfo['country'] ?></p>
-						<p><?= $userInfo['city_municipality'] ?></p>
-						<p><?= $userInfo['zipcode'] ?></p>
-						<p><?= $userInfo['address'] ?></p>
-						<p><?= $userInfo['created_at'] ?></p>
-					</div>
-
-					<br><hr><br>
-					<div class="table">
-						<table>
-							<thead>
-								<th>Order-Number</th>
-								<th>Status</th>
-								<th>Item</th>
-								<th>Quantity</th>
-								<th>Price</th>
-								<th>Payment Method</th>
-								<th>Order Date</th>
-							</thead>
-							<tbody>
-								<?php if($orders) :?>
-									<?php foreach($orders as $order): ?>
-										<tr>
-											<td><?= $order->order_id ?></td>
-											<td><?= $order->order_status ?></td>
-											<td><?= $order->product_name ?></td>
-											<td><?= $order->quantity ?></td>
-											<td><?= $order->price ?></td>
-											<td><?= $order->payment_method ?></td>
-											<td><?= $order->created_at ?></td>
-										</tr>
-									<?php endforeach; ?>
-								<?php else :?>
-									<tr>
-										<td colspan="7">No orders yet</td>
-									</tr>
-								<?php endif;?>
-							</tbody>
-						</table>
-					</div>
 				</div>
 			</div>
-            <?php ?>
+			<div class="user-info">
+				<div class="profile">
+					<img class="pic" src="data:image/jpeg;base64,<?= base64_encode($userInfo['profile_pic']) ?>" alt="">
+					<h2><?= $userInfo['username'] ?></h2>
+				</div>
+				<div class="info">
+					<h3>User Information</h3>
+					<p><?= $userInfo['firstname'] . $userInfo['lastname'] ?></p>
+					<p><?= $userInfo['email'] ?></p>
+					<p><?= $userInfo['phone_number'] ?></p>
+					<p><?= $userInfo['country'] ?></p>
+					<p><?= $userInfo['city_municipality'] ?></p>
+					<p><?= $userInfo['zipcode'] ?></p>
+					<p><?= $userInfo['address'] ?></p>
+					<p><?= $userInfo['created_at'] ?></p>
+				</div>
+			</div>
+			
+			<div class="admin-table">
+				<table>
+					<thead>
+						<tr>
+							<th>Order Number</th>
+							<th>Status</th>
+							<th>Item</th>
+							<th>Quantity</th>
+							<th>Price</th>
+							<th>Payment Method</th>
+							<th>Order Date</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php if($orders) :?>
+							<?php foreach($orders as $order): ?>
+								<tr>
+									<td><?= $order->order_id ?></td>
+									<td><?= $order->order_status ?></td>
+									<td><?= $order->product_name ?></td>
+									<td><?= $order->quantity ?></td>
+									<td><?= $order->price ?></td>
+									<td><?= $order->payment_method ?></td>
+									<td><?= $order->created_at ?></td>
+								</tr>
+							<?php endforeach; ?>
+						<?php else :?>
+							<tr>
+								<td colspan="7">No orders yet</td>
+							</tr>
+						<?php endif;?>
+					</tbody>
+				</table>
+			</div>
         </main>
     </section>
 

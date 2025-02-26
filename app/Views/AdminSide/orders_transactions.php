@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?= base_url('Admin/css/orderTransactions.css') ?>">
     <link rel="stylesheet" href="<?= base_url('Admin/css/dashboard1.css') ?>">
+    <link rel="shortcut icon" href="<?= base_url('assets/img/logo.png') ?>" type="image/x-icon">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="<?= base_url('Admin/css/notifModal.css') ?>">
 
@@ -23,26 +24,10 @@
 <?php echo view('AdminSide/includes/sideNav1') ?>
 
 
-    <section id="content">  
-        <nav>
-			<i class='bx bx-menu' ></i>
-			<!-- <a href="#" class="nav-link">Categories</a> -->
-			<form action="#">
-				<div class="form-input">
-					<!-- <input type="search" placeholder="Search..."> -->
-					<button type="submit" class="search-btn"><i class='bx bx-submit' disabled></i></button>
-				</div>
-			</form>
-            <label for="switch-mode">Theme</label>
-			<input type="checkbox" id="switch-mode" hidden>
-			<label for="switch-mode" class="switch-mode"></label>
-            <button class="notification open-modal1">
-				<i class='bx bxs-bell' ></i>
-				<span class="num">8</span>
-			</button>
-		</nav>
+<section id="content">  
+    <?php echo view('AdminSide/includes/topNavbar') ?>
 
-        <main>
+        <main class="order-transaction">
             <div class="head-title">
 				<div class="left">
 					<h1>Order | Transactions</h1>
@@ -57,59 +42,20 @@
 					</ul>
 				</div>
             </div>
-<!-- 				
-            <ul class="box-info">
-                <li>
-                    <i class='bx bxs-calendar-check' ></i>
-                    <span class="text">
-                        <h3><?php echo ($totalOrders) ? $totalOrders->totalOrders : 0;?></h3>
-                        <p>Total Orders</p>
-                    </span>
-                </li>
-                <li>
-                    <i class='bx bxs-group' ></i>
-                    <span class="text">
-                        <h3><?php echo ($totalPlaced) ? $totalPlaced->totalPlacedOrders : 0;?></h3>
-                        <p>Placed Orders</p>
-                    </span>
-                </li>
-                <li>
-                    <i class='bx bxs-dollar-circle' ></i>
-                    <span class="text">
-                        <h3><?php echo ($totalCancelled) ? $totalCancelled->totalCancelled : 0;?></h3>
-                        <p>Cancelled</p>
-                    </span>
-                </li>
-                <li>
-                    <i class='bx bxs-dollar-circle' ></i>
-                    <span class="text">
-                        <h3><?php echo ($totalComplete) ? $totalComplete->totalComplete : 0;?></h3>
-                        <p>Completed</p>
-                    </span>
-                </li>
-                <li>
-                    <i class='bx bxs-dollar-circle' ></i>
-                    <span class="text">
-                        <h3><?php echo ($totalRevenue->totalRevenue > 0) ? "$".$totalRevenue->totalRevenue : "$0";?></h3>
-                        <p>Total Revenue</p>
-                    </span>
-                </li>
-            </ul>  -->
-
             <!-- TABS -->
-            <div class="table-orders">
-                <div class="container">
+            <div class="admin-table">
+                <div class="tabs">
                     <h2>Order Details</h2>
 
-                    <div class="tabs">
+                    <div class="btns">
                         <button onclick="switchTab('table0')">Confirm Orders</button>
                         <button onclick="switchTab('table1')">Orders</button>
                         <button onclick="switchTab('table2')">Completed</button>
-                        <!-- <button onclick="switchTab('table4')">Refund | Returns</button> -->
                         <button onclick="switchTab('table5')">Cancelled</button>
                     </div>
-    
-                    <div id="table0" class="tab-content">
+                </div>
+                <div class="container">
+                    <div id="table0" class="tab-content active">
                         <h2>Confirm orders</h2>
                         <table>
                             <thead>
@@ -135,20 +81,22 @@
                                                 <p><?= $order->product_name ?></p>
                                             </td>
                                             <td class="th three"><?= $order->firstname." ".$order->lastname ?></td>
-                                            <th class="th five"><?= $order->price ?></th>
+                                            <td class="th five"><?= $order->price ?></td>
                                             <td class="th five"><?= $order->quantity ?></td>
                                             <td class="th six"><?= $order->total_price ?></td>
                                             <td class="th seven"><?= $order->payment_method ?></td>
                                             <td class="th eight"><?= $order->date_placed ?></td>
                                             <td class="th nine">
-                                                <a href="<?= base_url('/admin/order/toConfirm/'.$order->placed_order_id) ?>" class="button2">Confirm order</a>
-                                                <a href="<?= base_url('/admin/order/cancelToConfirm/'.$order->placed_order_id) ?>" class="button3">Cancel order</a>
+                                                <div class="buttons">
+                                                    <a href="<?= base_url('/admin/order/toConfirm/'.$order->placed_order_id) ?>" class="confirm">Confirm order</a>
+                                                    <a href="<?= base_url('/admin/order/cancelToConfirm/'.$order->placed_order_id) ?>" class="cancel">Cancel order</a>
+                                                </div>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
                                 <?php else :?>
                                     <tr>
-                                        <td colspan="9">No placed orders</td>
+                                        <td colspan="10">No placed orders</td>
                                     </tr>
                                 <?php endif;?>
                             </tbody>
@@ -157,7 +105,7 @@
 
                     
                     <!-- comfrimed orders -->
-                    <div id="table1" class="tab-content active">
+                    <div id="table1" class="tab-content">
                         <h2>Orders</h2>
                         <table>
                             <thead>
@@ -201,7 +149,7 @@
                                     <?php endforeach; ?>
                                 <?php else: ?>
                                     <tr>
-                                        <td colspan="9">No confirmed Orders</td>
+                                        <td colspan="10">No placed orders</td>
                                     </tr>
                                 <?php endif;?>
                             </tbody>
@@ -250,7 +198,7 @@
                                     <?php endforeach; ?>
                                 <?php else: ?>
                                     <tr>
-                                        <td colspan="9">No complete Orders</td>
+                                        <td colspan="10">No placed orders</td>
                                     </tr>
                                 <?php endif;?>
                             </tbody>
@@ -297,7 +245,7 @@
                                     <?php endforeach; ?>
                                 <?php else: ?>
                                     <tr>
-                                        <td colspan="9">No cancelled Orders</td>
+                                        <td colspan="10">No placed orders</td>
                                     </tr>
                                 <?php endif;?>
                                 

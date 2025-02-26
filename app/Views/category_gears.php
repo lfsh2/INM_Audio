@@ -25,15 +25,115 @@
             align-items: center;
         }
         .modal-content {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
+            max-width: 800px;
             width: 80%;
-            max-width: 700px;
-            position: relative;
+            max-height: 600px;
+            height: 100%;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
             text-align: center;
+            display: flex;
+            justify-content: center;y
         }
-        .close {
+        .left-gear {
+            width: 50%;
+            height: 100%;
+            padding-bottom: 10px;
+            border: 1px solid black;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+
+            img{
+                width: 100%;
+            }
+
+            .gear-info {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            #gearTitle {
+                width: 100%;
+                text-align: center;
+            }
+
+            a {
+                width: 90%;
+                margin: 0 auto;
+                padding: 10px;
+                background: black;
+                color: white;
+                border-radius: 5px;
+                text-decoration: none;
+            }
+        }
+        .right-gear {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+
+            .top {
+                position: relative;
+
+                span {
+                    font-size: 1rem;
+                    position: absolute;
+                    top: 50%;
+                    right: 10px;
+                    transform: translateY(-50%);
+                    cursor: pointer;
+                }
+            }
+
+            .earphones {
+                img {
+                    width: 100%;
+                    max-height: 300px;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                .buttons {
+                    display: flex;
+                    justify-content: space-evenly;
+
+                    button {
+                        border: none;
+                        background: none;
+                        font-size: 1.5rem;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .audio-player {
+                padding: 10px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                .buttons {
+                    display: flex;
+                    justify-content: center;
+                    gap: 10px;
+
+                    button {
+                        padding: 5px 10px;
+                        background: black;
+                        color: white;
+                        border-radius: 10px;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+        
+        /* .close {
             position: absolute;
             top: 10px;
             right: 20px;
@@ -71,32 +171,30 @@
             background: #f2f2f2;
         }
         .subwoofer {
-        width: 120px;
-        height: 120px;
-        background: radial-gradient(circle, #444 20%, #222 60%, #111 100%);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 20px auto;
-        position: relative;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-        transition: transform 0.1s ease-out;
-    }
-
-    .subwoofer::before {
-        content: "";
-        width: 80px;
-        height: 80px;
-        background: radial-gradient(circle, #666 30%, #333 90%);
-        border-radius: 50%;
-        position: absolute;
-    }
-
-    .subwoofer.boom {
-        transform: scale(1.2);
-        box-shadow: 0 0 40px rgba(0, 0, 0, 1);
-    }
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, #444 20%, #222 60%, #111 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            transition: transform 0.1s ease-out;
+        }
+        .subwoofer::before {
+            content: "";
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, #666 30%, #333 90%);
+            border-radius: 50%;
+            position: absolute;
+        }
+        .subwoofer.boom {
+            transform: scale(1.2);
+            box-shadow: 0 0 40px rgba(0, 0, 0, 1);
+        } */
     </style>
 
 </head>
@@ -117,7 +215,7 @@
             <div class="card-container">
                 <?php if (!empty($gears)) : ?>
                     <?php foreach ($gears as $gear) : ?>
-                        <div class="library-card" onclick="openModal('<?= esc($gear['product_name']) ?>', '<?= esc($gear['description']) ?>', '<?= esc($gear['image_url']) ?>')">
+                        <div class="library-card <?= esc($category['category']) ?>" onclick="openModal('<?= esc($gear['product_name']) ?>', '<?= esc($gear['description']) ?>', '<?= esc($gear['image_url']) ?>')">
                             <img src="<?= esc($gear['image_url']) ?>" alt="<?= esc($gear['product_name']) ?>">
                             <div class="info">
                                 <h3><?= esc($gear['product_name']) ?></h3>
@@ -136,23 +234,38 @@
 
     <div id="gearModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2 id="gearTitle"></h2>
-            <img id="gearImage" src="" alt="Gear Image" style="width: 200px;">
-            <p id="gearDescription"></p>
-            <br>    
+            <div class="left-gear">
+                <div class="gear-info">
+                    <img id="gearImage" src="" alt="Gear Image">
+                    <h2 id="gearTitle"></h2>
+                    <p id="gearDescription"></p>
+                </div>
 
-            <h3>Sound Test</h3>
-            <div class="earphones">
-                <button onclick="playLeft()">Left</button>
-                <!-- <img src="<?= base_url('assets/img/personalized.png'); ?>" alt="Earphones">-->
-                <button onclick="playRight()">Right</button>
+                <a href="<?= base_url('library/comparison/') ?>">Compare</a>
             </div>
+            
+            <div class="right-gear">
+                <div class="top">
+                    <h2>Sound Test</h2>
+                    <span class="close" onclick="closeModal()">&times;</span>
+                </div>
+                
+                <div class="earphones">
 
-            <div class="audio-player">
-                <button onclick="playBass()">Bass Test</button>
-                <button onclick="playSong()">Play Song</button>
-                <div id="waveform"></div>
+                    <div class="buttons">
+                        <button onclick="playLeft()">L</button>
+                        <button onclick="playRight()">R</button>
+                    </div>
+                </div>
+    
+                <div class="audio-player">
+                    <div id="waveform"></div>
+
+                    <div class="buttons">
+                        <button onclick="playBass()">Bass Test</button>
+                        <button onclick="playSong()">Play Song</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
