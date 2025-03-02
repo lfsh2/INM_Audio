@@ -9,8 +9,8 @@
     <input type="checkbox" id="switch-mode" hidden>
     <label for="switch-mode" class="switch-mode"></label>
 
-    <button class="notification open-modal1">
+    <!--<button class="notification open-modal1">
         <i class='bx bxs-bell' ></i>
         <span class="num">8</span>
-    </button>
+    </button>-->
 </nav>

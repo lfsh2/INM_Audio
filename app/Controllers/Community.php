@@ -2,51 +2,60 @@
 
 namespace App\Controllers;
 
-use App\Models\Comments_Model;
+use App\Models\PostModel;
+use App\Models\CommentModel;
 use CodeIgniter\Controller;
 
 class Community extends Controller
 {
     public function index()
     {
-        $commentsModel = new Comments_Model();
+        $postModel = new PostModel();
+        $commentModel = new CommentModel();
 
-        // Fetch products with their comments
-        $commentsPerProduct = $commentsModel->getProducts();
-
-        return view('community_view', ['commentsPerProduct' => $commentsPerProduct]);
-    }
-
-    public function reviewProduct($productId)
-    {
-        if ($this->request->getMethod() === 'post') {
-            $commentsModel = new Comments_Model();
-            $userId = session()->get('user_id'); // Assuming user is logged in
-
-            $existingReview = $commentsModel->getReviewByUserAndProduct($userId, $productId);
-
-            if ($existingReview) {
-                return redirect()->to('/community')->with('error', 'You have already reviewed this product.');
-            }
-
-            $commentsModel->save([
-                'product_id' => $productId,
-                'user_id' => $userId,
-                'rating' => $this->request->getPost('rating-value'),
-                'comment_text' => $this->request->getPost('review')
-            ]);
-
-            return redirect()->to('/community')->with('success', 'Review added successfully.');
-        }
-    }
-
-    public function reviewDelete($productId)
-    {
-        $commentsModel = new Comments_Model();
-        $userId = session()->get('user_id');
-
-        $commentsModel->deleteReview($userId, $productId);
+        $posts = $postModel->orderBy('id', 'DESC')->findAll();
         
-        return redirect()->to('/community')->with('success', 'Review deleted successfully.');
+        foreach ($posts as &$post) {
+            $post['comments'] = $commentModel->getCommentsByPostId($post['id']);
+        }
+
+        $data = [
+            'posts' => $posts
+        ];
+        
+        return view('community', $data);
+    }
+
+    public function post_content()
+    {
+        $postModel = new PostModel();
+        $file = $this->request->getFile('post_image');
+
+        $imageName = null;
+        if ($file && $file->isValid() && !$file->hasMoved()) {
+            $imageName = $file->getRandomName();
+            $file->move(FCPATH . 'uploads', $imageName); 
+        }
+
+        $postModel->save([
+            'user_name' => $this->request->getPost('user_name'),
+            'post_text' => $this->request->getPost('post_text'),
+            'image_url' => $imageName, 
+        ]);
+
+        return redirect()->to('/community'); 
+    }
+
+    public function post_comment()
+    {
+        $commentModel = new CommentModel();
+
+        $commentModel->save([
+            'post_id' => $this->request->getPost('post_id'),
+            'user_name' => $this->request->getPost('user_name'),
+            'comment_text' => $this->request->getPost('comment_text'),
+        ]);
+
+        return redirect()->to('/community'); 
     }
 }

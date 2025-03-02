@@ -18,12 +18,11 @@ $routes->group('', function($routes) {
     $routes->get('library/all-gears', 'LibraryGearComparisonController::allGears');
     $routes->get('library/category/(:num)', 'LibraryController::category/$1');
     $routes->get('/community', 'HomeController::community');
+    $routes->post('/community/post_content', 'Community::post_content');
+    $routes->post('/community/post_comment', 'Community::post_comment');
     $routes->get('/customize', 'HomeController::customize');
     $routes->get('/login', 'HomeController::login');
     $routes->get('/signup', 'HomeController::signup');
-    $routes->get('/community/reviewDelete/(:num)', 'HomeController::deleteReview/$1');
-    $routes->post('/community/reviewProduct/(:num)', 'HomeController::rateReviewProduct/$1');
-
     // new routes
     $routes->get('/library/comparison', 'GearComparisonController::getComparison');
 });

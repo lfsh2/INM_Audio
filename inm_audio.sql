@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 24, 2025 at 05:48 PM
+-- Generation Time: Feb 27, 2025 at 07:12 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -43,7 +43,7 @@ CREATE TABLE `admin_accounts` (
 --
 
 INSERT INTO `admin_accounts` (`admin_account_id`, `profile_pic`, `username`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'admin', 'admin@gmail.com', '$2y$10$0tyqlNGA/EKnKwVmCnrqkuTo1H7lB6JnGYbUooeb5vBIYp2BD9Ug6', '', '2025-02-19 06:38:42', '2025-02-24 08:05:37');
+(1, NULL, 'admin', 'admin@gmail.com', '$2y$10$0tyqlNGA/EKnKwVmCnrqkuTo1H7lB6JnGYbUooeb5vBIYp2BD9Ug6', '', '2025-02-19 06:38:42', '2025-02-25 19:44:29');
 
 -- --------------------------------------------------------
 

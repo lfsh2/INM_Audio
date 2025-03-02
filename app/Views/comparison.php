@@ -27,10 +27,14 @@
                 </div>
 
                 <div class="info-block">
-                    <p>asdfghjkl</p>
-                    <p>asdfghjkl</p>
-                    <p>asdfghjkl</p>
-                    <p>asdfghjkl</p>
+                    <label for="series">Series Type</label>
+                    <p>Vanilla</p>
+                    <label for="driver">Driver</label>
+                    <p>Magnetic Dual Driver</p>
+                    <label for="cable">Cable Type</label>
+                    <p>Detachable Coiled Cable</p>
+                    <label for=frequency">Frequency Response</label>
+                    <p>10 - 40 hz</p>
                 </div>
             </div>
 
@@ -41,10 +45,14 @@
                 </div>
 
                 <div class="info-block">
-                    <p>asdfghjkl</p>
-                    <p>asdfghjkl</p>
-                    <p>asdfghjkl</p>
-                    <p>asdfghjkl</p>
+                    <label for="series">Series Type</label>
+                    <p>Vanilla</p>
+                    <label for="driver">Driver</label>
+                    <p>Magnetic Dual Driver</p>
+                    <label for="cable">Cable Type</label>
+                    <p>Detachable Coiled Cable</p>
+                    <label for=frequency">Frequency Response</label>
+                    <p>10 - 40 hz</p>
                 </div>
             </div>
         </div>

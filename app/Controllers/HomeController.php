@@ -1,5 +1,7 @@
 <?php
 namespace App\Controllers;
+use App\Models\PostModel;
+use App\Models\CommentModel;
 
 class HomeController extends BaseController
 {
@@ -42,23 +44,22 @@ private function checkUserSession($path, $data = null) {
     }
 
     ## redirect to  community
-    public function community(){
-        $this->load->requireMethod('userAccounts');
-        $this->load->requireMethod('adminAccounts');
-        $this->load->requireMethod('comments');
-        $this->load->requireMethod('gears');
-        
-        $products = $this->load->gears->getAll();
-        foreach ($products as &$product) {
-            $product['comments'] = $this->load->comments->getCommentsByProductId($product['product_id']);
-            $existingReview = $this->load->comments->getReviewByUserAndProduct($this->load->session->get('user_id'), $product['product_id']);
-            $product['existingReview'] = $existingReview;
-        }
-        $data = [
-            'commentsPerProduct' => $products
-        ];
-        return $this->checkUserSession('community', $data);
+    public function community()
+    {
+        $postModel = new PostModel();
+        $commentModel = new CommentModel();
 
+        $posts = $postModel->findAll();
+        
+        foreach ($posts as &$post) {
+            $post['comments'] = $commentModel->getCommentsByPostId($post['id']);
+        }
+
+        $data = [
+            'posts' => $posts
+        ];
+        
+        return $this->checkUserSession('community', $data);
     }
     ## redirect to customize 
     public function customize(){

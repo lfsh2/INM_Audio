@@ -241,7 +241,7 @@
                     <p id="gearDescription"></p>
                 </div>
 
-                <a href="<?= base_url('library/comparison/') ?>">Compare</a>
+                <a href="<?= base_url('library/comparison/') ?>">Go to comparison table</a>
             </div>
             
             <div class="right-gear">

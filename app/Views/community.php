@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,62 +12,97 @@
     <title>INM Community</title>
     <script defer src="<?= base_url('assets/js/script.js') ?>"></script>
 </head>
+
 <body>
 
-<!-- Include Navbar -->
-<?php echo view("includes/header.php"); ?>
+    <?php echo view("includes/header.php"); ?>
 
-<!-- @SECTION - Community Reviews -->
-<div class="comm-container">
-    <div class="comm-title">
-        <h2>IEM Community</h2>
-    </div>
+    <div class="comm-container">
+        <!-- Post Form -->
+        <div class="comm-title">
+        <h2>Community Feed</h2>
+        </div>
 
-    <div class="community-container">
-        <?php if (!empty($commentsPerProduct)) : ?>
-            <?php foreach ($commentsPerProduct as $cpp) : ?>
-                <div class="review-item">
-                    <!-- Left Side: Product Image & Name -->
-                    <div class="product-info">
-                        <img src="<?= esc($cpp['image_url']) ?>" alt="<?= esc($cpp['product_name']) ?>">
-                        <h3><?= esc($cpp['product_name']) ?></h3>
-                    </div>
+        <div class="post-form">
+            <h3>Create a Post</h3>
+            <form action="<?= base_url('community/post_content') ?>" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <input type="text" name="user_name" placeholder="Your Name (Optional)">
+                </div>
+                <div class="form-group">
+                    <textarea name="post_text" placeholder="What's on your mind?" required></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="file" name="post_image" accept="image/*">
+                </div>
+                <button type="submit">Post</button>
+            </form>
+        </div>
 
-                    <!-- Right Side: Comments Section -->
-                    <div class="comments-section">
-                        <?php if (!empty($cpp['comment_text'])): ?>
-                            <div class="comment">
-                                <div class="user-profile">
-                                    <img src="<?= base_url('assets/img/default-user.png') ?>" alt="User"> <!-- Placeholder for user profile -->
-                                    <p><strong><?= esc($cpp['firstname']) . ' ' . esc($cpp['lastname']) ?></strong></p>
-                                </div>
-                                <p class="rating">
-                                    <?= str_repeat('⭐', esc($cpp['rating'])) ?>
-                                </p>
-                                <p class="comment-text"><?= esc($cpp['comment_text']) ?></p>
+        <!-- Display Posts -->
+        <div class="community-container">
+            <?php if (!empty($posts)) : ?>
+                <?php foreach ($posts as $post) : ?>
+                    <div class="post-item">
+                        <div class="post-info">
+                            <strong><?= esc($post['user_name']) ?: 'Anonymous' ?></strong>
+                        </div>
+                        <p class="post-text"><?= esc($post['post_text']) ?></p>
+                        
+                        <!-- Post Image (Fixed Size & Inside Card) -->
+                        <?php if ($post['image_url']): ?>
+                            <div class="post-image-container">
+                                <img src="<?= base_url('uploads/' . $post['image_url']) ?>" class="post-image" alt="Post Image">
                             </div>
-                        <?php else: ?>
-                            <p style="color: gray; text-align: center;">No comments yet.</p>
                         <?php endif; ?>
 
-                        <!-- Add Comment Input -->
-                        <div class="add-comment">
-                            <input type="text" placeholder="Add comment">
+                        <div class="interactions">
+                            <button onclick="likePost(<?= $post['id'] ?>)">👍 Like</button>
+                            <button onclick="toggleCommentBox(<?= $post['id'] ?>)">💬 Comment</button>
+                        </div>
+
+                        <!-- Comments Section -->
+                        <div id="comments-<?= $post['id'] ?>" class="comments-section" style="display: none;">
+                            <?php if (!empty($post['comments'])): ?>
+                                <?php foreach ($post['comments'] as $comment): ?>
+                                    <div class="comment">
+                                        <p><strong><?= esc($comment['user_name']) ?: 'Anonymous' ?></strong>: <?= esc($comment['comment_text']) ?></p>
+                                    </div>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <p class="no-comments">No comments yet.</p>
+                            <?php endif; ?>
+
+                            <form action="<?= base_url('community/post_comment') ?>" method="POST">
+                                <input type="hidden" name="post_id" value="<?= esc($post['id']) ?>">
+                                <input type="text" name="user_name" placeholder="Your Name (Optional)">
+                                <textarea name="comment_text" placeholder="Write a comment..." required></textarea>
+                                <button type="submit">Post Comment</button>
+                            </form>
                         </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
-        <?php else : ?>
-            <div class="noProducts">
-                <h5 style="color: gray; text-align: center; padding: 20px;">NO PRODUCTS AVAILABLE</h5>
-            </div>
-        <?php endif; ?>
+                <?php endforeach; ?>
+            <?php else : ?>
+                <h5>No posts yet.</h5>
+            <?php endif; ?>
+        </div>
     </div>
-</div>
-<!-- @END SECTION - Community Reviews -->
 
-<!-- Include Footer -->
+    <script>
+        function toggleCommentBox(postId) {
+            let commentBox = document.getElementById("comments-" + postId);
+            commentBox.style.display = (commentBox.style.display === "none") ? "block" : "none";
+        }
+
+        function likePost(postId) {
+            alert("Like feature coming soon!");
+        }
+    </script>
+
+
 <?php echo view("includes/footer.php"); ?>
 
+
 </body>
+
 </html>
