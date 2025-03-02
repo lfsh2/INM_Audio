@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 27, 2025 at 07:12 AM
+-- Generation Time: Mar 02, 2025 at 05:42 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -43,7 +43,7 @@ CREATE TABLE `admin_accounts` (
 --
 
 INSERT INTO `admin_accounts` (`admin_account_id`, `profile_pic`, `username`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'admin', 'admin@gmail.com', '$2y$10$0tyqlNGA/EKnKwVmCnrqkuTo1H7lB6JnGYbUooeb5vBIYp2BD9Ug6', '', '2025-02-19 06:38:42', '2025-02-25 19:44:29');
+(1, NULL, 'admin', 'admin@gmail.com', '$2y$10$0tyqlNGA/EKnKwVmCnrqkuTo1H7lB6JnGYbUooeb5vBIYp2BD9Ug6', '', '2025-02-19 06:38:42', '2025-03-02 06:28:51');
 
 -- --------------------------------------------------------
 
@@ -107,14 +107,20 @@ INSERT INTO `category` (`category_id`, `category`, `image`) VALUES
 --
 
 CREATE TABLE `comments` (
-  `comment_id` int(11) NOT NULL,
-  `product_id` int(11) DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `comment_text` text DEFAULT NULL,
-  `rating` int(11) DEFAULT NULL CHECK (`rating` between 1 and 5),
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `id` int(11) NOT NULL,
+  `post_id` int(11) NOT NULL,
+  `user_name` varchar(255) DEFAULT NULL,
+  `comment_text` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `post_id`, `user_name`, `comment_text`, `created_at`) VALUES
+(5, 6, '', 'yes sir', '2025-03-02 14:30:19'),
+(6, 7, 'Lebron', 'Shoppee Bro', '2025-03-02 14:31:37');
 
 -- --------------------------------------------------------
 
@@ -185,6 +191,28 @@ CREATE TABLE `placedorders` (
   `payment_method` varchar(10) DEFAULT NULL,
   `date_placed` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `posts`
+--
+
+CREATE TABLE `posts` (
+  `id` int(11) NOT NULL,
+  `user_name` varchar(255) NOT NULL,
+  `post_text` text NOT NULL,
+  `image_url` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `user_name`, `post_text`, `image_url`, `created_at`) VALUES
+(6, '', 'I really want this to shit to have an prestige version', '1740925812_83b3c001a33888cd10e0.jpg', '2025-03-02 14:30:12'),
+(7, 'Julies', 'Any ideas where to get an Shab Cord for my gear', '1740925875_30dfe8b022b9bd06ce57.jpg', '2025-03-02 14:31:15');
 
 -- --------------------------------------------------------
 
@@ -264,6 +292,20 @@ INSERT INTO `products` (`product_id`, `category_id`, `product_name`, `descriptio
 (52, 4, 'Ultimate Ears 5 Pro', 'Personalized Stage Series', 0.00, 0, 'http://localhost/INM_Audio/public/admin/uploads/1740412851_64f159060c77da62c3d7.jpg', 0, '2025-02-24 08:00:51', '2025-02-24 08:00:51'),
 (53, 4, 'UM3RC Modular', 'Personalized Series', 0.00, 0, 'http://localhost/INM_Audio/public/admin/uploads/1740412882_0cabcc6d0649c91a532d.jpg', 0, '2025-02-24 08:01:22', '2025-02-24 08:01:22'),
 (54, 4, 'Westone 2', 'Personalized Series', 0.00, 0, 'http://localhost/INM_Audio/public/admin/uploads/1740412912_30c76bc6cef51d792490.jpg', 0, '2025-02-24 08:01:52', '2025-02-24 08:01:52');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_specs`
+--
+
+CREATE TABLE `product_specs` (
+  `id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `driver_type` varchar(255) NOT NULL,
+  `cable_type` varchar(255) NOT NULL,
+  `frequency_range` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -362,9 +404,8 @@ ALTER TABLE `category`
 -- Indexes for table `comments`
 --
 ALTER TABLE `comments`
-  ADD PRIMARY KEY (`comment_id`),
-  ADD KEY `product_id` (`product_id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `post_id` (`post_id`);
 
 --
 -- Indexes for table `likes`
@@ -396,11 +437,24 @@ ALTER TABLE `placedorders`
   ADD KEY `user_id` (`user_id`);
 
 --
+-- Indexes for table `posts`
+--
+ALTER TABLE `posts`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`product_id`),
   ADD KEY `category_id` (`category_id`);
+
+--
+-- Indexes for table `product_specs`
+--
+ALTER TABLE `product_specs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `product_id` (`product_id`);
 
 --
 -- Indexes for table `shippings`
@@ -454,7 +508,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `likes`
@@ -481,10 +535,22 @@ ALTER TABLE `placedorders`
   MODIFY `placed_order_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `posts`
+--
+ALTER TABLE `posts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
   MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+
+--
+-- AUTO_INCREMENT for table `product_specs`
+--
+ALTER TABLE `product_specs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `shippings`
@@ -525,8 +591,7 @@ ALTER TABLE `cart_items`
 -- Constraints for table `comments`
 --
 ALTER TABLE `comments`
-  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user_accounts` (`user_id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `likes`
@@ -553,6 +618,12 @@ ALTER TABLE `placedorders`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`) ON DELETE SET NULL;
+
+--
+-- Constraints for table `product_specs`
+--
+ALTER TABLE `product_specs`
+  ADD CONSTRAINT `product_specs_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `shippings`
