@@ -20,11 +20,12 @@
     <div class="comm-container">
         <!-- Post Form -->
         <div class="comm-title">
-        <h2>Community Feed</h2>
+            <h2>Community</h2>
         </div>
 
         <div class="post-form">
             <h3>Create a Post</h3>
+
             <form action="<?= base_url('community/post_content') ?>" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <input type="text" name="user_name" placeholder="Your Name (Optional)">
@@ -47,6 +48,7 @@
                         <div class="post-info">
                             <strong><?= esc($post['user_name']) ?: 'Anonymous' ?></strong>
                         </div>
+                        
                         <p class="post-text"><?= esc($post['post_text']) ?></p>
                         
                         <!-- Post Image (Fixed Size & Inside Card) -->
@@ -56,28 +58,36 @@
                             </div>
                         <?php endif; ?>
 
+                        <hr>
+
                         <div class="interactions">
-                            <button onclick="likePost(<?= $post['id'] ?>)">👍 Like</button>
-                            <button onclick="toggleCommentBox(<?= $post['id'] ?>)">💬 Comment</button>
+                            <button onclick="likePost(<?= $post['id'] ?>)"><i class="fa-solid fa-thumbs-up"></i> Like</button>
+                            <button onclick="toggleCommentBox(<?= $post['id'] ?>)"><i class="fa-solid fa-comment"></i> Comment</button>
                         </div>
 
                         <!-- Comments Section -->
                         <div id="comments-<?= $post['id'] ?>" class="comments-section" style="display: none;">
+                            <hr>
+                            
                             <?php if (!empty($post['comments'])): ?>
-                                <?php foreach ($post['comments'] as $comment): ?>
-                                    <div class="comment">
-                                        <p><strong><?= esc($comment['user_name']) ?: 'Anonymous' ?></strong>: <?= esc($comment['comment_text']) ?></p>
-                                    </div>
-                                <?php endforeach; ?>
+                                <div class="comment">
+                                    <?php foreach ($post['comments'] as $comment): ?>
+                                        <p><strong><?= esc($comment['user_name']) ?: 'Anonymous' ?> </strong> <span><?= esc($comment['comment_text']) ?></span></p>
+                                    <?php endforeach; ?>
+                                </div>
                             <?php else: ?>
                                 <p class="no-comments">No comments yet.</p>
                             <?php endif; ?>
 
+                            
                             <form action="<?= base_url('community/post_comment') ?>" method="POST">
+                                <hr>
                                 <input type="hidden" name="post_id" value="<?= esc($post['id']) ?>">
                                 <input type="text" name="user_name" placeholder="Your Name (Optional)">
-                                <textarea name="comment_text" placeholder="Write a comment..." required></textarea>
-                                <button type="submit">Post Comment</button>
+                                <div class="com">
+                                    <textarea name="comment_text" placeholder="Write a comment..." required></textarea>
+                                    <button type="submit"><img src="<?= base_url('assets/img/send-logo.svg'); ?>" alt=""></button>
+                                </div>
                             </form>
                         </div>
                     </div>

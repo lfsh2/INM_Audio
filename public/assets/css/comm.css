@@ -9,132 +9,171 @@ body {
     max-width: 1200px;
     margin: 20px auto;
     padding: 15px;
-}
-
-.post-form {
-    background: white;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-}
-
-.post-form .form-group {
-    margin-bottom: 10px;
-}
-
-.post-form input, .post-form textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-}
-
-.post-form button {
-    background-color: #1877f2;
-    color: white;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 5px;
-    width: 100%;
-}
-
-.post-form button:hover {
-    background-color: #166fe5;
-}
-
-.post-item {
-    background: white;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    overflow: hidden;
-    position: relative;
-}
-
-.post-info {
     display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
+    flex-direction: column;
+    gap: 20px;
 
-.post-info img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
+    .post-form {
+        background: white;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
 
-.post-image-container {
-    width: 250px;
-    height: 250px; 
-    overflow: hidden;
-    border-radius: 8px;
-    margin-top: 10px;
-}
+        h3 {
+            padding-bottom: 10px;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
 
-.post-image {
-    max-width: 400px;
-    max-height: 400px;
-    object-fit: cover; 
-}
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
 
-.interactions {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-}
+        button {
+            background-color: #000000;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 5px;
+            width: 100%;
+        }
+    }
 
-.interactions button {
-    background: none;
-    border: none;
-    color: #1877f2;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: bold;
-}
+    .community-container {
+        .post-item {
+            width: 100%;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
 
-.interactions button:hover {
-    color: #166fe5;
-}
+        }
 
-.comments-section {
-    padding: 10px;
-    background: #f8f9fa;
-    border-radius: 8px;
-    margin-top: 10px;
-}
+        .post-info {
+            font-size: 1.1rem;
+        }
 
-.comment {
-    background: #f0f2f5;
-    padding: 8px;
-    border-radius: 10px;
-    margin-top: 5px;
-}
+        .post-text {
+            font-size: 0.9rem;
+        }
 
-.no-comments {
-    color: gray;
-    text-align: center;
-    font-size: 12px;
-}
+        .post-image-container {
+            height: 250px; 
+            overflow: hidden;
+            margin-top: 10px;
 
-.comments-section input, .comments-section textarea {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-}
+            img {
+                height: 100%;
+                object-fit: contain;
+            }
+        }
 
-.comments-section button {
-    background-color: #1877f2;
-    color: white;
-    border: none;
-    cursor: pointer;
-    padding: 8px;
-    border-radius: 5px;
-    width: 100%;
+        .interactions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            button {
+                width: 50%;
+                padding: 5px 10px;
+                background: none;
+                border: none;
+                cursor: pointer;
+                font-size: 0.9rem;
+                transition: all 300ms;
+            }
+
+            button:nth-child(1):hover {
+                color: blue;
+            }
+            button:nth-child(2):hover {
+                color: gray;
+            }
+        }
+
+        .comments-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            .comment {
+                max-height: 400px;
+                height: auto;
+                padding: 20px 0;
+                overflow: auto;
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+
+                p {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+
+                    span {
+                        padding-left: 10px;
+                    }
+                }
+            }
+
+            .no-comments {
+                color: gray;
+                text-align: center;
+                font-size: 12px;
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                .com {
+                    position: relative;
+            
+                    button {
+                        background: none;
+                        border: none;
+                        position: absolute;
+                        top: 10px;
+                        right: 8px;
+                        cursor: pointer;
+                        
+                        img {
+                            width: 20px;
+                            height: 20px;
+                            object-fit: contain;
+                        }
+                    }
+                }
+            }
+
+            input, textarea {
+                width: 100%;
+                padding: 8px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-size: 14px;
+                resize: vertical;
+            }
+
+            textarea {
+                min-height: 100px;
+            }
+        }
+    }
 }
