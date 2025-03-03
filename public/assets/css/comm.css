@@ -5,6 +5,26 @@ body {
     padding: 0;
 }
 
+.login-message{
+    text-align: center;
+    font-size: 16px;
+    color: #ff0000;
+    font-weight: bold;
+    padding: 10px;
+    background: #ffecec;
+    border: 1px solid #ff0000;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.login-message a{
+    color: #d00000;
+    text-decoration: none;
+    font-weight: bold;
+}
+.login-message a:hover{
+    text-decoration: underline;
+}
+
 .comm-container {
     max-width: 1200px;
     margin: 20px auto;
