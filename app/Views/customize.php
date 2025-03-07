@@ -12,7 +12,7 @@
     <link rel="stylesheet" href=" <?= base_url('assets/css/footer.css') ?>">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
-	<link rel="stylesheet" href="<?= base_url('react-app/assets/index-DAPNoOtH.css') ?>">
+	<link rel="stylesheet" href="<?= base_url('react-app/assets/index-DQWRZbZt.css') ?>">
 	<title>INM Shop</title>
 </head>
 
@@ -22,22 +22,12 @@
 
 	<!-- React App Container -->
 	<div id="root">
-		<div class="App">
-			<div class="customize-container">
-				<div class="left-container">
-					<div class="left-top">Left Top Content</div>
-					<div class="left-bottom">Left Bottom Content</div>
-				</div>
-
-				<div class="right-container">Right Content</div>
-			</div>
-		</div>
 	</div>
 
 	<!-- Footer -->
 		<?php echo view("includes/footer.php"); ?>
 	<!-- Load React App -->
-	<script src="<?= base_url('react-app/assets/index-CNfnd6Hr.js') ?>" type="module"></script>
+	<script src="<?= base_url('react-app/assets/index-C_v6LAyl.js') ?>" type="module"></script>
 	
 </body>
 
