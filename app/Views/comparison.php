@@ -20,62 +20,41 @@
         </div>
 
         <div class="earphone-container">
-            <div class="left earphone">
-                <div class="img-block">
-                    <img src="" alt="">
-                    <p>Name</p>
-                </div>
-
-                <div class="info-block">
-                    <label for="series">Series Type</label>
-                    <p>Vanilla</p>
-                    <label for="driver">Driver</label>
-                    <p>Magnetic Dual Driver</p>
-                    <label for="cable">Cable Type</label>
-                    <p>Detachable Coiled Cable</p>
-                    <label for=frequency">Frequency Response</label>
-                    <p>10 - 40 hz</p>
-                </div>
+    <div class="left earphone">
+        <?php if (!empty($leftGear)) : ?>
+            <div class="img-block">
+                <img src="<?= esc($leftGear['image_url']) ?>" alt="<?= esc($leftGear['product_name']) ?>">
+                <p><?= esc($leftGear['product_name']) ?></p>
             </div>
-
-            <div class="right earphone">
-                <div class="img-block">
-                    <img src="" alt="">
-                    <p>Name</p>
-                </div>
-
-                <div class="info-block">
-                    <label for="series">Series Type</label>
-                    <p>Vanilla</p>
-                    <label for="driver">Driver</label>
-                    <p>Magnetic Dual Driver</p>
-                    <label for="cable">Cable Type</label>
-                    <p>Detachable Coiled Cable</p>
-                    <label for=frequency">Frequency Response</label>
-                    <p>10 - 40 hz</p>
-                </div>
+            <div class="info-block">
+                <label for="driver">Driver</label>
+                <p><?= esc($leftGear['driver_type']) ?></p>
+                <label for="cable">Cable Type</label>
+                <p><?= esc($leftGear['cable_type']) ?></p>
+                <label for="frequency">Frequency Response</label>
+                <p><?= esc($leftGear['frequency_range']) ?></p>
             </div>
+        <?php else : ?>
+            <p>No product selected for comparison.</p>
+        <?php endif; ?>
+    </div>
+
+    <div class="right earphone">
+        <div class="img-block">
+            <img src="" alt="">
+            <p>Name</p>
         </div>
-        
-        <div class="frequency-container">
-            <div class="title">
-                <h2>Frequency Response Comparison</h2>
-            </div>
-
-            <div class="frequency-block">
-                <div class="left frequency">
-                    <div class="img-block">
-                        <img src="" alt="">
-                    </div>
-                </div>
-
-                <div class="right frequency">
-                    <div class="img-block">
-                        <img src="" alt="">
-                    </div>
-                </div>
-            </div>
+        <div class="info-block">
+            <label for="driver">Driver</label>
+            <p>-</p>
+            <label for="cable">Cable Type</label>
+            <p>-</p>
+            <label for="frequency">Frequency Response</label>
+            <p>-</p>
         </div>
+    </div>
+</div>
+
     </div>
 </body>
 </html>

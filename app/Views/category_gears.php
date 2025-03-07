@@ -240,10 +240,8 @@
                     <h2 id="gearTitle"></h2>
                     <p id="gearDescription"></p>
                 </div>
-
-                <a href="<?= base_url('library/comparison/') ?>">Go to comparison table</a>
-            </div>
-            
+                <a href="javascript:void(0)" onclick="addToComparison('<?= esc($gear['product_id']) ?>')">Add to Compare</a>
+                </div>
             <div class="right-gear">
                 <div class="top">
                     <h2>Sound Test</h2>
@@ -335,7 +333,31 @@
     function playSong() {
         playSound('cut2.mp3', 0);
     }
+
+    function addToComparison(productId) {
+    fetch('<?= base_url('library/addToComparison') ?>', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: 'product_id=' + productId
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            window.location.href = "<?= base_url('library/comparison') ?>"; 
+        } else {
+            alert("Failed to add product.");
+        }
+    });
+}
+
+
 </script>
+
+
+
 
 
 </body>

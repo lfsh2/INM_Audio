@@ -5,7 +5,7 @@ body {
     padding: 0;
 }
 
-.login-message{
+p.error-message{
     text-align: center;
     font-size: 16px;
     color: #ff0000;
@@ -16,12 +16,12 @@ body {
     border-radius: 5px;
     margin-top: 10px;
 }
-.login-message a{
+p.error-message a{
     color: #d00000;
     text-decoration: none;
     font-weight: bold;
 }
-.login-message a:hover{
+p.error-message a:hover{
     text-decoration: underline;
 }
 

@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\LibraryModel;
 use CodeIgniter\Controller;
+use App\Models\GearModel;
 
 class LibraryController extends Controller
 {
@@ -33,14 +34,55 @@ class LibraryController extends Controller
         return view('category_gears', $data);
     }
     public function allGears()
-{
-    $data['gears'] = $this->libraryModel->getAllGears();
+    {
+        $gears = $this->libraryModel->getAllGears();
+        $categories = $this->libraryModel->getCategories();
+    
+        $gears_by_category = [];
+    
+        foreach ($categories as $category) {
+            $gears_by_category[$category['category']] = [];
+        }
+    
+        foreach ($gears as $gear) {
+            $category = $this->libraryModel->getCategoryById($gear['category_id']);
+            $categoryName = $category['category'] ?? 'Uncategorized';
+            $gears_by_category[$categoryName][] = $gear;
+        }
+    
+        return view('all-gears', ['gears_by_category' => $gears_by_category]);
+    }
+    
 
-    if (empty($data['gears'])) {
-        return redirect()->to('/library')->with('error', 'No gears found.');
+
+public function addToComparison()
+{
+    $session = session();
+    $productId = $this->request->getPost('product_id');
+
+    if (!$productId) {
+        return $this->response->setJSON(['success' => false, 'message' => 'Invalid product ID']);
     }
 
-    return view('all-gears', $data);
+    $gearModel = new GearModel();
+    $gear = $gearModel->getGearWithSpecs($productId);
+
+    if (!$gear) {
+        return $this->response->setJSON(['success' => false, 'message' => 'Product not found']);
+    }
+
+    // Store in session
+    $session->set('comparison_left', $gear);
+
+    return $this->response->setJSON(['success' => true]);
+}
+
+public function comparison()
+{
+    $session = session();
+    $comparisonLeft = $session->get('comparison_left');
+
+    return view('comparison', ['leftGear' => $comparisonLeft]);
 }
 
 }
