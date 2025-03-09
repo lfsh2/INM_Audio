@@ -203,6 +203,17 @@
                         ●Hybrid Driver Setup</p>
                 </div>
             </div>
+
+            <div class="card1">
+                <img src="<?= base_url('assets/img/sizes.jpeg') ?>" alt="">
+                <div class="card-content">
+                    <h1>Size Chart Guide</h1>
+                    <p>●Small = Small ears shapes, more secure fit <br>
+                        ●Medium = Balanced Fit for average ear sizes <br>
+                        ●Large = Slightly larger ears, comforatble seal<br>
+                        ●Extra Large = Large ears shapes,, deeper insertion</p>
+                </div>
+            </div>
         </div>
     </div>
     <!-- @END SECTION 3 -->

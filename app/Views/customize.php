@@ -118,7 +118,7 @@
             <option value="abstract.jpeg">Abstract No.1</option>
             <option value="abstract2.jpeg">Abstract No.2</option>
             <option value="anime1.jpeg">Akatsuki</option>
-            <option value="anime2.jpeg">Hentai</option>
+            <option value="anime2.jpeg">Piattos</option>
             <option value="anime3.jpeg">Noobies</option>
             <option value="anime4.jpeg">Colorstic</option>
             <option value="anime5.jpeg">Adult Gon</option>
@@ -130,6 +130,7 @@
             <option value="red2.jpeg">Katana</option>
             <option value="wood.jpeg">Wood</option>
             <option value="lacks.jpeg">Golden Shower</option>
+			<option value="fuc.jpeg">Dancing Lion</option>
         </select>
             <input type="file" id="leftTextureUpload" accept="image/*">
         </div>
@@ -143,7 +144,7 @@
             <option value="abstract.jpeg">Abstract No.1</option>
             <option value="abstract2.jpeg">Abstract No.2</option>
             <option value="anime1.jpeg">Akatsuki</option>
-            <option value="anime2.jpeg">Hentai</option>
+            <option value="anime2.jpeg">Piattos</option>
             <option value="anime3.jpeg">Noobies</option>
             <option value="anime4.jpeg">Colorstic</option>
             <option value="anime5.jpeg">Adult Gon</option>
@@ -155,6 +156,7 @@
             <option value="red2.jpeg">Katana</option>
             <option value="wood.jpeg">Wood</option>
             <option value="lacks.jpeg">Golden Shower</option>
+			<option value="fuc.jpeg">Dancing Lion</option>
         </select>
             <input type="file" id="rightTextureUpload" accept="image/*">
         </div>
@@ -170,6 +172,19 @@
             </select>
         </div>
     </div>
+
+	<div class="controls">
+    <div class="control-group">
+        <label for="sizeSelect">Select Size:</label>
+        <select id="sizeSelect">
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+            <option value="xl">XL</option>
+        </select>
+    </div>
+</div>
+
 
     <div class="controls">
         <div class="control-group">

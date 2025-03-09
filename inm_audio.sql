@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2025 at 05:22 AM
+-- Generation Time: Mar 09, 2025 at 05:42 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -43,7 +43,7 @@ CREATE TABLE `admin_accounts` (
 --
 
 INSERT INTO `admin_accounts` (`admin_account_id`, `profile_pic`, `username`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'admin', 'admin@gmail.com', '$2y$10$0tyqlNGA/EKnKwVmCnrqkuTo1H7lB6JnGYbUooeb5vBIYp2BD9Ug6', '', '2025-02-19 06:38:42', '2025-03-02 06:28:51');
+(1, NULL, 'admin', 'admin@gmail.com', '$2y$10$0tyqlNGA/EKnKwVmCnrqkuTo1H7lB6JnGYbUooeb5vBIYp2BD9Ug6', '', '2025-02-19 06:38:42', '2025-03-07 05:18:50');
 
 -- --------------------------------------------------------
 
@@ -77,6 +77,13 @@ CREATE TABLE `cart_items` (
   `quantity` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cart_items`
+--
+
+INSERT INTO `cart_items` (`cart_item_id`, `cart_id`, `product_id`, `quantity`, `created_at`) VALUES
+(2, 1, 18, 1, '2025-03-04 06:51:26');
 
 -- --------------------------------------------------------
 
@@ -309,6 +316,14 @@ CREATE TABLE `product_specs` (
   `frequency_range` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `product_specs`
+--
+
+INSERT INTO `product_specs` (`id`, `product_id`, `driver_type`, `cable_type`, `frequency_range`) VALUES
+(1, 1, 'Balanced Armature', 'Detachable', '20Hz - 40kHz'),
+(2, 2, 'Dynamic Driver', 'Fixed', '15Hz - 45kHz');
+
 -- --------------------------------------------------------
 
 --
@@ -498,7 +513,7 @@ ALTER TABLE `carts`
 -- AUTO_INCREMENT for table `cart_items`
 --
 ALTER TABLE `cart_items`
-  MODIFY `cart_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `cart_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -552,7 +567,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `product_specs`
 --
 ALTER TABLE `product_specs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `shippings`

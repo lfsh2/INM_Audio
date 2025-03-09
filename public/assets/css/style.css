@@ -281,7 +281,7 @@ body{
         align-items: center;
 
         .card1{
-            width: 500px;
+            width: 800px;
             height: 350px;
             background-color: #fff;
             border: 1px solid #000;
@@ -320,6 +320,7 @@ body{
                 }
             }
         }
+        
     }
 }
 
