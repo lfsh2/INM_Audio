@@ -51,3 +51,4 @@ ServerSignature Off
     AddType model/gltf+json .gltf
     AddType model/gltf-binary .glb
 </IfModule>
+

@@ -23,6 +23,7 @@ $routes->group('', function($routes) {
     $routes->post('/community/post_content', 'Community::post_content');
     $routes->post('/community/post_comment', 'Community::post_comment');
     $routes->get('/customize', 'HomeController::customize');
+    $routes->post('/save-customization', 'IEMCustomizationController::saveCustomization');
     $routes->get('/login', 'HomeController::login');
     $routes->get('/signup', 'HomeController::signup');
 });
