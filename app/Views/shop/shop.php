@@ -118,7 +118,7 @@
                                         <div class="control">
                                             <button type="button" onclick="decreaseValue(<?= $index; ?>)">-</button>
                                             <input type="number" name="quantity" id="quantity-<?= $index ?>" value="<?= ($gear['stock_quantity'] == 0) ? 0 : 1; ?>" min="1" readonly>
-                                            <button type="button" onclick="increaseValue(<?= $index; ?>)">+</button>
+                                            <button type="button" onclick="increaseValue(<?= $index; ?>, <?= $gear['stock_quantity']; ?>)">+</button>
                                         </div>
                                     </div>
 
@@ -190,13 +190,17 @@
     
 <!-- scripts -->
 <script>
-     // Increase quantity for the specific product
-     function increaseValue(index) {
+    function increaseValue(index, maxStock) {
         var quantityInput = document.getElementById('quantity-' + index);
-        quantityInput.value = parseInt(quantityInput.value) + 1;
+        var currentQuantity = parseInt(quantityInput.value);
+
+        if (currentQuantity < maxStock) {
+            quantityInput.value = currentQuantity + 1;
+        } else {
+            alert('You cannot add more than ' + maxStock + ' items.');
+        }
     }
 
-    // Decrease quantity for the specific product, but don't go below 1
     function decreaseValue(index) {
         var quantityInput = document.getElementById('quantity-' + index);
         if (quantityInput.value > 1) {
@@ -204,5 +208,6 @@
         }
     }
 </script>
+
 </body>
 </html>
