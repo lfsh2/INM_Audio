@@ -1,46 +1,199 @@
-/* Reset default margin and padding */
-* {
-    box-sizing: border-box;
+body {
     margin: 0;
+    padding: 0;
+    background: #f5f5f5;
+    font-family: Arial, sans-serif;
+}
+
+.main-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 95vw;
+    height: 100vh;
+    margin: 20px auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#canvas-container {
+    flex: 1.5;
+    height: 100%;
+    min-height: 450px;
+    background: #fff;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.customization-panel {
+    flex: 1;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f9f9f9;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+label {
+    font-weight: bold;
+    min-width: 150px;
+}
+
+input[type="color"],
+select,
+input[type="file"] {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #f8f9fa;
+    cursor: pointer;
+    transition: border 0.3s;
+}
+
+input[type="color"]:hover,
+select:hover,
+input[type="file"]:hover {
+    border-color: #007bff;
+}
+
+#sizeSelect {
+    background-color: #e9f5ff;
+}
+
+#saveDesign {
+    width: 100%;
+    padding: 12px 0;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+#saveDesign:hover {
+    background: #0056b3;
+    transform: scale(1.03);
+}
+
+#saveDesign:active {
+    transform: scale(0.97);
+}
+
+.color-preview,
+.texture-preview {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-size: cover;
+    background-position: center;
+}
+
+@media (max-width: 992px) {
+    .main-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    #canvas-container {
+        width: 100%;
+        height: 400px;
+    }
+
+    .customization-panel {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    label {
+        min-width: 100px;
+    }
+
+    .control-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    #saveDesign {
+        padding: 10px 0;
+        font-size: 1rem;
+    }
+
+    .controls {
+        gap: 10px;
+    }
+
+    #canvas-container {
+        min-height: 300px;
+    }
+}
+
+.sound-test {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+#visualizer {
+    width: 100%;
+    height: 100px;
+    background: #111;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.specs-section {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f5f5f5;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.specs-section h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+#specsList {
+    list-style-type: none;
     padding: 0;
 }
 
-/* Body */
-body {
-    display: flex;
-    flex-direction: column; /* Stack children vertically */
-    min-height: 100vh; /* Ensure the body takes up the full viewport height */
-    background-color: #242424; /* Match the React app's background color */
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-}
-
-/* Header */
-.header {
-    position: relative; /* Ensure z-index works */
-    z-index: 10; /* Bring the header to the front */
-    background-color: #f8f9fa;
-    padding: 10px 20px;
+#specsList li {
+    margin-bottom: 5px;
+    padding: 5px 0;
     border-bottom: 1px solid #ddd;
-    height: auto; /* Allow dynamic height based on content */
-}
-
-/* React App Container */
-#root {
-    flex: 1; /* Allow the React app to take up remaining vertical space */
-    display: flex;
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
-    overflow: auto; /* Add scrollbars if content overflows */
-    background-color: #242424; /* Match the React app's background color */
-}
-
-/* Footer */
-.footer {
-    position: relative; /* Ensure z-index works */
-    z-index: 10; /* Bring the footer to the front */
-    background-color: #343a40;
-    color: #fff;
-    text-align: center;
-    padding: 10px 20px;
-    height: auto; /* Allow dynamic height based on content */
 }

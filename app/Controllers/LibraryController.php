@@ -71,7 +71,6 @@ public function addToComparison()
         return $this->response->setJSON(['success' => false, 'message' => 'Product not found']);
     }
 
-    // Store in session
     $session->set('comparison_left', $gear);
 
     return $this->response->setJSON(['success' => true]);
