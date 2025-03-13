@@ -40,22 +40,28 @@
                 'Personalized Series' => 'personalized.jpg',
                 'Prestige Series' => 'prestige.jpg',
             ];
+            $categoryDescription = [
+                'Vanilla Series' => 'Experience classic design with timeless performance.',
+                'Stage Series' => 'Perfect for live performance with clear sound projection.',
+                'Personalized Series' => 'Customized gear tailored to your unique style and passion.',
+                'Prestige Series' => 'Premuim Quality Build specialized for Premuim feels',
+            ];
             ?>
 
             <?php if (!empty($categories)) : ?>
                 <?php foreach ($categories as $category) : ?>
-                    <!-- Get the correct image for each category -->
                     <?php 
-                        $image = $categoryImages[$category['category']] ?? 'default.png'; 
-                    ?>
+                        $image = $categoryImages[$category['category']] ?? 'default.png';
+                        $description = $categoryDescription[$category['category']] ?? 'Explore our diverse range of gears.';
+                        ?>
                     <!-- Category Cards -->
                     <div class="library-card" title="Click to view all gears in this category">
                         <a href="<?= base_url('library/category/' . $category['category_id']) ?>">
                             <img class="bgimg" src="<?= base_url('assets/img/categories/' . $image); ?>" alt="<?= esc($category['category']) ?> Image">
                             <div class="info">
                                 <h3><?= esc($category['category']) ?></h3>
-                                <p>Click to view all gears under this category.</p>
-                            </div>
+                                <p><?= esc($description) ?></p>
+                                </div>
                         </a>
                     </div>
                 <?php endforeach; ?>

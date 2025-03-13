@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const rightColorPicker = document.getElementById("rightColorPicker");
     const leftTextureUpload = document.getElementById("leftTextureUpload");
     const rightTextureUpload = document.getElementById("rightTextureUpload");
-    const logoUpload = document.getElementById("logoUpload");
+    const userDesignUpload = document.getElementById("userDesignUpload");
     const materialSelect = document.getElementById("materialSelect");
     const leftTextureSelect = document.getElementById("leftTextureSelect");
     const rightTextureSelect = document.getElementById("rightTextureSelect");
@@ -42,17 +42,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     loader.load("assets/models/iem2.glb", function (gltf) {
         container.removeChild(loadingText);
-    
+
         iemModel = gltf.scene;
-    
+
         iemModel.traverse((child) => {
             if (child.isMesh) {
                 child.material = new THREE.MeshStandardMaterial({
                     color: 0xffffff,
                     metalness: 0.8,
-                    roughness: 0.2, 
+                    roughness: 0.2,
                 });
-    
+
                 if (!leftIEM) {
                     leftIEM = child;
                 } else {
@@ -60,20 +60,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }
         });
-    
+
         const box = new THREE.Box3().setFromObject(iemModel);
         const center = box.getCenter(new THREE.Vector3());
         iemModel.position.sub(center);
-    
+
         const size = box.getSize(new THREE.Vector3()).length();
-        const scaleFactor = 2 / size;
+        const scaleFactor = 1.5 / size;
         iemModel.scale.set(scaleFactor, scaleFactor, scaleFactor);
-    
+
         scene.add(iemModel);
-        camera.position.set(0, 0, 3);
+        camera.position.set(0, 0, 2.5); 
         camera.lookAt(0, 0, 0);
         animate();
-    
+
         if (materialSelect) {
             materialSelect.value = "glossy";
         }
@@ -81,7 +81,6 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Error loading model:", error);
         loadingText.innerText = "Error loading model!";
     });
-    
 
     leftColorPicker.addEventListener("input", () => {
         if (leftIEM) leftIEM.material.color.set(leftColorPicker.value);
@@ -91,6 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (rightIEM) rightIEM.material.color.set(rightColorPicker.value);
     });
 
+    
     function applyTextureFromFolder(textureName, object) {
         if (textureName !== "none" && object) {
             const texture = new THREE.TextureLoader().load(`assets/textures/${textureName}`);
@@ -106,12 +106,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     leftTextureSelect.addEventListener("change", () => {
         applyTextureFromFolder(leftTextureSelect.value, leftIEM);
-        leftTextureUpload.value = ""; 
+        leftTextureUpload.value = "";
     });
 
     rightTextureSelect.addEventListener("change", () => {
         applyTextureFromFolder(rightTextureSelect.value, rightIEM);
-        rightTextureUpload.value = ""; 
+        rightTextureUpload.value = "";
     });
 
     function applyUploadedTexture(event, object) {
@@ -131,15 +131,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     leftTextureUpload.addEventListener("change", (event) => {
         applyUploadedTexture(event, leftIEM);
-        leftTextureSelect.value = "none"; 
+        leftTextureSelect.value = "none";
     });
 
     rightTextureUpload.addEventListener("change", (event) => {
         applyUploadedTexture(event, rightIEM);
-        rightTextureSelect.value = "none"; 
+        rightTextureSelect.value = "none";
     });
 
-  
+   
     userDesignUpload.addEventListener("change", function (event) {
         const file = event.target.files[0];
         if (file && rightIEM) {
@@ -148,18 +148,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 const texture = new THREE.TextureLoader().load(e.target.result);
                 texture.wrapS = THREE.RepeatWrapping;
                 texture.wrapT = THREE.RepeatWrapping;
-                texture.repeat.set(1, 1); 
-    
+                texture.repeat.set(1, 1);
+
                 rightIEM.material.map = texture;
                 rightIEM.material.needsUpdate = true;
             };
             reader.readAsDataURL(file);
         }
     });
-    
-    
-    
 
+   
     materialSelect.addEventListener("change", function () {
         if (leftIEM && rightIEM) {
             const type = materialSelect.value;
@@ -173,9 +171,23 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    
     function animate() {
         requestAnimationFrame(animate);
         controls.update();
         renderer.render(scene, camera);
     }
+
+ 
+    window.addEventListener("resize", () => {
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.clientWidth, container.clientHeight);
+
+        if (iemModel) {
+            const newBox = new THREE.Box3().setFromObject(iemModel);
+            const newCenter = newBox.getCenter(new THREE.Vector3());
+            iemModel.position.sub(newCenter);
+        }
+    });
 });

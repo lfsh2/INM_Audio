@@ -23,32 +23,41 @@
         </div>
 
         <?php if (session()->has('isLoggedIn')): ?>
-            <div class="post-form">
-                <h3>Create a Post</h3>
-                <form action="<?= base_url('community/post_content') ?>" method="POST" enctype="multipart/form-data">
-                    <div class="form-group user-info">
-                       <!-- <img src="<?= base_url('uploads/' . (session('profile_pic') ?? 'default-user.png')) ?>" alt="Profile"> -->
-                        <strong><?= esc(session('firstname') . ' ' . session('lastname')) ?></strong>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="post_text" placeholder="What's on your mind?" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <input type="file" name="post_image" accept="image/*">
-                    </div>
-                    <button type="submit">Post</button>
-                </form>
+    <div class="post-box">
+        <h3>Create a Post</h3>
+        <form action="<?= base_url('community/post_content') ?>" method="POST" enctype="multipart/form-data">
+            <div class="form-group user-info">
+                <strong><?= esc(session('firstname') . ' ' . session('lastname')) ?></strong>
             </div>
-        <?php else: ?>
-            <p class="error-message">You must be <a href="<?= base_url('login') ?>">logged in</a> to post.</p>
-        <?php endif; ?>
+
+            <div class="form-group">
+                <textarea name="post_text" placeholder="What's on your mind?" required></textarea>
+            </div>
+
+            <div class="form-group file-upload">
+                <input type="file" name="post_image" id="file-input" accept="image/*">
+                <label for="file-input">
+                    <i class="fa-solid fa-upload"></i> Upload Image
+                </label>
+            </div>
+
+            <div class="button-container">
+                <button type="submit">Post</button>
+            </div>
+        </form>
+    </div>
+<?php else: ?>
+    <div class="error-message">You must be <a href="<?= base_url('login') ?>">logged in</a> to post.</div>
+<?php endif; ?>
+
 
         <div class="community-container">
-            <?php if (!empty($posts)) : ?>
-                <?php foreach ($posts as $post) : ?>
-                    <div class="post-item">
+    <?php if (!empty($posts)) : ?>
+        <?php foreach ($posts as $post) : ?>
+            <div class="post-wrapper">
+                <div class="post-item">
+                    <div class="post-content">
                         <div class="post-info">
-                            <!--<img src="<?= base_url('uploads/' . ($post['profile_pic'] ?? 'default-user.png')) ?>" alt="User">-->
                             <strong><?= esc($post['user_name']) ?: 'Anonymous' ?></strong>
                         </div>
                         
@@ -59,46 +68,45 @@
                                 <img src="<?= base_url('uploads/' . $post['image_url']) ?>" class="post-image" alt="Post Image">
                             </div>
                         <?php endif; ?>
-
-                        <hr>
-
+                        
                         <div class="interactions">
                             <button onclick="likePost(<?= $post['id'] ?>)"><i class="fa-solid fa-thumbs-up"></i> Like</button>
-                            <button onclick="toggleCommentBox(<?= $post['id'] ?>)"><i class="fa-solid fa-comment"></i> Comment</button>
-                        </div>
-
-                        <div id="comments-<?= $post['id'] ?>" class="comments-section" style="display: none;">
-                            <hr>
-                            
-                            <?php if (!empty($post['comments'])): ?>
-                                <div class="comment">
-                                    <?php foreach ($post['comments'] as $comment): ?>
-                                        <p><strong><?= esc($comment['user_name']) ?: 'Anonymous' ?> </strong> <span><?= esc($comment['comment_text']) ?></span></p>
-                                    <?php endforeach; ?>
-                                </div>
-                            <?php else: ?>
-                                <p class="no-comments">No comments yet.</p>
-                            <?php endif; ?>
-
-                            <?php if (session()->has('isLoggedIn')): ?>
-                                <form action="<?= base_url('community/post_comment') ?>" method="POST">
-                                    <hr>
-                                    <input type="hidden" name="post_id" value="<?= esc($post['id']) ?>">
-                                    <div class="com">
-                                        <textarea name="comment_text" placeholder="Write a comment..." required></textarea>
-                                        <button type="submit"><img src="<?= base_url('assets/img/send-logo.svg'); ?>" alt=""></button>
-                                    </div>
-                                </form>
-                            <?php else: ?>
-                                <p class="error-message">You must be <a href="<?= base_url('login') ?>">logged in</a> to comment.</p>
-                            <?php endif; ?>
                         </div>
                     </div>
-                <?php endforeach; ?>
-            <?php else : ?>
-                <h5>No posts yet.</h5>
-            <?php endif; ?>
-        </div>
+
+                    <div class="comments-section">
+                        <hr>
+                        <?php if (!empty($post['comments'])): ?>
+                            <div class="comment">
+                                <?php foreach ($post['comments'] as $comment): ?>
+                                    <p><strong><?= esc($comment['user_name']) ?: 'Anonymous' ?></strong>
+                                    <span><?= esc($comment['comment_text']) ?></span></p>
+                                <?php endforeach; ?>
+                            </div>
+                        <?php else: ?>
+                            <p class="no-comments">No comments yet.</p>
+                        <?php endif; ?>
+
+                        <?php if (session()->has('isLoggedIn')): ?>
+                            <form action="<?= base_url('community/post_comment') ?>" method="POST">
+                                <input type="hidden" name="post_id" value="<?= esc($post['id']) ?>">
+                                <div class="com">
+                                    <textarea name="comment_text" placeholder="Write a comment..." required></textarea>
+                                    <button type="submit"><img src="<?= base_url('assets/img/send-logo.svg'); ?>" alt=""></button>
+                                </div>
+                            </form>
+                        <?php else: ?>
+                            <p class="error-message">You must be <a href="<?= base_url('login') ?>">logged in</a> to comment.</p>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    <?php else : ?>
+        <h5>No posts yet.</h5>
+    <?php endif; ?>
+</div>
+
     </div>
 
     <script>
@@ -112,7 +120,7 @@
         }
     </script>
 
-<?php echo view("includes/footer.php"); ?>
+    <?php echo view("includes/footer.php"); ?>
 
 </body>
 
