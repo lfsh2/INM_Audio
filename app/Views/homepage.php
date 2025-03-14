@@ -204,16 +204,6 @@
                 </div>
             </div>
 
-            <div class="card1">
-                <img src="<?= base_url('assets/img/sizes.jpeg') ?>" alt="">
-                <div class="card-content">
-                    <h1>Size Chart Guide</h1>
-                    <p>●Small = Small ears shapes, more secure fit <br>
-                        ●Medium = Balanced Fit for average ear sizes <br>
-                        ●Large = Slightly larger ears, comforatble seal<br>
-                        ●Extra Large = Large ears shapes,, deeper insertion</p>
-                </div>
-            </div>
         </div>
     </div>
     <!-- @END SECTION 3 -->
@@ -252,7 +242,6 @@
         const closeModalButtons = document.querySelectorAll('[data-close-button]');
         const overlay = document.getElementById('overlay');
 
-        // Function to open the modal
         openModalButtons.forEach(button => {
             button.addEventListener('click', () => {
                 const modal = document.querySelector(button.getAttribute('data-modal-target'));
@@ -260,7 +249,6 @@
             });
         });
 
-        // Function to close the modal
         closeModalButtons.forEach(button => {
             button.addEventListener('click', () => {
                 const modal = button.closest('.modal');
@@ -268,7 +256,6 @@
             });
         });
 
-        // Close the modal when clicking on the overlay
         overlay.addEventListener('click', () => {
             const modals = document.querySelectorAll('.modal.active');
             modals.forEach(modal => {

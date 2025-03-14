@@ -78,6 +78,7 @@
                         <option value="warning.jpeg">Yellow and Black Warning</option>
                         <option value="lol.jpeg">Skulls</option>
                         <option value="lux.jpeg">Luxury</option>
+                        <option value="p2.jpg">Luxury No.2</option>
                         <option value="marb.jpeg">Marble Blue</option>
                         <option value="red2.jpeg">Katana</option>
                         <option value="wood.jpeg">Wood</option>

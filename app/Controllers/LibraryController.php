@@ -54,14 +54,14 @@ class LibraryController extends Controller
     }
     
 
-
-public function addToComparison()
+    public function addToComparison()
 {
     $session = session();
     $productId = $this->request->getPost('product_id');
+    $position = $this->request->getPost('position');
 
-    if (!$productId) {
-        return $this->response->setJSON(['success' => false, 'message' => 'Invalid product ID']);
+    if (!$productId || !$position) {
+        return $this->response->setJSON(['success' => false, 'message' => 'Invalid product data']);
     }
 
     $gearModel = new GearModel();
@@ -71,7 +71,11 @@ public function addToComparison()
         return $this->response->setJSON(['success' => false, 'message' => 'Product not found']);
     }
 
-    $session->set('comparison_left', $gear);
+    if ($position === 'left') {
+        $session->set('comparison_left', $gear);
+    } elseif ($position === 'right') {
+        $session->set('comparison_right', $gear);
+    }
 
     return $this->response->setJSON(['success' => true]);
 }
@@ -80,8 +84,13 @@ public function comparison()
 {
     $session = session();
     $comparisonLeft = $session->get('comparison_left');
+    $comparisonRight = $session->get('comparison_right');
 
-    return view('comparison', ['leftGear' => $comparisonLeft]);
+    return view('comparison', [
+        'leftGear' => $comparisonLeft,
+        'rightGear' => $comparisonRight
+    ]);
 }
 
 }
+    
