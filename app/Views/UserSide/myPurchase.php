@@ -46,8 +46,8 @@
                             <?php foreach($toConfirmOrders as $orders) :?>
                                 <div class="card">
                                     <div class="top-order">
-                                        <img src="<?= $orders->image_url ?>" alt="">
-                                        <h3><?= $orders->product_name ?></h3>
+                                    <img src="<?= $orders['image_url'] ?>" alt="">
+                                    <h3><?= $orders->product_name ?></h3>
                                         <p><span>Price:</span> <span><?= $orders->price ?></span></p>
                                         <p><span>Quantity:</span> <span><?= $orders->quantity ?></span></p>
                                         <p><span>Payment Method:</span> <span><?= $orders->payment_method ?></span></p>
@@ -77,7 +77,7 @@
                             <?php foreach($toShip as $ship) :?>
                                 <div class="card">
                                     <div class="top-order">
-                                        <img src="<?= $ship->image_url ?>" alt="">
+                                        <img src="<?= $ship-['image_url'] ?>" alt="">
                                         <h3><?= $ship->product_name ?></h3>
                                         <p><span>Price:</span> <span><?= $ship->price ?></span></p>
                                         <p><span>Quantity:</span> <span><?= $ship->quantity ?></span></p>
@@ -117,7 +117,7 @@
                             <?php foreach($complete as $completes) :?>
                                 <div class="card">
                                     <div class="top-order">
-                                        <img src="<?= $completes->image_url ?>" alt="">
+                                        <img src="<?= $completes['image_url'] ?>" alt="">
                                         <h3><?= $completes->product_name ?></h3>
                                         <p><span>Price:</span> <span><?= $completes->price ?></span></p>
                                         <p><span>Quantity:</span> <span><?= $completes->quantity ?></span></p>
@@ -146,7 +146,7 @@
                             <?php foreach($cancelledOrders as $orders) :?>
                                 <div class="card">
                                     <div class="top-order">
-                                        <img src="<?= $orders->image_url ?>" alt="">
+                                        <img src="<?= $orders['image_url'] ?>" alt="">
                                         <h3><?= $orders->product_name ?></h3>
                                         <p><span>Base Price:</span> <span><?= $orders->price ?></span></p>
                                         <p><span>Total Price:</span> <span><?= $orders->totalPrice ?></span></p>

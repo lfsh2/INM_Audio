@@ -18,6 +18,7 @@ $routes->group('', function($routes) {
     $routes->get('library/all-gears', 'LibraryGearComparisonController::allGears');
     $routes->get('library/category/(:num)', 'LibraryController::category/$1');
     $routes->post('library/addToComparison', 'LibraryController::addToComparison');
+    $routes->get('library/getIemsByCategory/(:any)', 'LibraryController::getIemsByCategory/$1');
     $routes->get('library/comparison', 'LibraryController::comparison');    
     $routes->get('/community', 'HomeController::community');
     $routes->post('/community/post_content', 'Community::post_content');
@@ -57,13 +58,21 @@ $routes->group('', function($routes) {
         $routes->get('/cart', 'ShopController::cart');
         $routes->get('/cart/delete/(:num)', 'ShopController::removeItem/$1');
         $routes->get('/cart/deleteItems', 'ShopController::removeSelectedItem');
-        $routes->get('/buy', 'ShopController::buynow');
-        $routes->get('/buy(:any)', 'ShopController::buynow/$1');
         $routes->get('/searchGears', 'ShopController::searchGears');
         $routes->get('/bookmark/(:num)', 'ShopController::addToLikes/$1');
-        
+
         $routes->get('/donePurchase', 'ShopController::donePurchase');
-        // $routes->get('/checkOutFailed', 'ShopController::checkOutFailed');
+        $routes->post('/checkout', 'PaymentController::checkout');
+        $routes->get('/checkout/success/(:num)', 'PaymentController::success/$1');
+        $routes->get('/checkout/cancel/(:num)', 'PaymentController::cancel/$1');
+
+
+        $routes->get('/checkout/success/(:num)', 'PaymentController::success/$1');
+        $routes->get('/checkout/cancel/(:num)', 'PaymentController::cancel/$1');
+        
+        $routes->get('/donePurchase', 'ShopController::donePurchase'); 
+
+    // $routes->get('/checkOutFailed', 'ShopController::checkOutFailed');
 });
 
 

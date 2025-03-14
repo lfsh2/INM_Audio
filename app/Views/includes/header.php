@@ -42,7 +42,7 @@
                             <div class="link">
                                 <a href="<?= base_url('/user/setting') ?>">My Account</a>
                                 <a href="<?= base_url('/cart') ?>">My Cart</a>
-                                <a href="<?= base_url('/user/mypurchase') ?>">My Purchase</a>
+                               <!-- <a href="<?= base_url('/user/mypurchase') ?>">My Purchase</a> -->
                                 <a href="<?= base_url('/user/myLikes') ?>">My Likes</a>
                                 <a href="<?= base_url('/user/logout') ?>">Logout</a>
                             </div>

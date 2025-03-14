@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2025 at 05:42 PM
+-- Generation Time: Mar 14, 2025 at 07:39 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -43,7 +43,7 @@ CREATE TABLE `admin_accounts` (
 --
 
 INSERT INTO `admin_accounts` (`admin_account_id`, `profile_pic`, `username`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'admin', 'admin@gmail.com', '$2y$10$0tyqlNGA/EKnKwVmCnrqkuTo1H7lB6JnGYbUooeb5vBIYp2BD9Ug6', '', '2025-02-19 06:38:42', '2025-03-07 05:18:50');
+(1, NULL, 'admin', 'admin@gmail.com', '$2y$10$0tyqlNGA/EKnKwVmCnrqkuTo1H7lB6JnGYbUooeb5vBIYp2BD9Ug6', '', '2025-02-19 06:38:42', '2025-03-13 01:32:59');
 
 -- --------------------------------------------------------
 
@@ -83,7 +83,8 @@ CREATE TABLE `cart_items` (
 --
 
 INSERT INTO `cart_items` (`cart_item_id`, `cart_id`, `product_id`, `quantity`, `created_at`) VALUES
-(2, 1, 18, 1, '2025-03-04 06:51:26');
+(4, 1, 4, 1, '2025-03-14 14:49:21'),
+(5, 1, 2, 1, '2025-03-14 15:24:30');
 
 -- --------------------------------------------------------
 
@@ -128,7 +129,7 @@ CREATE TABLE `comments` (
 INSERT INTO `comments` (`id`, `post_id`, `user_name`, `comment_text`, `created_at`) VALUES
 (5, 6, '', 'yes sir', '2025-03-02 14:30:19'),
 (6, 7, 'Lebron', 'Shoppee Bro', '2025-03-02 14:31:37'),
-(7, 8, 'shan', 'betlog', '2025-03-03 04:07:12');
+(10, 9, 'shan', 'hot burn burn', '2025-03-11 16:07:39');
 
 -- --------------------------------------------------------
 
@@ -184,6 +185,23 @@ CREATE TABLE `orders` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`order_id`, `user_id`, `product_id`, `order_status`, `quantity`, `price`, `payment_method`, `delivery_date`, `date_completed`, `date_returned`, `date_cancelled`, `created_at`) VALUES
+(1, 1, 0, 'pending', 1, 8650.00, 'PayMongo', NULL, NULL, NULL, NULL, '2025-03-14 06:57:54'),
+(2, 1, 0, 'pending', 1, 8650.00, 'PayMongo', NULL, NULL, NULL, NULL, '2025-03-14 07:03:01'),
+(3, 1, 0, 'cancelled', 1, 8650.00, 'PayMongo', NULL, NULL, NULL, '2025-03-14', '2025-03-14 07:03:24'),
+(4, 1, 0, 'cancelled', 1, 8650.00, 'PayMongo', NULL, NULL, NULL, '2025-03-14', '2025-03-14 07:05:39'),
+(5, 1, 0, 'cancelled', 1, 8650.00, 'PayMongo', NULL, NULL, NULL, '2025-03-14', '2025-03-14 07:11:10'),
+(6, 1, 0, 'cancelled', 1, 8650.00, 'PayMongo', NULL, NULL, NULL, '2025-03-14', '2025-03-14 07:17:41'),
+(7, 1, 0, 'cancelled', 1, 8650.00, 'PayMongo', NULL, NULL, NULL, '2025-03-14', '2025-03-14 07:19:32'),
+(8, 1, 0, 'pending', 1, 8650.00, 'PayMongo', NULL, NULL, NULL, NULL, '2025-03-14 07:19:58'),
+(9, 1, 0, 'cancelled', 1, 8650.00, 'PayMongo', NULL, NULL, NULL, '2025-03-14', '2025-03-14 07:20:08'),
+(10, 1, 0, 'cancelled', 1, 8650.00, 'PayMongo', NULL, NULL, NULL, '2025-03-14', '2025-03-14 07:23:46'),
+(11, 1, 0, 'cancelled', 2, 17300.00, 'PayMongo', NULL, NULL, NULL, '2025-03-14', '2025-03-14 07:24:43');
+
 -- --------------------------------------------------------
 
 --
@@ -221,7 +239,9 @@ CREATE TABLE `posts` (
 INSERT INTO `posts` (`id`, `user_name`, `post_text`, `image_url`, `created_at`) VALUES
 (6, '', 'I really want this to shit to have an prestige version', '1740925812_83b3c001a33888cd10e0.jpg', '2025-03-02 14:30:12'),
 (7, 'Julies', 'Any ideas where to get an Shab Cord for my gear', '1740925875_30dfe8b022b9bd06ce57.jpg', '2025-03-02 14:31:15'),
-(8, 'shan', 'Nahh goods', '1740974821_8831607285e1dd434f55.jpg', '2025-03-03 04:07:01');
+(8, 'shan', 'Nahh goods', '1740974821_8831607285e1dd434f55.jpg', '2025-03-03 04:07:01'),
+(9, 'shan', 'Betlog si juls', '1741709240_74d3a83b310ceb038539.jpeg', '2025-03-11 16:07:20'),
+(10, 'shan', 'Yes', '1741850473_c4b98432c0f7f63ea614.jpg', '2025-03-13 07:21:13');
 
 -- --------------------------------------------------------
 
@@ -513,7 +533,7 @@ ALTER TABLE `carts`
 -- AUTO_INCREMENT for table `cart_items`
 --
 ALTER TABLE `cart_items`
-  MODIFY `cart_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `cart_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -525,7 +545,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `likes`
@@ -543,7 +563,7 @@ ALTER TABLE `orderdetails`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `placedorders`
@@ -555,7 +575,7 @@ ALTER TABLE `placedorders`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `products`

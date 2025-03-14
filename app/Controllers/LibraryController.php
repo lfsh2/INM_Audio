@@ -5,6 +5,8 @@ namespace App\Controllers;
 use App\Models\LibraryModel;
 use CodeIgniter\Controller;
 use App\Models\GearModel;
+use App\Models\IemModel; // <-- Add this line
+
 
 class LibraryController extends Controller
 {
@@ -15,7 +17,6 @@ class LibraryController extends Controller
         $this->libraryModel = new LibraryModel();
     }
 
-    // Display library categories
     public function index()
     {
         $data['categories'] = $this->libraryModel->getCategories();
@@ -54,43 +55,48 @@ class LibraryController extends Controller
     }
     
 
-    public function addToComparison()
-{
-    $session = session();
-    $productId = $this->request->getPost('product_id');
-    $position = $this->request->getPost('position');
-
-    if (!$productId || !$position) {
-        return $this->response->setJSON(['success' => false, 'message' => 'Invalid product data']);
-    }
-
-    $gearModel = new GearModel();
-    $gear = $gearModel->getGearWithSpecs($productId);
-
-    if (!$gear) {
-        return $this->response->setJSON(['success' => false, 'message' => 'Product not found']);
-    }
-
-    if ($position === 'left') {
-        $session->set('comparison_left', $gear);
-    } elseif ($position === 'right') {
-        $session->set('comparison_right', $gear);
-    }
-
-    return $this->response->setJSON(['success' => true]);
-}
-
+    
 public function comparison()
 {
-    $session = session();
-    $comparisonLeft = $session->get('comparison_left');
-    $comparisonRight = $session->get('comparison_right');
+    $model = new IemModel();
 
-    return view('comparison', [
-        'leftGear' => $comparisonLeft,
-        'rightGear' => $comparisonRight
-    ]);
+    $data['leftGear'] = session()->get('leftGear') ?? [];
+    $data['rightGear'] = session()->get('rightGear') ?? [];
+
+    return view('comparison', $data);
 }
+
+public function getIemsByCategory($category)
+{
+    $iemModel = new IemModel();
+
+    $categoryMap = [
+        'Vanilla Series' => 1,
+        'Stage Series' => 2,
+        'Prestige Series' => 3,
+        'Personalized Series' => 4
+    ];
+
+    if (!isset($categoryMap[$category])) {
+        return $this->response->setJSON([]);
+    }
+
+    $categoryId = $categoryMap[$category];
+    $iems = $iemModel->where('category_id', $categoryId)->findAll();
+
+    return $this->response->setJSON($iems);
+}
+
+public function clearComparison()
+{
+    session()->remove('left_gear');
+    session()->remove('right_gear');
+
+    session()->setFlashdata('success', 'Comparison cleared successfully.');
+
+    return redirect()->to(base_url('comparison'));
+}
+
 
 }
     

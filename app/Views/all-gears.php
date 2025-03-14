@@ -148,69 +148,28 @@
                 }
             }
         }
+        .comparison-btn-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.compare-btn {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.compare-btn:hover {
+    background-color: #45a049;
+}
+
         
-        /* .close {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            font-size: 25px;
-            cursor: pointer;
-        }
-        .earphones {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
-            margin: 20px 0;
-        }
-        .earphones img {
-            width: 150px;
-        }
-        .earphones button {
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .earphones button:hover {
-            background-color: #0056b3;
-        }
-        .audio-player {
-            margin-top: 20px;
-        }
-        #waveform {
-            width: 100%;
-            height: 100px;
-            background: #f2f2f2;
-        }
-        .subwoofer {
-            width: 120px;
-            height: 120px;
-            background: radial-gradient(circle, #444 20%, #222 60%, #111 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 20px auto;
-            position: relative;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-            transition: transform 0.1s ease-out;
-        }
-        .subwoofer::before {
-            content: "";
-            width: 80px;
-            height: 80px;
-            background: radial-gradient(circle, #666 30%, #333 90%);
-            border-radius: 50%;
-            position: absolute;
-        }
-        .subwoofer.boom {
-            transform: scale(1.2);
-            box-shadow: 0 0 40px rgba(0, 0, 0, 1);
-        } */
     </style>
 </head>
 <body>
@@ -245,7 +204,11 @@
                 <p style="color: red;">No Gears Available</p>
             <?php endif; ?>
         </div>
-    </div>
+
+        <div class="comparison-btn-container">
+        <a href="<?= base_url('library/comparison') ?>" class="compare-btn">Compare Gear</a>
+        </div>
+</div>
 
 
     <!-- @FOOTER -->

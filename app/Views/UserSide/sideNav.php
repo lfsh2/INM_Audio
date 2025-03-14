@@ -15,10 +15,10 @@
                 <p>My Profile</p>
             </a>
 
-            <a id="mypurchase" href="<?= base_url('/user/mypurchase') ?>">
+           <!-- <a id="mypurchase" href="<?= base_url('/user/mypurchase') ?>">
                 <i class="fa-solid fa-cart-shopping"></i>
                 <p>My Purchase</p>
-            </a>
+            </a> -->
 
             <a id="mylikes" href="<?= base_url('/user/myLikes') ?>">
                 <i class="fa-solid fa-thumbs-up"></i>

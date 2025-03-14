@@ -14,7 +14,7 @@ use App\Models\Category_Model as categories;
 use App\Models\Gear_Product_Model as gears;
 use App\Models\Cart_Model as carts;
 use App\Models\Cart_Item_Model as cartItems;
-use App\Models\Order_Model as orders;
+use App\Models\OrderModel as orders;
 use App\Models\CommentModel as comments;
 use App\Models\Shipping_Model as shippings;
 use App\Models\Placed_Orders_Model as placed;

@@ -103,6 +103,7 @@
                 <div class="control-group">
                     <label for="sizeSelect">Select Size:</label>
                     <select id="sizeSelect">
+                        <option value="none">None</option>
                         <option value="small">Small</option>
                         <option value="medium">Medium</option>
                         <option value="large">Large</option>
@@ -122,13 +123,14 @@
                 <div class="control-group">
                     <label for="categorySelect">Select Category:</label>
                     <select id="categorySelect">
+                        <option value="none">None</option>
                         <option value="vanilla_series">Vanilla Series</option>
                         <option value="stage">Stage Series</option>
                         <option value="prestige">Prestige</option>
                     </select>
                 </div>
 
-                
+
                 <div class="specs-section">
                     <h3>Specifications</h3>
                     <ul id="specsList"></ul>
@@ -152,93 +154,92 @@
     <script src="https://cdn.jsdelivr.net/npm/three/examples/js/controls/OrbitControls.js"></script>
     <script defer src="<?= base_url('assets/js/costumizer.js') ?>"></script>
     <script>
-       const categorySelect = document.getElementById("categorySelect");
-const soundTest = document.getElementById("soundTest");
-const canvas = document.getElementById("visualizer");
-const specsList = document.getElementById("specsList");
-const ctx = canvas.getContext("2d");
+        const categorySelect = document.getElementById("categorySelect");
+        const soundTest = document.getElementById("soundTest");
+        const canvas = document.getElementById("visualizer");
+        const specsList = document.getElementById("specsList");
+        const ctx = canvas.getContext("2d");
 
-const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-const analyser = audioContext.createAnalyser();
-const source = audioContext.createMediaElementSource(soundTest);
-source.connect(analyser);
-analyser.connect(audioContext.destination);
+        const audioContext = new(window.AudioContext || window.webkitAudioContext)();
+        const analyser = audioContext.createAnalyser();
+        const source = audioContext.createMediaElementSource(soundTest);
+        source.connect(analyser);
+        analyser.connect(audioContext.destination);
 
-analyser.fftSize = 256;
-const bufferLength = analyser.frequencyBinCount;
-const dataArray = new Uint8Array(bufferLength);
+        analyser.fftSize = 256;
+        const bufferLength = analyser.frequencyBinCount;
+        const dataArray = new Uint8Array(bufferLength);
 
-const specsData = {
-    vanilla_series: [
-        "Driver Type: Balanced Armature",
-        "Cable Type: 3.5mm Silver-Plated Copper",
-        "Frequency Range: 20Hz - 20kHz"
-    ],
-    stage: [
-        "Driver Type: Dynamic Driver",
-        "Cable Type: Detachable 2-pin",
-        "Frequency Range: 15Hz - 40kHz"
-    ],
-    prestige: [
-        "Driver Type: Hybrid (Dynamic + BA)",
-        "Cable Type: Gold-Plated 2.5mm",
-        "Frequency Range: 10Hz - 50kHz"
-    ]
-};
+        const specsData = {
+            vanilla_series: [
+                "Driver Type: Balanced Armature",
+                "Cable Type: 3.5mm Silver-Plated Copper",
+                "Frequency Range: 20Hz - 20kHz"
+            ],
+            stage: [
+                "Driver Type: Dynamic Driver",
+                "Cable Type: Detachable 2-pin",
+                "Frequency Range: 15Hz - 30kHz"
+            ],
+            prestige: [
+                "Driver Type: Tribid Premium Design",
+                "Cable Type: Gold-Plated 2.5mm",
+                "Frequency Range: 20Hz – 40kHz"
+            ]
+        };
 
-function drawVisualizer() {
-    requestAnimationFrame(drawVisualizer);
+        function drawVisualizer() {
+            requestAnimationFrame(drawVisualizer);
 
-    analyser.getByteFrequencyData(dataArray);
+            analyser.getByteFrequencyData(dataArray);
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    const barWidth = (canvas.width / bufferLength) * 2.5;
-    let x = 0;
+            const barWidth = (canvas.width / bufferLength) * 2.5;
+            let x = 0;
 
-    for (let i = 0; i < bufferLength; i++) {
-        const barHeight = dataArray[i] / 2;
+            for (let i = 0; i < bufferLength; i++) {
+                const barHeight = dataArray[i] / 2;
 
-        ctx.fillStyle = `rgb(${barHeight + 100}, 50, 150)`;
-        ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+                ctx.fillStyle = `rgb(${barHeight + 100}, 50, 150)`;
+                ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
 
-        x += barWidth + 1;
-    }
-}
+                x += barWidth + 1;
+            }
+        }
 
-categorySelect.addEventListener("change", function () {
-    const selectedCategory = categorySelect.value;
-    let audioSrc = "";
+        categorySelect.addEventListener("change", function() {
+            const selectedCategory = categorySelect.value;
+            let audioSrc = "";
 
-    switch (selectedCategory) {
-        case "vanilla_series":
-            audioSrc = "assets/sounds/vanilla.mp3";
-            break;
-        case "stage":
-            audioSrc = "assets/sounds/stage.mp3";
-            break;
-        case "prestige":
-            audioSrc = "assets/sounds/prestige.mp3";
-            break;
-    }
+            switch (selectedCategory) {
+                case "vanilla_series":
+                    audioSrc = "assets/sounds/vanilla.mp3";
+                    break;
+                case "stage":
+                    audioSrc = "assets/sounds/stage.mp3";
+                    break;
+                case "prestige":
+                    audioSrc = "assets/sounds/prestige.mp3";
+                    break;
+            }
 
-    soundTest.src = audioSrc;
-    soundTest.play();
+            soundTest.src = audioSrc;
+            soundTest.play();
 
-    if (audioContext.state === "suspended") {
-        audioContext.resume();
-    }
+            if (audioContext.state === "suspended") {
+                audioContext.resume();
+            }
 
-    drawVisualizer(); 
+            drawVisualizer();
 
-    specsList.innerHTML = "";
-    specsData[selectedCategory].forEach((spec) => {
-        const li = document.createElement("li");
-        li.textContent = spec;
-        specsList.appendChild(li);
-    });
-});
-
+            specsList.innerHTML = "";
+            specsData[selectedCategory].forEach((spec) => {
+                const li = document.createElement("li");
+                li.textContent = spec;
+                specsList.appendChild(li);
+            });
+        });
     </script>
 </body>
 
