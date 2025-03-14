@@ -38,7 +38,7 @@ class PaymentController extends Controller
             $client = new Client();
             $response = $client->post('https://api.paymongo.com/v1/checkout_sessions', [
                 'headers' => [
-                    'Authorization' => 'Basic ' . base64_encode('sk_test_gjaFGtP5ZHPVJjbTtqbRcVVK:'),  // Replace with your PayMongo Secret Key
+                    'Authorization' => 'Basic ' . base64_encode('sk_test_gjaFGtP5ZHPVJjbTtqbRcVVK:'),  
                     'Content-Type'  => 'application/json',
                 ],
                 'json' => [
