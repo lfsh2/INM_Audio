@@ -37,24 +37,28 @@ class Placed_Orders_Model extends Model {
 
     public function getAllOrders() {
         $query = $this->db->query("
-            SELECT  po.placed_order_id,
-                    p.product_name,
-                    p.image_url,
-                    p.price,
-                    u.firstname,
-                    u.lastname,
-                    po.quantity,
-                    po.total_price,
-                    po.payment_method,
-                    po.date_placed
+            SELECT po.placed_order_id,
+                   p.product_name,
+                   p.image_url,
+                   p.price AS basePrice,
+                   u.firstname,
+                   u.lastname,
+                   po.quantity,
+                   po.total_price AS totalPrice,
+                   po.payment_method,
+                   po.date_placed AS dateOrder,
+                   o.order_status  -- Added order status from orders table
             FROM placedorders po
-            LEFT JOIN products p
-            ON po.product_id = p.product_id
-            LEFT JOIN user_accounts u
-            ON po.user_id = u.user_id
-            ");
-        return $query->getResult();
+            LEFT JOIN products p ON po.product_id = p.product_id
+            LEFT JOIN user_accounts u ON po.user_id = u.user_id
+            LEFT JOIN orders o ON po.product_id = o.product_id 
+                              AND po.user_id = o.user_id  -- Corrected join condition
+            WHERE o.order_status IN ('complete', 'completed')
+        ");
+        return $query->getResultArray();
     }
+    
+    
 
 
     public function getOrderItemById($product_id = null) {
@@ -87,7 +91,7 @@ class Placed_Orders_Model extends Model {
     }   
 
     public function getTotalPlaced() {
-        return $this->selectCount('placed_order_id')->get()->getRow();
+        $query = $this->db->query("SELECT COUNT(*) as totalPlacedOrders FROM placedorders");
+        return $query->getRow();
     }
-    
 }

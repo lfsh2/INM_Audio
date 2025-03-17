@@ -60,7 +60,12 @@ class AdminController extends BaseController
         $gearModel = new GearModel();
         $orderModel = new OrderModel();
         $placedOrdersModel = new Placed_Orders_Model();
-
+    
+        $allOrders = $placedOrdersModel->getAllOrders();
+        $recentOrders = array_filter($allOrders, function($order) {
+            return in_array(strtolower($order->order_status), ['complete', 'completed']);
+        });
+    
         $data = [
             'adminAccount'    => $adminAccountModel->getUser('admin_account_id', session()->get('admin_id')),
             'numberItems'     => $gearModel->countAllGears(),
@@ -70,11 +75,12 @@ class AdminController extends BaseController
             'totalCancelled'  => $orderModel->getTotalCancelled(),
             'totalComplete'   => $orderModel->getTotalComplete(),
             'totalRevenue'    => $orderModel->getTotalRevenue(),
-            'recentOrders'    => $placedOrdersModel->getAllOrders()
+            'recentOrders'    => $recentOrders  
         ];
-
+    
         return $this->checkAdminSession('AdminSide/dashboard', $data);
     }
+    
 
     public function orders_transactions() { 
         $orderModel = new OrderModel();

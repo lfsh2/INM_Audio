@@ -11,204 +11,52 @@
 
     <title>Orders | Transactions</title>
     <style>
-        /* SIDE NAV WHEN IN THIS PAGE - below css selectors can be found in the "sideNav.php" file */
         #order_transaction { background-color: #d4ebf844; }
-        aside nav ul #order_transaction span { opacity: 1;}
+        aside nav ul #order_transaction span { opacity: 1; }
+        .active { background-color:rgb(255, 255, 255); color: #fff; }
     </style>
 </head>
 <body>
-<!-- 
-// * INCLUDE THE SIDE NAVIGATION FILE *
--->
+
 <?php echo view('AdminSide/includes/notifModal') ?>
 <?php echo view('AdminSide/includes/sideNav1') ?>
-
 
 <section id="content">  
     <?php echo view('AdminSide/includes/topNavbar') ?>
 
-        <main class="order-transaction">
-            <div class="head-title">
-				<div class="left">
-					<h1>Order | Transactions</h1>
-					<ul class="breadcrumb">
-						<!-- <li>
-							<a href="#">Dashboard</a>
-						</li>
-						<li><i class='bx bx-chevron-right' ></i></li>
-						<li>
-							<a class="active" href="#">Home</a>
-						</li> -->
-					</ul>
-				</div>
+    <main class="order-transaction">
+        <div class="head-title">
+            <div class="left">
+                <h1>Order | Transactions</h1>
             </div>
-            <!-- TABS -->
-            <div class="admin-table">
-                <div class="tabs">
-                    <h2>Order Details</h2>
+        </div>
 
-                    <div class="btns">
-                        <button onclick="switchTab('table0')">Confirm Orders</button>
-                        <button onclick="switchTab('table1')">Orders</button>
-                        <button onclick="switchTab('table2')">Completed</button>
-                        <button onclick="switchTab('table5')">Cancelled</button>
-                    </div>
+        <div class="admin-table">
+            <div class="tabs">
+                <h2>Order Details</h2>
+
+                <div class="btns">
+                    <button onclick="switchTab('table0')" class="active">Confirm Orders</button>
+                    <button onclick="switchTab('table1')">Orders</button>
+                    <button onclick="switchTab('table2')">Completed</button>
+                    <button onclick="switchTab('table5')">Cancelled</button>
                 </div>
-                <div class="container">
-                    <div id="table0" class="tab-content active">
-                        <h2>Confirm orders</h2>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Placed Order ID</th>
-                                    <th>Item</th>
-                                    <th>Customer</th>
-                                    <th>Base Price</th>
-                                    <th>Quantity</th>
-                                    <th>Total Price</th>
-                                    <th>PaymentMethod</th>
-                                    <th>Date placed</th>
-                                    <th>...</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php if($confirmOrder) : ?>
-                                    <?php foreach($confirmOrder as $order) :?>
-                                        <tr> 
-                                            <td class="th one"><?= $order->placed_order_id ?></td>
-                                            <td class="th two">
-                                                <img src="<?= $order->image_url ?>" alt="image">
-                                                <p><?= $order->product_name ?></p>
-                                            </td>
-                                            <td class="th three"><?= $order->firstname." ".$order->lastname ?></td>
-                                            <td class="th five"><?= $order->price ?></td>
-                                            <td class="th five"><?= $order->quantity ?></td>
-                                            <td class="th six"><?= $order->total_price ?></td>
-                                            <td class="th seven"><?= $order->payment_method ?></td>
-                                            <td class="th eight"><?= $order->date_placed ?></td>
-                                            <td class="th nine">
-                                                <div class="buttons">
-                                                    <a href="<?= base_url('/admin/order/toConfirm/'.$order->placed_order_id) ?>" class="confirm">Confirm order</a>
-                                                    <a href="<?= base_url('/admin/order/cancelToConfirm/'.$order->placed_order_id) ?>" class="cancel">Cancel order</a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    <?php endforeach; ?>
-                                <?php else :?>
-                                    <tr>
-                                        <td colspan="10">No placed orders</td>
-                                    </tr>
-                                <?php endif;?>
-                            </tbody>
-                        </table>
-                    </div>
+            </div>
 
-                    
-                    <!-- comfrimed orders -->
-                    <div id="table1" class="tab-content">
-                        <h2>Orders</h2>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Order ID</th>
-                                    <th>Item</th>
-                                    <th>Customer</th>
-                                    <th>Base Price</th>
-                                    <th>Quantity</th>
-                                    <th>Total Price</th>
-                                    <th>PaymentMethod</th>
-                                    <th>Status</th>
-                                    <!-- <th>Delivery Date</th> -->
-                                    <th>Date placed</th>
-                                    <th>...</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php if($orders) :?>
-                                    <?php foreach($orders as $order) :?>
-                                        <tr>
-                                            <td class="th one"><?= $order->order_id ?></td>
-                                            <td class="th two">
-                                                <img src="<?= $order->image_url ?>" alt="image">
-                                                <p><?= $order->product_name ?></p>
-                                            </td>
-                                            <td class="th three"><?= $order->firstname." ".$order->lastname ?></td>
-                                            <td class="th five"><?= $order->price ?></td>
-                                            <td class="th six"><?= $order->quantity ?></td>
-                                            <td class="th seven"><?= $order->totalPrice ?></td>
-                                            <td class="th eight"><?= $order->payment_method ?></td>
-                                            <td class="th eight"><?= $order->order_status ?></td>
-                                            <td class="th eight"><?= $order->created_at ?></td>
-                                            <td class="th nine">
-                                                <!-- in view can set or change the date of delivery, set if its complete, or canclled(note: user can cancelled his order) -->
-                                                <a href="#" class="button1 view-button" data-target="viewOrder">View</a>
-                                                <a href="<?= base_url('/admin/order/complete/'.$order->order_id) ?>" class="button2">complete</a>
-                                                <a href="<?= base_url('/admin/order/cancelConfirmOrder/'.$order->order_id) ?>" class="button3">Cancel</a>
-                                            </td>
-                                        </tr>
-                                    <?php endforeach; ?>
-                                <?php else: ?>
-                                    <tr>
-                                        <td colspan="10">No placed orders</td>
-                                    </tr>
-                                <?php endif;?>
-                            </tbody>
-                        </table>
-                    </div>
-                
-                    <!-- COMPLETED -->
-                    <div id="table2" class="tab-content">
-                        <h2>Completed</h2>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Order ID</th>
-                                    <th>Item</th>
-                                    <th>Customer</th>
-                                    <!-- <th>Delivery Date</th> -->
-                                    <th>Base Price</th>
-                                    <th>Quantity</th>
-                                    <th>Total Price</th>
-                                    <th>PaymentMethod</th>
-                                    <th>Status</th>
-                                    <th>Date Completed</th>
-                                    <th>...</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php if($complete) :?>
-                                    <?php foreach($complete as $completes) :?>
-                                        <tr>
-                                            <td class="th one"><?= $completes->order_id ?></td>
-                                            <td class="th two">
-                                                <img src="<?= $completes->image_url ?>" alt="image">
-                                                <p><?= $completes->product_name ?></p>
-                                            </td>
-                                            <td class="th three"><?= $completes->firstname." ".$completes->lastname ?></td>
-                                            <td class="th four"><?= $completes->price ?></td>
-                                            <td class="th five"><?= $completes->quantity ?></td>
-                                            <td class="th six"><?= $completes->totalPrice ?></td>
-                                            <td class="th seven"><?= $completes->payment_method ?></td>
-                                            <td class="th eigth"><?= $completes->order_status ?></td>
-                                            <td class="th"><?= $completes->date_completed ?></td>
-                                            <td class="th nine">
-                                                <a href="<?= base_url('/admin/order/deleteComplete/'.$completes->order_id) ?>" class="button3">delete</a>
-                                            </td>
-                                        </tr>
-                                    <?php endforeach; ?>
-                                <?php else: ?>
-                                    <tr>
-                                        <td colspan="10">No placed orders</td>
-                                    </tr>
-                                <?php endif;?>
-                            </tbody>
-                        </table>
-                    </div>
+            <div class="container">
+                <!-- Tab Content Loop -->
+                <?php 
+                $tabs = [
+                    'table0' => ['title' => 'Confirm Orders', 'data' => $confirmOrder],
+                    'table1' => ['title' => 'Orders', 'data' => $orders],
+                    'table2' => ['title' => 'Completed', 'data' => $complete],
+                    'table5' => ['title' => 'Cancelled', 'data' => $cancelledOrders]
+                ];
+                ?>
 
-
-                    <!-- CANCELLED -->
-                    <div id="table5" class="tab-content">
-                        <h2>Cancelled</h2>
+                <?php foreach ($tabs as $tabId => $tabData): ?>
+                    <div id="<?= $tabId ?>" class="tab-content <?= $tabId === 'table0' ? 'active' : '' ?>">
+                        <h2><?= $tabData['title'] ?></h2>
                         <table>
                             <thead>
                                 <tr>
@@ -216,90 +64,117 @@
                                     <th>Item</th>
                                     <th>Customer</th>
                                     <th>Price</th>
-                                    <th>Status</th>
-                                    <th>PaymentMethod</th>
                                     <th>Quantity</th>
-                                    <th>Date Cancelled</th>
-                                    <th>...</th>
+                                    <th>Total Price</th>
+                                    <th>Payment Method</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php if($cancelledOrders) :?>
-                                    <?php foreach($cancelledOrders as $cancelled): ?>
+                                <?php if ($tabData['data']) : ?>
+                                    <?php foreach ($tabData['data'] as $order) : ?>
                                         <tr>
-                                            <td class="th one"><?= $cancelled->order_id ?></td>
-                                            <td class="th two">
-                                                <img src="<?= $cancelled->image_url ?>" alt="image">
-                                                <p><?= $cancelled->product_name ?></p>
+                                            <td><?= $order->order_id ?? $order->placed_order_id ?></td>
+                                            <td>
+                                                <img src="<?= $order->image_url ?>" alt="image">
+                                                <?= $order->product_name ?>
                                             </td>
-                                            <td class="th three"><?= $cancelled->firstname." ".$cancelled->lastname ?></td>
-                                            <td class="th five"><?= $cancelled->totalPrice ?></td>
-                                            <td class="th six"><?= $cancelled->order_status ?></td>
-                                            <td class="th seven"><?= $cancelled->payment_method ?></td>
-                                            <td class="th eigth"><?= $cancelled->quantity ?></td>
-                                            <td class="th ten"><?= $cancelled->date_cancelled ?></td>
-                                            <td class="th nine">
-                                                <a href="<?= base_url('/admin/order/cancelled/'.$cancelled->order_id) ?>"  class="button3">delete</a>
+                                            <td><?= $order->firstname . " " . $order->lastname ?></td>
+                                            <td><?= $order->price ?></td>
+                                            <td><?= $order->quantity ?></td>
+                                            <td><?= $order->total_price ?? $order->totalPrice ?></td>
+                                            <td><?= $order->payment_method ?></td>
+                                            <td><?= $order->order_status ?? '-' ?></td>
+                                            <td><?= $order->date_placed ?? $order->created_at ?? $order->date_completed ?? $order->date_cancelled ?></td>
+                                            <td>
+                                                <?php if ($tabId === 'table0'): ?>
+                                                    <a href="<?= base_url('/admin/order/toConfirm/'.$order->placed_order_id) ?>" class="confirm">Confirm</a>
+                                                    <a href="<?= base_url('/admin/order/cancelToConfirm/'.$order->placed_order_id) ?>" class="cancel">Cancel</a>
+                                                <?php elseif ($tabId === 'table1'): ?>
+                                                    <a href="#" class="button1 view-button" data-target="viewOrder">View</a>
+                                                    <a href="<?= base_url('/admin/order/complete/'.$order->order_id) ?>" class="button2">Complete</a>
+                                                    <a href="<?= base_url('/admin/order/cancelConfirmOrder/'.$order->order_id) ?>" class="button3">Cancel</a>
+                                                <?php elseif ($tabId === 'table2'): ?>
+                                                    <a href="<?= base_url('/admin/order/deleteComplete/'.$order->order_id) ?>" class="button3">Delete</a>
+                                                <?php elseif ($tabId === 'table5'): ?>
+                                                    <a href="<?= base_url('/admin/order/cancelled/'.$order->order_id) ?>" class="button3">Delete</a>
+                                                <?php endif; ?>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
-                                <?php else: ?>
+                                <?php else : ?>
                                     <tr>
                                         <td colspan="10">No placed orders</td>
                                     </tr>
-                                <?php endif;?>
-                                
+                                <?php endif; ?>
                             </tbody>
                         </table>
                     </div>
-                </div>
+                <?php endforeach; ?>
             </div>
-        </main>
-    </section>  
-
+        </div>
+    </main>
+</section>
 
 <!-- MODALS -->
 <div id="viewOrder" class="modal">
     <div class="modal-content">
         <div class="add">
             <span class="close close-gear">&times;</span>
-            <h2>Order</h2>  
-            <h6>Order ID: 8247</h6>
+            <h2>Order Details</h2>
+            <h6>Order ID: <span id="modalOrderId">#</span></h6>
         </div>  
-        
+
         <div class="content">
             <div class="item">
                 <h4>Item Name</h4>
-                <img src="" alt="IMAGE">
+                <img src="" alt="IMAGE" id="modalImage">
             </div>
             <div class="quantity">
                 <h4>Quantity</h4>
-                <p>1</p>
+                <p id="modalQuantity"></p>
             </div>
             <div class="price">
                 <h4>Price</h4>
-                <p>1542</p>
+                <p id="modalPrice"></p>
             </div>
             <div class="customer">
                 <h4>Customer</h4>
-                <p>John Doe</p>
+                <p id="modalCustomer"></p>
             </div>
             <div class="deliver">
-                <h4>Deliver Date</h4>
-                <p>19-19-1999</p>
+                <h4>Delivery Date</h4>
+                <p id="modalDeliveryDate"></p>
             </div>
             <div class="payment_method">
                 <h4>Payment Method</h4>
-                <p>COD</p>
+                <p id="modalPaymentMethod"></p>
             </div>
             <div class="actions">
-                <a href="" class="button2">complete</a>
-                <a href="" class="button3">remove</a>
+                <a href="#" class="button2">Complete</a>
+                <a href="#" class="button3">Remove</a>
             </div>
         </div>
     </div>
-
 </div>
+
+<script>
+function switchTab(tabId) {
+    document.querySelectorAll('.tab-content').forEach(content => {
+        content.classList.remove('active');
+    });
+
+    document.getElementById(tabId).classList.add('active');
+
+    document.querySelectorAll('.btns button').forEach(btn => {
+        btn.classList.remove('active');
+    });
+
+    document.querySelector(`[onclick="switchTab('${tabId}')"]`).classList.add('active');
+}
+</script>
 
 <script src="<?= base_url('Admin/js/notifModal.js') ?>"></script>
 <script src="<?= base_url('Admin/js/orderTransactions.js') ?>"></script>

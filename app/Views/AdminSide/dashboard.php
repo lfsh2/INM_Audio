@@ -134,8 +134,8 @@
 									<td><?= $recent['totalPrice'] ?? 0 ?></td>
 									<td><?= $recent['dateOrder'] ?? 'N/A' ?></td>
 									<td>
-										<?php if (($recent['order_status'] ?? '') == "complete") : ?>
-											<span class="status completed"><?= $recent['order_status'] ?></span>
+									<?php if (in_array(($recent['order_status'] ?? ''), ['complete', 'completed'])) : ?>
+										<span class="status completed"><?= $recent['order_status'] ?></span>
 										<?php elseif (($recent['order_status'] ?? '') == "cancelled") : ?>
 											<span class="status pending"><?= $recent['order_status'] ?></span>
 										<?php else : ?>
@@ -168,7 +168,6 @@
     let revenueChart;
     let pieChart;
 
-    // Fetch Revenue Data and Create Line Chart
     function fetchRevenueData(timeframe = 'yearly') {
         fetch(`<?= base_url('/admin/chart-data/revenue') ?>?timeframe=${timeframe}`)
             .then(response => response.json())
@@ -275,11 +274,9 @@
             .catch(error => console.error("Error fetching order status data:", error));
     }
 
-    // Load Charts on Page Load
     fetchRevenueData();
     fetchOrderStatusData();
 
-    // Change Chart Data on Timeframe Selection
     document.getElementById('timeframeSelect').addEventListener('change', function () {
         fetchRevenueData(this.value);
     });

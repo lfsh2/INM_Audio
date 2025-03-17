@@ -20,6 +20,11 @@
                 <p>My Purchase</p>
             </a> -->
 
+            <a id="mydesigns" href="<?= base_url('/user/my_designs.php') ?>">
+                <i class="fa-solid fa-thumbs-up"></i>
+                <p>My Design</p>
+            </a>
+
             <a id="mylikes" href="<?= base_url('/user/myLikes') ?>">
                 <i class="fa-solid fa-thumbs-up"></i>
                 <p>My Likes</p>

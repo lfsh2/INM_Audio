@@ -24,7 +24,8 @@ $routes->group('', function($routes) {
     $routes->post('/community/post_content', 'Community::post_content');
     $routes->post('/community/post_comment', 'Community::post_comment');
     $routes->get('/customize', 'HomeController::customize');
-    $routes->post('/save-customization', 'IEMCustomizationController::saveCustomization');
+    $routes->get('/check-login', 'AuthController::checkLogin');
+    $routes->post('/save-customization', 'CustomizationController::save');
     $routes->get('/login', 'HomeController::login');
     $routes->get('/signup', 'HomeController::signup');
 });
@@ -98,6 +99,7 @@ $routes->group('/admin/', function($routes) {
         ## routes
         $routes->get('account', 'AdminController::account');
         $routes->get('dashboard', 'AdminController::dashboard');
+    
         // charts
         $routes->get('chart-data/revenue', 'AdminController::getRevenueData');
         $routes->get('chart-data/products', 'AdminController::getProductTrends');
@@ -116,16 +118,27 @@ $routes->group('/admin/', function($routes) {
         $routes->get('transaction/removeTransaction/(:num)', 'AdminController::removeTransaction/$1');
         $routes->get('transaction/view/(:num)', 'AdminController::viewTransaction/$1');
 
-        $routes->get('order/toConfirm/(:num)', 'AdminController::confirmOrder/$1');
-        $routes->get('order/cancelToConfirm/(:num)', 'AdminController::deleteToConfirmOrder/$1');
+       // Order Management Routes
+       $routes->group('admin/order', function($routes) {
+        $routes->get('toConfirm/(:num)', 'OrderController::confirmOrder/$1');
+        $routes->get('cancelToConfirm/(:num)', 'OrderController::cancelToConfirmOrder/$1');
+        $routes->get('complete/(:num)', 'OrderController::completeOrder/$1');
+        $routes->get('cancelConfirmOrder/(:num)', 'OrderController::cancelConfirmedOrder/$1');
+        $routes->get('deleteComplete/(:num)', 'OrderController::deleteCompletedOrder/$1');
+        $routes->get('cancelled/(:num)', 'OrderController::deleteCancelledOrder/$1');
+    });
+    
 
-        $routes->get('order/complete/(:num)', 'AdminController::completeOrder/$1');
-        $routes->get('order/cancelConfirmOrder/(:num)', 'AdminController::cancelOrder/$1');
+       // $routes->get('order/toConfirm/(:num)', 'AdminController::confirmOrder/$1');
+       // $routes->get('order/cancelToConfirm/(:num)', 'AdminController::deleteToConfirmOrder/$1');
 
-        $routes->get('order/deleteComplete/(:num)', 'AdminController::deleteComplteOrder/$1');
-        $routes->get('order/cancelled/(:num)', 'AdminController::deleteCancelledOrder/$1');
+       // $routes->get('order/complete/(:num)', 'AdminController::completeOrder/$1');
+       // $routes->get('order/cancelConfirmOrder/(:num)', 'AdminController::cancelOrder/$1');
 
-        $routes->get('orders/search', 'AdminController::searchOrders');
+      //  $routes->get('order/deleteComplete/(:num)', 'AdminController::deleteComplteOrder/$1');
+     //   $routes->get('order/cancelled/(:num)', 'AdminController::deleteCancelledOrder/$1');
+
+      //  $routes->get('orders/search', 'AdminController::searchOrders');
         ## customers
         $routes->get('customers', 'AdminController::customers');
         ## logging out admin account

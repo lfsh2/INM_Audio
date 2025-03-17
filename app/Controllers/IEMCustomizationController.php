@@ -9,37 +9,41 @@ class IEMCustomizationController extends Controller
 {
     public function saveCustomization()
     {
-        helper(['form', 'url']);
-
-        $session = session();
-        $user_id = $session->get('user_id'); 
-        if (!$user_id) {
-            return $this->response->setJSON(['status' => 'error', 'message' => 'User not logged in']);
+        if (!session()->get('user_id')) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'You must log in to save your customization.']);
         }
 
         $model = new IEMCustomizationModel();
 
-        $leftTexture = $this->request->getPost('left_texture');
-        $rightTexture = $this->request->getPost('right_texture');
-
-        $uploadedImage = $this->request->getFile('uploaded_image');
-        $uploadedImagePath = null;
-
-        if ($uploadedImage && $uploadedImage->isValid() && !$uploadedImage->hasMoved()) {
-            $newName = $uploadedImage->getRandomName();
-            $uploadedImage->move('uploads/', $newName);
-            $uploadedImagePath = 'uploads/' . $newName;
-        }
-
         $data = [
-            'user_id' => $user_id,
-            'left_texture' => $leftTexture,
-            'right_texture' => $rightTexture,
-            'uploaded_image' => $uploadedImagePath
+            'user_id'         => session()->get('user_id'),
+            'left_color'      => $this->request->getPost('left_color'),
+            'right_color'     => $this->request->getPost('right_color'),
+            'left_texture'    => $this->request->getPost('left_texture'),
+            'right_texture'   => $this->request->getPost('right_texture'),
+            'material'        => $this->request->getPost('material'),
+            'size'            => $this->request->getPost('size'),
+            'category'        => $this->request->getPost('category'),
         ];
 
-        $model->insert($data);
+        $uploadedImage = $this->request->getFile('uploaded_image');
+        if ($uploadedImage && $uploadedImage->isValid() && !$uploadedImage->hasMoved()) {
+            $newName = $uploadedImage->getRandomName();
+            $uploadedImage->move('uploads/customizations/', $newName);
+            $data['uploaded_image'] = 'uploads/customizations/' . $newName;
+        }
 
-        return $this->response->setJSON(['status' => 'success', 'message' => 'Customization saved successfully']);
+        $capturedImage = $this->request->getFile('captured_image');
+        if ($capturedImage && $capturedImage->isValid() && !$capturedImage->hasMoved()) {
+            $designName = 'design_' . time() . '.png';
+            $capturedImage->move('uploads/designs/', $designName);
+            $data['captured_image'] = 'uploads/designs/' . $designName;
+        }
+
+        if ($model->insert($data)) {
+            return $this->response->setJSON(['status' => 'success']);
+        } else {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to save customization.']);
+        }
     }
 }

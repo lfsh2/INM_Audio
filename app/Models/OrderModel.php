@@ -17,31 +17,26 @@ class OrderModel extends Model
 
     protected $useTimestamps = false;  
 
-    // ✅ Total Orders
     public function getTotalOrders()
     {
         return $this->countAll();
     }
 
-    // ✅ Total Confirmed Orders
     public function getTotalConfirmed()
     {
         return $this->where('order_status', 'confirmed')->countAllResults();
     }
 
-    // ✅ Total Cancelled Orders
     public function getTotalCancelled()
     {
         return $this->where('order_status', 'cancelled')->countAllResults();
     }
 
-    // ✅ Total Completed Orders
     public function getTotalComplete()
     {
         return $this->where('order_status', 'completed')->countAllResults();
     }
 
-    // ✅ Total Revenue from Completed Orders
     public function getTotalRevenue() {
         return $this->select('SUM(quantity * price) AS totalRevenue')
                     ->where('order_status', 'completed')
@@ -51,7 +46,6 @@ class OrderModel extends Model
     }
     
 
-    // ✅ Recent Orders (Limit 5)
     public function getRecentOrders($limit = 5)
     {
         return $this->orderBy('created_at', 'DESC')
@@ -69,5 +63,29 @@ class OrderModel extends Model
                     ->where('MONTH(date_placed)', $month)
                     ->get()->getRow()->total_price ?? 0;
     }
-    
-}
+      public function getConfirmedOrders()
+      {
+          return $this->where('order_status', 'to ship')->findAll();
+      }
+  
+      public function getAllOrders()
+      {
+          return $this->findAll();
+      }
+  
+      public function getCompletedOrders()
+      {
+          return $this->where('order_status', 'complete')->findAll();
+      }
+  
+      public function getCancelledOrders()
+      {
+          return $this->where('order_status', 'cancelled')->findAll();
+      }
+  
+      public function getOrderById($orderId)
+      {
+          return $this->where('order_id', $orderId)->first();
+      }
+  }
+
