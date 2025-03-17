@@ -87,7 +87,7 @@ class Placed_Orders_Model extends Model {
     }   
 
     public function getTotalPlaced() {
-        $query = $this->db->query("SELECT COUNT(*) as totalPlacedOrders FROM placedorders");
-        return $query->getRow();
+        return $this->selectCount('placed_order_id')->get()->getRow();
     }
+    
 }

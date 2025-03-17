@@ -2,6 +2,12 @@
 
 namespace App\Controllers;
 
+use App\Models\Admin_Account_Model;
+use App\Models\GearModel;
+use App\Models\OrderModel;
+use App\Models\Placed_Orders_Model;
+use App\Models\Gear_Product_Model;
+
 class AdminController extends BaseController
 {
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -37,63 +43,85 @@ class AdminController extends BaseController
     }
 
     public function chart($time) {
-        $this->load->requireMethod('orders');
-        $result = $this->load->orders->totalSalesChart($time);
+        $orderModel = new OrderModel();
+
+        $result = $orderModel->totalSalesChart($time);
         $chart = [];
-        foreach($result as $row) {
-            $chart = [$row['time']];
+        foreach ($result as $row) {
+            $chart[] = $row['time'];
         }
         return $chart;
     }
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## ----- ROUTES ----- ##
     // to edit
-    public function dashboard() { 
-        $this->load->requireMethod('adminAccount');
-        $this->load->requireMethod('gears');
-        $this->load->requireMethod('orders');
-        $this->load->requireMethod('placed');   
-        // $this->load->requireMethod('notif');   
-
-        // $notifications = $this->load->notif->getNotifications();
-        // $unreadCount = $this->load->notif->getUnreadCount();
+    public function dashboard() {
+        $adminAccountModel = new Admin_Account_Model();
+        $gearModel = new GearModel();
+        $orderModel = new OrderModel();
+        $placedOrdersModel = new Placed_Orders_Model();
 
         $data = [
-            'adminAccount' => $this->load->adminAccount->getUser('admin_account_id', $this->load->session->get('admin_id')),
-            'numberItems' => $this->load->gears->countAllGears(),
-            'totalOrders' => $this->load->orders->getTotalOrders(),
-            'totalPlaced' => $this->load->placed->getTotalPlaced(),
-            'totalConfirmed' => $this->load->orders->getTotalConfirmed(),
-            'totalCancelled' => $this->load->orders->getTotalCancelled(),
-            'totalComplete' => $this->load->orders->getTotalComplete(),
-            'totalRevenue' => $this->load->orders->getTotalRevenue(),
-            'recentOrders' => $this->load->orders->getRecentOrders(),
+            'adminAccount'    => $adminAccountModel->getUser('admin_account_id', session()->get('admin_id')),
+            'numberItems'     => $gearModel->countAllGears(),
+            'totalOrders'     => $orderModel->getTotalOrders(),
+            'totalPlaced'     => $placedOrdersModel->getTotalPlaced()->totalPlacedOrders ?? 0,
+            'totalConfirmed'  => $orderModel->getTotalConfirmed(),
+            'totalCancelled'  => $orderModel->getTotalCancelled(),
+            'totalComplete'   => $orderModel->getTotalComplete(),
+            'totalRevenue'    => $orderModel->getTotalRevenue(),
+            'recentOrders'    => $placedOrdersModel->getAllOrders()
         ];
+
         return $this->checkAdminSession('AdminSide/dashboard', $data);
     }
 
-    ## redirect to transactions
     public function orders_transactions() { 
-        $this->load->requireMethod('adminAccount');
-        $this->load->requireMethod('orders');
-        $this->load->requireMethod('placed');
-
+        $orderModel = new OrderModel();
+        $gearModel = new Gear_Product_Model();
+        $placedOrdersModel = new Placed_Orders_Model();
+        $adminAccountModel = new Admin_Account_Model();
+    
+        $orders = $orderModel->select('orders.*, products.product_name, products.image_url')
+                             ->join('products', 'orders.product_id = products.product_id')
+                             ->orderBy('orders.created_at', 'DESC')
+                             ->findAll();
+    
+        $confirmOrder = $orderModel->select('orders.*, products.product_name, products.image_url')
+                                   ->join('products', 'orders.product_id = products.product_id')
+                                   ->where('order_status', 'confirmed')
+                                   ->orderBy('orders.created_at', 'DESC')
+                                   ->findAll();
+    
+        $completedOrders = $orderModel->select('orders.*, products.product_name, products.image_url')
+                                      ->join('products', 'orders.product_id = products.product_id')
+                                      ->where('order_status', 'completed')
+                                      ->orderBy('orders.date_completed', 'DESC')
+                                      ->findAll();
+    
+        $cancelledOrders = $orderModel->select('orders.*, products.product_name, products.image_url')
+                                      ->join('products', 'orders.product_id = products.product_id')
+                                      ->where('order_status', 'cancelled')
+                                      ->orderBy('orders.date_cancelled', 'DESC')
+                                      ->findAll();
+    
         $data = [
-            'adminAccount' => $this->load->adminAccount->getUser('admin_account_id', $this->load->session->get('admin_id')),
-            'cancelledOrders' => $this->load->orders->getCancelledOrders(),
-            'orders' => $this->load->orders->getOrders(),
-            'complete' => $this->load->orders->getCompleteOrders(),
-            'totalOrders' => $this->load->orders->getTotalOrders(),
-            'totalPlaced' => $this->load->placed->getTotalPlaced(),
-            'totalCancelled' => $this->load->orders->getTotalCancelled(),
-            'totalComplete' => $this->load->orders->getTotalComplete(),
-            'totalRevenue' => $this->load->orders->getTotalRevenue(),
-            'confirmOrder' => $this->load->placed->getAllOrders()
+            'adminAccount'     => $adminAccountModel->getUser('admin_account_id', session()->get('admin_id')),
+            'cancelledOrders'  => $cancelledOrders,
+            'orders'           => $orders,  
+            'complete'         => $completedOrders,
+            'totalOrders'      => $orderModel->getTotalOrders(),
+            'totalPlaced'      => $placedOrdersModel->getTotalPlaced()->totalPlacedOrders ?? 0,
+            'totalCancelled'   => $orderModel->getTotalCancelled(),
+            'totalComplete'    => $orderModel->getTotalComplete(),
+            'totalRevenue'     => $orderModel->getTotalRevenue(),
+            'confirmOrder'     => $confirmOrder
         ];
+    
         return $this->checkAdminSession('AdminSide/orders_transactions', $data);
     }
     
-
+    
     ## redirect to gearManagement / addGear / addCategory
     public function gearManagement($dataVal = null) { 
         $this->load->requireMethod('adminAccount');

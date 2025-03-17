@@ -17,22 +17,57 @@ class OrderModel extends Model
 
     protected $useTimestamps = false;  
 
-    public function getCancelledOrdersForUser($userId)
+    // ✅ Total Orders
+    public function getTotalOrders()
     {
-        return $this->where('user_id', $userId)
-                    ->where('order_status', 'cancelled')
-                    ->findAll();
+        return $this->countAll();
     }
-    public function getToShipOrdersForUser($userId)
+
+    // ✅ Total Confirmed Orders
+    public function getTotalConfirmed()
     {
-        return $this->where('user_id', $userId)
-                    ->where('order_status', 'to_ship')
-                    ->findAll();
+        return $this->where('order_status', 'confirmed')->countAllResults();
     }
-    public function getCompleteOrdersForUser($userId)
+
+    // ✅ Total Cancelled Orders
+    public function getTotalCancelled()
     {
-        return $this->where('user_id', $userId)
+        return $this->where('order_status', 'cancelled')->countAllResults();
+    }
+
+    // ✅ Total Completed Orders
+    public function getTotalComplete()
+    {
+        return $this->where('order_status', 'completed')->countAllResults();
+    }
+
+    // ✅ Total Revenue from Completed Orders
+    public function getTotalRevenue() {
+        return $this->select('SUM(quantity * price) AS totalRevenue')
                     ->where('order_status', 'completed')
+                    ->get()
+                    ->getRow()
+                    ->totalRevenue ?? 0;
+    }
+    
+
+    // ✅ Recent Orders (Limit 5)
+    public function getRecentOrders($limit = 5)
+    {
+        return $this->orderBy('created_at', 'DESC')
+                    ->limit($limit)
                     ->findAll();
     }
+    public function getOrdersByMonth($month) {
+        return $this->where('MONTH(created_at)', $month)
+                    ->countAllResults();
+    }
+    
+    
+    public function getRevenueByMonth($month) {
+        return $this->selectSum('total_price')
+                    ->where('MONTH(date_placed)', $month)
+                    ->get()->getRow()->total_price ?? 0;
+    }
+    
 }

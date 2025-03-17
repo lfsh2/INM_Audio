@@ -19,4 +19,8 @@ class GearModel extends Model
             ->get()
             ->getRowArray();
     }
+    public function countAllGears()
+    {
+        return $this->countAll();
+    }
 }
