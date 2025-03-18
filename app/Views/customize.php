@@ -12,20 +12,6 @@
     <link rel="stylesheet" href=" <?= base_url('assets/css/customize.css') ?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>INM Costumization</title>
-    <style>
-        .size-guide {
-            margin-top: 15px;
-            text-align: center;
-        }
-
-        .size-guide img {
-            max-width: 100%;
-            max-height: 600px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-    </style>
 </head>
 
 <body>
@@ -124,6 +110,7 @@
                         <option value="xl">XL</option>
                     </select>
                 </div>
+
                 <div class="size-guide">
                     <h3>Size Guide</h3>
                     <img src="<?= base_url('assets/img/size_guide.png') ?>" alt="IEM Size Guide" class="img-fluid">
@@ -260,57 +247,31 @@
         });
     </script>
     <script>
-    document.getElementById("saveDesign").addEventListener("click", function () {
-    fetch("/check-login")
-        .then(response => response.json())
-        .then(data => {
-            if (!data.isLoggedIn) {
-                alert("You must log in to save your customization.");
-                window.location.href = "/login"; 
-                return;
-            }
+        document.getElementById("saveDesign").addEventListener("click", function() {
+            const customizationData = {
+                leftColor: document.getElementById("leftColorPicker").value,
+                rightColor: document.getElementById("rightColorPicker").value,
+                leftTexture: document.getElementById("leftTextureSelect").value,
+                rightTexture: document.getElementById("rightTextureSelect").value,
+                material: document.getElementById("materialSelect").value,
+                size: document.getElementById("sizeSelect").value,
+                category: document.getElementById("categorySelect").value,
+            };
 
-            renderer.render(scene, camera);
+            console.log("Saving Customization:", customizationData);
 
-            const imageDataURL = renderer.domElement.toDataURL("image/png");
-            const formData = new FormData();
+            fetch("<?= site_url('IEMCustomizationController/saveDesign') ?>", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(customizationData),
+                })
+                .then(response => response.json())
+                .then(data => alert(data.message))
+                .catch(error => console.error("Error saving customization:", error));
 
-            fetch(imageDataURL)
-                .then(res => res.blob())
-                .then(blob => {
-                    formData.append("captured_image", blob, "custom_design.png");
-
-                    formData.append("category", document.getElementById("categorySelect").value);
-                    formData.append("left_color", document.getElementById("leftColorPicker").value);
-                    formData.append("right_color", document.getElementById("rightColorPicker").value);
-                    formData.append("left_texture", document.getElementById("leftTextureSelect").value);
-                    formData.append("right_texture", document.getElementById("rightTextureSelect").value);
-                    formData.append("material", document.getElementById("materialSelect").value);
-                    formData.append("size", document.getElementById("sizeSelect").value);
-
-                    const uploadedDesign = document.getElementById("userDesignUpload").files[0];
-                    if (uploadedDesign) {
-                        formData.append("uploaded_image", uploadedDesign);
-                    }
-
-                    fetch("/save-customization", {
-                        method: "POST",
-                        body: formData,
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.status === "success") {
-                            alert("Customization saved successfully!");
-                            window.location.href = "/my-designs";
-                        } else {
-                            alert("Error: " + data.message);
-                        }
-                    })
-                    .catch(error => console.error("Error:", error));
-                });
         });
-});
-
     </script>
 </body>
 

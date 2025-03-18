@@ -25,7 +25,7 @@ $routes->group('', function($routes) {
     $routes->post('/community/post_comment', 'Community::post_comment');
     $routes->get('/customize', 'HomeController::customize');
     $routes->get('/check-login', 'AuthController::checkLogin');
-    $routes->post('/save-customization', 'CustomizationController::save');
+    $routes->post('IEMCustomizationController/saveDesign', 'IEMCustomizationController::saveDesign');
     $routes->get('/login', 'HomeController::login');
     $routes->get('/signup', 'HomeController::signup');
 });
@@ -43,6 +43,8 @@ $routes->group('', function($routes){
         $routes->get('/user/logout', 'UserController::logout');
         $routes->get('/user/bookmark/(:num)', 'UserController::removeToLikes/$1');
         $routes->get('/user/cancelOrder/(:any)', 'UserController::cancelOrder/$1');
+        $routes->get('/user/myDesign', 'IEMCustomizationController::myDesign');
+
 });
 
 ## ---------------------------------------------------------------------

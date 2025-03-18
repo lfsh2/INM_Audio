@@ -1,3 +1,6 @@
+let renderer;
+
+
 document.addEventListener("DOMContentLoaded", function () {
     const container = document.getElementById("canvas-container");
 

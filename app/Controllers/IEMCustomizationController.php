@@ -3,47 +3,42 @@
 namespace App\Controllers;
 
 use App\Models\IEMCustomizationModel;
-use CodeIgniter\Controller;
+use CodeIgniter\HTTP\ResponseInterface;
 
-class IEMCustomizationController extends Controller
+class IEMCustomizationController extends BaseController
 {
-    public function saveCustomization()
+    public function saveDesign()
     {
-        if (!session()->get('user_id')) {
-            return $this->response->setJSON(['status' => 'error', 'message' => 'You must log in to save your customization.']);
-        }
-
-        $model = new IEMCustomizationModel();
+        $request = $this->request->getJSON();
 
         $data = [
-            'user_id'         => session()->get('user_id'),
-            'left_color'      => $this->request->getPost('left_color'),
-            'right_color'     => $this->request->getPost('right_color'),
-            'left_texture'    => $this->request->getPost('left_texture'),
-            'right_texture'   => $this->request->getPost('right_texture'),
-            'material'        => $this->request->getPost('material'),
-            'size'            => $this->request->getPost('size'),
-            'category'        => $this->request->getPost('category'),
+            'user_id'        => session()->get('user_id'), 
+            'left_color'     => $request->leftColor,
+            'right_color'    => $request->rightColor,
+            'left_texture'   => $request->leftTexture,
+            'right_texture'  => $request->rightTexture,
+            'material'       => $request->material,
+            'size'           => $request->size,
+            'category'       => $request->category,
+            'created_at'     => date('Y-m-d H:i:s'),
+            'updated_at'     => date('Y-m-d H:i:s') 
         ];
 
-        $uploadedImage = $this->request->getFile('uploaded_image');
-        if ($uploadedImage && $uploadedImage->isValid() && !$uploadedImage->hasMoved()) {
-            $newName = $uploadedImage->getRandomName();
-            $uploadedImage->move('uploads/customizations/', $newName);
-            $data['uploaded_image'] = 'uploads/customizations/' . $newName;
-        }
-
-        $capturedImage = $this->request->getFile('captured_image');
-        if ($capturedImage && $capturedImage->isValid() && !$capturedImage->hasMoved()) {
-            $designName = 'design_' . time() . '.png';
-            $capturedImage->move('uploads/designs/', $designName);
-            $data['captured_image'] = 'uploads/designs/' . $designName;
-        }
-
+        $model = new IEMCustomizationModel();
         if ($model->insert($data)) {
-            return $this->response->setJSON(['status' => 'success']);
+            return $this->response->setJSON(['status' => 'success', 'message' => 'Design saved successfully!']);
         } else {
-            return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to save customization.']);
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to save design.']);
         }
     }
+    public function myDesign()
+    {
+        $model = new IEMCustomizationModel();
+        $userId = session()->get('user_id'); 
+
+        $data['designs'] = $model->where('user_id', $userId)->findAll();
+
+        return view('UserSide/my_designs', $data);
+    }
+
 }

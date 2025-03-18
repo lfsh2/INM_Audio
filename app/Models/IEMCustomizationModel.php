@@ -6,22 +6,16 @@ use CodeIgniter\Model;
 
 class IEMCustomizationModel extends Model
 {
-    protected $table      = 'iem_customizations';
+    protected $table = 'iem_customizations';
     protected $primaryKey = 'id';
+
     protected $allowedFields = [
-        'user_id',
-        'left_color',
-        'right_color',
-        'left_texture',
-        'right_texture',
-        'uploaded_image',
-        'captured_image',
-        'material',
-        'size',
-        'category',
-        'created_at'
+        'user_id', 'left_color', 'right_color', 
+        'left_texture', 'right_texture', 'material', 
+        'size', 'category', 'uploaded_image', 'created_at', 'updated_at'
     ];
 
     protected $useTimestamps = true;
-    protected $createdField  = 'created_at';
+    protected $createdField = 'created_at';
+    protected $updatedField = 'updated_at';
 }
