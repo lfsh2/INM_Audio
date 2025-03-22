@@ -69,11 +69,23 @@ $routes->group('', function($routes) {
         $routes->get('/checkout/success/(:num)', 'PaymentController::success/$1');
         $routes->get('/checkout/cancel/(:num)', 'PaymentController::cancel/$1');
 
+     //   $routes->get('/checkout-customize', 'CheckoutCustomizeController::index');
+     //    $routes->post('/checkout-customize/processPayment', 'CheckoutCustomizeController::processPayment');
+
+
+     $routes->post('customization/checkout', 'CustomizationPaymentController::checkout'); 
+    $routes->get('customization/checkout/success/(:num)', 'CustomizationPaymentController::success/$1'); 
+    $routes->get('customization/checkout/cancel/(:num)', 'CustomizationPaymentController::cancel/$1');
+
+
 
         $routes->get('/checkout/success/(:num)', 'PaymentController::success/$1');
         $routes->get('/checkout/cancel/(:num)', 'PaymentController::cancel/$1');
         
         $routes->get('/donePurchase', 'ShopController::donePurchase'); 
+
+        $routes->delete('customization/delete/(:num)', 'IEMCustomizationController::delete/$1');
+
 
     // $routes->get('/checkOutFailed', 'ShopController::checkOutFailed');
 });

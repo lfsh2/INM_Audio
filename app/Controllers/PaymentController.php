@@ -12,6 +12,8 @@ class PaymentController extends Controller
     {
         $totalPrice = $this->request->getPost('total_price');
         $totalQuantity = $this->request->getPost('total_quantity');
+        $shippingName = $this->request->getPost('shipping_name');
+        $shippingAddress = $this->request->getPost('shipping_address');
 
         if (!$totalPrice || $totalQuantity == 0) {
             return redirect()->to('/cart')->with('error', 'Your cart is empty.');
@@ -29,7 +31,9 @@ class PaymentController extends Controller
             'date_completed' => null,
             'date_returned'  => null,
             'date_cancelled' => null,
-            'created_at'     => date('Y-m-d H:i:s')
+            'created_at'     => date('Y-m-d H:i:s'),
+            'shipping_name'    => $shippingName,
+            'shipping_address' => $shippingAddress
         ];
 
         $orderId = $orderModel->insert($orderData, true); 

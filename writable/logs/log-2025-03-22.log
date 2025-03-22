@@ -233,3 +233,871 @@ INFO - 2025-03-22 06:24:56 --> Session: Class initialized using 'CodeIgniter\Ses
 INFO - 2025-03-22 06:25:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2025-03-22 06:25:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2025-03-22 06:25:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 09:48:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 09:48:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 09:48:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 09:48:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 09:48:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 09:48:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 09:48:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 09:48:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 09:48:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 09:48:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 09:48:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 09:48:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 09:48:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 09:48:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 09:49:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 09:49:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 09:49:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 09:49:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 09:49:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 09:49:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-22 09:49:26 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(27): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->shop()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 09:49:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 09:49:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 09:49:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 09:50:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 09:50:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 09:50:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 09:54:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 09:54:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 09:57:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 09:57:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 09:58:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 09:58:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 10:05:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 10:06:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 10:11:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 10:11:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-22 10:11:49 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(27): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->shop()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 10:11:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 10:11:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 10:11:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 10:11:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 10:12:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 10:12:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 10:12:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 10:12:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 10:13:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 10:16:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 10:16:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 10:18:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 10:18:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 10:19:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 10:20:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 10:25:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 10:25:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 10:25:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 10:25:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 10:25:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 10:25:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 10:25:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 11:15:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 11:15:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 11:15:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 11:16:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 11:16:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 11:16:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 11:16:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 11:17:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 11:21:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 11:21:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 11:22:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 11:22:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 11:37:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 11:37:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 11:37:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 11:37:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 11:37:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 11:37:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 11:37:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 11:37:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-22 11:37:31 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\AdminController.php(87): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->orders_transactions()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 11:37:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 11:37:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-22 11:37:33 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\AdminController.php(134): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->gearManagement()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 11:37:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 11:37:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-22 11:37:37 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\AdminController.php(134): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->gearManagement()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 11:37:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 11:37:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 11:37:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 11:37:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 11:49:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 11:49:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 11:49:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 11:54:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-22 11:54:18 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(27): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->shop()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 11:54:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 12:10:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 12:11:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 12:11:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 12:12:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 14:04:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 14:04:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 14:04:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 14:04:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 14:04:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 14:05:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 14:05:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 14:05:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 14:05:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 14:05:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 14:05:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 14:05:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 14:07:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 14:16:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 14:16:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 14:18:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 14:18:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 14:22:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 14:22:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-03-22 14:22:32 --> ErrorException: Undefined variable $customTotalPrice
+[Method: GET, Route: user/myDesign]
+in APPPATH\Views\UserSide\my_designs.php on line 148.
+ 1 APPPATH\Views\UserSide\my_designs.php(148): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $customTotalPrice', 'C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\UserSide\\my_designs.php', 148)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\UserSide\\my_designs.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('UserSide/my_designs', [], true)
+ 5 APPPATH\Controllers\IEMCustomizationController.php(58): view('UserSide/my_designs', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\IEMCustomizationController->myDesign()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IEMCustomizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 14:22:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 14:30:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 14:30:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-03-22 14:30:41 --> ErrorException: Undefined variable $customTotalPrice
+[Method: GET, Route: user/myDesign]
+in APPPATH\Views\UserSide\my_designs.php on line 148.
+ 1 APPPATH\Views\UserSide\my_designs.php(148): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $customTotalPrice', 'C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\UserSide\\my_designs.php', 148)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\INM_Audio\\app\\Views\\UserSide\\my_designs.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('UserSide/my_designs', [], true)
+ 5 APPPATH\Controllers\IEMCustomizationController.php(58): view('UserSide/my_designs', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\IEMCustomizationController->myDesign()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IEMCustomizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 14:31:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 14:31:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-22 14:31:29 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(27): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->shop()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 14:31:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 14:31:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-22 14:31:36 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(27): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->shop()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 14:31:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-22 14:31:40 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(125): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->addToCart('3')
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 14:31:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-22 14:31:40 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(27): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->shop()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 14:31:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 15:18:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 15:18:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 15:18:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 15:18:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 15:59:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 15:59:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:02:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:02:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:02:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:05:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:05:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:05:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:05:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:05:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-22 16:05:27 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(27): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->shop()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 16:05:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:05:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-22 16:05:31 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(27): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->shop()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 16:05:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:05:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:05:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:05:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:06:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:06:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:07:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:07:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:07:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:07:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:12:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:15:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:15:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:15:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:15:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:15:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:23:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:23:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:44:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:46:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:48:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:50:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:50:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:52:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:53:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:53:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:53:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:54:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:55:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:55:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:55:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-22 16:55:25 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\HomeController.php(34): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->library()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 16:55:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:55:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:55:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:55:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:55:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:55:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:55:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:55:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 16:56:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 17:03:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 17:03:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 17:03:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 17:03:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 17:05:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 17:05:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 17:06:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 17:30:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 17:30:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 17:31:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 17:36:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 17:37:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 17:38:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 17:38:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 17:39:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 17:40:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 17:40:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 17:40:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 17:40:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 17:40:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 17:40:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 17:40:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 17:41:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 17:42:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 17:42:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 17:43:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 17:43:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 17:43:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 17:47:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 17:49:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 17:49:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 17:50:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 17:56:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 17:59:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 17:59:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:00:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:02:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:02:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-03-22 18:02:36 --> PayMongo API Error: Client error: `POST https://api.paymongo.com/v1/checkout_sessions` resulted in a `401 Unauthorized` response:
+{"errors":[{"code":"api_key_required","detail":"You did not provide an API key. Go to https://developers.paymongo.com/do (truncated...)
+
+INFO - 2025-03-22 18:02:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-03-22 18:02:37 --> PayMongo API Error: Client error: `POST https://api.paymongo.com/v1/checkout_sessions` resulted in a `401 Unauthorized` response:
+{"errors":[{"code":"api_key_required","detail":"You did not provide an API key. Go to https://developers.paymongo.com/do (truncated...)
+
+INFO - 2025-03-22 18:02:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-03-22 18:02:37 --> PayMongo API Error: Client error: `POST https://api.paymongo.com/v1/checkout_sessions` resulted in a `401 Unauthorized` response:
+{"errors":[{"code":"api_key_required","detail":"You did not provide an API key. Go to https://developers.paymongo.com/do (truncated...)
+
+INFO - 2025-03-22 18:02:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:02:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:02:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:02:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:06:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:06:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:06:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:06:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:06:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:06:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-03-22 18:06:37 --> PayMongo API Error: Client error: `POST https://api.paymongo.com/v1/checkout_sessions` resulted in a `401 Unauthorized` response:
+{"errors":[{"code":"api_key_required","detail":"You did not provide an API key. Go to https://developers.paymongo.com/do (truncated...)
+
+INFO - 2025-03-22 18:06:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-03-22 18:06:38 --> PayMongo API Error: Client error: `POST https://api.paymongo.com/v1/checkout_sessions` resulted in a `401 Unauthorized` response:
+{"errors":[{"code":"api_key_required","detail":"You did not provide an API key. Go to https://developers.paymongo.com/do (truncated...)
+
+INFO - 2025-03-22 18:06:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-03-22 18:06:38 --> PayMongo API Error: Client error: `POST https://api.paymongo.com/v1/checkout_sessions` resulted in a `401 Unauthorized` response:
+{"errors":[{"code":"api_key_required","detail":"You did not provide an API key. Go to https://developers.paymongo.com/do (truncated...)
+
+INFO - 2025-03-22 18:06:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:06:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:06:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:13:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:13:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-03-22 18:13:42 --> PayMongo API Error: Client error: `POST https://api.paymongo.com/v1/checkout_sessions` resulted in a `401 Unauthorized` response:
+{"errors":[{"code":"api_key_required","detail":"You did not provide an API key. Go to https://developers.paymongo.com/do (truncated...)
+
+INFO - 2025-03-22 18:13:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-03-22 18:13:42 --> PayMongo API Error: Client error: `POST https://api.paymongo.com/v1/checkout_sessions` resulted in a `401 Unauthorized` response:
+{"errors":[{"code":"api_key_required","detail":"You did not provide an API key. Go to https://developers.paymongo.com/do (truncated...)
+
+INFO - 2025-03-22 18:13:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-03-22 18:13:43 --> PayMongo API Error: Client error: `POST https://api.paymongo.com/v1/checkout_sessions` resulted in a `401 Unauthorized` response:
+{"errors":[{"code":"api_key_required","detail":"You did not provide an API key. Go to https://developers.paymongo.com/do (truncated...)
+
+INFO - 2025-03-22 18:13:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:13:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:13:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:14:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:14:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-03-22 18:14:58 --> PayMongo Response: {"data":{"id":"cs_t559czNsRMq3HTHJyc6fFbzr","type":"checkout_session","attributes":{"billing":{"address":{"city":null,"country":null,"line1":null,"line2":null,"postal_code":null,"state":null},"email":null,"name":null,"phone":null},"billing_information_fields_editable":"enabled","cancel_url":"http:\/\/localhost\/INM_Audio\/public\/customization\/checkout\/cancel\/24","checkout_url":"https:\/\/checkout.paymongo.com\/cs_t559czNsRMq3HTHJyc6fFbzr_client_JxdvqN4WiG6KGZybpGwK7jab#cGtfdGVzdF9Bb0xXeTUxSEdSOEUxc2F5QnNqNVNpWXQ=","client_key":"cs_t559czNsRMq3HTHJyc6fFbzr_client_JxdvqN4WiG6KGZybpGwK7jab","customer_email":null,"description":null,"line_items":[{"amount":6000000,"currency":"PHP","description":null,"images":[],"name":"Customized IEM","quantity":1}],"livemode":false,"merchant":"INM Audio Test","payments":[],"payment_intent":{"id":"pi_q68R6Sus7jNQJpRCfxZN4T6t","type":"payment_intent","attributes":{"amount":6000000,"capture_type":"automatic","client_key":"pi_q68R6Sus7jNQJpRCfxZN4T6t_client_BWAkKR8vJ9JdMF7F1tsPYuw4","currency":"PHP","description":null,"livemode":false,"original_amount":6000000,"statement_descriptor":"INM Audio Test","status":"awaiting_payment_method","last_payment_error":null,"payment_method_allowed":["card","gcash"],"payments":[],"next_action":null,"payment_method_options":{"card":{"request_three_d_secure":"any"}},"metadata":null,"setup_future_usage":null,"created_at":1742667297,"updated_at":1742667297}},"payment_method_types":["card","gcash"],"reference_number":null,"send_email_receipt":false,"show_description":false,"show_line_items":true,"status":"active","success_url":"http:\/\/localhost\/INM_Audio\/public\/customization\/checkout\/success\/24","created_at":1742667297,"updated_at":1742667297,"metadata":null}}}
+INFO - 2025-03-22 18:14:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-03-22 18:14:58 --> PayMongo Response: {"data":{"id":"cs_iSUeheEN86xK8BUhrapyhBEi","type":"checkout_session","attributes":{"billing":{"address":{"city":null,"country":null,"line1":null,"line2":null,"postal_code":null,"state":null},"email":null,"name":null,"phone":null},"billing_information_fields_editable":"enabled","cancel_url":"http:\/\/localhost\/INM_Audio\/public\/customization\/checkout\/cancel\/25","checkout_url":"https:\/\/checkout.paymongo.com\/cs_iSUeheEN86xK8BUhrapyhBEi_client_CWfXC1rpokMXDK6LFFKuwswp#cGtfdGVzdF9Bb0xXeTUxSEdSOEUxc2F5QnNqNVNpWXQ=","client_key":"cs_iSUeheEN86xK8BUhrapyhBEi_client_CWfXC1rpokMXDK6LFFKuwswp","customer_email":null,"description":null,"line_items":[{"amount":6000000,"currency":"PHP","description":null,"images":[],"name":"Customized IEM","quantity":1}],"livemode":false,"merchant":"INM Audio Test","payments":[],"payment_intent":{"id":"pi_uDy9fFyjRp87qqRafMnNdoX7","type":"payment_intent","attributes":{"amount":6000000,"capture_type":"automatic","client_key":"pi_uDy9fFyjRp87qqRafMnNdoX7_client_pkZp8x57oKHHWM5ic71AgFky","currency":"PHP","description":null,"livemode":false,"original_amount":6000000,"statement_descriptor":"INM Audio Test","status":"awaiting_payment_method","last_payment_error":null,"payment_method_allowed":["gcash","card"],"payments":[],"next_action":null,"payment_method_options":{"card":{"request_three_d_secure":"any"}},"metadata":null,"setup_future_usage":null,"created_at":1742667298,"updated_at":1742667298}},"payment_method_types":["gcash","card"],"reference_number":null,"send_email_receipt":false,"show_description":false,"show_line_items":true,"status":"active","success_url":"http:\/\/localhost\/INM_Audio\/public\/customization\/checkout\/success\/25","created_at":1742667298,"updated_at":1742667298,"metadata":null}}}
+INFO - 2025-03-22 18:14:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-03-22 18:14:59 --> PayMongo Response: {"data":{"id":"cs_WWHDJdRFYicpAfJrN1jhcf6q","type":"checkout_session","attributes":{"billing":{"address":{"city":null,"country":null,"line1":null,"line2":null,"postal_code":null,"state":null},"email":null,"name":null,"phone":null},"billing_information_fields_editable":"enabled","cancel_url":"http:\/\/localhost\/INM_Audio\/public\/customization\/checkout\/cancel\/26","checkout_url":"https:\/\/checkout.paymongo.com\/cs_WWHDJdRFYicpAfJrN1jhcf6q_client_UQZ6HcoTpicNZmCeCaP5Dr2k#cGtfdGVzdF9Bb0xXeTUxSEdSOEUxc2F5QnNqNVNpWXQ=","client_key":"cs_WWHDJdRFYicpAfJrN1jhcf6q_client_UQZ6HcoTpicNZmCeCaP5Dr2k","customer_email":null,"description":null,"line_items":[{"amount":6000000,"currency":"PHP","description":null,"images":[],"name":"Customized IEM","quantity":1}],"livemode":false,"merchant":"INM Audio Test","payments":[],"payment_intent":{"id":"pi_WZNwSj23cCfLXhTSn1hdcnHY","type":"payment_intent","attributes":{"amount":6000000,"capture_type":"automatic","client_key":"pi_WZNwSj23cCfLXhTSn1hdcnHY_client_b6MFzctSNRQyFzU38p7iE6yZ","currency":"PHP","description":null,"livemode":false,"original_amount":6000000,"statement_descriptor":"INM Audio Test","status":"awaiting_payment_method","last_payment_error":null,"payment_method_allowed":["card","gcash"],"payments":[],"next_action":null,"payment_method_options":{"card":{"request_three_d_secure":"any"}},"metadata":null,"setup_future_usage":null,"created_at":1742667298,"updated_at":1742667298}},"payment_method_types":["card","gcash"],"reference_number":null,"send_email_receipt":false,"show_description":false,"show_line_items":true,"status":"active","success_url":"http:\/\/localhost\/INM_Audio\/public\/customization\/checkout\/success\/26","created_at":1742667298,"updated_at":1742667298,"metadata":null}}}
+INFO - 2025-03-22 18:15:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:31:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:31:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:31:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:32:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:32:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:32:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-03-22 18:32:12 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "UserSide/checkout_cancel.php"
+[Method: GET, Route: customization/checkout/cancel/27]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('UserSide/checkout_cancel.php')
+ 2 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('UserSide/checkout_cancel', [], true)
+ 3 APPPATH\Controllers\CustomizationPaymentController.php(110): view('UserSide/checkout_cancel')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\CustomizationPaymentController->cancel('27')
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CustomizationPaymentController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 18:35:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:35:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:35:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:41:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:41:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:41:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:41:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:41:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:41:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:41:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:41:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:46:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:46:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:46:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:46:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:46:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:46:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:46:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:46:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:46:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:46:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:47:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:48:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:48:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:48:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:48:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:48:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:48:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:48:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:48:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:48:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-22 18:48:37 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(27): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->shop()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 18:48:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:48:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:49:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:49:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:49:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:49:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:49:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:49:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:49:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:49:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:49:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:49:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-22 18:49:43 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\HomeController.php(34): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->library()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 18:49:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:49:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:49:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:49:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:49:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:49:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-22 18:49:52 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(27): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->shop()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 18:49:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-22 18:49:54 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\HomeController.php(34): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\HomeController->library()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\HomeController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 18:49:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:50:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-22 18:50:01 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(27): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->shop()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 18:50:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:50:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-22 18:50:04 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(27): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->shop()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 18:50:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-03-22 18:50:06 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: cart]
+in APPPATH\Controllers\ShopController.php on line 61.
+ 1 APPPATH\Controllers\ShopController.php(61): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\xampp\\htdocs\\INM_Audio\\app\\Controllers\\ShopController.php', 61)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->cart()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 18:50:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-22 18:50:10 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(27): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->shop()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 18:50:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-03-22 18:50:12 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: cart]
+in APPPATH\Controllers\ShopController.php on line 61.
+ 1 APPPATH\Controllers\ShopController.php(61): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\xampp\\htdocs\\INM_Audio\\app\\Controllers\\ShopController.php', 61)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->cart()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 18:50:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-22 18:50:20 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(27): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->shop()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 18:50:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-03-22 18:50:22 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: cart]
+in APPPATH\Controllers\ShopController.php on line 61.
+ 1 APPPATH\Controllers\ShopController.php(61): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\xampp\\htdocs\\INM_Audio\\app\\Controllers\\ShopController.php', 61)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->cart()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 18:50:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-22 18:50:32 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(27): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->shop()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 18:50:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-03-22 18:50:33 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: cart]
+in APPPATH\Controllers\ShopController.php on line 61.
+ 1 APPPATH\Controllers\ShopController.php(61): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\xampp\\htdocs\\INM_Audio\\app\\Controllers\\ShopController.php', 61)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->cart()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 18:50:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-22 18:50:34 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(27): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->shop()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 18:50:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:50:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:50:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:50:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:50:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:50:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:50:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:50:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:50:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:51:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:51:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:51:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-03-22 18:51:02 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: cart]
+in APPPATH\Controllers\ShopController.php on line 61.
+ 1 APPPATH\Controllers\ShopController.php(61): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\xampp\\htdocs\\INM_Audio\\app\\Controllers\\ShopController.php', 61)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->cart()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 18:51:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:51:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-22 18:51:17 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(27): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->shop()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 18:51:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-22 18:51:20 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(125): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->addToCart('2')
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 18:51:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-22 18:51:20 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(27): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->shop()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 18:51:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:51:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-22 18:51:24 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(27): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->shop()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 18:51:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-22 18:51:27 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(125): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->addToCart('10')
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 18:51:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-22 18:51:28 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(27): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->shop()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 18:51:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:51:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:51:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:51:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:52:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:53:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:53:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:53:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:53:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:53:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-22 18:53:06 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(27): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->shop()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 18:53:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:54:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:55:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 18:57:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 19:00:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 19:00:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 19:00:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 19:00:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 19:00:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 19:00:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 19:00:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 19:01:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 19:01:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 19:01:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 19:01:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

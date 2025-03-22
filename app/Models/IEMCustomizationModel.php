@@ -12,7 +12,7 @@ class IEMCustomizationModel extends Model
     protected $allowedFields = [
         'user_id','design_name', 'left_color', 'right_color', 
         'left_texture', 'right_texture', 'material', 
-        'size', 'category', 'uploaded_image', 'created_at', 'updated_at'
+        'size', 'category', 'uploaded_image', 'created_at', 'updated_at','shipping_name', 'shipping_phone', 'shipping_address'
     ];
 
     protected $useTimestamps = true;

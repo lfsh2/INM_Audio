@@ -184,22 +184,23 @@
         const dataArray = new Uint8Array(bufferLength);
 
         const specsData = {
-            vanilla_series: [
+            "Vanilla Series": [
                 "Driver Type: Balanced Armature",
                 "Cable Type: 3.5mm Silver-Plated Copper",
                 "Frequency Range: 20Hz - 20kHz"
             ],
-            stage: [
+            "Stage Series": [
                 "Driver Type: Dynamic Driver",
                 "Cable Type: Detachable 2-pin",
                 "Frequency Range: 15Hz - 30kHz"
             ],
-            prestige: [
+            "Prestige Series": [
                 "Driver Type: Tribid Premium Design",
                 "Cable Type: Gold-Plated 2.5mm",
                 "Frequency Range: 20Hz – 40kHz"
             ]
         };
+
 
         function drawVisualizer() {
             requestAnimationFrame(drawVisualizer);
@@ -226,13 +227,13 @@
             let audioSrc = "";
 
             switch (selectedCategory) {
-                case "vanilla_series":
+                case "Vanilla Series":
                     audioSrc = "assets/sounds/vanilla.mp3";
                     break;
-                case "stage":
+                case "Stage Series":
                     audioSrc = "assets/sounds/stage.mp3";
                     break;
-                case "prestige":
+                case "Prestige Series":
                     audioSrc = "assets/sounds/prestige.mp3";
                     break;
             }
@@ -257,7 +258,7 @@
     <script>
         document.getElementById("saveDesign").addEventListener("click", function() {
             const customizationData = {
-                designName: document.getElementById("designName").value.trim(), 
+                designName: document.getElementById("designName").value.trim(),
                 leftColor: document.getElementById("leftColorPicker").value,
                 rightColor: document.getElementById("rightColorPicker").value,
                 leftTexture: document.getElementById("leftTextureSelect").value,

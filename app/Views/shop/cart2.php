@@ -27,13 +27,30 @@
 
     .total-checkout:hover {
         background-color: #45a049;
-        transform: translateY(-3px); /* Smooth hover lift */
+        transform: translateY(-3px); 
     }
 
     .total-checkout:active {
         background-color: #3e8e41;
-        transform: scale(0.95); /* Click effect */
+        transform: scale(0.95);
     }
+    textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+}
+input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
     </style>
 </head>
 
@@ -98,6 +115,13 @@
                     <form action="<?= base_url('/checkout') ?>" method="post">
                         <input type="hidden" name="total_price" value="<?= esc($totalPrice) ?>">
                         <input type="hidden" name="total_quantity" value="<?= esc($totalQuantity) ?>">
+
+                        <label for="name">Full Name:</label>
+                        <input type="text" name="shipping_name" id="name" placeholder="Enter your full name" required>
+
+                        <label for="address">Shipping Address: </label>
+                        <textarea name="shipping_address" id="address" rows="3" placeholder="Enter your full address" required></textarea>
+
                         <button type="submit" class="total-checkout">🛒 Check Out</button>
                     </form>
                 </div>

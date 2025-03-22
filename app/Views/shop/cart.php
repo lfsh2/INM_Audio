@@ -98,6 +98,10 @@
                     <form action="<?= base_url('/checkout') ?>" method="post">
                         <input type="hidden" name="total_price" value="<?= esc($totalPrice) ?>">
                         <input type="hidden" name="total_quantity" value="<?= esc($totalQuantity) ?>">
+
+                        <label for="address">Shipping Address: </label>
+                        <textarea name="address" id="address" rows="3" placeholder="Enter your full address" required></textarea>
+
                         <button type="submit" class="total-checkout">🛒 Check Out</button>
                     </form>
                 </div>

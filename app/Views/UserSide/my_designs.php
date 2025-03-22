@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/UserSide/userPurchase.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/navbar.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/UserSide/grid.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/UserSide/myDesign.css') ?>">
     <link rel="shortcut icon" href="<?= base_url('assets/img/logo.png') ?>" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
@@ -17,111 +18,69 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three/examples/js/loaders/GLTFLoader.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+
 
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f8f9fa;
-            margin: 0;
-            padding: 0;
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1050;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
         }
 
-        h1 {
-            text-align: center;
-            font-size: 2rem;
-            margin-top: 20px;
-            color: #333;
+        .modal-dialog {
+            margin: 10% auto;
+            z-index: 1051;
         }
 
-        .design-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
+
+        .modal-header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .modal-header .close {
+            color: white;
+            font-size: 20px;
+            border: none;
+            background: none;
+        }
+
+        .modal-body {
             padding: 20px;
         }
 
-        .design-card {
-            display: flex;
-            flex-wrap: wrap;
-            width: 90%;
-            max-width: 900px;
-            background: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .modal-body input,
+        .modal-body textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
         }
 
-        .design-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        .modal-body button {
+            width: 100%;
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
 
-        .canvas-container {
-            flex: 1;
-            min-width: 50%;
-            height: auto;
-            background: #f0f0f0;
-            border-right: 2px solid #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-
-        .design-details {
-            flex: 1;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .design-details h3 {
-            margin: 0;
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: #222;
-        }
-
-        .design-details p {
-            margin: 4px 0;
-            font-size: 1rem;
-            color: #555;
-        }
-
-        .spec-label {
-            font-weight: bold;
-            color: #222;
-        }
-
-        .spec-list {
-            margin: 0;
-            padding-left: 20px;
-            list-style-type: disc;
-            font-size: 0.95rem;
-            color: #444;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .design-card {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .canvas-container {
-                width: 100%;
-                height: 300px;
-                border-right: none;
-            }
-
-            .design-details {
-                width: 100%;
-                text-align: center;
-            }
+        .modal-body button:hover {
+            background-color: #218838;
         }
     </style>
 </head>
@@ -143,6 +102,10 @@
                         <p><span class="spec-label">Material:</span> <?= ucfirst($design['material']) ?></p>
                         <p><span class="spec-label">Size:</span> <?= ucfirst($design['size']) ?></p>
                         <p><span class="spec-label">Category:</span> <?= ucfirst($design['category']) ?></p>
+                        <p><strong>Price:</strong> ₱<?= number_format($design['price'], 2) ?></p>
+
+                        <button class="delete-btn" onclick="deleteDesign(<?= $design['id'] ?>)">Delete</button>
+                        <button class="checkout-btn" onclick="openCheckoutModal(<?= $design['id'] ?>, <?= $design['price'] ?>)">Checkout</button>
 
                         <h4>Specifications:</h4>
                         <p><span class="spec-label">Driver Configuration:</span></p>
@@ -159,6 +122,51 @@
                         <ul id="technicalSpecs-<?= $design['id'] ?>" class="spec-list"></ul>
                     </div>
                 </div>
+
+
+                <div id="checkoutModal" class="modal fade" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Shipping Details</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="checkoutForm">
+                                    <input type="hidden" id="designId" name="design_id">
+                                    <input type="hidden" id="designPrice" name="price">
+
+                                    <div class="form-group">
+                                        <label for="fullname">Full Name</label>
+                                        <input type="text" id="fullname" name="fullname" class="form-control" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="phone">Phone Number</label>
+                                        <input type="text" id="phone" name="phone" class="form-control" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="address">Full Address</label>
+                                        <textarea id="address" name="address" class="form-control" required></textarea>
+                                    </div>
+
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-success">
+                                            <span id="btnText">Proceed to Payment</span>
+                                            <span id="loader" class="spinner-border spinner-border-sm d-none"></span>
+                                        </button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
 
                 <script>
                     document.addEventListener("DOMContentLoaded", function() {
@@ -255,6 +263,85 @@
                     });
                 </script>
 
+                <script>
+                    function openCheckoutModal(designId, price) {
+                        document.getElementById('designId').value = designId;
+                        document.getElementById('designPrice').value = price;
+
+                        document.getElementById('fullname').value = "<?= session()->get('firstname') . ' ' . session()->get('lastname') ?>";
+                        document.getElementById('phone').value = "<?= session()->get('phone_number') ?>";
+                        document.getElementById('address').value = "<?= session()->get('address') ?>";
+
+                        $('#checkoutModal').modal('show');
+                    }
+
+                    document.getElementById('checkoutForm').addEventListener('submit', function(event) {
+                        event.preventDefault();
+
+                        let formData = new FormData(this);
+
+                        let submitButton = document.querySelector("#checkoutForm button[type='submit']");
+                        let btnText = submitButton.innerHTML;
+                        submitButton.innerHTML = 'Processing... <span class="spinner-border spinner-border-sm"></span>';
+                        submitButton.disabled = true;
+
+                        fetch('<?= base_url("customization/checkout") ?>', {
+                                method: 'POST',
+                                body: formData
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.status === 'success') {
+                                    window.location.href = data.payment_url;
+                                } else {
+                                    alert('Payment failed. ' + (data.message || 'Please try again.'));
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                                alert('An error occurred while processing your request.');
+                            })
+                            .finally(() => {
+                                submitButton.innerHTML = btnText;
+                                submitButton.disabled = false;
+                            });
+                    });
+
+
+                    $(document).ready(function() {
+                        $(".checkout-btn").click(function() {
+                            let designId = $(this).data("design-id");
+                            let price = $(this).data("price");
+                            openCheckoutModal(designId, price);
+                        });
+                    });
+                </script>
+
+                <script>
+                    function deleteDesign(designId) {
+                        if (!confirm("Are you sure you want to delete this design?")) {
+                            return;
+                        }
+
+                        fetch('<?= base_url("customization/delete") ?>/' + designId, {
+                                method: 'DELETE'
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.status === 'success') {
+                                    alert("Design deleted successfully.");
+                                    document.getElementById("canvas-container-" + designId).closest(".design-card").remove();
+                                } else {
+                                    alert("Failed to delete design: " + data.message);
+                                }
+                            })
+                            .catch(error => {
+                                console.error("Error:", error);
+                                alert("An error occurred while deleting the design.");
+                            });
+                    }
+                </script>
+
 
                 <script>
                     document.addEventListener("DOMContentLoaded", function() {
@@ -306,10 +393,19 @@
 
                                                 if ("<?= $design['left_texture'] ?>" !== "none") {
                                                     const textureLoader = new THREE.TextureLoader();
-                                                    const texture = textureLoader.load(`<?= base_url('assets/textures/') . $design['left_texture'] ?>`);
-                                                    texture.wrapS = THREE.RepeatWrapping;
-                                                    texture.wrapT = THREE.RepeatWrapping;
-                                                    child.material.map = texture;
+                                                    const leftTexture = textureLoader.load(`<?= base_url('assets/textures/') . $design['left_texture'] ?>`);
+                                                    leftTexture.wrapS = THREE.RepeatWrapping;
+                                                    leftTexture.wrapT = THREE.RepeatWrapping;
+                                                    child.material.map = leftTexture;
+                                                    child.material.needsUpdate = true;
+                                                }
+
+                                                if ("<?= $design['right_texture'] ?>" !== "none" && child.name.includes("Right")) {
+                                                    const textureLoader = new THREE.TextureLoader();
+                                                    const rightTexture = textureLoader.load(`<?= base_url('assets/textures/') . $design['right_texture'] ?>`);
+                                                    rightTexture.wrapS = THREE.RepeatWrapping;
+                                                    rightTexture.wrapT = THREE.RepeatWrapping;
+                                                    child.material.map = rightTexture;
                                                     child.material.needsUpdate = true;
                                                 }
                                             }
@@ -345,13 +441,16 @@
                         <?php endforeach; ?>
                     });
                 </script>
-
-
             <?php endforeach; ?>
         </div>
     <?php else: ?>
         <p>No custom designs found.</p>
     <?php endif; ?>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>

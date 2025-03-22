@@ -12,7 +12,7 @@ class OrderModel extends Model
     protected $allowedFields = [
         'user_id', 'product_id', 'order_status', 'quantity', 'price', 
         'payment_method', 'delivery_date', 'date_completed',
-        'date_returned', 'date_cancelled', 'created_at'
+        'date_returned', 'date_cancelled', 'created_at','shipping_name', 'shipping_phone', 'shipping_address'
     ];
 
     protected $useTimestamps = false;  

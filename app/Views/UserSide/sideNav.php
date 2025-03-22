@@ -20,7 +20,9 @@
                 <p>My Purchase</p>
             </a> -->
 
-            <li><a href="<?= base_url('user/myDesign') ?>">My Designs</a></li>
+            <a id="myDesign" href="<?= base_url('user/myDesign') ?>">
+                <i class="fa-solid fa-paint-brush"></i>
+                <p>My Design</p>
             </a>
 
             <a id="mylikes" href="<?= base_url('/user/myLikes') ?>">
@@ -35,3 +37,4 @@
         </a>
     </nav>
 </aside>
+
