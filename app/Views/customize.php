@@ -24,6 +24,14 @@
         <div class="customization-panel">
             <div class="controls">
                 <div class="control-group">
+                    <label for="designName">Design Name:</label>
+                    <input type="text" id="designName" placeholder="Enter your design name">
+                </div>
+            </div>
+
+
+            <div class="controls">
+                <div class="control-group">
                     <label for="leftColorPicker">Back IEM Color:</label>
                     <input type="color" id="leftColorPicker" value="#ffffff">
                 </div>
@@ -129,9 +137,9 @@
                     <label for="categorySelect">Select Category:</label>
                     <select id="categorySelect">
                         <option value="none">None</option>
-                        <option value="vanilla_series">Vanilla Series</option>
-                        <option value="stage">Stage Series</option>
-                        <option value="prestige">Prestige</option>
+                        <option value="Vanilla Series">Vanilla Series</option>
+                        <option value="Stage Series">Stage Series</option>
+                        <option value="Prestige Series">Prestige Series</option>
                     </select>
                 </div>
 
@@ -249,6 +257,7 @@
     <script>
         document.getElementById("saveDesign").addEventListener("click", function() {
             const customizationData = {
+                designName: document.getElementById("designName").value.trim(), 
                 leftColor: document.getElementById("leftColorPicker").value,
                 rightColor: document.getElementById("rightColorPicker").value,
                 leftTexture: document.getElementById("leftTextureSelect").value,

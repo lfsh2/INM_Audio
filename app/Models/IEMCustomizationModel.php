@@ -10,7 +10,7 @@ class IEMCustomizationModel extends Model
     protected $primaryKey = 'id';
 
     protected $allowedFields = [
-        'user_id', 'left_color', 'right_color', 
+        'user_id','design_name', 'left_color', 'right_color', 
         'left_texture', 'right_texture', 'material', 
         'size', 'category', 'uploaded_image', 'created_at', 'updated_at'
     ];

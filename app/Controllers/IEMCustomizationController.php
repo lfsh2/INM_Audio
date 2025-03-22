@@ -13,6 +13,7 @@ class IEMCustomizationController extends BaseController
 
         $data = [
             'user_id'        => session()->get('user_id'), 
+            'design_name'    => $request->designName,
             'left_color'     => $request->leftColor,
             'right_color'    => $request->rightColor,
             'left_texture'   => $request->leftTexture,

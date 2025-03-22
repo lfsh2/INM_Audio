@@ -1,0 +1,235 @@
+INFO - 2025-03-22 04:44:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 04:46:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 04:46:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-22 04:46:37 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(27): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->shop()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 04:46:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 04:46:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 04:46:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 04:46:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 04:46:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 04:46:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 04:46:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 04:50:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 04:55:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 04:57:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 04:57:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 04:59:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 04:59:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-03-22 04:59:14 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\INM_Audio\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 C:\xampp\htdocs\INM_Audio\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('p:localhost', 'root', Object(SensitiveParameterValue), 'inm_audio', 3306, '', 0)
+#1 C:\xampp\htdocs\INM_Audio\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(true)
+#2 C:\xampp\htdocs\INM_Audio\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\INM_Audio\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\INM_Audio\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\INM_Audio\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\INM_Audio\app\Controllers\IEMCustomizationController.php(40): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(933): App\Controllers\IEMCustomizationController->myDesign()
+#8 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IEMCustomizationController))
+#9 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\INM_Audio\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\INM_Audio\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\INM_Audio\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\INM_Audio\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 C:\xampp\htdocs\INM_Audio\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(true)
+#1 C:\xampp\htdocs\INM_Audio\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\INM_Audio\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\INM_Audio\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\INM_Audio\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\xampp\htdocs\INM_Audio\app\Controllers\IEMCustomizationController.php(40): CodeIgniter\BaseModel->findAll()
+#6 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(933): App\Controllers\IEMCustomizationController->myDesign()
+#7 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IEMCustomizationController))
+#8 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\INM_Audio\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\INM_Audio\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\INM_Audio\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-03-22 04:59:14 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+[Method: GET, Route: user/myDesign]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `iem_customizations`
+WHERE `user_id` = :user_id:', [...], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\IEMCustomizationController.php(40): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\IEMCustomizationController->myDesign()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IEMCustomizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 04:59:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-03-22 04:59:24 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\INM_Audio\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 C:\xampp\htdocs\INM_Audio\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('p:localhost', 'root', Object(SensitiveParameterValue), 'inm_audio', 3306, '', 0)
+#1 C:\xampp\htdocs\INM_Audio\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(true)
+#2 C:\xampp\htdocs\INM_Audio\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\INM_Audio\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\INM_Audio\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\INM_Audio\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\INM_Audio\app\Controllers\IEMCustomizationController.php(40): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(933): App\Controllers\IEMCustomizationController->myDesign()
+#8 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IEMCustomizationController))
+#9 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\INM_Audio\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\INM_Audio\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\INM_Audio\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\INM_Audio\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 C:\xampp\htdocs\INM_Audio\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(true)
+#1 C:\xampp\htdocs\INM_Audio\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\INM_Audio\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\INM_Audio\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\INM_Audio\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\xampp\htdocs\INM_Audio\app\Controllers\IEMCustomizationController.php(40): CodeIgniter\BaseModel->findAll()
+#6 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(933): App\Controllers\IEMCustomizationController->myDesign()
+#7 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IEMCustomizationController))
+#8 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\INM_Audio\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\INM_Audio\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\INM_Audio\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-03-22 04:59:24 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+[Method: GET, Route: user/myDesign]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `iem_customizations`
+WHERE `user_id` = :user_id:', [...], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\IEMCustomizationController.php(40): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\IEMCustomizationController->myDesign()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IEMCustomizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 04:59:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-03-22 04:59:33 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\INM_Audio\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 C:\xampp\htdocs\INM_Audio\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('p:localhost', 'root', Object(SensitiveParameterValue), 'inm_audio', 3306, '', 0)
+#1 C:\xampp\htdocs\INM_Audio\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(true)
+#2 C:\xampp\htdocs\INM_Audio\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\INM_Audio\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\INM_Audio\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\INM_Audio\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\INM_Audio\app\Controllers\IEMCustomizationController.php(40): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(933): App\Controllers\IEMCustomizationController->myDesign()
+#8 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IEMCustomizationController))
+#9 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\INM_Audio\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\INM_Audio\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\INM_Audio\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\INM_Audio\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 C:\xampp\htdocs\INM_Audio\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(true)
+#1 C:\xampp\htdocs\INM_Audio\system\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\INM_Audio\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\INM_Audio\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\INM_Audio\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\xampp\htdocs\INM_Audio\app\Controllers\IEMCustomizationController.php(40): CodeIgniter\BaseModel->findAll()
+#6 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(933): App\Controllers\IEMCustomizationController->myDesign()
+#7 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IEMCustomizationController))
+#8 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\INM_Audio\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\INM_Audio\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\INM_Audio\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-03-22 04:59:33 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+[Method: GET, Route: user/myDesign]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(616): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `iem_customizations`
+WHERE `user_id` = :user_id:', [...], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\IEMCustomizationController.php(40): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\IEMCustomizationController->myDesign()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\IEMCustomizationController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 04:59:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 04:59:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 05:01:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 05:01:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 05:10:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 05:10:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 05:18:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 05:19:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 05:19:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 05:21:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 05:21:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 05:21:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 05:21:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 05:24:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 05:24:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 05:25:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 05:25:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 05:30:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 05:33:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 05:37:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 05:37:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 06:03:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 06:07:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 06:20:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 06:20:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 06:20:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 06:20:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 06:20:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 06:20:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 06:21:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 06:21:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 06:21:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 06:21:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 06:21:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 06:21:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-22 06:21:44 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(27): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->shop()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-22 06:21:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 06:24:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 06:24:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 06:24:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 06:24:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 06:24:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 06:25:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 06:25:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-22 06:25:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

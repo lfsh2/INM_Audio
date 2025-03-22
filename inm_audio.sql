@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 14, 2025 at 07:39 PM
+-- Generation Time: Mar 18, 2025 at 09:02 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -43,7 +43,7 @@ CREATE TABLE `admin_accounts` (
 --
 
 INSERT INTO `admin_accounts` (`admin_account_id`, `profile_pic`, `username`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'admin', 'admin@gmail.com', '$2y$10$0tyqlNGA/EKnKwVmCnrqkuTo1H7lB6JnGYbUooeb5vBIYp2BD9Ug6', '', '2025-02-19 06:38:42', '2025-03-13 01:32:59');
+(1, NULL, 'admin', 'admin@gmail.com', '$2y$10$0tyqlNGA/EKnKwVmCnrqkuTo1H7lB6JnGYbUooeb5vBIYp2BD9Ug6', '', '2025-02-19 06:38:42', '2025-03-17 08:52:03');
 
 -- --------------------------------------------------------
 
@@ -134,6 +134,35 @@ INSERT INTO `comments` (`id`, `post_id`, `user_name`, `comment_text`, `created_a
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `iem_customizations`
+--
+
+CREATE TABLE `iem_customizations` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `left_color` varchar(7) DEFAULT NULL,
+  `right_color` varchar(7) DEFAULT NULL,
+  `left_texture` varchar(255) DEFAULT NULL,
+  `right_texture` varchar(255) DEFAULT NULL,
+  `uploaded_image` varchar(255) DEFAULT NULL,
+  `captured_image` varchar(255) DEFAULT NULL,
+  `material` varchar(20) DEFAULT NULL,
+  `size` varchar(10) DEFAULT NULL,
+  `category` varchar(50) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `iem_customizations`
+--
+
+INSERT INTO `iem_customizations` (`id`, `user_id`, `left_color`, `right_color`, `left_texture`, `right_texture`, `uploaded_image`, `captured_image`, `material`, `size`, `category`, `created_at`, `updated_at`) VALUES
+(1, 1, '#ffffff', '#ffffff', 'anime1.jpeg', 'anime5.jpeg', NULL, NULL, 'glossy', 'large', 'prestige', '2025-03-17 23:33:08', '2025-03-18 07:33:08');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `likes`
 --
 
@@ -194,13 +223,15 @@ INSERT INTO `orders` (`order_id`, `user_id`, `product_id`, `order_status`, `quan
 (2, 1, 0, 'pending', 1, 8650.00, 'PayMongo', NULL, NULL, NULL, NULL, '2025-03-14 07:03:01'),
 (3, 1, 0, 'cancelled', 1, 8650.00, 'PayMongo', NULL, NULL, NULL, '2025-03-14', '2025-03-14 07:03:24'),
 (4, 1, 0, 'cancelled', 1, 8650.00, 'PayMongo', NULL, NULL, NULL, '2025-03-14', '2025-03-14 07:05:39'),
-(5, 1, 0, 'cancelled', 1, 8650.00, 'PayMongo', NULL, NULL, NULL, '2025-03-14', '2025-03-14 07:11:10'),
-(6, 1, 0, 'cancelled', 1, 8650.00, 'PayMongo', NULL, NULL, NULL, '2025-03-14', '2025-03-14 07:17:41'),
-(7, 1, 0, 'cancelled', 1, 8650.00, 'PayMongo', NULL, NULL, NULL, '2025-03-14', '2025-03-14 07:19:32'),
+(5, 1, 0, 'complete', 1, 8650.00, 'PayMongo', NULL, NULL, NULL, '2025-03-14', '2025-03-14 07:11:10'),
+(6, 1, 0, 'completed', 1, 8650.00, 'PayMongo', NULL, NULL, NULL, '2025-03-14', '2025-03-14 07:17:41'),
+(7, 1, 0, 'confirmed', 1, 8650.00, 'PayMongo', NULL, NULL, NULL, '2025-03-14', '2025-03-14 07:19:32'),
 (8, 1, 0, 'pending', 1, 8650.00, 'PayMongo', NULL, NULL, NULL, NULL, '2025-03-14 07:19:58'),
 (9, 1, 0, 'cancelled', 1, 8650.00, 'PayMongo', NULL, NULL, NULL, '2025-03-14', '2025-03-14 07:20:08'),
 (10, 1, 0, 'cancelled', 1, 8650.00, 'PayMongo', NULL, NULL, NULL, '2025-03-14', '2025-03-14 07:23:46'),
-(11, 1, 0, 'cancelled', 2, 17300.00, 'PayMongo', NULL, NULL, NULL, '2025-03-14', '2025-03-14 07:24:43');
+(11, 1, 0, 'cancelled', 2, 17300.00, 'PayMongo', NULL, NULL, NULL, '2025-03-14', '2025-03-14 07:24:43'),
+(12, 1, 0, 'cancelled', 2, 17300.00, 'PayMongo', NULL, NULL, NULL, '2025-03-17', '2025-03-16 23:31:31'),
+(13, 1, 0, 'cancelled', 2, 17300.00, 'PayMongo', NULL, NULL, NULL, '2025-03-17', '2025-03-16 23:41:12');
 
 -- --------------------------------------------------------
 
@@ -396,6 +427,27 @@ INSERT INTO `user_accounts` (`user_id`, `profile_pic`, `firstname`, `lastname`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `user_designs`
+--
+
+CREATE TABLE `user_designs` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `category` varchar(100) DEFAULT NULL,
+  `left_color` varchar(7) DEFAULT NULL,
+  `right_color` varchar(7) DEFAULT NULL,
+  `left_texture` varchar(255) DEFAULT NULL,
+  `right_texture` varchar(255) DEFAULT NULL,
+  `uploaded_image` varchar(255) DEFAULT NULL,
+  `material` varchar(50) DEFAULT NULL,
+  `size` varchar(50) DEFAULT NULL,
+  `design_image` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user_tokens`
 --
 
@@ -443,6 +495,12 @@ ALTER TABLE `category`
 ALTER TABLE `comments`
   ADD PRIMARY KEY (`id`),
   ADD KEY `post_id` (`post_id`);
+
+--
+-- Indexes for table `iem_customizations`
+--
+ALTER TABLE `iem_customizations`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `likes`
@@ -507,6 +565,12 @@ ALTER TABLE `user_accounts`
   ADD PRIMARY KEY (`user_id`);
 
 --
+-- Indexes for table `user_designs`
+--
+ALTER TABLE `user_designs`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `user_tokens`
 --
 ALTER TABLE `user_tokens`
@@ -548,6 +612,12 @@ ALTER TABLE `comments`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
+-- AUTO_INCREMENT for table `iem_customizations`
+--
+ALTER TABLE `iem_customizations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `likes`
 --
 ALTER TABLE `likes`
@@ -563,7 +633,7 @@ ALTER TABLE `orderdetails`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `placedorders`
@@ -600,6 +670,12 @@ ALTER TABLE `shippings`
 --
 ALTER TABLE `user_accounts`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `user_designs`
+--
+ALTER TABLE `user_designs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_tokens`
