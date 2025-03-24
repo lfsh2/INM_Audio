@@ -2254,3 +2254,792 @@ INFO - 2025-03-24 17:59:50 --> Session: Class initialized using 'CodeIgniter\Ses
 INFO - 2025-03-24 17:59:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2025-03-24 17:59:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2025-03-24 18:00:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 18:08:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-24 18:08:34 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(27): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->shop()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-24 18:08:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-24 18:08:40 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(125): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->addToCart('4')
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-24 18:08:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-24 18:08:40 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(27): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->shop()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-24 18:08:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 18:08:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 18:13:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 18:14:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 18:14:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 18:14:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 18:15:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 18:16:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 18:18:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 18:18:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 18:18:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 18:18:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 18:18:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-24 18:18:21 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(27): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->shop()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-24 18:18:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 18:19:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 18:19:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 18:19:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 18:19:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 18:19:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 18:20:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 18:20:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 18:20:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-24 18:20:51 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(27): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->shop()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-24 18:20:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 18:20:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 18:20:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 18:20:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 18:23:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-03-24 18:23:48 --> Error: Class "App\Models\CartModel" not found
+[Method: POST, Route: checkout]
+in APPPATH\Controllers\PaymentController.php on line 25.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PaymentController->checkout()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-24 18:27:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-03-24 18:28:03 --> TypeError: json_decode(): Argument #1 ($json) must be of type string, array given
+[Method: POST, Route: checkout]
+in APPPATH\Controllers\PaymentController.php on line 17.
+ 1 APPPATH\Controllers\PaymentController.php(17): json_decode([...], true)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PaymentController->checkout()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-24 18:29:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 18:31:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 18:31:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-03-24 18:31:56 --> TypeError: Cannot access offset of type string on string
+[Method: POST, Route: checkout]
+in APPPATH\Controllers\PaymentController.php on line 34.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PaymentController->checkout()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-24 19:03:03 --> TypeError: json_decode(): Argument #1 ($json) must be of type string, array given
+[Method: POST, Route: checkout]
+in APPPATH\Controllers\PaymentController.php on line 17.
+ 1 APPPATH\Controllers\PaymentController.php(17): json_decode([...], true)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PaymentController->checkout()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-24 19:03:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-03-24 19:03:10 --> TypeError: json_decode(): Argument #1 ($json) must be of type string, array given
+[Method: POST, Route: checkout]
+in APPPATH\Controllers\PaymentController.php on line 17.
+ 1 APPPATH\Controllers\PaymentController.php(17): json_decode([...], true)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PaymentController->checkout()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-24 19:10:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:10:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-03-24 19:10:26 --> TypeError: Cannot access offset of type string on string
+[Method: POST, Route: checkout]
+in APPPATH\Controllers\PaymentController.php on line 34.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PaymentController->checkout()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-24 19:11:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-03-24 19:11:39 --> TypeError: Cannot access offset of type string on string
+[Method: POST, Route: checkout]
+in APPPATH\Controllers\PaymentController.php on line 34.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PaymentController->checkout()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-24 19:12:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:12:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:12:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:12:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:12:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:12:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:12:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:12:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:12:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:13:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-03-24 19:13:07 --> TypeError: Cannot access offset of type string on string
+[Method: POST, Route: checkout]
+in APPPATH\Controllers\PaymentController.php on line 38.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PaymentController->checkout()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-24 19:15:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-03-24 19:15:26 --> ParseError: syntax error, unexpected token "public"
+[Method: POST, Route: checkout]
+in APPPATH\Controllers\PaymentController.php on line 88.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Controllers\\PaymentController.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\PaymentController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\PaymentController')
+ 4 SYSTEMPATH\CodeIgniter.php(887): class_exists('\\App\\Controllers\\PaymentController', true)
+ 5 SYSTEMPATH\CodeIgniter.php(496): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-24 19:17:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-03-24 19:17:45 --> TypeError: Cannot access offset of type string on string
+[Method: POST, Route: checkout]
+in APPPATH\Controllers\PaymentController.php on line 38.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PaymentController->checkout()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-24 19:19:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:19:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:19:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-03-24 19:19:54 --> mysqli_sql_exception: Unknown column 'cart_item_id' in 'where clause' in C:\xampp\htdocs\INM_Audio\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\INM_Audio\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\INM_Audio\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\INM_Audio\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\INM_Audio\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\INM_Audio\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\INM_Audio\system\BaseModel.php(714): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\INM_Audio\app\Controllers\PaymentController.php(38): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(933): App\Controllers\PaymentController->checkout()
+#8 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+#9 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\INM_Audio\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\INM_Audio\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\INM_Audio\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2025-03-24 19:19:54 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'cart_item_id' in 'where clause'
+[Method: POST, Route: checkout]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `carts`
+WHERE `cart_item_id` = :cart_item_id:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\PaymentController.php(38): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PaymentController->checkout()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-24 19:19:54 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'cart_item_id' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `carts`
+WHERE `cart_item_id` = \'5\'
+ LIMIT 1')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `carts`
+WHERE `cart_item_id` = \'5\'
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `carts`
+WHERE `cart_item_id` = :cart_item_id:
+ LIMIT 1', [...], false)
+ 4 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 6 APPPATH\Controllers\PaymentController.php(38): CodeIgniter\BaseModel->first()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PaymentController->checkout()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-24 19:19:54 --> [Caused by] mysqli_sql_exception: Unknown column 'cart_item_id' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT *
+FROM `carts`
+WHERE `cart_item_id` = \'5\'
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `carts`
+WHERE `cart_item_id` = \'5\'
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `carts`
+WHERE `cart_item_id` = \'5\'
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `carts`
+WHERE `cart_item_id` = :cart_item_id:
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\PaymentController.php(38): CodeIgniter\BaseModel->first()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PaymentController->checkout()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-24 19:22:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-03-24 19:22:06 --> mysqli_sql_exception: Unknown column 'cart_item_id' in 'where clause' in C:\xampp\htdocs\INM_Audio\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\INM_Audio\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\INM_Audio\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\INM_Audio\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\INM_Audio\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\INM_Audio\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\INM_Audio\system\BaseModel.php(714): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\INM_Audio\app\Controllers\PaymentController.php(38): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(933): App\Controllers\PaymentController->checkout()
+#8 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+#9 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\INM_Audio\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\INM_Audio\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\INM_Audio\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2025-03-24 19:22:06 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'cart_item_id' in 'where clause'
+[Method: POST, Route: checkout]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `carts`
+WHERE `cart_item_id` = :cart_item_id:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\PaymentController.php(38): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PaymentController->checkout()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-24 19:22:06 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'cart_item_id' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `carts`
+WHERE `cart_item_id` = \'5\'
+ LIMIT 1')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `carts`
+WHERE `cart_item_id` = \'5\'
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `carts`
+WHERE `cart_item_id` = :cart_item_id:
+ LIMIT 1', [...], false)
+ 4 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 6 APPPATH\Controllers\PaymentController.php(38): CodeIgniter\BaseModel->first()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PaymentController->checkout()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-24 19:22:06 --> [Caused by] mysqli_sql_exception: Unknown column 'cart_item_id' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT *
+FROM `carts`
+WHERE `cart_item_id` = \'5\'
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `carts`
+WHERE `cart_item_id` = \'5\'
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `carts`
+WHERE `cart_item_id` = \'5\'
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `carts`
+WHERE `cart_item_id` = :cart_item_id:
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\PaymentController.php(38): CodeIgniter\BaseModel->first()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PaymentController->checkout()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-24 19:26:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:26:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:27:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-03-24 19:27:03 --> ErrorException: Undefined array key "price"
+[Method: POST, Route: checkout]
+in APPPATH\Controllers\PaymentController.php on line 39.
+ 1 APPPATH\Controllers\PaymentController.php(39): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "price"', 'C:\\xampp\\htdocs\\INM_Audio\\app\\Controllers\\PaymentController.php', 39)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PaymentController->checkout()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-24 19:27:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-03-24 19:27:27 --> ErrorException: Undefined array key "price"
+[Method: POST, Route: checkout]
+in APPPATH\Controllers\PaymentController.php on line 39.
+ 1 APPPATH\Controllers\PaymentController.php(39): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "price"', 'C:\\xampp\\htdocs\\INM_Audio\\app\\Controllers\\PaymentController.php', 39)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PaymentController->checkout()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-24 19:29:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:29:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-03-24 19:29:24 --> BadMethodCallException: Call to undefined method App\Models\OrderModel::createOrder
+[Method: POST, Route: checkout]
+in SYSTEMPATH\Model.php on line 932.
+ 1 APPPATH\Controllers\PaymentController.php(47): CodeIgniter\Model->__call('createOrder', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PaymentController->checkout()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-24 19:32:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-03-24 19:32:58 --> BadMethodCallException: Call to undefined method App\Models\OrderModel::createOrder
+[Method: POST, Route: checkout]
+in SYSTEMPATH\Model.php on line 932.
+ 1 APPPATH\Controllers\PaymentController.php(47): CodeIgniter\Model->__call('createOrder', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PaymentController->checkout()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-24 19:33:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:33:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:33:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:33:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:33:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-03-24 19:33:13 --> BadMethodCallException: Call to undefined method App\Models\OrderModel::createOrder
+[Method: POST, Route: checkout]
+in SYSTEMPATH\Model.php on line 932.
+ 1 APPPATH\Controllers\PaymentController.php(47): CodeIgniter\Model->__call('createOrder', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PaymentController->checkout()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-24 19:41:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:41:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:41:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-03-24 19:41:49 --> mysqli_sql_exception: Column 'shipping_phone' cannot be null in C:\xampp\htdocs\INM_Audio\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\INM_Audio\system\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `or...', 0)
+#1 C:\xampp\htdocs\INM_Audio\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `or...')
+#2 C:\xampp\htdocs\INM_Audio\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `or...')
+#3 C:\xampp\htdocs\INM_Audio\system\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `or...', Array, false)
+#4 C:\xampp\htdocs\INM_Audio\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\INM_Audio\system\BaseModel.php(840): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\INM_Audio\system\Model.php(802): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\INM_Audio\app\Models\OrderModel.php(103): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\INM_Audio\app\Controllers\PaymentController.php(51): App\Models\OrderModel->createOrder('1', Array, 'shan', NULL, 'dyan lang')
+#9 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(933): App\Controllers\PaymentController->checkout()
+#10 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+#11 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\INM_Audio\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\INM_Audio\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp\htdocs\INM_Audio\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+ERROR - 2025-03-24 19:41:49 --> mysqli_sql_exception: Table 'inm_audio.order_items' doesn't exist in C:\xampp\htdocs\INM_Audio\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\INM_Audio\system\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `or...', 0)
+#1 C:\xampp\htdocs\INM_Audio\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `or...')
+#2 C:\xampp\htdocs\INM_Audio\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `or...')
+#3 C:\xampp\htdocs\INM_Audio\system\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `or...', Array, false)
+#4 C:\xampp\htdocs\INM_Audio\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\INM_Audio\system\BaseModel.php(840): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\INM_Audio\system\Model.php(802): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\INM_Audio\app\Models\OrderModel.php(117): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\INM_Audio\app\Controllers\PaymentController.php(51): App\Models\OrderModel->createOrder('1', Array, 'shan', NULL, 'dyan lang')
+#9 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(933): App\Controllers\PaymentController->checkout()
+#10 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+#11 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\INM_Audio\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\INM_Audio\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp\htdocs\INM_Audio\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+ERROR - 2025-03-24 19:41:52 --> PayMongo API Error: Client error: `POST https://api.paymongo.com/v1/checkout_sessions` resulted in a `400 Bad Request` response:
+{"errors":[{"code":"parameter_data_type_invalid","detail":"line_items.0.quantity should be an integer.","source":{"point (truncated...)
+
+INFO - 2025-03-24 19:41:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:43:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:43:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:43:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:43:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:44:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-03-24 19:44:06 --> mysqli_sql_exception: Column 'shipping_phone' cannot be null in C:\xampp\htdocs\INM_Audio\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\INM_Audio\system\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `or...', 0)
+#1 C:\xampp\htdocs\INM_Audio\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `or...')
+#2 C:\xampp\htdocs\INM_Audio\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `or...')
+#3 C:\xampp\htdocs\INM_Audio\system\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `or...', Array, false)
+#4 C:\xampp\htdocs\INM_Audio\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\INM_Audio\system\BaseModel.php(840): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\INM_Audio\system\Model.php(802): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\INM_Audio\app\Models\OrderModel.php(103): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\INM_Audio\app\Controllers\PaymentController.php(51): App\Models\OrderModel->createOrder('1', Array, 'dishan', NULL, 'dyan lang')
+#9 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(933): App\Controllers\PaymentController->checkout()
+#10 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+#11 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\INM_Audio\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\INM_Audio\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp\htdocs\INM_Audio\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+ERROR - 2025-03-24 19:44:06 --> mysqli_sql_exception: Table 'inm_audio.order_items' doesn't exist in C:\xampp\htdocs\INM_Audio\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\INM_Audio\system\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `or...', 0)
+#1 C:\xampp\htdocs\INM_Audio\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `or...')
+#2 C:\xampp\htdocs\INM_Audio\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `or...')
+#3 C:\xampp\htdocs\INM_Audio\system\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `or...', Array, false)
+#4 C:\xampp\htdocs\INM_Audio\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\INM_Audio\system\BaseModel.php(840): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\INM_Audio\system\Model.php(802): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\INM_Audio\app\Models\OrderModel.php(117): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\INM_Audio\app\Controllers\PaymentController.php(51): App\Models\OrderModel->createOrder('1', Array, 'dishan', NULL, 'dyan lang')
+#9 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(933): App\Controllers\PaymentController->checkout()
+#10 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+#11 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\INM_Audio\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\INM_Audio\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp\htdocs\INM_Audio\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+ERROR - 2025-03-24 19:44:07 --> PayMongo API Error: Client error: `POST https://api.paymongo.com/v1/checkout_sessions` resulted in a `400 Bad Request` response:
+{"errors":[{"code":"parameter_data_type_invalid","detail":"line_items.0.quantity should be an integer.","source":{"point (truncated...)
+
+INFO - 2025-03-24 19:44:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:44:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:44:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:44:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:44:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:44:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:48:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:48:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-03-24 19:48:41 --> mysqli_sql_exception: Column 'shipping_phone' cannot be null in C:\xampp\htdocs\INM_Audio\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\INM_Audio\system\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `or...', 0)
+#1 C:\xampp\htdocs\INM_Audio\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `or...')
+#2 C:\xampp\htdocs\INM_Audio\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `or...')
+#3 C:\xampp\htdocs\INM_Audio\system\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `or...', Array, false)
+#4 C:\xampp\htdocs\INM_Audio\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\INM_Audio\system\BaseModel.php(840): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\INM_Audio\system\Model.php(802): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\INM_Audio\app\Models\OrderModel.php(103): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\INM_Audio\app\Controllers\PaymentController.php(50): App\Models\OrderModel->createOrder('1', Array, 'shan', NULL, 'asdsa')
+#9 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(933): App\Controllers\PaymentController->checkout()
+#10 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+#11 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\INM_Audio\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\INM_Audio\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp\htdocs\INM_Audio\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+ERROR - 2025-03-24 19:48:41 --> mysqli_sql_exception: Table 'inm_audio.order_items' doesn't exist in C:\xampp\htdocs\INM_Audio\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\INM_Audio\system\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `or...', 0)
+#1 C:\xampp\htdocs\INM_Audio\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `or...')
+#2 C:\xampp\htdocs\INM_Audio\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `or...')
+#3 C:\xampp\htdocs\INM_Audio\system\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `or...', Array, false)
+#4 C:\xampp\htdocs\INM_Audio\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\INM_Audio\system\BaseModel.php(840): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\INM_Audio\system\Model.php(802): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\INM_Audio\app\Models\OrderModel.php(117): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\INM_Audio\app\Controllers\PaymentController.php(50): App\Models\OrderModel->createOrder('1', Array, 'shan', NULL, 'asdsa')
+#9 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(933): App\Controllers\PaymentController->checkout()
+#10 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+#11 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\INM_Audio\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\INM_Audio\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp\htdocs\INM_Audio\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+ERROR - 2025-03-24 19:48:42 --> PayMongo API Error: Client error: `POST https://api.paymongo.com/v1/checkout_sessions` resulted in a `400 Bad Request` response:
+{"errors":[{"code":"parameter_data_type_invalid","detail":"line_items.0.quantity should be an integer.","source":{"point (truncated...)
+
+INFO - 2025-03-24 19:48:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:48:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:48:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:49:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-03-24 19:49:00 --> mysqli_sql_exception: Column 'shipping_phone' cannot be null in C:\xampp\htdocs\INM_Audio\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\INM_Audio\system\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `or...', 0)
+#1 C:\xampp\htdocs\INM_Audio\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `or...')
+#2 C:\xampp\htdocs\INM_Audio\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `or...')
+#3 C:\xampp\htdocs\INM_Audio\system\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `or...', Array, false)
+#4 C:\xampp\htdocs\INM_Audio\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\INM_Audio\system\BaseModel.php(840): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\INM_Audio\system\Model.php(802): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\INM_Audio\app\Models\OrderModel.php(103): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\INM_Audio\app\Controllers\PaymentController.php(50): App\Models\OrderModel->createOrder('1', Array, 'shan', NULL, 'ggnfgnfgfn')
+#9 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(933): App\Controllers\PaymentController->checkout()
+#10 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+#11 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\INM_Audio\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\INM_Audio\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp\htdocs\INM_Audio\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+ERROR - 2025-03-24 19:49:00 --> mysqli_sql_exception: Table 'inm_audio.order_items' doesn't exist in C:\xampp\htdocs\INM_Audio\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\INM_Audio\system\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `or...', 0)
+#1 C:\xampp\htdocs\INM_Audio\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `or...')
+#2 C:\xampp\htdocs\INM_Audio\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `or...')
+#3 C:\xampp\htdocs\INM_Audio\system\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `or...', Array, false)
+#4 C:\xampp\htdocs\INM_Audio\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\INM_Audio\system\BaseModel.php(840): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\INM_Audio\system\Model.php(802): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\INM_Audio\app\Models\OrderModel.php(117): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\INM_Audio\app\Controllers\PaymentController.php(50): App\Models\OrderModel->createOrder('1', Array, 'shan', NULL, 'ggnfgnfgfn')
+#9 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(933): App\Controllers\PaymentController->checkout()
+#10 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+#11 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\INM_Audio\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\INM_Audio\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp\htdocs\INM_Audio\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+ERROR - 2025-03-24 19:49:01 --> PayMongo API Error: Client error: `POST https://api.paymongo.com/v1/checkout_sessions` resulted in a `400 Bad Request` response:
+{"errors":[{"code":"parameter_data_type_invalid","detail":"line_items.0.quantity should be an integer.","source":{"point (truncated...)
+
+INFO - 2025-03-24 19:49:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:54:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:54:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-03-24 19:54:21 --> mysqli_sql_exception: Column 'shipping_phone' cannot be null in C:\xampp\htdocs\INM_Audio\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\INM_Audio\system\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `or...', 0)
+#1 C:\xampp\htdocs\INM_Audio\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `or...')
+#2 C:\xampp\htdocs\INM_Audio\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `or...')
+#3 C:\xampp\htdocs\INM_Audio\system\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `or...', Array, false)
+#4 C:\xampp\htdocs\INM_Audio\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\INM_Audio\system\BaseModel.php(840): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\INM_Audio\system\Model.php(802): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\INM_Audio\app\Models\OrderModel.php(103): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\INM_Audio\app\Controllers\PaymentController.php(49): App\Models\OrderModel->createOrder('1', Array, 'sad', NULL, 'asd')
+#9 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(933): App\Controllers\PaymentController->checkout()
+#10 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+#11 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\INM_Audio\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\INM_Audio\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp\htdocs\INM_Audio\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+ERROR - 2025-03-24 19:54:21 --> mysqli_sql_exception: Table 'inm_audio.order_items' doesn't exist in C:\xampp\htdocs\INM_Audio\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\INM_Audio\system\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `or...', 0)
+#1 C:\xampp\htdocs\INM_Audio\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `or...')
+#2 C:\xampp\htdocs\INM_Audio\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `or...')
+#3 C:\xampp\htdocs\INM_Audio\system\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `or...', Array, false)
+#4 C:\xampp\htdocs\INM_Audio\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\INM_Audio\system\BaseModel.php(840): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\INM_Audio\system\Model.php(802): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\INM_Audio\app\Models\OrderModel.php(117): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\INM_Audio\app\Controllers\PaymentController.php(49): App\Models\OrderModel->createOrder('1', Array, 'sad', NULL, 'asd')
+#9 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(933): App\Controllers\PaymentController->checkout()
+#10 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+#11 C:\xampp\htdocs\INM_Audio\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\xampp\htdocs\INM_Audio\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#13 C:\xampp\htdocs\INM_Audio\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 C:\xampp\htdocs\INM_Audio\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+ERROR - 2025-03-24 19:54:22 --> PayMongo API Error: Client error: `POST https://api.paymongo.com/v1/checkout_sessions` resulted in a `400 Bad Request` response:
+{"errors":[{"code":"parameter_data_type_invalid","detail":"line_items.0.quantity should be an integer.","source":{"point (truncated...)
+
+INFO - 2025-03-24 19:54:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:54:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:54:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:55:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-03-24 19:55:03 --> BadMethodCallException: Call to undefined method App\Models\OrderModel::createOrder
+[Method: POST, Route: checkout]
+in SYSTEMPATH\Model.php on line 932.
+ 1 APPPATH\Controllers\PaymentController.php(49): CodeIgniter\Model->__call('createOrder', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PaymentController->checkout()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PaymentController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-24 19:55:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:55:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:55:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:55:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-24 19:55:44 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(27): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->shop()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-24 19:55:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-24 19:55:49 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(125): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->addToCart('6')
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-24 19:55:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-24 19:55:49 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(27): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->shop()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-24 19:55:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-24 19:55:50 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(27): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->shop()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-24 19:55:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:56:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:56:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:56:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:56:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:57:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:58:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:58:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:58:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:58:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:58:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-24 19:58:56 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(27): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->shop()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-24 19:58:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-24 19:58:59 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(125): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->addToCart('4')
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-24 19:59:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-03-24 19:59:00 --> [DEPRECATED] Optional parameter $field declared before required parameter $toRemove is implicitly treated as a required parameter in APPPATH\Models\Gear_Product_Model.php on line 61.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(317): include_once('C:\\xampp\\htdocs\\INM_Audio\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\INM_Audio\\app\\Models\\Gear_Product_Model.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\Gear_Product_Model')
+ 4 APPPATH\Controllers\Helpers\LoadersController.php(193): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\Gear_Product_Model')
+ 5 APPPATH\Controllers\Helpers\LoadersController.php(76): App\Controllers\Helpers\LoadersController->loadGears()
+ 6 APPPATH\Controllers\ShopController.php(27): App\Controllers\Helpers\LoadersController->requireMethod('gears')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ShopController->shop()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ShopController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-03-24 19:59:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:59:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:59:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-24 19:59:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

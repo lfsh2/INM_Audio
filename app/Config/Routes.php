@@ -53,7 +53,7 @@ $routes->group('', function($routes) {
     // post -------------------------------------------------------------
         $routes->post('/cart/add/(:num)', 'ShopController::addToCart/$1');
         $routes->post('/cart/delete', 'ShopController::removeAllItems');
-        $routes->post('/orderPlaced', 'ShopController::placeOrder');
+      //  $routes->post('/orderPlaced', 'ShopController::placeOrder');
         
     // get -------------------------------------------------------------
         $routes->get('/shop', 'ShopController::shop');

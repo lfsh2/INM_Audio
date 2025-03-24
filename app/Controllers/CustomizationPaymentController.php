@@ -52,7 +52,7 @@ class CustomizationPaymentController extends Controller
                         'line_items' => [
                             [
                                 'name'     => 'Customized IEM',
-                                'amount'   => (int) ($price * 100), // Convert to cents
+                                'amount'   => (int) ($price * 100),
                                 'currency' => 'PHP',
                                 'quantity' => 1
                             ]

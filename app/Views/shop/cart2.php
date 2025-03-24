@@ -14,43 +14,44 @@
     <script defer src="<?= base_url('assets/js/script.js') ?>"></script>
     <style>
         .total-checkout {
-        background-color: #4CAF50;
-        color: #fff;
-        border: none;
-        padding: 12px 40px;
-        border-radius: 8px;
-        font-size: 18px;
-        cursor: pointer;
-        transition: background 0.3s ease, transform 0.2s ease;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 12px 40px;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
 
-    .total-checkout:hover {
-        background-color: #45a049;
-        transform: translateY(-3px); 
-    }
+        .total-checkout:hover {
+            background-color: #45a049;
+            transform: translateY(-3px);
+        }
 
-    .total-checkout:active {
-        background-color: #3e8e41;
-        transform: scale(0.95);
-    }
-    textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    resize: none;
-}
-input[type="text"] {
-        width: 100%;
-        padding: 10px;
-        margin: 10px 0;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 16px;
-    }
+        .total-checkout:active {
+            background-color: #3e8e41;
+            transform: scale(0.95);
+        }
 
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
     </style>
 </head>
 
@@ -69,33 +70,27 @@ input[type="text"] {
         <div class="carts">
             <div class="cart-container">
                 <form action="" class="card-block" id="cartForm" method="get">
-                    <?php if (isset($cart_items) && !empty($cart_items)) : ?>
-                        <?php ?>
-                        <?php foreach ($cart_items as $item) : ?>
-                            <div class="card">
-                                <div class="img-block">
-                                    <img src="<?= esc($item['image_url']) ?>" alt="">
+                    <?php foreach ($cart_items as $item) : ?>
+                        <div class="card">
+                            <input type="checkbox" class="itemCheckbox" name="selected_items[]" value="<?= esc($item['cart_item_id']) ?>">
+                            <div class="img-block">
+                                <img src="<?= esc($item['image_url']) ?>" alt="">
+                            </div>
+
+                            <div class="card-info">
+                                <div class="card-top">
+                                    <h2><?= esc($item['product_name']) ?></h2>
+                                    <p>Quantity: <?= esc($item['quantity']) ?></p>
                                 </div>
 
-                                <div class="card-info">
-                                    <div class="card-top">
-                                        <h2><?= $item['product_name'] ?></h2>
-                                        <p>Quantity: <?= esc($item['quantity']) ?></p>
-                                    </div>
-
-                                    <div class="card-bottom">
-                                        <a href="<?= base_url('/cart/delete/' . $item['cart_item_id']) ?>">Delete</a>
-                                        <p>₱<?= esc(number_format($item['price'], 2)) ?></p>
-                                    </div>
+                                <div class="card-bottom">
+                                    <a href="<?= base_url('/cart/delete/' . $item['cart_item_id']) ?>">Delete</a>
+                                    <p>₱<?= esc(number_format($item['price'], 2)) ?></p>
                                 </div>
                             </div>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <div class="empty-card">
-                            <p>Your cart is empty</p>
-                            <a href="<?= base_url('/shop') ?>" id="empty" class="empty">Buy now</a>
                         </div>
-                    <?php endif; ?>
+                    <?php endforeach; ?>
+
                 </form>
             </div>
 
@@ -112,9 +107,10 @@ input[type="text"] {
 
                 <div class="total">
                     <p><span>Subtotal</span> <span>₱<?= esc(number_format($totalPrice, 2)) ?></span></p>
-                    <form action="<?= base_url('/checkout') ?>" method="post">
-                        <input type="hidden" name="total_price" value="<?= esc($totalPrice) ?>">
-                        <input type="hidden" name="total_quantity" value="<?= esc($totalQuantity) ?>">
+                    <form id="checkoutForm" action="<?= base_url('/checkout') ?>" method="post">
+                        <input type="hidden" name="total_price" id="totalPrice" value="<?= esc($totalPrice) ?>">
+                        <input type="hidden" name="total_quantity" id="totalQuantity" value="<?= esc($totalQuantity) ?>">
+                        <div id="selectedItemsContainer"></div> 
 
                         <label for="name">Full Name:</label>
                         <input type="text" name="shipping_name" id="name" placeholder="Enter your full name" required>
@@ -124,6 +120,7 @@ input[type="text"] {
 
                         <button type="submit" class="total-checkout">🛒 Check Out</button>
                     </form>
+
                 </div>
             </div>
         </div>
@@ -133,61 +130,65 @@ input[type="text"] {
 
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const selectAll = document.getElementById('selectAll');
-            const checkboxes = document.querySelectorAll('.itemCheckbox');
-            const deleteBtn = document.getElementById('deleteBtn');
+    document.addEventListener("DOMContentLoaded", function () {
+    const checkboxes = document.querySelectorAll(".itemCheckbox");
+    const totalItemsSpan = document.querySelector(".details span:nth-child(2)");
+    const subtotalSpan = document.querySelector(".details span:last-child");
+    const totalPriceSpan = document.querySelector(".total p span:last-child");
+    const totalQuantityInput = document.getElementById("totalQuantity");
+    const totalPriceInput = document.getElementById("totalPrice");
+    const checkoutForm = document.getElementById("checkoutForm");
+    const selectedItemsContainer = document.getElementById("selectedItemsContainer");
 
-            function toggleDeleteButton() {
-                const anyChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
-                deleteBtn.style.display = anyChecked ? 'block' : 'none';
+    function updateSummary() {
+        let totalItems = 0;
+        let totalPrice = 0;
+
+        selectedItemsContainer.innerHTML = "";
+
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                let card = checkbox.closest(".card");
+                let price = parseFloat(card.querySelector(".card-bottom p").textContent.replace("₱", "").replace(",", ""));
+                let quantity = parseInt(card.querySelector(".card-top p").textContent.replace("Quantity: ", ""));
+
+                totalItems += quantity;
+                totalPrice += price;
+
+                let hiddenInput = document.createElement("input");
+                hiddenInput.type = "hidden";
+                hiddenInput.name = "selected_items[]";
+                hiddenInput.value = checkbox.value;
+                selectedItemsContainer.appendChild(hiddenInput);
             }
-
-            selectAll.addEventListener('click', function() {
-                checkboxes.forEach(checkbox => {
-                    checkbox.checked = this.checked;
-                });
-                toggleDeleteButton();
-            });
-
-            checkboxes.forEach(checkbox => {
-                checkbox.addEventListener('change', toggleDeleteButton);
-            });
-
-            deleteBtn.addEventListener('click', function() {
-                let selectedItems = [];
-                checkboxes.forEach(checkbox => {
-                    if (checkbox.checked) {
-                        selectedItems.push(checkbox.value);
-                    }
-                });
-
-                if (selectedItems.length > 0) {
-                    if (confirm('Are you sure you want to delete the selected items?')) {
-                        fetch('<?php echo base_url('cart/deleteItems'); ?>', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json'
-                                },
-                                body: JSON.stringify({
-                                    selected_items: selectedItems
-                                })
-                            })
-                            .then(response => response.json())
-                            .then(data => {
-                                if (data.success) {
-                                    alert('Items deleted successfully!');
-                                    location.reload();
-                                } else {
-                                    alert('Error deleting items.');
-                                }
-                            })
-                            .catch(error => console.error('Error:', error));
-                    }
-                }
-            });
         });
-    </script>
+
+        totalItemsSpan.textContent = `${totalItems} item${totalItems !== 1 ? "s" : ""}`;
+        subtotalSpan.textContent = `₱${totalPrice.toFixed(2)}`;
+        totalPriceSpan.textContent = `₱${totalPrice.toFixed(2)}`;
+
+        totalQuantityInput.value = totalItems;
+        totalPriceInput.value = totalPrice;
+    }
+
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener("change", updateSummary);
+    });
+
+    checkoutForm.addEventListener("submit", function (e) {
+        let selectedItems = document.querySelectorAll('input[name="selected_items[]"]');
+        if (selectedItems.length === 0) {
+            alert("Please select at least one item to checkout.");
+            e.preventDefault();
+        }
+    });
+
+    updateSummary();
+});
+
+</script>
+
+
 </body>
 
 </html>
