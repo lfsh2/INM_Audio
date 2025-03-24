@@ -75,7 +75,7 @@
                     </div>
 
                     <div class="comments-section">
-                        <hr>
+                        
                         <?php if (!empty($post['comments'])): ?>
                             <div class="comment">
                                 <?php foreach ($post['comments'] as $comment): ?>

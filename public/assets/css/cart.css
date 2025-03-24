@@ -131,6 +131,7 @@ html, body {
             display: flex;
             justify-content: space-between;
             flex-direction: column;
+            /* *{border: 1px solid red;} */
 
             .summary {
                 width: 100%;
@@ -139,7 +140,7 @@ html, body {
                 flex-direction: column;
                 
                 h2 {
-                    padding: 50px 0;
+                    padding: 30px 0;
                 }
 
                 .details {
@@ -156,12 +157,13 @@ html, body {
             }
 
             .total {
-                height: 30%;
-                padding: 50px 30px 0 ;
-                border-top: 1px solid #000;
+                height: auto;
+                padding-top: 30px;
+                border-top: 1px solid black;
                 display: flex;
                 justify-content: space-between;
                 flex-direction: column;
+                gap: 10px;
 
                 p {
                     display: flex;
@@ -179,6 +181,33 @@ html, body {
                         border: none;
                         cursor: pointer;
                     }
+                }
+                form {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                label {
+                    width: 100%;;
+                    text-align: left;
+                }
+
+                input {
+                    background: none;
+                    border: none;
+                    border-radius: 0;
+                    outline: none;
+                    border-bottom: 1px solid black;
+                    padding: 5px;
+                }
+                textarea {
+                    background: none;
+                    border-radius: 0;
+                    outline: none;
+                    border: 1px solid black;
+                    padding: 5px;
                 }
             }
         }

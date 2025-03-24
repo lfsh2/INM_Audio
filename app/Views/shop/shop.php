@@ -54,9 +54,9 @@
         </div>
 
         <div class="card-container"> 
-            <div class="category">
+            <!-- <div class="category">
                 <p>Vanilla Series</p>
-            </div>
+            </div> -->
 
             <?php if(isset($gears) && !empty($gears)) :?>
                 <?php foreach($gears as $index => $gear) :?>

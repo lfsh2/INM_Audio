@@ -93,6 +93,7 @@
                     </div>
                 </div>
 
+                
                 <div class="total">
                     <p><span>Subtotal</span> <span>₱<?= esc(number_format($totalPrice, 2)) ?></span></p>
                     <form action="<?= base_url('/checkout') ?>" method="post">

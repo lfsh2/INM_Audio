@@ -13,6 +13,28 @@
 
     <title>Gear Library</title>
 </head>
+<style>
+    .comparison-btn-container {
+    text-align: center;
+    padding-left: 20px;
+}
+.compare-btn {
+    width: 150px;
+    display: inline-block;
+    background-color: black;
+    color: #fff;
+    padding: 10px 10%;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.compare-btn:hover {
+    background-color: #45a049;
+}
+</style>
 
 <body>
 
@@ -28,6 +50,10 @@
         <div class="search">
             <input type="text" placeholder="Search Gear">
             <button><i class="fa-solid fa-search"></i></button>
+        </div>
+
+        <div class="comparison-btn-container">
+            <a href="<?= base_url('library/comparison') ?>" class="compare-btn">Compare Gear</a>
         </div>
     </div>
 

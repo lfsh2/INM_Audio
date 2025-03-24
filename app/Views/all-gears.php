@@ -22,6 +22,8 @@
             margin-bottom: 10px;
             border-bottom: 2px solid #333;
             padding-bottom: 5px;
+            padding-left: 20px;
+           
         }
         .card-container {
             display: flex;
@@ -74,6 +76,7 @@
             #gearTitle {
                 width: 100%;
                 text-align: center;
+                
             }
 
             a {

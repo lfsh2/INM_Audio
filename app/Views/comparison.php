@@ -131,6 +131,16 @@
             width: 100%;
             text-align: center;
             z-index: 999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        
+
+            a{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
         }
 
         .clear-btn {
@@ -242,20 +252,21 @@
                 <option value="Prestige Series">Prestige Series</option>
                 <option value="Personalized Series">Personalized Series</option>
             </select>
-            <button onclick="showModal('left')">Select Left Gear</button>
-            <button onclick="showModal('right')">Select Right Gear</button>
         </div>
 
         <div id="iemModal" class="modal">
             <div class="modal-content">
-                <span class="close-btn" onclick="closeModal()">&times;</span>
-                <h2>Select IEM</h2>
+                <div class="modal-fix">
+                    <h2>Select IEM</h2>
+                    <span class="close-btn" onclick="closeModal()">&times;</span>
+                </div>
                 <div id="iemList"></div>
             </div>
         </div>
 
         <div class="earphone-container">
             <div class="left earphone">
+            <button onclick="showModal('left')">Select Left Gear</button>
                 <div id="leftGearContainer">
                     <p>No product selected for comparison.</p>
                 </div>
@@ -263,6 +274,7 @@
             </div>
 
             <div class="right earphone">
+            <button onclick="showModal('right')">Select Right Gear</button>
                 <div id="rightGearContainer">
                     <p>No product selected for comparison.</p>
                 </div>

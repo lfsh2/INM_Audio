@@ -11,6 +11,7 @@
     <link rel="stylesheet" href=" <?= base_url('assets/css/footer.css') ?>">
     <link rel="stylesheet" href=" <?= base_url('assets/css/customize.css') ?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>INM Costumization</title>
 </head>
 
@@ -19,10 +20,17 @@
     <?php echo view("includes/header.php"); ?>
 
     <div class="main-container">
-        <div id="canvas-container"></div>
+        <div class="earphone-container">
+            <div id="canvas-container"></div>
+            
+            <div class="size-guide">
+                <h3>Size Guide</h3>
+                <img src="<?= base_url('assets/img/size_guide.png') ?>" alt="IEM Size Guide" class="img-fluid">
+            </div>
+        </div>
 
         <div class="customization-panel">
-            <div class="controls">
+            <div class="control">
                 <div class="control-group">
                     <label for="designName">Design Name:</label>
                     <input type="text" id="designName" placeholder="Enter your design name">
@@ -41,7 +49,7 @@
                 </div>
             </div>
 
-            <div class="controls">
+            <div class="control">
                 <div class="control-group">
                     <label for="leftTextureSelect">Back IEM Texture:</label>
                     <select id="leftTextureSelect">
@@ -53,9 +61,6 @@
                         <option value="abstract2.jpeg">Abstract No.2</option>
                         <option value="anime1.jpeg">Akatsuki</option>
                         <option value="anime2.jpeg">Piattos</option>
-                        <option value="anime3.jpeg">Noobies</option>
-                        <option value="anime4.jpeg">Colorstic</option>
-                        <option value="anime5.jpeg">Adult Gon</option>
                         <option value="beach.jpeg">Beach</option>
                         <option value="warning.jpeg">Yellow and Black Warning</option>
                         <option value="lol.jpeg">Skulls</option>
@@ -64,7 +69,6 @@
                         <option value="red2.jpeg">Katana</option>
                         <option value="wood.jpeg">Wood</option>
                         <option value="lacks.jpeg">Golden Shower</option>
-                        <option value="fuc.jpeg">Dancing Lion</option>
                     </select>
                     <input type="file" id="leftTextureUpload" accept="image/*">
                 </div>
@@ -79,19 +83,14 @@
                         <option value="abstract2.jpeg">Abstract No.2</option>
                         <option value="anime1.jpeg">Akatsuki</option>
                         <option value="anime2.jpeg">Piattos</option>
-                        <option value="anime3.jpeg">Noobies</option>
-                        <option value="anime4.jpeg">Colorstic</option>
-                        <option value="anime5.jpeg">Adult Gon</option>
                         <option value="beach.jpeg">Beach</option>
                         <option value="warning.jpeg">Yellow and Black Warning</option>
                         <option value="lol.jpeg">Skulls</option>
                         <option value="lux.jpeg">Luxury</option>
-                        <option value="p2.jpg">Luxury No.2</option>
                         <option value="marb.jpeg">Marble Blue</option>
                         <option value="red2.jpeg">Katana</option>
                         <option value="wood.jpeg">Wood</option>
                         <option value="lacks.jpeg">Golden Shower</option>
-                        <option value="fuc.jpeg">Dancing Lion</option>
                     </select>
                     <input type="file" id="rightTextureUpload" accept="image/*">
                 </div>
@@ -105,34 +104,29 @@
                         <option value="matte">Matte</option>
                     </select>
                 </div>
-            </div>
-
-            <div class="controls">
+                
                 <div class="control-group">
                     <label for="sizeSelect">Select Size:</label>
                     <select id="sizeSelect">
                         <option value="none">None</option>
-                        <option value="small">Small</option>
-                        <option value="medium">Medium</option>
-                        <option value="large">Large</option>
-                        <option value="xl">XL</option>
+                        <option value="small">SS</option>
+                        <option value="small">S</option>
+                        <option value="small">MS</option>
+                        <option value="medium">M</option>
+                        <option value="large">ML</option>
+                        <option value="xl">L</option>
                     </select>
-                </div>
-
-                <div class="size-guide">
-                    <h3>Size Guide</h3>
-                    <img src="<?= base_url('assets/img/size_guide.png') ?>" alt="IEM Size Guide" class="img-fluid">
                 </div>
             </div>
 
-            <div class="controls">
+            <div class="control">
                 <div class="control-group">
                     <label for="userDesignUpload">Upload Design:</label>
                     <input type="file" id="userDesignUpload" accept="image/*">
                 </div>
             </div>
 
-            <div class="controls">
+            <div class="control">
                 <div class="control-group">
                     <label for="categorySelect">Select Category:</label>
                     <select id="categorySelect">
@@ -143,11 +137,11 @@
                     </select>
                 </div>
 
-
                 <div class="specs-section">
                     <h3>Specifications</h3>
                     <ul id="specsList"></ul>
                 </div>
+
                 <div class="sound-test">
                     <audio id="soundTest" controls></audio>
                     <canvas id="visualizer"></canvas>

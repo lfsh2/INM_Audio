@@ -27,7 +27,8 @@
 
         .modal-content {
             display: flex;
-            width: 70%;
+            width: 80%;
+            height: 100%;
             background: #fff;
             border-radius: 12px;
             overflow: hidden;
@@ -97,6 +98,7 @@
 
         .audio-player {
             margin-top: 10px;
+            padding-bottom: 20px;
         }
 
         #waveform {
@@ -174,7 +176,7 @@
     </div>
 
     <div id="gearModal" class="modal">
-    <div class="modal-content">
+    <div class="modal-content" style="overflow-y: scroll; max-height:95%;  margin-top: 50px; margin-bottom:50px;">
         <div class="left-gear">
             <img id="gearImage" src="" alt="Gear Image">
             <h2 id="gearTitle"></h2>
