@@ -82,7 +82,7 @@ class AdminController extends BaseController
     }
     
 
-    public function orders_transactions() { 
+  /*  public function orders_transactions() { 
         $orderModel = new OrderModel();
         $gearModel = new Gear_Product_Model();
         $placedOrdersModel = new Placed_Orders_Model();
@@ -125,7 +125,61 @@ class AdminController extends BaseController
         ];
     
         return $this->checkAdminSession('AdminSide/orders_transactions', $data);
+    }*/
+    
+    public function orders_transactions() { 
+        $orderModel = new OrderModel();
+    
+        $orders = $orderModel->select('orders.*, products.product_name')
+        ->join('products', 'orders.product_id = products.product_id', 'left')
+        ->orderBy('orders.created_at', 'DESC')
+        ->findAll();    
+        $data = [
+            'orders' => $orders
+        ];
+    
+        return $this->checkAdminSession('AdminSide/orders_transactions', $data);
     }
+
+    public function delete_order() {
+        $orderModel = new OrderModel();
+        
+        if (!$this->request->isAJAX()) {
+            return $this->response->setJSON(['success' => false, 'message' => 'Invalid request']);
+        }
+    
+        $order_id = $this->request->getPost('order_id');
+        if (!$order_id) {
+            return $this->response->setJSON(['success' => false, 'message' => 'Missing order ID']);
+        }
+    
+        $order = $orderModel->find($order_id);
+        if (!$order) {
+            return $this->response->setJSON(['success' => false, 'message' => 'Order not found']);
+        }
+    
+        $orderModel->delete($order_id);
+        return $this->response->setJSON(['success' => true, 'message' => 'Order deleted successfully']);
+    }
+    
+
+    public function update_order_status() {
+        $orderModel = new OrderModel();
+    
+        $order_id = $this->request->getPost('order_id');
+        $new_status = $this->request->getPost('order_status');
+    
+        $order = $orderModel->find($order_id);
+        if (!$order) {
+            return $this->response->setJSON(['success' => false, 'message' => 'Order not found']);
+        }
+    
+        $orderModel->update($order_id, ['order_status' => $new_status]);
+    
+        return $this->response->setJSON(['success' => true, 'message' => 'Order status updated successfully']);
+    }
+    
+    
     
     
     ## redirect to gearManagement / addGear / addCategory
@@ -574,7 +628,7 @@ class AdminController extends BaseController
 
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## ----- delete cancelled order ----- ##
-    public function deleteCancelledOrder($order_id) {
+ /*   public function deleteCancelledOrder($order_id) {
         $this->load->requireMethod('orders');
         $this->load->orders->deleteCancelledOrdersByOrderId($order_id);
         return redirect()->to('/admin/orders_transactions');
@@ -662,8 +716,8 @@ class AdminController extends BaseController
     public function deleteComplteOrder($order_id) {
         $this->load->requireMethod('orders');
         $this->load->orders->where('order_id', $order_id)->delete();
-        return redirect()->to('/admin/orders_transactions');
-    }
+        return redirect()->to('/admin/orders_transactions'); 
+    }*/
 
 ## ----- RECENT ORDERS - DASHBOARD ----- #
     public function accountActivation($account_id) {
@@ -704,52 +758,59 @@ class AdminController extends BaseController
 
 
 ## -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    public function getRevenueData(){
-        $this->load->requireMethod(toLoad: 'orders');
-        $timeframe = $this->request->getGet('timeframe') ?? 'yearly'; // Get timeframe from URL query
-
-        if ($timeframe == 'monthly') {
-            $query = $this->load->orders->query("
-                SELECT DATE_FORMAT(date_completed, '%Y-%m') AS month, 
-                    SUM(price * quantity) AS revenue 
-                FROM orders 
-                WHERE order_status = 'COMPLETE'
-                GROUP BY YEAR(date_completed), MONTH(date_completed)
-                ORDER BY month ASC
-            ");
-            $labelsKey = 'month';
-        } elseif ($timeframe == 'weekly') {
-            $query = $this->load->orders->query("
-                SELECT CONCAT(YEAR(date_completed), '-W', WEEK(date_completed)) AS week, 
-                    SUM(price * quantity) AS revenue 
-                FROM orders 
-                WHERE order_status = 'COMPLETE'
-                GROUP BY YEAR(date_completed), WEEK(date_completed)
-                ORDER BY week ASC
-            ");
-            $labelsKey = 'week';
-        } else { // Default: Yearly
-            $query = $this->load->orders->query("
-                SELECT YEAR(date_completed) AS year, SUM(price * quantity) AS revenue 
-                FROM orders 
-                WHERE order_status = 'COMPLETE'
-                GROUP BY YEAR(date_completed)
-                ORDER BY year ASC
-            ");
-            $labelsKey = 'year';
-        }
-
-        $result = $query->getResultArray();
-        $labels = array_column($result, $labelsKey);
-        $values = array_column($result, 'revenue');
-
-        return $this->response->setJSON([
-            'labels' => $labels,
-            'values' => $values
-        ]);
+public function getRevenueData()
+{
+    $timeframe = $this->request->getGet('timeframe') ?? 'yearly';
+    $db = \Config\Database::connect();
+    
+    if ($timeframe === 'yearly') {
+        $query = $db->query("SELECT YEAR(created_at) as label, SUM(price) as value FROM orders GROUP BY YEAR(created_at)");
+    } elseif ($timeframe === 'monthly') {
+        $query = $db->query("SELECT DATE_FORMAT(created_at, '%Y-%m') as label, SUM(price) as value FROM orders GROUP BY DATE_FORMAT(created_at, '%Y-%m')");
+    } else {
+        $query = $db->query("SELECT DATE(created_at) as label, SUM(price) as value FROM orders WHERE created_at >= NOW() - INTERVAL 7 DAY GROUP BY DATE(created_at)");
     }
 
+    $result = $query->getResultArray();
+    $labels = array_column($result, 'label');
+    $values = array_column($result, 'value');
+
+    return $this->response->setJSON(['labels' => $labels, 'values' => $values]);
+}
+
+public function getOrderStatusData()
+{
+    $db = \Config\Database::connect();
+    $query = $db->query("SELECT order_status as label, COUNT(*) as value FROM orders GROUP BY order_status");
+    $result = $query->getResultArray();
+
+    $labels = array_column($result, 'label');
+    $values = array_column($result, 'value');
+
+    return $this->response->setJSON(['labels' => $labels, 'values' => $values]);
+}
+
+public function getRecentOrders()
+{
+    $db = \Config\Database::connect();
+
+    $query = "
+        SELECT o.order_id, o.user_id, o.product_id, o.quantity, o.price, o.order_status, o.created_at,
+               o.shipping_name, o.shipping_phone, o.payment_method,
+               p.product_name, p.image_url
+        FROM orders o
+        JOIN products p ON o.product_id = p.product_id
+        ORDER BY o.created_at DESC 
+        LIMIT 10
+    ";
+
+    $result = $db->query($query)->getResultArray();
     
+    return $this->response->setJSON($result);
+}
+
+
+
 
     public function getProductTrends(){
         $this->load->requireMethod('gears');

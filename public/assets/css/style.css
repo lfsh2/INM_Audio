@@ -290,7 +290,8 @@ body{
             img{
                 /* margin-top: 5px; */
                 height: 100%;
-                width: 50%;
+                max-width: 50%;
+                width: 100%;
                 object-fit: cover;
             }
 

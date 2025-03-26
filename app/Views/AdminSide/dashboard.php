@@ -110,12 +110,15 @@
 				<table>
 					<thead>
 						<tr>
-							<th>User</th>
-							<th>Gear</th>
-							<th>Base Price</th>
+							<th>Order No.</th>
+							<th>Name</th>
+							<th>Number</th>
+							<th>IEM Order</th>
+							<th>Quantity</th>
 							<th>Total Price</th>
-							<th>Date Order</th>
-							<th>Status</th>
+                            <th>Payment Type</th>
+                            <th>Order Date and Time</th>
+                            <th>Status</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -164,7 +167,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-	document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
     let revenueChart;
     let pieChart;
 
@@ -179,7 +182,7 @@
                 }
 
                 revenueChart = new Chart(ctx, {
-                    type: 'line', 
+                    type: 'line',
                     data: {
                         labels: data.labels,
                         datasets: [{
@@ -187,43 +190,11 @@
                             data: data.values,
                             backgroundColor: 'rgba(54, 162, 235, 0.2)',
                             borderColor: '#4CAF50',
-                            borderWidth: 3,
-                            pointBackgroundColor: '#4CAF50',
-                            pointBorderColor: '#fff',
-                            pointHoverBackgroundColor: '#fff',
-                            pointHoverBorderColor: '#4CAF50'
+                            borderWidth: 3
                         }]
-                    },
-                    options: {
-                        responsive: true,
-                        plugins: {
-                            legend: {
-                                position: 'top',
-                                labels: {
-                                    color: '#333',
-                                    font: { size: 14 }
-                                }
-                            },
-                            tooltip: {
-                                mode: 'index',
-                                intersect: false,
-                                backgroundColor: '#4CAF50',
-                                bodyColor: '#fff',
-                                borderColor: '#4CAF50',
-                                borderWidth: 1
-                            }
-                        },
-                        scales: {
-                            x: { ticks: { color: '#333' } },
-                            y: {
-                                beginAtZero: true,
-                                ticks: { color: '#333' }
-                            }
-                        }
                     }
                 });
-            })
-            .catch(error => console.error("Error fetching revenue data:", error));
+            });
     }
 
     function fetchOrderStatusData() {
@@ -243,43 +214,65 @@
                         datasets: [{
                             label: 'Order Status',
                             data: data.values,
-                            backgroundColor: [
-                                '#4CAF50',  
-                                '#FFC107',  
-                                '#F44336'   
-                            ],
-                            hoverOffset: 8
+                            backgroundColor: ['#4CAF50', '#FFC107', '#F44336']
                         }]
-                    },
-                    options: {
-                        responsive: true,
-                        plugins: {
-                            legend: {
-                                position: 'right',
-                                labels: {
-                                    color: '#333',
-                                    font: { size: 14 }
-                                }
-                            },
-                            tooltip: {
-                                backgroundColor: '#4CAF50',
-                                bodyColor: '#fff',
-                                borderColor: '#4CAF50',
-                                borderWidth: 1
-                            }
-                        }
                     }
                 });
-            })
-            .catch(error => console.error("Error fetching order status data:", error));
+            });
     }
+
+    function fetchRecentOrders() {
+    fetch("<?= base_url('/admin/chart-data/recent-orders') ?>")
+        .then(response => response.json())
+        .then(data => {
+            const tbody = document.querySelector(".order table tbody");
+            tbody.innerHTML = "";
+
+            if (data.length > 0) {
+                data.forEach(order => {
+                    const row = document.createElement("tr");
+
+                    row.innerHTML = `
+                        <td>${order.order_id}</td>
+                        <td>${order.shipping_name}</td>
+                        <td>${order.shipping_phone}</td>
+                        <td>
+                            <img src="${order.image_url}" alt="Product Image" width="50">
+                            <p>${order.product_name}</p>
+                        </td>
+                        <td>${order.quantity}</td>
+                        <td>${order.price}</td>
+                        <td>${order.payment_method}</td>
+                        <td>${order.created_at}</td>
+                        <td>
+                            <span class="status ${order.order_status === 'completed' ? 'completed' : order.order_status === 'cancelled' ? 'pending' : 'process'}">
+                                ${order.order_status}
+                            </span>
+                        </td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            } else {
+                tbody.innerHTML = `<tr><td colspan="9" style="color: gray;">No recent orders!</td></tr>`;
+            }
+        })
+        .catch(error => console.error('Error fetching recent orders:', error));
+}
+
+fetchRecentOrders();
+
+setInterval(fetchRecentOrders, 10000);
+
 
     fetchRevenueData();
     fetchOrderStatusData();
+    fetchRecentOrders();
 
     document.getElementById('timeframeSelect').addEventListener('change', function () {
         fetchRevenueData(this.value);
     });
+
+    setInterval(fetchRecentOrders, 10000); 
 });
 
 </script>

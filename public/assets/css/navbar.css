@@ -208,7 +208,6 @@ body{
             display: flex;
             justify-content: center;
             transition: 500ms;
-            
         }
         a:hover {
            border: 1px solid black;
@@ -250,6 +249,7 @@ body{
         .header-text {
             width: 100%;
             text-align: center;
+            align-items: center;
 
             h2, h1 {
                 font-size: 2rem;

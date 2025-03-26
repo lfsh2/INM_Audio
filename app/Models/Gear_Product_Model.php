@@ -76,23 +76,4 @@ class Gear_Product_Model extends Model
     public function updateGearTotalItemSold($id, $quantity) {
         $this->db->query("UPDATE products SET totalSold = totalSold + {$quantity} WHERE product_id = {$id}");
     }
-
-    // public function fetchGearComparison() {
-    //     $query = $this->db->query("
-    //         SELECT 
-    //             p.product_name,
-    //             p.description,
-    //             p.price,
-    //             p.stock_quantiy,
-    //             p.image_url,
-    //             p.created_at,
-    //             c.category,
-    //             c.specs
-    //         FROM product p
-    //         LEFT JOIN category c
-    //         ON p.category_id = c.category_id;
-    //     ");
-
-    //     return $query->getResult();
-    // }
 }

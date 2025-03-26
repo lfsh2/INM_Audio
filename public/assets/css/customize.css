@@ -248,3 +248,13 @@ input[type="file"]:hover {
     padding: 5px 0;
     border-bottom: 1px solid #ddd;
 }
+
+
+@media (max-width: 992px) {
+    .earphone-container, .customization-panel {
+        width: 100% !important;
+    }
+    .controls {
+        flex-wrap: wrap;
+    }
+}

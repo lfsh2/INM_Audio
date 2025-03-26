@@ -1,6 +1,3 @@
-let renderer;
-
-
 document.addEventListener("DOMContentLoaded", function () {
     const container = document.getElementById("canvas-container");
 
@@ -72,9 +69,16 @@ document.addEventListener("DOMContentLoaded", function () {
         const scaleFactor = 1.5 / size;
         iemModel.scale.set(scaleFactor, scaleFactor, scaleFactor);
 
+        const newBox = new THREE.Box3().setFromObject(iemModel);
+        const newCenter = newBox.getCenter(new THREE.Vector3());
+        iemModel.position.sub(newCenter);
+
         scene.add(iemModel);
-        camera.position.set(0, 0, 2.5); 
+
+        const modelSize = newBox.getSize(new THREE.Vector3()).length();
+        camera.position.set(0, 0, modelSize * 1.5);
         camera.lookAt(0, 0, 0);
+
         animate();
 
         if (materialSelect) {
@@ -93,7 +97,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (rightIEM) rightIEM.material.color.set(rightColorPicker.value);
     });
 
-    
     function applyTextureFromFolder(textureName, object) {
         if (textureName !== "none" && object) {
             const texture = new THREE.TextureLoader().load(`assets/textures/${textureName}`);
@@ -142,7 +145,6 @@ document.addEventListener("DOMContentLoaded", function () {
         rightTextureSelect.value = "none";
     });
 
-   
     userDesignUpload.addEventListener("change", function (event) {
         const file = event.target.files[0];
         if (file && rightIEM) {
@@ -160,7 +162,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-   
     materialSelect.addEventListener("change", function () {
         if (leftIEM && rightIEM) {
             const type = materialSelect.value;
@@ -174,23 +175,15 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    
     function animate() {
         requestAnimationFrame(animate);
         controls.update();
         renderer.render(scene, camera);
     }
 
- 
     window.addEventListener("resize", () => {
         camera.aspect = container.clientWidth / container.clientHeight;
         camera.updateProjectionMatrix();
         renderer.setSize(container.clientWidth, container.clientHeight);
-
-        if (iemModel) {
-            const newBox = new THREE.Box3().setFromObject(iemModel);
-            const newCenter = newBox.getCenter(new THREE.Vector3());
-            iemModel.position.sub(newCenter);
-        }
     });
 });

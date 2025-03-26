@@ -89,7 +89,7 @@ html, body {
 
             img {
                 width: 100%;
-                height: 60%;
+                height: 50%;
                 object-fit: cover;
             }
 
@@ -125,7 +125,6 @@ html, body {
         }
 
         .see .info {
-            height: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -268,8 +267,18 @@ html, body {
                     height: 350px;
                 }
 
-                .bgimg {
-                    width: 210px;
+                img {
+                    max-height: 50%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                .info, .see img {
+                    height: 50%;
+                }
+
+                .see .info {
+                    justify-content: start;
                 }
 
                 h3 {

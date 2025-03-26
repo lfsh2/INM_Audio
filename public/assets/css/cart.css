@@ -214,6 +214,17 @@ html, body {
     }
 }
 
+@media (max-width: 992px) {
+    .cart {
+        .carts {
+            height: auto;
+            flex-direction: column;
+        }
+        .cart-container, .order-summary {
+            width: 100% !important;
+        }
+    }
+}
 
 /* 
 main {

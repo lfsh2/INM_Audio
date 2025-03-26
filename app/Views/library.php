@@ -87,7 +87,7 @@
                             <div class="info">
                                 <h3><?= esc($category['category']) ?></h3>
                                 <p><?= esc($description) ?></p>
-                                </div>
+                            </div>
                         </a>
                     </div>
                 <?php endforeach; ?>
@@ -99,7 +99,7 @@
 
             <div class="library-card see" title="Click to view all gears in this category">
                 <a href="<?= base_url('library/all-gears')?>">
-                    <img class="bgimg" src="<?= base_url('assets/img/seeall.jpg'); ?>" alt="Category Image">
+                    <img class="" src="<?= base_url('assets/img/seeall.jpg'); ?>" alt="Category Image">
                     <div class="info">
                         <h3>See All Gears</h3>
                     </div>

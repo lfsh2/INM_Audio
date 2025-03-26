@@ -150,6 +150,9 @@
       <button onclick="closePopup()">Close</button>
   </div>
 
+  
+    <script src="<?= base_url('Admin/js/notifModal.js') ?>"></script>
+    <script src="<?= base_url('Admin/js/dashboard1.js') ?>"></script>
     <script>
         function showPopup(message, type) {
             const popup = document.getElementById('popup');

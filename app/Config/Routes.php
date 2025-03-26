@@ -120,7 +120,13 @@ $routes->group('/admin/', function($routes) {
         
         $routes->get('dashboard1', 'AdminController::dashboard1');
 
+        $routes->get('chart-data/recent-orders', 'AdminController::getRecentOrders');
+
         $routes->get('orders_transactions', 'AdminController::orders_transactions');
+        $routes->post('update_order_status', 'AdminController::update_order_status');
+        $routes->delete('delete_order/(:num)', 'AdminController::delete_order/$1');
+
+
         ## gear management
         $routes->get('management', 'AdminController::gearManagement');
         $routes->get('gears/addGears', 'AdminController::addGears');
@@ -132,15 +138,17 @@ $routes->group('/admin/', function($routes) {
         $routes->get('transaction/removeTransaction/(:num)', 'AdminController::removeTransaction/$1');
         $routes->get('transaction/view/(:num)', 'AdminController::viewTransaction/$1');
 
-       // Order Management Routes
-       $routes->group('admin/order', function($routes) {
+      // Order Management Routes
+    /*   $routes->group('admin/order', function($routes) {
         $routes->get('toConfirm/(:num)', 'OrderController::confirmOrder/$1');
         $routes->get('cancelToConfirm/(:num)', 'OrderController::cancelToConfirmOrder/$1');
         $routes->get('complete/(:num)', 'OrderController::completeOrder/$1');
         $routes->get('cancelConfirmOrder/(:num)', 'OrderController::cancelConfirmedOrder/$1');
         $routes->get('deleteComplete/(:num)', 'OrderController::deleteCompletedOrder/$1');
         $routes->get('cancelled/(:num)', 'OrderController::deleteCancelledOrder/$1');
-    });
+
+
+    }); */
     
 
        // $routes->get('order/toConfirm/(:num)', 'AdminController::confirmOrder/$1');

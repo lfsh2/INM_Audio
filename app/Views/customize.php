@@ -25,7 +25,7 @@
             
             <div class="size-guide">
                 <h3>Size Guide</h3>
-                <img src="<?= base_url('assets/img/size_guide.png') ?>" alt="IEM Size Guide" class="img-fluid">
+                <img src="<?= base_url('assets/img/sizeguide2.webp') ?>" alt="IEM Size Guide" class="img-fluid">
             </div>
         </div>
 
@@ -109,12 +109,12 @@
                     <label for="sizeSelect">Select Size:</label>
                     <select id="sizeSelect">
                         <option value="none">None</option>
-                        <option value="small">SS</option>
+                        <option value="super small">SS</option>
                         <option value="small">S</option>
-                        <option value="small">MS</option>
+                        <option value="medium small">MS</option>
                         <option value="medium">M</option>
-                        <option value="large">ML</option>
-                        <option value="xl">L</option>
+                        <option value="medium large">ML</option>
+                        <option value="large">L</option>
                     </select>
                 </div>
             </div>
