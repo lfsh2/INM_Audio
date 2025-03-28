@@ -53,8 +53,8 @@
                         <select id="filterStatus">
                             <option value="">All Status</option>
                             <option value="pending">Pending</option>
-                            <option value="confirmed">Confirmed</option>
-                            <option value="completed">Completed</option>
+                            <option value="shipped">Shipped</option>
+                            <option value="delivered">Delivered</option>
                             <option value="cancelled">Cancelled</option>
                         </select>
                         <input type="date" id="filterDate">
@@ -103,11 +103,19 @@
                         </tbody>
                     </table>
 
-
+                    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
                     <script src="<?= base_url('Admin/js/notifModal.js') ?>"></script>
                     <script src="<?= base_url('Admin/js/dashboard1.js') ?>"></script>
                     <script>
                         $(document).ready(function() {
+                            $(".delete-btn").click(function() {
+                                var orderId = $(this).data("id");
+                                if (confirm("Are you sure you want to delete this order?")) {
+                                    window.location.href = "<?= base_url('admin/delete_order/') ?>" + orderId;
+                                }
+                            });
+
+
                             $("#searchBox").on("keyup", function() {
                                 var value = $(this).val().toLowerCase();
                                 $("#ordersTable tbody tr").filter(function() {
@@ -118,7 +126,7 @@
                             $("#filterStatus").on("change", function() {
                                 var value = $(this).val().toLowerCase();
                                 $("#ordersTable tbody tr").each(function() {
-                                    var status = $(this).find("td:nth-child(5)").text().toLowerCase(); // Adjusted index
+                                    var status = $(this).find("td:nth-child(5)").text().toLowerCase();
                                     $(this).toggle(value === "" || status === value);
                                 });
                             });
@@ -126,54 +134,9 @@
                             $("#filterDate").on("change", function() {
                                 var value = $(this).val();
                                 $("#ordersTable tbody tr").each(function() {
-                                    var date = $(this).find("td:nth-child(7)").text(); // Adjusted index
+                                    var date = $(this).find("td:nth-child(7)").text();
                                     $(this).toggle(value === "" || date.startsWith(value));
                                 });
-                            });
-
-                        });
-
-                        function exportCSV() {
-                            let csv = "Customer,Product,Price,Quantity,Status,Payment,Date\n";
-                            $("#ordersTable tbody tr:visible").each(function() {
-                                let row = [];
-                                $(this).find("td:not(:last-child)").each(function() { // Exclude delete button column
-                                    row.push($(this).text().trim());
-                                });
-                                csv += row.join(",") + "\n";
-                            });
-
-                            let hiddenElement = document.createElement("a");
-                            hiddenElement.href = "data:text/csv;charset=utf-8," + encodeURI(csv);
-                            hiddenElement.target = "_blank";
-                            hiddenElement.download = "orders.csv";
-                            hiddenElement.click();
-                        }
-
-
-                        function exportPDF() {
-                            alert("PDF export functionality coming soon!");
-                        }
-                    </script>
-                    <script>
-                        $(document).ready(function() {
-                            $(".delete-btn").click(function() {
-                                var orderId = $(this).data("id");
-                                if (confirm("Are you sure you want to delete this order?")) {
-                                    fetch("<?= base_url('admin/delete_order/') ?>" + orderId, {
-                                            method: "DELETE"
-                                        })
-                                        .then(response => response.json())
-                                        .then(data => {
-                                            if (data.success) {
-                                                alert(data.message);
-                                                location.reload();
-                                            } else {
-                                                alert("Error: " + data.message);
-                                            }
-                                        })
-                                        .catch(() => alert("Failed to delete order."));
-                                }
                             });
                         });
                     </script>
@@ -197,17 +160,20 @@
                                     success: function(response) {
                                         if (response.success) {
                                             alert(response.message);
+                                            location.reload(); 
                                         } else {
                                             alert("Error: " + response.message);
                                         }
                                     },
-                                    error: function() {
+                                    error: function(xhr) {
                                         alert("Failed to update order status.");
+                                        console.error(xhr.responseText);
                                     }
                                 });
                             });
                         });
                     </script>
+
 </body>
 
 </html>

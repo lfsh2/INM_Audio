@@ -24,9 +24,10 @@ class OrderModel extends Model
 
     public function getTotalConfirmed()
     {
-        return $this->where('order_status', 'confirmed')->countAllResults();
+        return $this->where('order_status', 'delivered')->countAllResults();
     }
 
+    
     public function getTotalCancelled()
     {
         return $this->where('order_status', 'cancelled')->countAllResults();
@@ -39,7 +40,7 @@ class OrderModel extends Model
 
     public function getTotalRevenue() {
         return $this->select('SUM(quantity * price) AS totalRevenue')
-                    ->where('order_status', 'completed')
+                    ->where('order_status', 'delivered')
                     ->get()
                     ->getRow()
                     ->totalRevenue ?? 0;

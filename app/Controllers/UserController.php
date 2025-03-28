@@ -1,5 +1,6 @@
 <?php
 namespace App\Controllers;
+use App\Models\OrderModel;
 
 class UserController extends BaseController
 {
@@ -48,20 +49,52 @@ class UserController extends BaseController
         return $this->checkUserSession('UserSide/userAccount', $data);
     }
 
-    ## User purchase history
-    public function myPurchase() {
-        $this->load->requireMethod('userAccount');
-        $this->load->requireMethod('placed');
-        $this->load->requireMethod('orders');
+
+
+    public function manageOrders() {
+        $orderModel = new OrderModel();
+        $userId = session()->get('user_id');
+        $orders = $orderModel->where('user_id', $userId)->findAll();
+    
         $data = [
-            'userAccount' => $this->load->userAccount->getUser('user_id', $this->load->session->get('user_id')),
-            'toConfirmOrders' => $this->load->placed->getAllOrdersById($this->load->session->get('user_id')),
-            'cancelledOrders' => $this->load->orders->getCancelledOrdersForUser($this->load->session->get('user_id')),
-            'toShip' => $this->load->orders->getToShipOrdersForUser($this->load->session->get('user_id')),
-            'complete' => $this->load->orders->getCompleteOrdersForUser($this->load->session->get('user_id'))
+            'orders' => $orders
         ];
-        return $this->checkUserSession('UserSide/myPurchase', $data);
+        
+        return $this->checkUserSession('UserSide/manage_orders', $data);
     }
+    
+    
+    public function getOrders() {
+        $userId = session()->get('user_id'); 
+        $orderModel = new OrderModel();
+        $orders = $orderModel->where('user_id', $userId)->findAll();
+        return $this->response->setJSON($orders);
+    }
+
+    public function cancelOrder() {
+        $orderId = $this->request->getPost('order_id');
+        $orderModel = new OrderModel();
+
+        $order = $orderModel->find($orderId);
+        if (!$order || $order['order_status'] == 'shipped') {
+            return $this->response->setJSON(['message' => 'Cannot cancel this order.']);
+        }
+
+        $orderModel->update($orderId, ['order_status' => 'cancelled']);
+        return $this->response->setJSON(['message' => 'Order cancelled successfully.']);
+    }
+
+
+    public function fetchOrders()
+    {
+        $orderModel = new OrderModel();
+        $status = $this->request->getPost('order_status');
+    
+        $orders = $orderModel->where('order_status', $status)->findAll();
+    
+        return view('UserSide/orders_table', ['orders' => $orders, 'status' => $status]);
+    }
+    
 
     ## User likes
     public function myLikes() {
@@ -175,7 +208,7 @@ class UserController extends BaseController
         return redirect()->to('/login')->with('noAccount', '**Login to your account**');
     }
 
-
+/*
     public function cancelOrder($productId) {
         $this->load->requireMethod('userAccount');
         $this->load->requireMethod('orders');
@@ -194,7 +227,8 @@ class UserController extends BaseController
         ]);
         $this->load->placed->deleteItemByProductId($productId);
         return redirect()->back()->with('success', 'item canccelled!');
-    }
+    } */
+
 }
 
 

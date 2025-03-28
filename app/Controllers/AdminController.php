@@ -81,51 +81,6 @@ class AdminController extends BaseController
         return $this->checkAdminSession('AdminSide/dashboard', $data);
     }
     
-
-  /*  public function orders_transactions() { 
-        $orderModel = new OrderModel();
-        $gearModel = new Gear_Product_Model();
-        $placedOrdersModel = new Placed_Orders_Model();
-        $adminAccountModel = new Admin_Account_Model();
-    
-        $orders = $orderModel->select('orders.*, products.product_name, products.image_url')
-                             ->join('products', 'orders.product_id = products.product_id')
-                             ->orderBy('orders.created_at', 'DESC')
-                             ->findAll();
-    
-        $confirmOrder = $orderModel->select('orders.*, products.product_name, products.image_url')
-                                   ->join('products', 'orders.product_id = products.product_id')
-                                   ->where('order_status', 'confirmed')
-                                   ->orderBy('orders.created_at', 'DESC')
-                                   ->findAll();
-    
-        $completedOrders = $orderModel->select('orders.*, products.product_name, products.image_url')
-                                      ->join('products', 'orders.product_id = products.product_id')
-                                      ->where('order_status', 'completed')
-                                      ->orderBy('orders.date_completed', 'DESC')
-                                      ->findAll();
-    
-        $cancelledOrders = $orderModel->select('orders.*, products.product_name, products.image_url')
-                                      ->join('products', 'orders.product_id = products.product_id')
-                                      ->where('order_status', 'cancelled')
-                                      ->orderBy('orders.date_cancelled', 'DESC')
-                                      ->findAll();
-    
-        $data = [
-            'adminAccount'     => $adminAccountModel->getUser('admin_account_id', session()->get('admin_id')),
-            'cancelledOrders'  => $cancelledOrders,
-            'orders'           => $orders,  
-            'complete'         => $completedOrders,
-            'totalOrders'      => $orderModel->getTotalOrders(),
-            'totalPlaced'      => $placedOrdersModel->getTotalPlaced()->totalPlacedOrders ?? 0,
-            'totalCancelled'   => $orderModel->getTotalCancelled(),
-            'totalComplete'    => $orderModel->getTotalComplete(),
-            'totalRevenue'     => $orderModel->getTotalRevenue(),
-            'confirmOrder'     => $confirmOrder
-        ];
-    
-        return $this->checkAdminSession('AdminSide/orders_transactions', $data);
-    }*/
     
     public function orders_transactions() { 
         $orderModel = new OrderModel();
@@ -141,26 +96,22 @@ class AdminController extends BaseController
         return $this->checkAdminSession('AdminSide/orders_transactions', $data);
     }
 
-    public function delete_order() {
+    public function delete_order($order_id)
+    {
         $orderModel = new OrderModel();
         
-        if (!$this->request->isAJAX()) {
-            return $this->response->setJSON(['success' => false, 'message' => 'Invalid request']);
+        if (!$orderModel->find($order_id)) {
+            return redirect()->to(base_url('admin/orders_transactions'))->with('error', 'Order not found.');
         }
     
-        $order_id = $this->request->getPost('order_id');
-        if (!$order_id) {
-            return $this->response->setJSON(['success' => false, 'message' => 'Missing order ID']);
+        if ($orderModel->delete($order_id)) {
+            return redirect()->to(base_url('admin/orders_transactions'))->with('success', 'Order deleted successfully.');
+        } else {
+            return redirect()->to(base_url('admin/orders_transactions'))->with('error', 'Failed to delete order.');
         }
-    
-        $order = $orderModel->find($order_id);
-        if (!$order) {
-            return $this->response->setJSON(['success' => false, 'message' => 'Order not found']);
-        }
-    
-        $orderModel->delete($order_id);
-        return $this->response->setJSON(['success' => true, 'message' => 'Order deleted successfully']);
     }
+    
+    
     
 
     public function update_order_status() {
@@ -777,18 +728,34 @@ public function getRevenueData()
 
     return $this->response->setJSON(['labels' => $labels, 'values' => $values]);
 }
-
 public function getOrderStatusData()
 {
     $db = \Config\Database::connect();
-    $query = $db->query("SELECT order_status as label, COUNT(*) as value FROM orders GROUP BY order_status");
+
+    $statuses = ['pending', 'shipped', 'delivered', 'cancelled'];
+
+    $query = $db->query("SELECT order_status as label, COUNT(*) as value FROM orders WHERE order_status IN ('pending', 'shipped', 'delivered', 'cancelled') GROUP BY order_status");
     $result = $query->getResultArray();
 
-    $labels = array_column($result, 'label');
-    $values = array_column($result, 'value');
+    $orderData = [];
+    foreach ($result as $row) {
+        $orderData[$row['label']] = $row['value'];
+    }
 
-    return $this->response->setJSON(['labels' => $labels, 'values' => $values]);
+    $finalData = [];
+    foreach ($statuses as $status) {
+        $finalData[] = [
+            'label' => ucfirst($status), 
+            'value' => $orderData[$status] ?? 0
+        ];
+    }
+
+    return $this->response->setJSON([
+        'labels' => array_column($finalData, 'label'),
+        'values' => array_column($finalData, 'value')
+    ]);
 }
+
 
 public function getRecentOrders()
 {

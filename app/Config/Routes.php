@@ -38,12 +38,17 @@ $routes->group('', function($routes){
         $routes->post('/user/updateProfile', 'UserController::updateAccount');
     // get -------------------------------------------------------------
         $routes->get('/user/setting', 'UserController::userSettings');
-        $routes->get('/user/mypurchase', 'UserController::myPurchase');
+     //   $routes->get('/user/mypurchase', 'UserController::myPurchase');
         $routes->get('/user/myLikes', 'UserController::myLikes');
         $routes->get('/user/logout', 'UserController::logout');
         $routes->get('/user/bookmark/(:num)', 'UserController::removeToLikes/$1');
         $routes->get('/user/cancelOrder/(:any)', 'UserController::cancelOrder/$1');
         $routes->get('/user/myDesign', 'IEMCustomizationController::myDesign');
+
+        $routes->get('/user/manage_orders', 'UserController::manageOrders');
+        $routes->get('/user/get_orders', 'UserController::getOrders');
+        $routes->post('/user/cancelOrder', 'UserController::cancelOrder');
+        $routes->post('/user/fetchOrders', 'UserController::fetchOrders');
 
 });
 
@@ -112,19 +117,24 @@ $routes->group('/admin/', function($routes) {
     // get -------------------------------------------------------------
         ## routes
         $routes->get('account', 'AdminController::account');
+
+
         $routes->get('dashboard', 'AdminController::dashboard');
     
         // charts
         $routes->get('chart-data/revenue', 'AdminController::getRevenueData');
         $routes->get('chart-data/products', 'AdminController::getProductTrends');
         
-        $routes->get('dashboard1', 'AdminController::dashboard1');
+      //  $routes->get('dashboard1', 'AdminController::dashboard1');
 
         $routes->get('chart-data/recent-orders', 'AdminController::getRecentOrders');
 
         $routes->get('orders_transactions', 'AdminController::orders_transactions');
+        $routes->get('chart-data/order-status', 'AdminController::getOrderStatusData'); 
+        $routes->get('delete_order/(:num)', 'AdminController::delete_order/$1');
+
         $routes->post('update_order_status', 'AdminController::update_order_status');
-        $routes->delete('delete_order/(:num)', 'AdminController::delete_order/$1');
+
 
 
         ## gear management
