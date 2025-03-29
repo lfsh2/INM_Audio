@@ -1,8 +1,8 @@
 <table>
     <thead>
         <tr>
-            <th>Order ID</th>
-            <th>Product</th>
+            <!--   <th>Order ID</th>
+            <th>Product</th> -->
             <th>Quantity</th>
             <th>Price</th>
             <th>Status</th>
@@ -13,10 +13,10 @@
         <?php if (!empty($filteredOrders)) : ?>
             <?php foreach ($filteredOrders as $order) : ?>
                 <tr>
-                    <td><?= esc($order['order_id']) ?></td>
-                    <td><?= esc($order['product_id']) ?></td>
+                    <!--     <td><?= esc($order['order_id']) ?></td> 
+                    <td><?= esc($order['product_id']) ?></td>-->
                     <td><?= esc($order['quantity']) ?></td>
-                    <td>$<?= esc($order['price']) ?></td>
+                    <td>₱<?= esc($order['price']) ?></td>
                     <td>
                         <span class="status <?= esc($order['order_status']) ?>">
                             <i class="
