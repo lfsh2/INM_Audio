@@ -76,4 +76,8 @@ class Gear_Product_Model extends Model
     public function updateGearTotalItemSold($id, $quantity) {
         $this->db->query("UPDATE products SET totalSold = totalSold + {$quantity} WHERE product_id = {$id}");
     }
+    public function getLowStockProducts($threshold = 5)
+    {
+        return $this->where('stock_quantity <=', $threshold)->findAll();
+    }
 }

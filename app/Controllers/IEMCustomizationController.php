@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\IEMCustomizationModel;
 use CodeIgniter\HTTP\ResponseInterface;
+use App\Models\User_Account_Model;
 
 class IEMCustomizationController extends BaseController
 {
@@ -84,5 +85,44 @@ class IEMCustomizationController extends BaseController
         return $this->response->setJSON(['status' => 'error', 'message' => 'Failed to delete the design.']);
     }
 }
+
+public function getUserDetails($user_id)
+{
+    $userModel = new User_Account_Model();  
+    $userData = $userModel->getUserNameAndAddress($user_id);
+
+    $user_name = $userData ? $userData['firstname'] . ' ' . $userData['lastname'] : '';
+    $address = $userData['address'] ?? '';
+    $city_municipality = $userData['city_municipality'] ?? '';
+    $zipcode = $userData['zipcode'] ?? '';
+    $country = $userData['country'] ?? '';
+
+    $full_address = trim($address . ' ' . $city_municipality . ' ' . $zipcode . ' ' . $country);
+
+    return [
+        'user_name' => $user_name,
+        'user_address' => $full_address,
+    ];
+}
+
+public function myDesigns()
+{
+    $user_id = session()->get('user_id'); 
+    $userModel = new User_Account_Model(); 
+    $userData = $userModel->where('user_id', $user_id)->first();
+
+    if ($userData) {
+        $data['user_name'] = $userData['firstname'] . ' ' . $userData['lastname'];
+        $data['user_address'] = $userData['address'];
+        $data['user_phone'] = $userData['phone_number'];
+    } else {
+        $data['user_name'] = '';
+        $data['user_address'] = '';
+        $data['user_phone'] = '';
+    }
+
+    return view('UserSide/my_designs', $data);
+}
+
 
 }

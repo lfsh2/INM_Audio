@@ -19,8 +19,34 @@ class GearModel extends Model
             ->get()
             ->getRowArray();
     }
+
     public function countAllGears()
     {
         return $this->countAll();
+    }
+
+    public function getLowStockProducts($threshold = 5)
+    {
+        return $this->where('stock_quantity <=', $threshold)->findAll();
+    }
+
+    public function createLowStockNotification()
+    {
+        $lowStockProducts = $this->getLowStockProducts(5);
+
+        foreach ($lowStockProducts as $product) {
+            $notificationExist = $this->db->table('notifications')
+                                          ->where('status', 'unread')
+                                          ->where('message', "Stock for product {$product['product_name']} is below 5.")
+                                          ->countAllResults();
+
+            if ($notificationExist == 0) {
+                $this->db->table('notifications')->insert([
+                    'status' => 'unread',
+                    'message' => "Stock for product {$product['product_name']} is below 5.",
+                    'created_at' => date('Y-m-d H:i:s'),
+                ]);
+            }
+        }
     }
 }

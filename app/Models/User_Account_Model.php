@@ -84,4 +84,10 @@ class User_Account_Model extends Model
         ");
         return $query->getResult();
     }
+    public function getUserNameAndAddress($user_id)
+    {
+        return $this->select('firstname, lastname, address, zipcode, city_municipality, country')
+                    ->where('user_id', $user_id)
+                    ->first();
+    }
 }

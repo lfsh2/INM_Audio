@@ -6,6 +6,7 @@ use CodeIgniter\Controller;
 use GuzzleHttp\Client;
 use App\Models\OrderModel;
 use App\Models\IEMCustomizationModel;
+use App\Models\User_Account_Model;
 
 class CustomizationPaymentController extends Controller
 {
@@ -110,5 +111,45 @@ public function cancel($orderId)
 
     return view('UserSide/checkout_cancel', ['order_id' => $orderId]);
 }
+
+public function getUserDetails($user_id)
+{
+    $userModel = new User_Account_Model();  
+    $userData = $userModel->getUserNameAndAddress($user_id);
+
+    $user_name = $userData ? $userData['firstname'] . ' ' . $userData['lastname'] : '';
+    $address = $userData['address'] ?? '';
+    $city_municipality = $userData['city_municipality'] ?? '';
+    $zipcode = $userData['zipcode'] ?? '';
+    $country = $userData['country'] ?? '';
+
+    $full_address = trim($address . ' ' . $city_municipality . ' ' . $zipcode . ' ' . $country);
+
+    return [
+        'user_name' => $user_name,
+        'user_address' => $full_address,
+    ];
+}
+
+public function myDesigns()
+{
+    $user_id = session()->get('user_id'); 
+    $userModel = new User_Account_Model(); 
+    $userData = $userModel->where('user_id', $user_id)->first();
+
+    if ($userData) {
+        $data['user_name'] = $userData['firstname'] . ' ' . $userData['lastname'];
+        $data['user_address'] = $userData['address'];
+        $data['user_phone'] = $userData['phone_number'];
+    } else {
+        $data['user_name'] = '';
+        $data['user_address'] = '';
+        $data['user_phone'] = '';
+    }
+
+    return view('UserSide/my_designs', $data);
+}
+
+
 
 }

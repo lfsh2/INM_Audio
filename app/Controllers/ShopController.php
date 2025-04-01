@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\User_Account_Model;
+
 class ShopController extends BaseController
 {
 ## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -55,7 +57,10 @@ class ShopController extends BaseController
         }       
         $this->load->requireMethod('carts');
         $this->load->requireMethod('cartItems');
+
+
         $user_id = $this->load->session->get('user_id');
+
         $cart = $this->load->carts->getUserCartById($user_id);
         $container = [];
         $container['cart_items'] = $this->load->cartItems->get_cart_items($cart['cart_id']);
@@ -67,6 +72,20 @@ class ShopController extends BaseController
         }
         $container['totalQuantity'] = $totalQuantity;
         $container['totalPrice'] = $totalPrice;
+
+         $userModel = new User_Account_Model(); 
+         $userData = $userModel->getUserNameAndAddress($user_id); 
+ 
+         $container['user_name'] = $userData ? $userData['firstname'] . ' ' . $userData['lastname'] : '';
+         
+         $userAddress = $userData['address'] ?? '';
+         $cityMunicipality = $userData['city_municipality'] ?? '';
+         $zipcode = $userData['zipcode'] ?? '';
+         $country = $userData['country'] ?? '';
+         
+         $container['user_address'] = trim($userAddress . ', ' . $cityMunicipality . ', ' . $zipcode . ', ' . $country);
+     
+ 
         
         return $this->checkUserSession('shop/cart2', $container);
     }

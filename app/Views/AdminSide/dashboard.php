@@ -50,6 +50,63 @@
 			background-color: #2196F3;
 			color: white;
 		}
+
+		.notification-container {
+			position: relative;
+			display: inline-block;
+		}
+
+		.notification-bell {
+			font-size: 24px;
+			background: none;
+			border: none;
+			cursor: pointer;
+			position: relative;
+		}
+
+		.notification-count {
+			background: red;
+			color: white;
+			font-size: 12px;
+			border-radius: 50%;
+			padding: 4px 8px;
+			position: absolute;
+			top: -5px;
+			right: -5px;
+			display: none;
+		}
+
+		.notification-dropdown {
+			position: absolute;
+			right: 0;
+			top: 40px;
+			width: 250px;
+			background: white;
+			border: 1px solid #ddd;
+			box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+			display: none;
+			z-index: 1000;
+		}
+
+		.notification-dropdown ul {
+			list-style: none;
+			margin: 0;
+			padding: 10px;
+		}
+
+		.notification-dropdown li {
+			padding: 10px;
+			border-bottom: 1px solid #ddd;
+			cursor: pointer;
+		}
+
+		.notification-dropdown li:hover {
+			background: #f5f5f5;
+		}
+
+		.notification-dropdown:not(.hidden) {
+			display: block;
+		}
 	</style>
 </head>
 
@@ -64,6 +121,16 @@
 		<?php echo view('AdminSide/includes/topNavbar') ?>
 
 		<!-- MAIN -->
+		<div class="notification-container">
+    <button id="notificationBell" class="notification-bell">
+        🔔 <span id="notificationCount" class="notification-count">0</span>
+    </button>
+    <div id="notificationDropdown" class="notification-dropdown hidden">
+        <ul id="notificationList"></ul>
+    </div>
+</div>
+
+
 		<main class="dashboard">
 			<div class="head-title">
 				<div class="left">
@@ -153,6 +220,8 @@
 
 	<script src="<?= base_url('Admin/js/notifModal.js') ?>"></script>
 	<script src="<?= base_url('Admin/js/dashboard1.js') ?>"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 	<script>
@@ -205,33 +274,33 @@
 			}
 
 			function fetchRecentOrders() {
-    fetch("<?= base_url('/admin/chart-data/recent-orders') ?>")
-        .then(response => response.json())
-        .then(data => {
-            const tbody = document.getElementById("recentOrdersTable");
-            tbody.innerHTML = "";
+				fetch("<?= base_url('/admin/chart-data/recent-orders') ?>")
+					.then(response => response.json())
+					.then(data => {
+						const tbody = document.getElementById("recentOrdersTable");
+						tbody.innerHTML = "";
 
-            if (data.length > 0) {
-                data.forEach(order => {
-                    let statusClass = '';
-                    switch (order.order_status.toLowerCase()) {
-                        case 'delivered':
-                            statusClass = 'delivered';
-                            break;
-                        case 'pending':
-                            statusClass = 'pending';
-                            break;
-                        case 'cancelled':
-                            statusClass = 'cancelled';
-                            break;
-                        case 'shipped':
-                            statusClass = 'shipped';
-                            break;
-                        default:
-                            statusClass = 'pending';
-                    }
+						if (data.length > 0) {
+							data.forEach(order => {
+								let statusClass = '';
+								switch (order.order_status.toLowerCase()) {
+									case 'delivered':
+										statusClass = 'delivered';
+										break;
+									case 'pending':
+										statusClass = 'pending';
+										break;
+									case 'cancelled':
+										statusClass = 'cancelled';
+										break;
+									case 'shipped':
+										statusClass = 'shipped';
+										break;
+									default:
+										statusClass = 'pending';
+								}
 
-                    tbody.innerHTML += `
+								tbody.innerHTML += `
                         <tr>
                             <td>${order.order_id}</td>
                             <td>${order.shipping_name}</td>
@@ -249,12 +318,12 @@
                             </td>
                         </tr>
                     `;
-                });
-            } else {
-                tbody.innerHTML = `<tr><td colspan="9" style="color: gray;">No recent orders!</td></tr>`;
-            }
-        });
-}
+							});
+						} else {
+							tbody.innerHTML = `<tr><td colspan="9" style="color: gray;">No recent orders!</td></tr>`;
+						}
+					});
+			}
 
 
 			fetchRevenueData();
@@ -266,6 +335,74 @@
 			});
 		});
 	</script>
+	<script>
+	document.addEventListener("DOMContentLoaded", function () {
+    const notificationBell = document.getElementById("notificationBell");
+    const notificationDropdown = document.getElementById("notificationDropdown");
+    const notificationList = document.getElementById("notificationList");
+    const notificationCount = document.getElementById("notificationCount");
+
+    function fetchLowStockNotifications() {
+        fetch("<?= base_url('/admin/notifications/low-stock') ?>")
+            .then(response => response.json())
+            .then(data => {
+                notificationList.innerHTML = "";
+                let count = data.length;
+
+                if (count > 0) {
+                    notificationCount.textContent = count;
+                    notificationCount.style.display = "inline-block";
+                    data.forEach(item => {
+                        notificationList.innerHTML += `
+                            <li>
+                                ⚠️ <b>${item.product_name}</b> is low on stock: ${item.stock_quantity} left!
+                            </li>`;
+                    });
+                } else {
+                    notificationCount.style.display = "none";
+                    notificationList.innerHTML = `<li>No stock alerts</li>`;
+                }
+            });
+    }
+
+    notificationBell.addEventListener("click", () => {
+        notificationDropdown.classList.toggle("hidden");
+    });
+
+    fetchLowStockNotifications();
+    setInterval(fetchLowStockNotifications, 60000);
+});
+
+	</script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+    const downloadBtn = document.querySelector('.btn-download');
+    downloadBtn.addEventListener('click', function(e) {
+        e.preventDefault(); 
+
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        doc.setFontSize(20);
+        doc.text('Dashboard Report', 20, 20);
+
+        doc.setFontSize(16);
+        doc.text('Confirmed Orders: <?= $totalConfirmed ?? 0; ?>', 20, 30);
+        doc.text('Total Orders: <?= $totalOrders ?? 0; ?>', 20, 40);
+        doc.text('Total Sales: ₱<?= number_format($totalRevenue ?? 0, 2); ?>', 20, 50);
+
+        const revenueChart = document.getElementById('yearlyRevenueChart');
+        const orderStatusChart = document.getElementById('orderStatusChart');
+        
+        doc.addImage(revenueChart.toDataURL('image/png'), 'PNG', 20, 60, 160, 90); // Adjust size/position as needed
+        doc.addImage(orderStatusChart.toDataURL('image/png'), 'PNG', 20, 160, 160, 90);
+
+        doc.save('dashboard-report.pdf');
+    });
+});
+
+	</script>
+
 </body>
 
 </html>

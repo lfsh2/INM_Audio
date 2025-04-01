@@ -7,6 +7,7 @@ use App\Models\GearModel;
 use App\Models\OrderModel;
 use App\Models\Placed_Orders_Model;
 use App\Models\Gear_Product_Model;
+use Config\Database;
 
 class AdminController extends BaseController
 {
@@ -65,6 +66,18 @@ class AdminController extends BaseController
         $recentOrders = array_filter($allOrders, function($order) {
             return in_array(strtolower($order->order_status), ['complete', 'completed']);
         });
+
+        $lowStockProducts = $gearModel->getLowStockProducts(5);
+        if (!empty($lowStockProducts)) {
+            $db = \Config\Database::connect();
+            foreach ($lowStockProducts as $product) {
+                $db->table('notifications')->insert([
+                    'message' => "Stock is low for {$product['product_name']}. Only {$product['stock_quantity']} left.",
+                    'status' => 'unread',
+                    'created_at' => date('Y-m-d H:i:s')
+                ]);
+            }
+        }
     
         $data = [
             'adminAccount'    => $adminAccountModel->getUser('admin_account_id', session()->get('admin_id')),
@@ -75,13 +88,46 @@ class AdminController extends BaseController
             'totalCancelled'  => $orderModel->getTotalCancelled(),
             'totalComplete'   => $orderModel->getTotalComplete(),
             'totalRevenue'    => $orderModel->getTotalRevenue(),
-            'recentOrders'    => $recentOrders  
+            'recentOrders'    => $recentOrders,
+            'lowStockProducts' => $lowStockProducts
         ];
     
         return $this->checkAdminSession('AdminSide/dashboard', $data);
     }
+
+    public function getLowStockNotifications()
+    {
+        $gearModel = new GearModel();
+
+        $lowStockProducts = $gearModel->getLowStockProducts(5);
+
+        return $this->response->setJSON($lowStockProducts);
+    }
+
+    public function lowStockNotifications() {
+        $db = \Config\Database::connect();
+        $query = $db->query("SELECT product_name, stock_quantity FROM products WHERE stock_quantity <= 5 ORDER BY stock_quantity ASC");
+        $lowStockItems = $query->getResultArray();
     
+        return $this->response->setJSON($lowStockItems);
+    }
     
+
+    public function getNotifications()
+    {
+        $db = Database::connect(); 
+        $notifications = $db->table('notifications')
+            ->where('status', 'unread')
+            ->orderBy('created_at', 'DESC')
+            ->get()
+            ->getResult();
+    
+        return $this->response->setJSON($notifications);
+    }
+    
+
+
+
     public function orders_transactions() { 
         $orderModel = new OrderModel();
     

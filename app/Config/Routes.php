@@ -96,6 +96,9 @@ $routes->group('', function($routes) {
 });
 
 
+$routes->get('admin/getNotifications', 'AdminController::getNotifications');
+$routes->get('/admin/notifications/low-stock', 'NotificationController::lowStockNotifications');
+
 
 ## ---------------------------------------------------------------------
 // admin routers
@@ -120,6 +123,8 @@ $routes->group('/admin/', function($routes) {
 
 
         $routes->get('dashboard', 'AdminController::dashboard');
+
+
     
         // charts
         $routes->get('chart-data/revenue', 'AdminController::getRevenueData');

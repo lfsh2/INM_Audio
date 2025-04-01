@@ -110,13 +110,15 @@
                     <form id="checkoutForm" action="<?= base_url('/checkout') ?>" method="post">
                         <input type="hidden" name="total_price" id="totalPrice" value="<?= esc($totalPrice) ?>">
                         <input type="hidden" name="total_quantity" id="totalQuantity" value="<?= esc($totalQuantity) ?>">
-                        <div id="selectedItemsContainer"></div> 
+                        <div id="selectedItemsContainer"></div>
 
                         <label for="name">Full Name:</label>
-                        <input type="text" name="shipping_name" id="name" placeholder="Enter your full name" required>
+                        <input type="text" name="shipping_name" id="name" value="<?= esc($user_name) ?>" placeholder="Enter your full name" required>
 
-                        <label for="address">Shipping Address: </label>
-                        <textarea name="shipping_address" id="address" rows="3" placeholder="Enter your full address" required></textarea>
+                        <label for="address">Shipping Address:</label>
+                        <textarea name="shipping_address" id="address" rows="3" placeholder="Enter your full address" required><?= esc($user_address) ?></textarea>
+
+
 
                         <button type="submit" class="total-checkout">🛒 Check Out</button>
                     </form>
@@ -130,63 +132,62 @@
 
 
     <script>
-    document.addEventListener("DOMContentLoaded", function () {
-    const checkboxes = document.querySelectorAll(".itemCheckbox");
-    const totalItemsSpan = document.querySelector(".details span:nth-child(2)");
-    const subtotalSpan = document.querySelector(".details span:last-child");
-    const totalPriceSpan = document.querySelector(".total p span:last-child");
-    const totalQuantityInput = document.getElementById("totalQuantity");
-    const totalPriceInput = document.getElementById("totalPrice");
-    const checkoutForm = document.getElementById("checkoutForm");
-    const selectedItemsContainer = document.getElementById("selectedItemsContainer");
+        document.addEventListener("DOMContentLoaded", function() {
+            const checkboxes = document.querySelectorAll(".itemCheckbox");
+            const totalItemsSpan = document.querySelector(".details span:nth-child(2)");
+            const subtotalSpan = document.querySelector(".details span:last-child");
+            const totalPriceSpan = document.querySelector(".total p span:last-child");
+            const totalQuantityInput = document.getElementById("totalQuantity");
+            const totalPriceInput = document.getElementById("totalPrice");
+            const checkoutForm = document.getElementById("checkoutForm");
+            const selectedItemsContainer = document.getElementById("selectedItemsContainer");
 
-    function updateSummary() {
-        let totalItems = 0;
-        let totalPrice = 0;
+            function updateSummary() {
+                let totalItems = 0;
+                let totalPrice = 0;
 
-        selectedItemsContainer.innerHTML = "";
+                selectedItemsContainer.innerHTML = "";
 
-        checkboxes.forEach(checkbox => {
-            if (checkbox.checked) {
-                let card = checkbox.closest(".card");
-                let price = parseFloat(card.querySelector(".card-bottom p").textContent.replace("₱", "").replace(",", ""));
-                let quantity = parseInt(card.querySelector(".card-top p").textContent.replace("Quantity: ", ""));
+                checkboxes.forEach(checkbox => {
+                    if (checkbox.checked) {
+                        let card = checkbox.closest(".card");
+                        let price = parseFloat(card.querySelector(".card-bottom p").textContent.replace("₱", "").replace(",", ""));
+                        let quantity = parseInt(card.querySelector(".card-top p").textContent.replace("Quantity: ", ""));
 
-                totalItems += quantity;
-                totalPrice += price;
+                        totalItems += quantity;
+                        totalPrice += price;
 
-                let hiddenInput = document.createElement("input");
-                hiddenInput.type = "hidden";
-                hiddenInput.name = "selected_items[]";
-                hiddenInput.value = checkbox.value;
-                selectedItemsContainer.appendChild(hiddenInput);
+                        let hiddenInput = document.createElement("input");
+                        hiddenInput.type = "hidden";
+                        hiddenInput.name = "selected_items[]";
+                        hiddenInput.value = checkbox.value;
+                        selectedItemsContainer.appendChild(hiddenInput);
+                    }
+                });
+
+                totalItemsSpan.textContent = `${totalItems} item${totalItems !== 1 ? "s" : ""}`;
+                subtotalSpan.textContent = `₱${totalPrice.toFixed(2)}`;
+                totalPriceSpan.textContent = `₱${totalPrice.toFixed(2)}`;
+
+                totalQuantityInput.value = totalItems;
+                totalPriceInput.value = totalPrice;
             }
+
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener("change", updateSummary);
+            });
+
+            checkoutForm.addEventListener("submit", function(e) {
+                let selectedItems = document.querySelectorAll('input[name="selected_items[]"]');
+                if (selectedItems.length === 0) {
+                    alert("Please select at least one item to checkout.");
+                    e.preventDefault();
+                }
+            });
+
+            updateSummary();
         });
-
-        totalItemsSpan.textContent = `${totalItems} item${totalItems !== 1 ? "s" : ""}`;
-        subtotalSpan.textContent = `₱${totalPrice.toFixed(2)}`;
-        totalPriceSpan.textContent = `₱${totalPrice.toFixed(2)}`;
-
-        totalQuantityInput.value = totalItems;
-        totalPriceInput.value = totalPrice;
-    }
-
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener("change", updateSummary);
-    });
-
-    checkoutForm.addEventListener("submit", function (e) {
-        let selectedItems = document.querySelectorAll('input[name="selected_items[]"]');
-        if (selectedItems.length === 0) {
-            alert("Please select at least one item to checkout.");
-            e.preventDefault();
-        }
-    });
-
-    updateSummary();
-});
-
-</script>
+    </script>
 
 
 </body>
