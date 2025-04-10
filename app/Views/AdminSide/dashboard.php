@@ -51,62 +51,7 @@
 			color: white;
 		}
 
-		.notification-container {
-			position: relative;
-			display: inline-block;
-		}
-
-		.notification-bell {
-			font-size: 24px;
-			background: none;
-			border: none;
-			cursor: pointer;
-			position: relative;
-		}
-
-		.notification-count {
-			background: red;
-			color: white;
-			font-size: 12px;
-			border-radius: 50%;
-			padding: 4px 8px;
-			position: absolute;
-			top: -5px;
-			right: -5px;
-			display: none;
-		}
-
-		.notification-dropdown {
-			position: absolute;
-			right: 0;
-			top: 40px;
-			width: 250px;
-			background: white;
-			border: 1px solid #ddd;
-			box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-			display: none;
-			z-index: 1000;
-		}
-
-		.notification-dropdown ul {
-			list-style: none;
-			margin: 0;
-			padding: 10px;
-		}
-
-		.notification-dropdown li {
-			padding: 10px;
-			border-bottom: 1px solid #ddd;
-			cursor: pointer;
-		}
-
-		.notification-dropdown li:hover {
-			background: #f5f5f5;
-		}
-
-		.notification-dropdown:not(.hidden) {
-			display: block;
-		}
+		
 	</style>
 </head>
 
@@ -121,16 +66,6 @@
 		<?php echo view('AdminSide/includes/topNavbar') ?>
 
 		<!-- MAIN -->
-		<div class="notification-container">
-    <button id="notificationBell" class="notification-bell">
-        🔔 <span id="notificationCount" class="notification-count">0</span>
-    </button>
-    <div id="notificationDropdown" class="notification-dropdown hidden">
-        <ul id="notificationList"></ul>
-    </div>
-</div>
-
-
 		<main class="dashboard">
 			<div class="head-title">
 				<div class="left">
@@ -336,43 +271,42 @@
 		});
 	</script>
 	<script>
-	document.addEventListener("DOMContentLoaded", function () {
-    const notificationBell = document.getElementById("notificationBell");
-    const notificationDropdown = document.getElementById("notificationDropdown");
-    const notificationList = document.getElementById("notificationList");
-    const notificationCount = document.getElementById("notificationCount");
+		document.addEventListener("DOMContentLoaded", function () {
+			const notificationBell = document.getElementById("notificationBell");
+			const notificationDropdown = document.getElementById("notificationDropdown");
+			const notificationList = document.getElementById("notificationList");
+			const notificationCount = document.getElementById("notificationCount");
 
-    function fetchLowStockNotifications() {
-        fetch("<?= base_url('/admin/notifications/low-stock') ?>")
-            .then(response => response.json())
-            .then(data => {
-                notificationList.innerHTML = "";
-                let count = data.length;
+			function fetchLowStockNotifications() {
+				fetch("<?= base_url('/admin/notifications/low-stock') ?>")
+					.then(response => response.json())
+					.then(data => {
+						notificationList.innerHTML = "";
+						let count = data.length;
 
-                if (count > 0) {
-                    notificationCount.textContent = count;
-                    notificationCount.style.display = "inline-block";
-                    data.forEach(item => {
-                        notificationList.innerHTML += `
-                            <li>
-                                ⚠️ <b>${item.product_name}</b> is low on stock: ${item.stock_quantity} left!
-                            </li>`;
-                    });
-                } else {
-                    notificationCount.style.display = "none";
-                    notificationList.innerHTML = `<li>No stock alerts</li>`;
-                }
-            });
-    }
+						if (count > 0) {
+							notificationCount.textContent = count;
+							notificationCount.style.display = "inline-block";
+							data.forEach(item => {
+								notificationList.innerHTML += `
+									<li>
+										⚠️ <b>${item.product_name}</b> is low on stock: ${item.stock_quantity} left!
+									</li>`;
+							});
+						} else {
+							notificationCount.style.display = "none";
+							notificationList.innerHTML = `<li>No stock alerts</li>`;
+						}
+					});
+			}
 
-    notificationBell.addEventListener("click", () => {
-        notificationDropdown.classList.toggle("hidden");
-    });
+			notificationBell.addEventListener("click", () => {
+				notificationDropdown.classList.toggle("hidden");
+			});
 
-    fetchLowStockNotifications();
-    setInterval(fetchLowStockNotifications, 60000);
-});
-
+			fetchLowStockNotifications();
+			setInterval(fetchLowStockNotifications, 60000);
+		});
 	</script>
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {

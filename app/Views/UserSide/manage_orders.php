@@ -14,7 +14,8 @@
 
     <style>
         .orders-container {
-            max-width: 1000px;
+            /* max-width: 1000px; */
+            width: 100%;
             margin: 20px auto;
             padding: 20px;
             background: #fff;
@@ -27,6 +28,7 @@
             justify-content: space-around;
             border-bottom: 2px solid #ddd;
             margin-bottom: 15px;
+            margin-top: 20px;
         }
         .tab {
             padding: 10px 20px;
@@ -38,7 +40,7 @@
             border-bottom: 3px solid #007BFF;
             color: #007BFF;
         }
-
+        
         table {
             width: 100%;
             border-collapse: collapse;

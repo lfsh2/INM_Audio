@@ -206,8 +206,8 @@ class ComposerStaticInitbc59f46788b4a68029550081739fc4ac
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -311,6 +311,10 @@ class ComposerStaticInitbc59f46788b4a68029550081739fc4ac
                 0 => __DIR__ . '/..' . '/mikey179/vfsstream/src/main/php',
             ),
         ),
+    );
+
+    public static $fallbackDirsPsr0 = array (
+        0 => __DIR__ . '/..' . '/mofodojodino/profanity-filter/src',
     );
 
     public static $classMap = array (
@@ -4370,6 +4374,7 @@ class ComposerStaticInitbc59f46788b4a68029550081739fc4ac
         'TheSeer\\Tokenizer\\XMLSerializer' => __DIR__ . '/..' . '/theseer/tokenizer/src/XMLSerializer.php',
         'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
+        'mofodojodino\\ProfanityFilter\\Check' => __DIR__ . '/..' . '/mofodojodino/profanity-filter/src/mofodojodino/ProfanityFilter/Check.php',
         'org\\bovigo\\vfs\\DotDirectory' => __DIR__ . '/..' . '/mikey179/vfsstream/src/main/php/org/bovigo/vfs/DotDirectory.php',
         'org\\bovigo\\vfs\\Quota' => __DIR__ . '/..' . '/mikey179/vfsstream/src/main/php/org/bovigo/vfs/Quota.php',
         'org\\bovigo\\vfs\\content\\FileContent' => __DIR__ . '/..' . '/mikey179/vfsstream/src/main/php/org/bovigo/vfs/content/FileContent.php',
@@ -4398,6 +4403,7 @@ class ComposerStaticInitbc59f46788b4a68029550081739fc4ac
             $loader->prefixLengthsPsr4 = ComposerStaticInitbc59f46788b4a68029550081739fc4ac::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitbc59f46788b4a68029550081739fc4ac::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInitbc59f46788b4a68029550081739fc4ac::$prefixesPsr0;
+            $loader->fallbackDirsPsr0 = ComposerStaticInitbc59f46788b4a68029550081739fc4ac::$fallbackDirsPsr0;
             $loader->classMap = ComposerStaticInitbc59f46788b4a68029550081739fc4ac::$classMap;
 
         }, null, ClassLoader::class);

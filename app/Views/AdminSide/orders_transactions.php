@@ -12,6 +12,9 @@
 
     <title>Orders | Transactions</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
         #order_transaction {
             background-color: #d4ebf844;
         }
@@ -58,8 +61,8 @@
                             <option value="cancelled">Cancelled</option>
                         </select>
                         <input type="date" id="filterDate">
-                        <button onclick="exportCSV()">Export CSV</button>
-                        <button onclick="exportPDF()">Export PDF</button>
+                        <button onclick="exportCSV()" class="csv">Export CSV</button>
+                        <button onclick="exportPDF()" class="pdf">Export PDF</button>
                     </div>
 
                     <!-- Orders Table -->
@@ -95,7 +98,7 @@
                                     </td>
                                     <td><?= ucfirst($order['payment_method']) ?></td>
                                     <td><?= date('Y-m-d', strtotime($order['created_at'])) ?></td>
-                                    <td>
+                                    <td class="delete">
                                         <button class="delete-btn" data-id="<?= $order['order_id'] ?>">Delete</button>
                                     </td>
                                 </tr>
@@ -173,6 +176,45 @@
                             });
                         });
                     </script>
+                    
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			const notificationBell = document.getElementById("notificationBell");
+			const notificationDropdown = document.getElementById("notificationDropdown");
+			const notificationList = document.getElementById("notificationList");
+			const notificationCount = document.getElementById("notificationCount");
+
+			function fetchLowStockNotifications() {
+				fetch("<?= base_url('/admin/notifications/low-stock') ?>")
+					.then(response => response.json())
+					.then(data => {
+						notificationList.innerHTML = "";
+						let count = data.length;
+
+						if (count > 0) {
+							notificationCount.textContent = count;
+							notificationCount.style.display = "inline-block";
+							data.forEach(item => {
+								notificationList.innerHTML += `
+									<li>
+										⚠️ <b>${item.product_name}</b> is low on stock: ${item.stock_quantity} left!
+									</li>`;
+							});
+						} else {
+							notificationCount.style.display = "none";
+							notificationList.innerHTML = `<li>No stock alerts</li>`;
+						}
+					});
+			}
+
+			notificationBell.addEventListener("click", () => {
+				notificationDropdown.classList.toggle("hidden");
+			});
+
+			fetchLowStockNotifications();
+			setInterval(fetchLowStockNotifications, 60000);
+		});
+	</script>
 
 </body>
 

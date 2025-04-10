@@ -46,6 +46,39 @@
                 }
             }
         }
+
+        .filters {
+            padding: 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            input, select, button {
+                padding: 5px 10px;
+                color: var(--dark);
+                background: var(--light);
+                border: 1px solid var(--dark);
+            }
+
+            input::placeholder {
+                color: var(--dark);
+            }
+
+            button {
+                background: var(--bg);
+                color: white;
+                border: var(--bg);
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            .csv {
+                --bg: blue;
+            }
+            .pdf {
+                --bg: red;
+            }
+        }
         
         table {
             width: 100%;
@@ -57,12 +90,10 @@
                 flex-grow: 1;
             }
             
-            th {
-            }
-            
             td {
                 max-width: 250px;
                 max-height: 250px;
+                text-align: center;
 
                 img {
                     width: 100%;
@@ -71,23 +102,13 @@
                 }
             }
 
-            .buttons {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-
-                a {
-                    padding: 5px;
-                    color: white;
-                    border: none;
-                    border-radius: 5px;
-                }
-                .confirm {
-                    background: rgb(55, 131, 255);
-                }
-                .cancel {
-                    background: red;
-                }
+            button {
+                padding: 5px 10px;
+                color: white;
+                background: red;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
             }
         }
     }

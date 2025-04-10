@@ -3,7 +3,7 @@
         'name' => 'codeigniter4/framework',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '68abed59c0fa39cba877c95d1ec1a7719e27bc99',
+        'reference' => '38afdbb388c78cd16a74023fe22a1e4bf02c4999',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -31,7 +31,7 @@
         'codeigniter4/framework' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '68abed59c0fa39cba877c95d1ec1a7719e27bc99',
+            'reference' => '38afdbb388c78cd16a74023fe22a1e4bf02c4999',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -153,6 +153,15 @@
             'install_path' => __DIR__ . '/../mikey179/vfsstream',
             'aliases' => array(),
             'dev_requirement' => true,
+        ),
+        'mofodojodino/profanity-filter' => array(
+            'pretty_version' => '1.3.0',
+            'version' => '1.3.0.0',
+            'reference' => '529d24adcdb5b9507a4622db6aba6e54c5bb82a9',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../mofodojodino/profanity-filter',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'myclabs/deep-copy' => array(
             'pretty_version' => '1.12.1',

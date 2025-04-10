@@ -13,7 +13,6 @@ class Community extends Controller
 {
     $session = session();
 
-    // Restrict access to logged-in users
     if (!$session->has('isLoggedIn')) {
         return redirect()->to('/login')->with('error', 'You must be logged in to access the community.');
     }
@@ -22,21 +21,18 @@ class Community extends Controller
     $commentModel = new CommentModel();
     $userModel = new User_Account_Model();
 
-    // Fetch all posts
     $posts = $postModel->orderBy('id', 'DESC')->findAll();
 
     foreach ($posts as &$post) {
-        // Fetch comments for each post
         $post['comments'] = $commentModel->getCommentsByPostId($post['id']);
 
-        // Fetch user profile details for each post
         $user = $userModel->getUserById($post['user_id'] ?? null);
         $post['profile_pic'] = !empty($user['profile_pic']) ? $user['profile_pic'] : 'default-user.png';
     }
 
     $data = [
         'posts' => $posts,
-        'user' => $userModel->getUserById($session->get('user_id')) // Get logged-in user info
+        'user' => $userModel->getUserById($session->get('user_id')) 
     ];
 
     return view('community', $data);
@@ -47,7 +43,6 @@ class Community extends Controller
     {
         $session = session();
 
-        // Restrict posting to logged-in users
         if (!$session->has('isLoggedIn')) {
             return redirect()->to('/login')->with('error', 'You must be logged in to post.');
         }
@@ -75,7 +70,6 @@ class Community extends Controller
     {
         $session = session();
 
-        // Restrict commenting to logged-in users
         if (!$session->has('isLoggedIn')) {
             return redirect()->to('/login')->with('error', 'You must be logged in to comment.');
         }

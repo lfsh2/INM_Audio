@@ -91,6 +91,46 @@
         </main>
     </section>
 
+	
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			const notificationBell = document.getElementById("notificationBell");
+			const notificationDropdown = document.getElementById("notificationDropdown");
+			const notificationList = document.getElementById("notificationList");
+			const notificationCount = document.getElementById("notificationCount");
+
+			function fetchLowStockNotifications() {
+				fetch("<?= base_url('/admin/notifications/low-stock') ?>")
+					.then(response => response.json())
+					.then(data => {
+						notificationList.innerHTML = "";
+						let count = data.length;
+
+						if (count > 0) {
+							notificationCount.textContent = count;
+							notificationCount.style.display = "inline-block";
+							data.forEach(item => {
+								notificationList.innerHTML += `
+									<li>
+										⚠️ <b>${item.product_name}</b> is low on stock: ${item.stock_quantity} left!
+									</li>`;
+							});
+						} else {
+							notificationCount.style.display = "none";
+							notificationList.innerHTML = `<li>No stock alerts</li>`;
+						}
+					});
+			}
+
+			notificationBell.addEventListener("click", () => {
+				notificationDropdown.classList.toggle("hidden");
+			});
+
+			fetchLowStockNotifications();
+			setInterval(fetchLowStockNotifications, 60000);
+		});
+	</script>
+
 	<script src="<?= base_url('Admin/js/notifModal.js') ?>"></script>
 	<script src="<?= base_url('Admin/js/dashboard1.js') ?>"></script>
 </body>

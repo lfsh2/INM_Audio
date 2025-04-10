@@ -4062,6 +4062,7 @@ return array(
     'TheSeer\\Tokenizer\\XMLSerializer' => $vendorDir . '/theseer/tokenizer/src/XMLSerializer.php',
     'UnhandledMatchError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
     'ValueError' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
+    'mofodojodino\\ProfanityFilter\\Check' => $vendorDir . '/mofodojodino/profanity-filter/src/mofodojodino/ProfanityFilter/Check.php',
     'org\\bovigo\\vfs\\DotDirectory' => $vendorDir . '/mikey179/vfsstream/src/main/php/org/bovigo/vfs/DotDirectory.php',
     'org\\bovigo\\vfs\\Quota' => $vendorDir . '/mikey179/vfsstream/src/main/php/org/bovigo/vfs/Quota.php',
     'org\\bovigo\\vfs\\content\\FileContent' => $vendorDir . '/mikey179/vfsstream/src/main/php/org/bovigo/vfs/content/FileContent.php',
