@@ -41,7 +41,7 @@
             color: #007BFF;
         }
         
-        table {
+        /* table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 10px;
@@ -118,6 +118,87 @@
                 content: attr(data-label);
                 font-weight: bold;
             }
+        } */
+
+        .items {
+            width: 100%;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            .item-card {
+                width: 70%;
+                margin: auto;
+                padding: 10px 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            }
+
+            .item {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .ihead {
+                padding: 10px 0;
+                display: flex;
+                justify-content: space-between;
+
+                .shop-name {
+                    font-weight: bold;
+                }
+            }
+
+            .ibody {
+                .container {
+                    width: 100%;
+                    padding: 10px 0;
+                    display: flex;
+                    justify-content: space-between;
+                    align-content: start;
+                    gap: 20px;
+                }
+                
+                img {
+                    height: 150px;
+                    border: 1px solid red;
+                    object-fit: contain;
+                    aspect-ratio: 1/1;
+                }
+
+                .block {
+                    flex-grow: 1;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                }
+
+                .group {
+                    width: 100%;
+                    margin-top: 5px;
+                    display: flex;
+                    justify-content: space-between;
+                    color: #acacac;
+                }
+
+                .price, .total {
+                    margin-top: 5px;
+                    text-align: right;
+                }
+            }
+            .ibottom {
+                display: flex;
+                justify-content: end;
+                button {
+                    padding: 10px;
+                    border: 1px solid red;
+                    border-radius: 5px;
+                    background: none;
+                    color: red;
+                    cursor: pointer;
+                }
+            }
         }
     </style>
 </head>
@@ -141,9 +222,9 @@
 
     <div id="orders-table">
         <?php
-        $status = 'pending';
-        $filteredOrders = array_filter($orders, fn($order) => $order['order_status'] === $status);
-        include 'orders_partial.php';
+            $status = 'pending';
+            $filteredOrders = array_filter($orders, fn($order) => $order['order_status'] === $status);
+            include 'orders_partial.php';
         ?>
     </div>
 </div>
