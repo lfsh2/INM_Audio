@@ -1,49 +1,3 @@
-<!-- <table>
-    <thead>
-        <tr>
-              <th>Order ID</th>
-            <th>Product</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Status</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php if (!empty($filteredOrders)) : ?>
-            <?php foreach ($filteredOrders as $order) : ?>
-                <tr>
-                        <td><?= esc($order['order_id']) ?></td> 
-                    <td><?= esc($order['product_id']) ?></td>
-                    <td><?= esc($order['quantity']) ?></td>
-                    <td>₱<?= esc($order['price']) ?></td>
-                    <td>
-                        <span class="status <?= esc($order['order_status']) ?>">
-                            <i class="
-    <?= ($order['order_status'] === 'delivered') ? 'fa-solid fa-check-circle delivered' : (($order['order_status'] === 'cancelled') ? 'fa-solid fa-times-circle cancelled' : (($order['order_status'] === 'shipped') ? 'fa-solid fa-truck shipped' : 'fa-solid fa-hourglass-half pending')); ?>">
-                            </i>
-
-                            <?= ucfirst(esc($order['order_status'])) ?>
-                        </span>
-                    </td>
-                    <td>
-                        <button class="btn-cancel cancel-btn"
-                            data-order-id="<?= $order['order_id'] ?>"
-                            <?= ($order['order_status'] !== 'pending') ? 'disabled' : '' ?>>
-                            Cancel
-                        </button>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        <?php else : ?>
-            <tr>
-                <td colspan="6">No <?= ucfirst($status) ?> Orders.</td>
-            </tr>
-        <?php endif; ?>
-    </tbody>
-</table> -->
-
-
 <div class="items">
     <?php if (!empty($filteredOrders)) : ?>
         <?php foreach ($filteredOrders as $order) : ?>
@@ -52,7 +6,10 @@
                     <p class="shop-name">INM_Audio</p>
                     
                     <span class="status <?= esc($order['order_status']) ?>">
-                        <i class="<?= ($order['order_status'] === 'delivered') ? 'fa-solid fa-check-circle delivered' : (($order['order_status'] === 'cancelled') ? 'fa-solid fa-times-circle cancelled' : (($order['order_status'] === 'shipped') ? 'fa-solid fa-truck shipped' : 'fa-solid fa-hourglass-half pending')); ?>"></i>
+                        <i class="<?= ($order['order_status'] === 'delivered') ? 'fa-solid fa-check-circle' : 
+                            (($order['order_status'] === 'cancelled') ? 'fa-solid fa-times-circle' : 
+                            (($order['order_status'] === 'shipped') ? 'fa-solid fa-truck' : 
+                            'fa-solid fa-hourglass-half')); ?>"></i>
     
                         <?= ucfirst(esc($order['order_status'])) ?>
                     </span>
@@ -60,14 +17,20 @@
     
                 <div class="item ibody">
                     <div class="container">
-                        <img src="" alt="Item Image">
+                        <?php if (!empty($order['image_url'])) : ?>
+                            <img src="<?= base_url($order['image_url']) ?>" alt="<?= esc($order['product_name']) ?>">
+                        <?php else : ?>
+                            <img src="<?= base_url('/assets/images/placeholder.jpg') ?>" alt="No Image Available">
+                        <?php endif; ?>
     
                         <div class="block">
                             <div class="sub-info">
-                                <h4>Item Name</h4>
+                                <h4><?= esc($order['product_name'] ?? 'Product #'.$order['product_id']) ?></h4>
         
                                 <div class="group">
-                                    <p>color</p>
+                                    <?php if (!empty($order['color'])) : ?>
+                                        <p><?= esc($order['color']) ?></p>
+                                    <?php endif; ?>
                                     <p><i>x<?= esc($order['quantity']) ?></i></p>
                                 </div>
                             </div>
@@ -76,21 +39,47 @@
                         </div>
                     </div>
     
-                    <p class="total">Total <?= esc($order['quantity']) ?> item: <strong>₱<?= esc($order['price']) ?></strong></p>
+                    <p class="total">Total <?= esc($order['quantity']) ?> item: <strong>₱<?= number_format($order['quantity'] * $order['price'], 2) ?></strong></p>
                 </div>
     
                 <div class="item ibottom">
                     <button class="btn-cancel cancel-btn"
                         data-order-id="<?= $order['order_id'] ?>"
                         <?= ($order['order_status'] !== 'pending') ? 'disabled' : '' ?>>
-                        Cancel
+                        <?= ($order['order_status'] === 'pending') ? 'Cancel Order' : 'No Action Available' ?>
                     </button>
                 </div>
             </div>
         <?php endforeach; ?>
     <?php else : ?>
-        <tr>
-            <td colspan="6">No <?= ucfirst($status) ?> Orders.</td>
-        </tr>
+        <div class="no-orders">
+            <p>No <?= ucfirst($status) ?> orders found.</p>
+        </div>
     <?php endif; ?>
 </div>
+
+<style>
+.no-orders {
+    text-align: center;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin: 20px 0;
+    color: #666;
+}
+
+.container img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+}
+
+@media (max-width: 480px) {
+    .container img {
+        width: 100%;
+        height: 150px;
+    }
+}
+</style>

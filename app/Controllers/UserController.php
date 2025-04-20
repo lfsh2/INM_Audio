@@ -51,18 +51,6 @@ class UserController extends BaseController
 
 
 
-    public function manageOrders() {
-        $orderModel = new OrderModel();
-        $userId = session()->get('user_id');
-        $orders = $orderModel->where('user_id', $userId)->findAll();
-    
-        $data = [
-            'orders' => $orders
-        ];
-        
-        return $this->checkUserSession('UserSide/manage_orders', $data);
-    }
-    
     
     public function getOrders() {
         $userId = session()->get('user_id'); 
@@ -70,31 +58,80 @@ class UserController extends BaseController
         $orders = $orderModel->where('user_id', $userId)->findAll();
         return $this->response->setJSON($orders);
     }
-
-    public function cancelOrder() {
-        $orderId = $this->request->getPost('order_id');
+    public function manageOrders() {
         $orderModel = new OrderModel();
-
-        $order = $orderModel->find($orderId);
-        if (!$order || $order['order_status'] == 'shipped') {
-            return $this->response->setJSON(['message' => 'Cannot cancel this order.']);
-        }
-
-        $orderModel->update($orderId, ['order_status' => 'cancelled']);
-        return $this->response->setJSON(['message' => 'Order cancelled successfully.']);
+        $userId = session()->get('user_id');
+        
+        // Get all orders with product information
+        $orders = $orderModel->getUserOrdersWithProducts($userId);
+        
+        $data = [
+            'orders' => $orders
+        ];
+        
+        return $this->checkUserSession('UserSide/manage_orders', $data);
     }
-
-
+    
     public function fetchOrders()
     {
-        $orderModel = new OrderModel();
         $status = $this->request->getPost('order_status');
-    
-        $orders = $orderModel->where('order_status', $status)->findAll();
-    
-        return view('UserSide/orders_table', ['orders' => $orders, 'status' => $status]);
+        
+        if (!in_array($status, ['pending', 'shipped', 'delivered', 'cancelled'])) {
+            $status = 'pending'; // Default status if invalid
+        }
+        
+        $orderModel = new OrderModel();
+        $userId = session()->get('user_id');
+        
+        // Get filtered orders with product information
+        $filteredOrders = $orderModel->getUserOrdersByStatus($userId, $status);
+        
+        // Include the partial view with filtered orders
+        return view('UserSide/orders_partial', [
+            'filteredOrders' => $filteredOrders,
+            'status' => $status
+        ]);
     }
     
+    public function cancelOrder()
+    {
+        $orderId = $this->request->getPost('order_id');
+        $orderModel = new OrderModel();
+        $userId = session()->get('user_id');
+    
+        $order = $orderModel->find($orderId);
+        
+        if (!$order) {
+            return $this->response->setJSON([
+                'success' => false, 
+                'message' => 'Order not found.'
+            ]);
+        }
+        
+        if ($order['user_id'] != $userId) {
+            return $this->response->setJSON([
+                'success' => false, 
+                'message' => 'You do not have permission to cancel this order.'
+            ]);
+        }
+        
+        if ($order['order_status'] !== 'pending') {
+            return $this->response->setJSON([
+                'success' => false, 
+                'message' => 'Only pending orders can be cancelled.'
+            ]);
+        }
+    
+        $orderModel->update($orderId, [
+            'order_status' => 'cancelled',
+            'date_cancelled' => date('Y-m-d H:i:s')
+        ]);
+        
+        return $this->response->setJSON([
+            'success' => true,
+            'message' => 'Order cancelled successfully.'
+        ]);
+    }
 
     ## User likes
     public function myLikes() {

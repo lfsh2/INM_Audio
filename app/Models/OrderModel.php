@@ -17,6 +17,34 @@ class OrderModel extends Model
 
     protected $useTimestamps = false;  
 
+
+    public function getUserOrdersWithProducts($userId)
+    {
+        $db = \Config\Database::connect();
+        
+        $builder = $db->table('orders');
+        $builder->select('orders.*, products.product_name, products.image_url');
+        $builder->join('products', 'products.product_id = orders.product_id', 'left');
+        $builder->where('orders.user_id', $userId);
+        $builder->orderBy('orders.created_at', 'DESC');
+        
+        return $builder->get()->getResultArray();
+    }
+    
+    public function getUserOrdersByStatus($userId, $status)
+    {
+        $db = \Config\Database::connect();
+        
+        $builder = $db->table('orders');
+        $builder->select('orders.*, products.product_name, products.image_url');
+        $builder->join('products', 'products.product_id = orders.product_id', 'left');
+        $builder->where('orders.user_id', $userId);
+        $builder->where('orders.order_status', $status);
+        $builder->orderBy('orders.created_at', 'DESC');
+        
+        return $builder->get()->getResultArray();
+    }
+   
     public function getTotalOrders()
     {
         return $this->countAll();
