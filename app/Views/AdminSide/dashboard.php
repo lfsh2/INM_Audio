@@ -328,7 +328,7 @@
         const revenueChart = document.getElementById('yearlyRevenueChart');
         const orderStatusChart = document.getElementById('orderStatusChart');
         
-        doc.addImage(revenueChart.toDataURL('image/png'), 'PNG', 20, 60, 160, 90); // Adjust size/position as needed
+        doc.addImage(revenueChart.toDataURL('image/png'), 'PNG', 20, 60, 160, 90); 
         doc.addImage(orderStatusChart.toDataURL('image/png'), 'PNG', 20, 160, 160, 90);
 
         doc.save('dashboard-report.pdf');

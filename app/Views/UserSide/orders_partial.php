@@ -18,7 +18,7 @@
                 <div class="item ibody">
                     <div class="container">
                         <?php if (!empty($order['image_url'])) : ?>
-                            <img src="<?= base_url($order['image_url']) ?>" alt="<?= esc($order['product_name']) ?>">
+                            <img src="<?= $order['image_url'] ?>" alt="<?= esc($order['product_name']) ?>">
                         <?php else : ?>
                             <img src="<?= base_url('/assets/images/placeholder.jpg') ?>" alt="No Image Available">
                         <?php endif; ?>

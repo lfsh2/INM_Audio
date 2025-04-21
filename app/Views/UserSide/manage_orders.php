@@ -14,7 +14,6 @@
 
     <style>
         .orders-container {
-            /* max-width: 1000px; */
             width: 100%;
             margin: 20px auto;
             padding: 20px;
@@ -179,7 +178,6 @@ $(document).ready(function() {
                 { order_id: orderId }, 
                 function(response) {
                     alert(response.message);
-                    // Refresh current tab content
                     $('.tab.active').click();
                 }, 
                 "json"

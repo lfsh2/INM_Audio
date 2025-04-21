@@ -62,7 +62,6 @@ class UserController extends BaseController
         $orderModel = new OrderModel();
         $userId = session()->get('user_id');
         
-        // Get all orders with product information
         $orders = $orderModel->getUserOrdersWithProducts($userId);
         
         $data = [
@@ -83,10 +82,8 @@ class UserController extends BaseController
         $orderModel = new OrderModel();
         $userId = session()->get('user_id');
         
-        // Get filtered orders with product information
         $filteredOrders = $orderModel->getUserOrdersByStatus($userId, $status);
         
-        // Include the partial view with filtered orders
         return view('UserSide/orders_partial', [
             'filteredOrders' => $filteredOrders,
             'status' => $status
