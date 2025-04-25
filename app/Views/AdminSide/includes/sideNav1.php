@@ -25,6 +25,12 @@
             </a>
         </li>
         <li>
+            <a href="<?= base_url('/admin/pending_posts') ?>" id="pending_posts">
+                <i class='bx bxs-book-content' ></i>
+                <span class="text">Post Management</span>
+            </a>
+        </li>
+        <li>
             <a href="<?= base_url('/admin/management') ?>" id="logout">
                 <i class='bx bxs-shopping-bag-alt' ></i>
                 <span class="text">Management</span>

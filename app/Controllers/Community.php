@@ -93,65 +93,64 @@ class Community extends Controller
     public function index()
     {
         $session = session();
-
+    
         if (!$session->has('isLoggedIn')) {
             return redirect()->to('/login')->with('error', 'You must be logged in to access the community.');
         }
-
+    
         $postModel = new PostModel();
         $commentModel = new CommentModel();
         $userModel = new User_Account_Model();
-
-        $posts = $postModel->orderBy('id', 'DESC')->findAll();
-
+    
+        $posts = $postModel->getApprovedPosts();
+    
         foreach ($posts as &$post) {
             $post['comments'] = $commentModel->getCommentsByPostId($post['id']);
-
+    
             $user = $userModel->getUserById($post['user_id'] ?? null);
             $post['profile_pic'] = !empty($user['profile_pic']) ? $user['profile_pic'] : 'default-user.png';
         }
-
+    
         $data = [
             'posts' => $posts,
             'user' => $userModel->getUserById($session->get('user_id')) 
         ];
-
+    
         return view('community', $data);
     }
-
+    
     public function post_content()
     {
         $session = session();
-
+    
         if (!$session->has('isLoggedIn')) {
             return redirect()->to('/login')->with('error', 'You must be logged in to post.');
         }
-
+    
         $postText = $this->request->getPost('post_text');
         
         if ($this->containsProfanity($postText)) {
             return redirect()->to('/community')->with('error', 'Your post contains inappropriate language. Please revise and try again.');
         }
-
+    
         $postModel = new PostModel();
         $file = $this->request->getFile('post_image');
-
+    
         $imageName = null;
         if ($file && $file->isValid() && !$file->hasMoved()) {
             $imageName = $file->getRandomName();
             $file->move(FCPATH . 'uploads', $imageName);
         }
-
+    
         $postModel->save([
-            'user_id' => $session->get('user_id'),
             'user_name' => $session->get('username'),
             'post_text' => $postText,
             'image_url' => $imageName,
+            'status' => 'pending',
         ]);
-
-        return redirect()->to('/community')->with('success', 'Post created successfully!');
+    
+        return redirect()->to('/community')->with('success', 'Your post has been submitted for review. It will appear on the community page once approved.');
     }
-
     public function post_comment()
     {
         $session = session();

@@ -95,6 +95,10 @@ $routes->group('', function($routes) {
     // $routes->get('/checkOutFailed', 'ShopController::checkOutFailed');
 });
 
+$routes->get('/admin/pending_posts', 'AdminController::pending_posts');
+$routes->get('/admin/approve_post/(:num)', 'AdminController::approve_post/$1');
+$routes->get('/admin/reject_post/(:num)', 'AdminController::reject_post/$1');
+
 
 $routes->get('admin/getNotifications', 'AdminController::getNotifications');
 $routes->get('/admin/notifications/low-stock', 'NotificationController::lowStockNotifications');

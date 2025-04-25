@@ -40,6 +40,15 @@
             font-size: 0.9rem;
             line-height: 1.4;
         }
+
+        .post-status-note {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 10px 15px;
+            margin-top: 10px;
+            border-radius: 3px;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 
@@ -89,6 +98,10 @@
                         </label>
                     </div>
 
+                    <div class="post-status-note">
+                        <p><i class="fa-solid fa-info-circle"></i> Your post will be reviewed by a moderator before appearing on the community page.</p>
+                    </div>
+
                     <div class="button-container">
                         <button type="submit">Post</button>
                     </div>
@@ -101,59 +114,86 @@
         <div class="community-container">
             <?php if (!empty($posts)) : ?>
                 <?php foreach ($posts as $post) : ?>
-                    <div class="post-wrapper">
-                        <div class="post-item">
-                            <div class="post-content">
-                                <div class="post-info">
-                                    <strong><?= esc($post['user_name']) ?: 'Anonymous' ?></strong>
-                                </div>
-                                
-                                <p class="post-text"><?= esc($post['post_text']) ?></p>
-                                
-                                <?php if ($post['image_url']): ?>
-                                    <div class="post-image-container">
-                                        <img src="<?= base_url('uploads/' . $post['image_url']) ?>" class="post-image" alt="Post Image">
+                    <?php if ($post['status'] === 'approved') : ?> 
+                        <div class="post-wrapper">
+                            <div class="post-item">
+                                <div class="post-content">
+                                    <div class="post-info">
+                                        <strong><?= esc($post['user_name']) ?: 'Anonymous' ?></strong>
+                                        <span class="post-date"><?= date('M d, Y h:i A', strtotime($post['created_at'])) ?></span>
                                     </div>
-                                <?php endif; ?>
-                                
-                                <div class="interactions">
-                                    <button onclick="likePost(<?= $post['id'] ?>)"><i class="fa-solid fa-thumbs-up"></i> Like</button>
-                                </div>
-                            </div>
-
-                            <div class="comments-section">
-                                
-                                <?php if (!empty($post['comments'])): ?>
-                                    <div class="comment">
-                                        <?php foreach ($post['comments'] as $comment): ?>
-                                            <p><strong><?= esc($comment['user_name']) ?: 'Anonymous' ?></strong>
-                                            <span><?= esc($comment['comment_text']) ?></span></p>
-                                        <?php endforeach; ?>
+                                    
+                                    <p class="post-text"><?= esc($post['post_text']) ?></p>
+                                    
+                                    <?php if ($post['image_url']): ?>
+                                        <div class="post-image-container">
+                                            <img src="<?= base_url('uploads/' . $post['image_url']) ?>" class="post-image" alt="Post Image">
+                                        </div>
+                                    <?php endif; ?>
+                                    
+                                    <div class="interactions">
+                                        <button onclick="likePost(<?= $post['id'] ?>)"><i class="fa-solid fa-thumbs-up"></i> Like</button>
                                     </div>
-                                <?php else: ?>
-                                    <p class="no-comments">No comments yet.</p>
-                                <?php endif; ?>
+                                </div>
 
-                                <?php if (session()->has('isLoggedIn')): ?>
-                                    <form action="<?= base_url('community/post_comment') ?>" method="POST">
-                                        <input type="hidden" name="post_id" value="<?= esc($post['id']) ?>">
-                                        <div class="com">
-                                            <textarea name="comment_text" placeholder="Write a comment... Please be respectful." required></textarea>
-                                            <button type="submit"><img src="<?= base_url('assets/img/send-logo.svg'); ?>" alt=""></button>
+                                <div class="comments-section">
+                                    
+                                    <?php if (!empty($post['comments'])): ?>
+                                        <div class="comment">
+                                            <?php foreach ($post['comments'] as $comment): ?>
+                                                <p><strong><?= esc($comment['user_name']) ?: 'Anonymous' ?></strong>
+                                                <span><?= esc($comment['comment_text']) ?></span></p>
+                                            <?php endforeach; ?>
                                         </div>
-                                        <div class="posting-guidelines" style="font-size: 0.8rem; padding: 5px 10px; margin-top: 5px;">
-                                            <p>Remember: Comments should follow our community guidelines.</p>
-                                        </div>
-                                    </form>
-                                <?php else: ?>
-                                    <p class="error-message">You must be <a href="<?= base_url('login') ?>">logged in</a> to comment.</p>
-                                <?php endif; ?>
+                                    <?php else: ?>
+                                        <p class="no-comments">No comments yet.</p>
+                                    <?php endif; ?>
+
+                                    <?php if (session()->has('isLoggedIn')): ?>
+                                        <form action="<?= base_url('community/post_comment') ?>" method="POST">
+                                            <input type="hidden" name="post_id" value="<?= esc($post['id']) ?>">
+                                            <div class="com">
+                                                <textarea name="comment_text" placeholder="Write a comment... Please be respectful." required></textarea>
+                                                <button type="submit"><img src="<?= base_url('assets/img/send-logo.svg'); ?>" alt=""></button>
+                                            </div>
+                                            <div class="posting-guidelines" style="font-size: 0.8rem; padding: 5px 10px; margin-top: 5px;">
+                                                <p>Remember: Comments should follow our community guidelines.</p>
+                                            </div>
+                                        </form>
+                                    <?php else: ?>
+                                        <p class="error-message">You must be <a href="<?= base_url('login') ?>">logged in</a> to comment.</p>
+                                    <?php endif; ?>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    <?php endif; ?>
                 <?php endforeach; ?>
+                
+                <?php
+                $hasApprovedPosts = false;
+                foreach ($posts as $post) {
+                    if ($post['status'] === 'approved') {
+                        $hasApprovedPosts = true;
+                        break;
+                    }
+                }
+                
+                if (!$hasApprovedPosts) : ?>
+                    <div class="no-posts">
+                        <h5>No approved posts yet.</h5>
+                        <?php if (session()->has('isLoggedIn')): ?>
+                            <p>Be the first to share something with the community!</p>
+                        <?php endif; ?>
+                    </div>
+                <?php endif; ?>
+                
             <?php else : ?>
-                <h5>No posts yet.</h5>
+                <div class="no-posts">
+                    <h5>No posts yet.</h5>
+                    <?php if (session()->has('isLoggedIn')): ?>
+                        <p>Be the first to share something with the community!</p>
+                    <?php endif; ?>
+                </div>
             <?php endif; ?>
         </div>
     </div>

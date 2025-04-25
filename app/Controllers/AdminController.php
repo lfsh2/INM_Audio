@@ -7,6 +7,8 @@ use App\Models\GearModel;
 use App\Models\OrderModel;
 use App\Models\Placed_Orders_Model;
 use App\Models\Gear_Product_Model;
+use App\Models\PostModel;
+use App\Models\User_Account_Model;
 use Config\Database;
 
 class AdminController extends BaseController
@@ -179,6 +181,68 @@ class AdminController extends BaseController
     
     
     
+##--------------------------------------------------------- for Post approval for community
+public function pending_posts()
+{
+    if (!$this->isAdmin()) {
+        return redirect()->to('/');
+    }
+    
+    if ($this->isSessionExpired()) {
+        $this->deleteCookiesAndSession("admin");
+        return redirect()->to('/')->with('sessionTimeout', 'Session Timeout, login again');
+    }
+    
+    // Get pending posts
+    $postModel = new PostModel();
+    $pendingPosts = $postModel->getPendingPosts();
+    
+    foreach ($pendingPosts as &$post) {
+        $post['profile_pic'] = 'default-user.png';
+    }
+    
+    $data = [
+        'pendingPosts' => $pendingPosts
+    ];
+    
+    return view('AdminSide/pending_posts', $data);
+}
+
+public function approve_post($id)
+{
+    if (!$this->isAdmin()) {
+        return redirect()->to('/');
+    }
+    
+    if ($this->isSessionExpired()) {
+        $this->deleteCookiesAndSession("admin");
+        return redirect()->to('/')->with('sessionTimeout', 'Session Timeout, login again');
+    }
+    
+    $postModel = new PostModel();
+    $postModel->update($id, ['status' => 'approved']);
+    
+    return redirect()->to('/admin/pending_posts')->with('success', 'Post approved successfully!');
+}
+
+public function reject_post($id)
+{
+    if (!$this->isAdmin()) {
+        return redirect()->to('/');
+    }
+    
+    if ($this->isSessionExpired()) {
+        $this->deleteCookiesAndSession("admin");
+        return redirect()->to('/')->with('sessionTimeout', 'Session Timeout, login again');
+    }
+    
+    $postModel = new PostModel();
+    $postModel->update($id, ['status' => 'rejected']);
+    
+    return redirect()->to('/admin/pending_posts')->with('success', 'Post rejected successfully!');
+}
+
+
     ## redirect to gearManagement / addGear / addCategory
     public function gearManagement($dataVal = null) { 
         $this->load->requireMethod('adminAccount');
