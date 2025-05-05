@@ -37,7 +37,6 @@ class CustomizationPaymentController extends Controller
         'shipping_address' => $address
     ];
 
-    // Save Order and Get Order ID
     $orderId = $orderModel->insert($orderData, true);
 
     try {

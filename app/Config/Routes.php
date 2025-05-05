@@ -95,6 +95,16 @@ $routes->group('', function($routes) {
     // $routes->get('/checkOutFailed', 'ShopController::checkOutFailed');
 });
 
+// Product showcase and customization routes
+$routes->group('', function($routes) {
+    $routes->get('/shop', 'ShopController::shop');
+    $routes->get('/searchGears', 'ShopController::searchGears');
+    $routes->get('/bookmark/(:num)', 'ShopController::addToLikes/$1');
+    $routes->get('/customize', 'HomeController::customize');
+    $routes->get('/customize/(:num)', 'ShopController::customize/$1');
+    $routes->get('/customize/design/(:num)', 'IEMCustomizationController::design/$1');
+});
+
 $routes->get('/admin/pending_posts', 'AdminController::pending_posts');
 $routes->get('/admin/approve_post/(:num)', 'AdminController::approve_post/$1');
 $routes->get('/admin/reject_post/(:num)', 'AdminController::reject_post/$1');

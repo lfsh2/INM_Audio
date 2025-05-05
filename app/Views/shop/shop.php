@@ -1,213 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href=" <?= base_url('assets/css/shopp.css') ?>">
-    <link rel="stylesheet" href=" <?= base_url('assets/css/navbar.css') ?>">
-    <link rel="stylesheet" href=" <?= base_url('assets/css/footer.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/shopp.css') . '?v=' . time(); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/navbar.css') . '?v=' . time(); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/footer.css') . '?v=' . time(); ?>">
     <link rel="shortcut icon" href="<?= base_url('assets/img/logo.png') ?>" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <title>INM Shop</title>
-    <script defer src="<?= base_url('assets/js/script2.js') ?>"></script>
 </head>
-<body>
-<!-- this includes header.php file on every website that has this code -->
-   <?php 
-        echo view("includes/header.php");
-    ?>
 
-<!-- main shop -->
+<body>
+    <?php echo view("includes/header.php"); ?>
+
     <div class="shop">
         <div class="shop-title">
-            <h2>Shop</h2>
-
-            <div class="ss">
-                <?php if(session()->getFlashData('lowstock')) : ?>
-                    <span style="width: 300px; color: red;"><?= session()->getFlashdata('lowstock')?></span>
-                <?php endif; ?>
-                
-                <div class="validation">
-                    <?php if(session()->getFlashdata('successAddToCart')) :?>
-                        <span style="width: 300px; color: green; text-align: center;"><?= session()->getFlashdata('successAddToCart')?></span>
-                    <?php else :?>
-                        <span style="width: 450px; text-align: center;"></span>
-                    <?php endif;?>
-                </div>
-
-                <form action="<?= base_url('/searchGears') ?>" method="get">
-                    <input type="search" name="search" placeholder="Search Gear">
-                    <input class="search" type="submit" value="Search">
-
-                    <!-- ERROR MESSAGE -->
-                    <?php if(isset($errorMessage) && !empty($errorMessage)) :?>
-                        <span style="color:darkred;"><?= $errorMessage ?></span>
-                    <?php endif;?>
-                </form> 
-
-                <?php if(session()->has('isLoggedIn')) :?>
-                    <a href="<?= base_url('/cart') ?>"><i class="fa-solid fa-cart-shopping"></i></a> <!-- redirect to cart if an account is logged in -->
-                <?php else: ?>
-                    <a href="<?= base_url('/login') ?>"><i class="fa-solid fa-cart-shopping"></i></a> <!-- redirect to login if an account is not logged in -->
-                <?php endif;?>
-            </div>
+            <h2>Our Products</h2>
         </div>
 
-        <div class="card-container"> 
-            <!-- <div class="category">
-                <p>Vanilla Series</p>
-            </div> -->
-
-            <?php if(isset($gears) && !empty($gears)) :?>
-                <?php foreach($gears as $index => $gear) :?>
-    <?php if ($gear['category'] === 'Personalized Series') continue; ?> 
-                    <div class="library-card" id="<?= esc($gear['product_id']) ?>">
-                        <img src="<?= esc($gear['image_url']) ?>" alt="">
-
+        <div class="card-container">
+            <!-- Vanilla Series -->
+            <div class="category-section">
+                <div class="category-title">
+                    <h3>Vanilla Series</h3>
+                    <p class="series-description">The vanilla series is designed for those craving for a detailed sound. While being balanced and airy overall, these focus more on providing a technical sound signature ensuring your cravings for detail is satisfied.</p>
+                </div>
+                <div class="category-items">
+                    <!-- INM1 -->
+                    <div class="library-card">
+                        <img src="<?= base_url('assets/img/products/inm1.jpg') ?>" alt="INM1">
                         <div class="info">
-                            <h3><?= esc($gear['product_name']) ?></h3>
-                            <p><?= esc(data: $gear['description'])?></p>
+                            <h3>INM1 (Vanilla Series)</h3>
+                            <p class="price">Starting at ₱10,000</p>
+                            <p class="description">The INM1 Vanilla is the entry level in the Vanilla Series which also jump started the brand. It was the first model in all of the line-up<br><br>
+                            Driver Configuration: 1 Balanced Armature Driver<br>
+                            Driver Details: 1x Full-range<br>
+                            <p class="turnaround">Our current turnaround time is 8-10 weeks.</p>
                         </div>
-                        
                         <div class="button">
-                            <p>₱<?= esc($gear['price']) ?></p>
-
-                            <div class="buy-block">
-                                <button data-modal-target="#modal-<?= $index; ?>" class="btn" title="buy or add to cart">Buy</button>
-
-                                <a href="<?= base_url('/bookmark/' . $gear['product_id']) ?>" >
-                                    <?php 
-                                        $isBookmarked = false; 
-                                        if ($isBookmark && !empty($isBookmark)): 
-                                            foreach ($isBookmark as $bookmark): 
-                                                if ($bookmark['product_id'] == $gear['product_id']): 
-                                                    $isBookmarked = true; 
-                                                    break; 
-                                                endif; 
-                                            endforeach; 
-                                        endif; 
-                                    ?>
-    
-                                    <?php if ($isBookmarked): ?>
-                                        <img class="bookmark" src="<?= base_url('assets/img/icons/bookmark.png') ?>" title="saved to likes" alt="saved to likes">
-                                    <?php else: ?>
-                                        <img class="bookmark" src="<?= base_url('assets/img/icons/save-instagram.png') ?>" title="save to likes" alt="save to likes">
-                                    <?php endif; ?>
+                            <div class="customize-block">
+                                <a href="<?= base_url('/customize') ?>" class="customize-btn">Customize Now</a>
+                                <a href="#" class="bookmark-link">
+                                    <i class="fas fa-bookmark-o"></i>
                                 </a>
                             </div>
                         </div>
-                    </div>  
+                    </div>
 
-                <!-- MODAL -->
-                    <div class="modal" id="modal-<?= $index; ?>">
-                        <div class="modal-content">
-                            <div class="modal-left">
-                                <img src="<?= esc($gear['image_url']) ?>"alt="<?= esc($gear['product_name']) ?>">
+                    <!-- INM2 -->
+                    <div class="library-card">
+                        <img src="<?= base_url('assets/img/products/inm2.jpg') ?>" alt="INM2">
+                        <div class="info">
+                            <h3>INM2 (Vanilla Series)</h3>
+                            <p class="price">Starting at ₱14,500</p>
+                            <p class="description">The INM2 Vanilla is a fuller sounding INM1 Vanilla with a bit more smoothness in its presentation. An overall smoother, relaxed sound without sacrificing details.<br><br>
+                            Driver Configuration: 2 Balanced Armature Driver<br>
+                            Driver Details: 2x Full-range<br>
+                            <p class="turnaround">Our current turnaround time is 8-10 weeks.</p>
+                        </div>
+                        <div class="button">
+                            <div class="customize-block">
+                                <a href="<?= base_url('/customize') ?>" class="customize-btn">Customize Now</a>
+                                <a href="#" class="bookmark-link">
+                                    <i class="fas fa-bookmark-o"></i>
+                                </a>
                             </div>
-
-                            <form class="modal-right" action="<?= base_url('/cart/add/'. $gear['product_id']) ?>" method="post">
-                                <input type="hidden" name="price" id="price" value="<?= $gear['price'] ?>">
-
-                                <div class="product-details">
-                                    <h3><?= esc($gear['product_name']) ?></h3>
-                                    <p>Price: ₱<?= esc($gear['price']) ?></p>
-                                    <p style="<?= ($gear['stock_quantity'] > 15) ? "black" : "red"; ?>">Stocks: <?= esc($gear['stock_quantity']) ?></p>
-
-                                    <div class="quantity">
-                                        <label for="quantity">Quantity</label>
-                                        <div class="control">
-                                            <button type="button" onclick="decreaseValue(<?= $index; ?>)">-</button>
-                                            <input type="number" name="quantity" id="quantity-<?= $index ?>" value="<?= ($gear['stock_quantity'] == 0) ? 0 : 1; ?>" min="1" readonly>
-                                            <button type="button" onclick="increaseValue(<?= $index; ?>, <?= $gear['stock_quantity']; ?>)">+</button>
-                                        </div>
-                                    </div>
-
-                                    <div class="cart-button">
-                                        <?php if($gear['stock_quantity'] > 0) :?>
-                                            <button type="submit"><i class="fa-solid fa-cart-shopping"></i>Add to Cart</button>
-                                        <?php else :?>
-                                            <p style="color: red;">No Stocks</p>
-                                        <?php endif; ?>
-                                    </div>
-                                </div>
-                            </form>
                         </div>
                     </div>
 
-                    <div id="overlay"></div>
+                    <!-- INM3 -->
+                    <div class="library-card">
+                        <img src="<?= base_url('assets/img/products/inm3.jpg') ?>" alt="INM3">
+                        <div class="info">
+                            <h3>INM3 (Vanilla Series)</h3>
+                            <p class="price">Starting at ₱23,800</p>
+                            <p class="description">The INM3 Vanilla is seated on top of the Vanilla Series. It sounds thinner than most sets but it delivers a really energetic presentation in the upper frequencies<br><br>
+                            Driver Configuration: 3 Balanced Armature Driver<br>
+                            Driver Details: 1x Woofer, 2x Mid-High<br>
+                            <p class="turnaround">Our current turnaround time is 8-10 weeks.</p>
+                        </div>
+                        <div class="button">
+                            <div class="customize-block">
+                                <a href="<?= base_url('/customize') ?>" class="customize-btn">Customize Now</a>
+                                <a href="#" class="bookmark-link">
+                                    <i class="fas fa-bookmark-o"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                <?php endforeach;?>
-                    <div class="library-card prestige" id="<?= esc($gear['product_id']) ?>">
-                        <img src="<?= esc($gear['image_url']) ?>" alt="">
+            <!-- Stage Series -->
+            <div class="category-section">
+                <div class="category-title">
+                    <h3>Stage Series</h3>
+                    <p class="series-description">The stage series is designed with musicians, performers, and engineers in mind. The added low-end punch fills in the gaps not present in the vanilla series; providing a more engaging and satisfying experience while still maintaining a neutral sound signature. A true workhorse for the stage and studio.</p>
+                </div>
+                <div class="category-items">
+                    <!-- INM2 Stage -->
+                    <div class="library-card">
+                        <img src="<?= base_url('assets/img/products/inm4.jpg') ?>" alt="INM1 Stage">
+                        <div class="info">
+                            <h3>INM1 Stage</h3>
+                            <p class="price">Starting at ₱13,000</p>
+                            <p class="description">The INM2 Stage is one of the most versatile sets in the lineup. Despite leaning warm and relaxed, it delivers a very detailed sound, which punches above from its price range. It is still fairly neutral with a really good bloom in the lower end of the frequency range.<br><br>
+                            Driver Configuration: 2 Balanced Armature Driver<br>
+                            Driver Details: 1x Woofer, 1x Mid-High<br>
+                            <p class="turnaround">Our current turnaround time is 8-10 weeks.</p>
+                        </div>
+                        <div class="button">
+                            <div class="customize-block">
+                                <a href="<?= base_url('/customize') ?>" class="customize-btn">Customize Now</a>
+                                <a href="#" class="bookmark-link">
+                                    <i class="fas fa-bookmark-o"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
 
+                    <!-- INM3 Stage -->
+                    <div class="library-card">
+                        <img src="<?= base_url('assets/img/products/inm2-stage.jpg') ?>" alt="INM2 Stage">
+                        <div class="info">
+                            <h3>INM3 Stage</h3>
+                            <p class="price">Starting at ₱19,000</p>
+                            <p class="description">The INM3 Stage is the mid-tier IEMs in the Stage Series. A really good all rounder for people who loves a really good low-end response and a sparkly presentation in the upper midrange and upper frequency range.<br><br>
+                            Driver Configuration: 3 Balanced Armature Driver<br>
+                            Driver Details: 2x Low-Mid, 1x Mid-High<br>
+                            <p class="turnaround">Our current turnaround time is 8-10 weeks.</p>
+                        </div>
+                        <div class="button">
+                            <div class="customize-block">
+                                <a href="<?= base_url('/customize') ?>" class="customize-btn">Customize Now</a>
+                                <a href="#" class="bookmark-link">
+                                    <i class="fas fa-bookmark-o"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- INM4 Stage -->
+                    <div class="library-card">
+                        <img src="<?= base_url('assets/img/products/inm3-stage.jpg') ?>" alt="INM3 Stage">
+                        <div class="info">
+                            <h3>INM3 Stage</h3>
+                            <p class="price">Starting at ₱26,000</p>
+                            <p class="description">The INM4 Stage is the top of the line in the Stage Series. Sounding fuller from the previous sets, its bass punches more but still retains the upper end sparkle. A really good contender for musicians who need an all rounder both on stage and off stage.<br><br>
+                            Driver Configuration: 4 Balanced Armature Drivers<br>
+                            Driver Details: 1x Woofer, 2x Low-Mid, 1x High<br>
+                            <p class="turnaround">Our current turnaround time is 8-10 weeks.</p>
+                        </div>
+                        <div class="button">
+                            <div class="customize-block">
+                                <a href="<?= base_url('/customize') ?>" class="customize-btn">Customize Now</a>
+                                <a href="#" class="bookmark-link">
+                                    <i class="fas fa-bookmark-o"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Prestige Series -->
+            <div class="category-section">
+                <div class="category-title">
+                    <h3>Prestige Series</h3>
+                    <p class="series-description">The prestige series is our newest in the line-up and is designed for those who want the best of the best. These models are tuned to provide the best sound its price can offer; a unique and luxurious experience that is sure to satisfy even the most discerning audiophiles.</p>
+                </div>
+                <div class="category-items">
+                    <!-- INM Virtuoso -->
+                    <div class="library-card prestige">
+                        <img src="<?= base_url('assets/img/products/inm-virtuoso.jpg') ?>" alt="INM Virtuoso">
                         <div class="group">
                             <div class="info">
-                                <h3><?= esc($gear['product_name']) ?></h3>
-                                <p><?= esc(data: $gear['description'])?></p>
+                                <h3>INM Virtuoso</h3>
+                                <p class="price">Starting at ₱45,000</p>
+                                <p class="description">• Quad BA flagship configuration<br>
+                                • Proprietary crossover technology<br>
+                                • Extended frequency range<br>
+                                • Premium materials throughout<br>
+                                • Exclusive carrying case<br>
+                                • Premium braided cable included<br>
+                                • Custom shell with premium artwork options</p>
+                                <p class="turnaround">Our current turnaround time is 8-10 weeks.</p>
                             </div>
-                            
                             <div class="button">
-                                <p>₱<?= esc($gear['price']) ?></p>
-    
-                                <div class="buy-block">
-                                    <button data-modal-target="#modal-<?= $index; ?>" class="btn" title="buy or add to cart">Buy</button>
-    
-                                    <a href="<?= base_url('/bookmark/' . $gear['product_id']) ?>" >
-                                        <?php 
-                                            $isBookmarked = false; 
-                                            if ($isBookmark && !empty($isBookmark)): 
-                                                foreach ($isBookmark as $bookmark): 
-                                                    if ($bookmark['product_id'] == $gear['product_id']): 
-                                                        $isBookmarked = true; 
-                                                        break; 
-                                                    endif; 
-                                                endforeach; 
-                                            endif; 
-                                        ?>
-        
-                                        <?php if ($isBookmarked): ?>
-                                            <img class="bookmark" src="<?= base_url('assets/img/icons/bookmark.png') ?>" title="saved to likes" alt="saved to likes">
-                                        <?php else: ?>
-                                            <img class="bookmark" src="<?= base_url('assets/img/icons/save-instagram.png') ?>" title="save to likes" alt="save to likes">
-                                        <?php endif; ?>
+                                <div class="customize-block">
+                                    <a href="<?= base_url('/customize') ?>" class="customize-btn">Customize Now</a>
+                                    <a href="#" class="bookmark-link">
+                                        <i class="fas fa-bookmark-o"></i>
                                     </a>
                                 </div>
                             </div>
                         </div>
-                    </div>  
-            <?php else: ?>
-                <div class="library-card">
-                    <h3 style="color: red;">Gears are not available at the mean time</h3>
+                    </div>
                 </div>
-            <?php endif;?>
+            </div>
         </div>
     </div>
 
-<!-- this includes header.php file on every website that has this code -->
-    <?php 
-        echo view("includes/footer.php");
-    ?>
-    
-<!-- scripts -->
-<script>
-    function increaseValue(index, maxStock) {
-        var quantityInput = document.getElementById('quantity-' + index);
-        var currentQuantity = parseInt(quantityInput.value);
-
-        if (currentQuantity < maxStock) {
-            quantityInput.value = currentQuantity + 1;
-        } else {
-            alert('You cannot add more than ' + maxStock + ' items.');
-        }
-    }
-
-    function decreaseValue(index) {
-        var quantityInput = document.getElementById('quantity-' + index);
-        if (quantityInput.value > 1) {
-            quantityInput.value = parseInt(quantityInput.value) - 1;
-        }
-    }
-</script>
-
+    <?php echo view("includes/footer.php"); ?>
 </body>
+
 </html>

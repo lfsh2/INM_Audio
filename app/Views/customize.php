@@ -160,6 +160,9 @@
     <script src="https://cdn.jsdelivr.net/npm/three/examples/js/loaders/GLTFLoader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three/examples/js/controls/OrbitControls.js"></script>
     <script defer src="<?= base_url('assets/js/costumizer.js') ?>"></script>
+
+
+    
     <script>
         const categorySelect = document.getElementById("categorySelect");
         const soundTest = document.getElementById("soundTest");
