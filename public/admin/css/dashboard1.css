@@ -5,6 +5,7 @@
 	padding: 0;
 	box-sizing: border-box;
 	scrollbar-width: none;
+	text-decoration: none !important;
 }
 
 a {
@@ -432,11 +433,12 @@ body {
 #content main .table-data .order table th {
 	padding-bottom: 12px;
 	font-size: 13px;
-	text-align: left;
+	text-align: center;
 	border-bottom: 1px solid var(--grey);
 }
 #content main .table-data .order table td {
-	padding: 16px 0;
+	padding: 20px 0;
+	text-align: center;
 }
 #content main .table-data .order table tr td:first-child {
 	display: flex;
@@ -533,10 +535,9 @@ body {
 
 .notification-dropdown {
 	position: absolute;
-	left: 20px;
-	top: 40px;
+	top: 50px;
 	width: 250px;
-	background: white;
+	background: var(--lights) !important;
 	border: 1px solid #ddd;
 	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 	/* display: none; */
@@ -551,8 +552,9 @@ body {
 
 .notification-dropdown li {
 	padding: 10px;
-	border-bottom: 1px solid #ddd;
+	border-bottom: 1px solid var(--lights);
 	cursor: pointer;
+	color: var(--dark);
 }
 
 .notification-dropdown li:hover {
@@ -593,6 +595,9 @@ body {
 
 
 @media screen and (max-width: 576px) {
+	.notification-dropdown {
+		right: 0;
+	}
 	#content nav form .form-input input {
 		display: none;
 	}
@@ -636,3 +641,4 @@ body {
 		min-width: 420px;
 	}
 }
+

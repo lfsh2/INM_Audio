@@ -21,7 +21,7 @@
                 width: 80px;
                 height: 80px;
                 border-radius: 50%;
-    
+                object-fit: cover;
             }
         }
 
@@ -52,7 +52,7 @@
                 padding: 10px;
                 margin-left: 20px;
                 border: none;
-                background: #D9D9D9;
+                background: #ebebeb;
             }
         }
 
@@ -77,111 +77,10 @@
                 }
             }
 
-            input {
+            fieldset input {
                 width: 100%;
+                margin-left: 0;
             }
         }
     }
 }
-
-
-
-/* .main {
-
-    span{
-        display: flex;
-        justify-content: start;
-        margin-block: 5px;
-        margin-left: 10px;
-        margin-right: 2px;
-        padding-block: 5px;
-        padding-left: 7px;
-        gap: 10px;
-        text-decoration: none;
-        align-items: center;
-        border-radius: 3px;
-    }
-    span:hover{
-       color: #3c91e6
-    }
-    main {
-        .card-container {
-            .top {
-                margin: 5px;
-                padding: 10px;
-
-                h2, h3 { font-family: monospace; }
-            }
-
-            .content {
-                padding-inline: 50px;
-                margin-top: 20px;
-                margin-bottom: 5px;
-                
-                form {
-                    display: flex;
-                    
-                    div {
-                        fieldset {
-                            width: 250px;
-                            display: flex;
-                            padding: 10px;
-                            .input-block {
-                                gap: 5px;
-                                line-height: 10px;
-                                display: flex;
-                                flex-direction: column;
-                                input {
-                                    margin-right: 10px;
-                                }
-                            }
-                        }
-                        .three{
-                            border: 1px solid red;
-                            display: flex;
-                            flex-wrap: wrap;
-                        }
-                    }
-                    .user-image {
-                        display: flex;
-                        flex-direction: column;
-                        img {
-                            width: 180px;
-                            border-radius: 3px;
-                        }
-                        input {
-                            color: darkred;
-                        }
-                    }
-                    
-                    .edit-profile {
-                        position: relative;
-                        right: 90px;
-                        input {
-                            padding: 5px;
-                            border-radius: 3px;
-                            color:#3b6237;
-                        }
-                        input:focus {
-                            color: #4a4a4a;
-                        }
-                    }
-                    
-                    button {              
-                        position: absolute;
-                        bottom: 100px;
-                        padding-inline: 5px;
-                        width: 150px;
-                        height: 40px;
-                        cursor: pointer;
-                        transition: 300ms;
-                        border-radius: 7px;
-                        border: 1px solid gray;
-                        font-weight: 600;
-                    }
-                }
-            }
-
-        }
-    }
-} */

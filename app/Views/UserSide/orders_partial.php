@@ -57,29 +57,3 @@
         </div>
     <?php endif; ?>
 </div>
-
-<style>
-.no-orders {
-    text-align: center;
-    padding: 30px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    margin: 20px 0;
-    color: #666;
-}
-
-.container img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 4px;
-    background-color: #f0f0f0;
-}
-
-@media (max-width: 480px) {
-    .container img {
-        width: 100%;
-        height: 150px;
-    }
-}
-</style>

@@ -288,26 +288,26 @@ body{
             display: flex;
 
             img{
-                /* margin-top: 5px; */
+                width: 50%;
                 height: 100%;
-                max-width: 50%;
-                width: 100%;
                 object-fit: cover;
             }
 
             .card-content{
+                width: 50%;
                 padding: 10px;
-                
+                height: 100%;
+                overflow-y: auto;
+                scrollbar-width: none;
 
                 h1{
-                    margin: 0;
+                    width: 100%;
                     font-size: 24px;
                     font-family: Montserrat;
                     font-weight: 400;
-                    padding-top: 20px;
                 }
                 p{
-                    padding-bottom: 20px;
+                    width: 100%;
                     margin: 10px 0;
                     font-family: Montserrat;
                     font-size: 14px;

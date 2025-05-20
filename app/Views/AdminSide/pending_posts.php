@@ -47,6 +47,7 @@
         .admin-title {
             font-size: 24px;
             margin-bottom: 20px;
+            color: var(--dark);
         }
 
         .admin-stats {
@@ -56,12 +57,12 @@
         }
 
         .stat-box {
-            background-color: #f5f5f5;
             border: 1px solid #ddd;
             padding: 15px;
             border-radius: 5px;
             width: 30%;
             text-align: center;
+            color: var(--dark);
         }
 
         .post-actions {
@@ -97,10 +98,11 @@
         }
 
         .no-posts {
+            background: var(--lights);
             text-align: center;
             padding: 50px;
-            background-color: #f9f9f9;
             border-radius: 5px;
+            color: var(--dark);
         }
     </style>
 </head>
@@ -184,6 +186,7 @@
         <?php endif; ?>
     </div>
 
+    <script src="<?= base_url('Admin/js/dashboard1.js') ?>"></script>
 
 </body>
 

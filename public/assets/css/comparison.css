@@ -18,6 +18,7 @@
         display: flex;
         justify-content: center;
         align-items: start;
+        gap: 20px;
         border-collapse: collapse;
 
         .earphone {
@@ -25,8 +26,21 @@
             padding: 25px 20px;
             display: flex;
             align-items: center;
+            justify-content: center;
             flex-direction: column;
+            text-align: center;
             gap: 30px;
+            border-radius: 10px;
+            border: none;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+
+            button {
+                border-radius: 5px;
+                background: black;
+                color: white;
+                border: none;
+                padding: 5px 10px;
+            }
 
             .img-block {
                 width: 100%;
@@ -54,10 +68,19 @@
                 p {
                     width: 100%;
                     padding: 20px;
-                    background: #d9d9d9;
-                    
+                    background: #fafafa;   
                 }
             }
+        }
+    }
+
+    .category-selection {
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+
+        select {
+            padding: 10px;
         }
     }
 
@@ -111,9 +134,21 @@
             position: absolute;
             top: 40%;
             right: 1%;
-            translateY: -50%;
+            transform: translateY(-50%);
         }
 
 
+    }
+}
+
+@media (max-width: 992px) {
+    .comparison-table {
+        .earphone-container {
+            flex-direction: column;
+
+            .earphone {
+                width: 100%;
+            }
+        }
     }
 }

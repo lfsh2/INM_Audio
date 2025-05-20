@@ -15,25 +15,25 @@
 </head>
 <style>
     .comparison-btn-container {
-    text-align: center;
-    padding-left: 20px;
-}
-.compare-btn {
-    width: 150px;
-    display: inline-block;
-    background-color: black;
-    color: #fff;
-    padding: 10px 10%;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
+        text-align: center;
+        padding-left: 20px;
+    }
+    .compare-btn {
+        width: 150px;
+        display: inline-block;
+        background-color: black;
+        color: #fff;
+        padding: 10px 10%;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
 
-.compare-btn:hover {
-    background-color: #45a049;
-}
+    .compare-btn:hover {
+        background-color: #45a049;
+    }
 </style>
 
 <body>
@@ -47,13 +47,15 @@
     <div class="library-title">
         <h2>Gear Library</h2>
 
-        <div class="search">
-            <input type="text" placeholder="Search Gear">
-            <button><i class="fa-solid fa-search"></i></button>
-        </div>
-
-        <div class="comparison-btn-container">
-            <a href="<?= base_url('library/comparison') ?>" class="compare-btn">Compare Gear</a>
+        <div class="group">
+            <div class="search">
+                <input type="text" placeholder="Search Gear">
+                <button><i class="fa-solid fa-search"></i></button>
+            </div>
+    
+            <div class="comparison-btn-container">
+                <a href="<?= base_url('library/comparison') ?>" class="compare-btn">Compare Gear</a>
+            </div>
         </div>
     </div>
 
@@ -99,7 +101,7 @@
 
             <div class="library-card see" title="Click to view all gears in this category">
                 <a href="<?= base_url('library/all-gears')?>">
-                    <img class="" src="<?= base_url('assets/img/seeall.jpg'); ?>" alt="Category Image">
+                    <img class="bgimg" src="<?= base_url('assets/img/seeall.jpg'); ?>" alt="Category Image">
                     <div class="info">
                         <h3>See All Gears</h3>
                     </div>

@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="<?= base_url('assets/img/logo.png') ?>" type="image/x-icon">
-  <title>INM User Registration</title>
+  <title>INM Admin Registration</title>
   <link rel="shortcut icon" type="image/png" href="<?= base_url('assets/css/logo.png') ?>" />
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
@@ -14,6 +14,18 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
   <style>
+  body, .page-wrapper, form, input, .card-body, input::placeholder {
+    background: var(--lights) !important;
+    color: var(--dark) !important;
+  }
+  form button {
+    background: var(--dark) !important;
+    color: var(--lights) !important;
+  }
+    .page-wrapper {
+      padding-bottom: 20px !important;
+      margin-top: 20px !important;
+    }
     .success-message {
       color: green;
     }
@@ -77,27 +89,22 @@
 	<section id="content">	
 		<?php echo view('AdminSide/includes/topNavbar') ?>
 
-<?php if (session()->getFlashdata('success')) :?>
+    <?php if (session()->getFlashdata('success')) :?>
+        <div class="popup" id="popup" onload="showPopUp('<?php echo session()->getFlashdata('success'); ?>')">
+          <div id="popupMessage" class="<?= session()->getFlashdata('success') ?>"><?php session()->getFlashdata('success') ?></div>
+          <button onclick="closePopup()">Close</button>
+        </div>
+    <?php endif ;?>
 
-    <div class="popup" id="popup" onload="showPopUp('<?php echo session()->getFlashdata('success'); ?>')">
-      <div id="popupMessage" class="<?= session()->getFlashdata('success') ?>"><?php session()->getFlashdata('success') ?></div>
-      <button onclick="closePopup()">Close</button>
-    </div>
+    <?php if(session()->getFlashdata('error')) : ?>
+        <div class="popup" id="popup" onload="showPopUp('<?php echo session()->getFlashdata('error'); ?>')">
+          <div id="popupMessage" class="<?= session()->getFlashdata('error') ?>"><?php session()->getFlashdata('error') ?></div>
+          <button class="btn" onclick="closePopup()">Close</button>
+      </div>
+    <?php endif ;?>
+
     
-<?php elseif(session()->getFlashdata('error')) : ?>
-
-    <div class="popup" id="popup" onload="showPopUp('<?php echo session()->getFlashdata('error'); ?>')">
-      <div id="popupMessage" class="<?= session()->getFlashdata('error') ?>"><?php session()->getFlashdata('error') ?></div>
-      <button class="btn" onclick="closePopup()">Close</button>
-  </div>
-
-<?php elseif(!session()->getFlashdata('error') && !session()->getFlashdata('success')) :?>
-    <span></span>
-<?php endif ;?>
-
-
-
-<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
     <div class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
       <div class="d-flex align-items-center justify-content-center w-100">
@@ -145,14 +152,16 @@
   </div>
 
 
-    <!-- Overlay -->
-    <div class="overlay" id="overlay"></div>
-    <div class="popup" id="popup">
-        <div id="popupMessage"></div>
-        <button onclick="closePopup()">Close</button>
-    </div>
+  <!-- Overlay -->
+  <div class="overlay" id="overlay"></div>
+  <div class="popup" id="popup">
+      <div id="popupMessage"></div>
+      <button onclick="closePopup()">Close</button>
+  </div>
 
-
+  
+    <script src="<?= base_url('Admin/js/notifModal.js') ?>"></script>
+    <script src="<?= base_url('Admin/js/dashboard1.js') ?>"></script>
     <script>
         function showPopup(message, type) {
             const popup = document.getElementById('popup');
@@ -226,7 +235,7 @@
 		});
 	</script>
 
-  <script src="<?= base_url('Admin_Side_Assets/libs/jquery/dist/jquery.min.js') ?>"></script>
+  <script src="<?= base_url(relativePath: 'Admin_Side_Assets/libs/jquery/dist/jquery.min.js') ?>"></script>
   <script src="<?= base_url('Admin_Side_Assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') ?>"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>

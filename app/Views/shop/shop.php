@@ -123,7 +123,7 @@
 
                     <!-- INM3 Stage -->
                     <div class="library-card">
-                        <img src="<?= base_url('assets/img/products/inm2-stage.jpg') ?>" alt="INM2 Stage">
+                        <img src="<?= base_url('assets/img/products/inm3s.png') ?>" alt="INM2 Stage">
                         <div class="info">
                             <h3>INM3 Stage</h3>
                             <p class="price">Starting at ₱19,000</p>
@@ -174,18 +174,17 @@
                 <div class="category-items">
                     <!-- INM Virtuoso -->
                     <div class="library-card prestige">
-                        <img src="<?= base_url('assets/img/products/inm-virtuoso.jpg') ?>" alt="INM Virtuoso">
+                        <img src="<?= base_url('assets/img/products/prestige.jpg') ?>" alt="INM Virtuoso">
                         <div class="group">
                             <div class="info">
                                 <h3>INM Virtuoso</h3>
-                                <p class="price">Starting at ₱45,000</p>
-                                <p class="description">• Quad BA flagship configuration<br>
+                                <p class="price">Starting at ₱55,000</p>
+                                <p class="description">The INM8 Prestige was made with one thing in mind: Delivering an absolutely great experience within a reasonable price. INM8 Prestige kick-started the Prestige series, targeting a sound that is unbelievable to achieve with in-ears. INM8 Prestige boasts its really fast and tight low-end, lot of perception of space and air that leads to a great out of the head experience especially from an in-ear monitor.<br>
                                 • Proprietary crossover technology<br>
                                 • Extended frequency range<br>
                                 • Premium materials throughout<br>
-                                • Exclusive carrying case<br>
-                                • Premium braided cable included<br>
-                                • Custom shell with premium artwork options</p>
+                                Driver Configuration: 8 Balanced Armature Drivers<br>
+                                Driver Details: 2x Woofer, 2x Low-Mid, 2x High, 1x Ultra-high<br>
                                 <p class="turnaround">Our current turnaround time is 8-10 weeks.</p>
                             </div>
                             <div class="button">

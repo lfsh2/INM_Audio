@@ -5,6 +5,8 @@
 }
 
 html, body {
+    height: 100vh !important;
+    overflow: hidden;
     -ms-overflow-style: none;
     background: #F9F9F9;
 }
@@ -19,7 +21,7 @@ html, body {
 
 .user-main-content {
     width: 100%;
-    height: 90vh;
+    height: 100% !important;
     display: flex;
     justify-content: space-between;
     align-items: start;
@@ -27,7 +29,6 @@ html, body {
     aside {
         max-width: 300px;
         width: 20%;
-        height: 100%;
 
         nav {
             width: 100%;
@@ -66,79 +67,28 @@ html, body {
     }
 
     .user-content {
-        width: 80%;
-        height: 100%;
-        padding: 20px;
+        width: 100%;
+        height: 90%;
+        padding: 15px;
+        margin: 10px;
         background: white;
-        border-radius: 20px 0 0 20px;
+        border-radius: 20px;
         display: flex;
         flex-direction: column;
         gap: 10px;
     }
 }
 
-/* .main {
-    display: flex;
-}
-
-aside {
-    height: 100vh;
-    width: 20%;  
-
-    .sidenav {
-        .logo-title {
-            margin-top: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            img {
-                width: 80px;
-                border: 1px solid black;
-                border-radius: 100px;
-            }
-            h2 {
-                font-size: 16px;
-                font-weight: 500;
-                line-height: 10px;
-            }
+@media (max-width: 992px) {
+    .user-main-content {
+        padding: 10px;
+        
+        aside {
+            display: none;
         }
 
-        ul {
-            display: flex;
-            flex-direction: column;
-            margin-top: 25px;
-            margin-left: 30px;
-
-            a {
-                text-decoration: none;
-                color: black;
-                margin-top: 3px;
-                margin-right: 5px;
-                li{
-                    list-style: none;
-                    padding: 5px;
-                    padding-left: 20px;
-                    margin: 3px;
-                    h3 {
-                        font-size: 15px;
-                        font-weight: 600;
-                        font-family: monospace;
-                    }
-                }   
-                .logout { 
-                    display: flex;
-                    gap: 10px;
-                }
-                .logout:hover { color: rgb(248, 76, 76); }
-            }
+        .user-content {
+            margin: 0;
         }
-    } 
+    }
 }
-
-main {
-    background-color: rgb(224, 224, 224);
-    height: 100vh;
-    width: 80%;
-    border: 1px solid blue;
-} */

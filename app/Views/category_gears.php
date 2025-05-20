@@ -28,14 +28,14 @@
         .modal-content {
             display: flex;
             width: 80%;
-            height: 100%;
+            height: 95%;
             background: #fff;
             border-radius: 12px;
-            overflow: hidden;
         }
 
         .left-gear {
             width: 50%;
+            height: 100%;
             padding: 20px;
             background: #f0f0f0;
             text-align: center;
@@ -43,8 +43,16 @@
 
         .left-gear img {
             width: 100%;
+            height: 50%;
             border-radius: 10px;
             margin-bottom: 10px;
+            object-fit: cover;
+        }
+
+        .left-gear .text {
+            height: 50%;
+            overflow-y: auto;
+            scrollbar-width: none;
         }
 
         .left-gear h2 {
@@ -58,8 +66,11 @@
 
         .right-gear {
             width: 50%;
+            height: 100%;
             padding: 20px;
             background: #fff;
+            overflow: auto;
+            scrollbar-width: none;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -72,7 +83,6 @@
         }
 
         .right-gear .top h2 {
-            margin: 0;
             font-weight: bold;
         }
 
@@ -134,6 +144,27 @@
         .audio-buttons .stop-btn:hover {
             background: #D32F2F;
         }
+
+        @media (max-width: 992px) {
+            .left-gear {
+                width: 100%;
+                max-height: 50%;
+            }
+            .right-gear {
+                width: 100%;
+                max-height: 50%;
+            }
+            .modal-content {
+                flex-direction: column;
+                position: relative;
+            }
+
+            .close {
+                position: absolute;
+                top: 3px;
+                right: 3px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -176,11 +207,14 @@
     </div>
 
     <div id="gearModal" class="modal">
-    <div class="modal-content" style="overflow-y: scroll; max-height:95%;  margin-top: 50px; margin-bottom:50px;">
+    <div class="modal-content">
         <div class="left-gear">
             <img id="gearImage" src="" alt="Gear Image">
-            <h2 id="gearTitle"></h2>
-            <p id="gearDescription"></p>
+
+            <div class="text">
+                <h2 id="gearTitle"></h2>
+                <p id="gearDescription"></p>
+            </div>
         </div>
 
         <div class="right-gear">

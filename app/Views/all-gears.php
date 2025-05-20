@@ -52,7 +52,7 @@
             border-radius: 10px;
             text-align: center;
             display: flex;
-            justify-content: center;y
+            justify-content: center;
         }
         .left-gear {
             width: 50%;
@@ -192,7 +192,7 @@
                         <h3 class="category-title"><?= esc($category) ?></h3>
                         <div class="card-container">
                             <?php foreach ($gears as $gear) : ?>
-                                <div class="library-card" onclick="openModal('<?= esc($gear['product_name']) ?>', '<?= esc($gear['description']) ?>', '<?= esc($gear['image_url']) ?>')">
+                                <div class="library-card <?= esc($category) ?>" onclick="openModal('<?= esc($gear['product_name']) ?>', '<?= esc($gear['description']) ?>', '<?= esc($gear['image_url']) ?>')">
                                     <img class="bgimg" src="<?= esc($gear['image_url']) ?>" alt="<?= esc($gear['product_name']) ?>">
                                     <div class="info">
                                         <h3><?= esc($gear['product_name']) ?></h3>

@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/UserSide/userAccount.css') ?>">
     <link rel="stylesheet" href=" <?= base_url('assets/css/navbar.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/UserSide/grid.css') ?>">
-    <link rel="shortcut icon" href="<?= base_url('assets/img/logo.png') ?>" type="image/x-icon"> 
+    <link rel="shortcut icon" href="<?= base_url(relativePath: 'assets/img/logo.png') ?>" type="image/x-icon"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <title>My Profile</title>
 </head>
@@ -14,11 +14,10 @@
 <body>
     <!-- INCLUDE TOP(FIXED/STICKY) NAV -->
     <?php  echo view("includes/header.php"); ?>
-
+    
     <div class="user-account user-main-content">
-        <!-- INCLUDE SIDE NAV -->
-        <?php echo view("UserSide/sideNav"); ?>
-        
+        <?php echo view(name: "UserSide/sideNav"); ?>
+
         <!-- MAIN CONTENT -->
         <div class="user-content">
             <div class="content-title">

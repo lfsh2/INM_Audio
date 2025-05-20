@@ -137,7 +137,6 @@
                                 </div>
 
                                 <div class="comments-section">
-                                    
                                     <?php if (!empty($post['comments'])): ?>
                                         <div class="comment">
                                             <?php foreach ($post['comments'] as $comment): ?>
@@ -150,7 +149,7 @@
                                     <?php endif; ?>
 
                                     <?php if (session()->has('isLoggedIn')): ?>
-                                        <form action="<?= base_url('community/post_comment') ?>" method="POST">
+                                        <form action="<?= base_url('community/post_comment') ?>" method="POST" class="comment-box">
                                             <input type="hidden" name="post_id" value="<?= esc($post['id']) ?>">
                                             <div class="com">
                                                 <textarea name="comment_text" placeholder="Write a comment... Please be respectful." required></textarea>
@@ -210,7 +209,6 @@
     </script>
 
     <?php echo view("includes/footer.php"); ?>
-
 </body>
 
 </html>

@@ -14,6 +14,18 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
   <style>
+  body, .page-wrapper, form, input, .card-body, input::placeholder {
+    background: var(--lights) !important;
+    color: var(--dark) !important;
+  }
+  form button {
+    background: var(--dark) !important;
+    color: var(--lights) !important;
+  }
+    .page-wrapper {
+      padding-bottom: 20px !important;
+      margin-top: 20px !important;
+    }
     .success-message {
       color: green;
     }
@@ -107,23 +119,19 @@
 
 
                   <div class="mb-3">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" name="username" class="form-control" id="username" required>
+                    <input type="text" name="username" class="form-control" id="username" placeholder="Username" required>
                   </div>
 
                   <div class="mb-3">
-                    <label for="email" class="form-label">Email Address</label>
-                    <input type="email" name="email" class="form-control" id="email" required>
+                    <input type="email" name="email" class="form-control" id="email" placeholder="Email Address" required>
                   </div>
 
                   <div class="mb-4">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control" id="password" required>
+                    <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
                   </div>
 
                   <div class="mb-4">
-                    <label for="password" class="form-label">Confirm Password</label>
-                    <input type="password" name="cpassword" class="form-control" id="cpassword" required>
+                    <input type="password" name="cpassword" class="form-control" id="cpassword" placeholder="Confirm Password" required>
                   </div>
 
                   <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign up</button>
@@ -226,7 +234,7 @@
 		});
 	</script>
 
-  <script src="<?= base_url('Admin_Side_Assets/libs/jquery/dist/jquery.min.js') ?>"></script>
+  <script src="<?= base_url(relativePath: 'Admin_Side_Assets/libs/jquery/dist/jquery.min.js') ?>"></script>
   <script src="<?= base_url('Admin_Side_Assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') ?>"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>

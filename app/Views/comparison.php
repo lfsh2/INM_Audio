@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gear Library Comparison</title>
-
+    <link rel="shortcut icon" href="<?= base_url('assets/img/logo.png') ?>" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="stylesheet" href="<?= base_url('assets/css/comparison.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/navbar.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/footer.css') ?>">
@@ -24,6 +25,7 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
             opacity: 0;
             transition: transform 0.3s ease, opacity 0.3s ease;
+            z-index: 10;
         }
 
         .modal.show {
@@ -34,7 +36,7 @@
 
         #iemList {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 15px;
             padding: 20px;
             max-height: 60vh;
@@ -42,23 +44,21 @@
         }
 
         .iem-item {
+            padding: 10px;
             background-color: #f7f7f7;
             border: 2px solid #ddd;
             border-radius: 15px;
-            width: 100%;
-            height: 250px;
             text-align: center;
             display: flex;
-            flex-direction: column;
             justify-content: space-between;
-            position: relative;
+            flex-direction: column;
             cursor: pointer;
             transition: transform 0.3s ease;
         }
 
         .iem-item img {
-            max-width: 100%;
-            height: 150px;
+            width: 100%;
+            height: 60%;
             border-top-left-radius: 12px;
             border-top-right-radius: 12px;
             object-fit: cover;
@@ -124,23 +124,11 @@
         }
 
         .actions {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100%;
+            margin  : 20px;
             text-align: center;
-            z-index: 999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        
-
-            a{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
+            position: sticky;
+            bottom: 20px;
+            z-index: 9;
         }
 
         .clear-btn {
@@ -149,6 +137,7 @@
             padding: 12px 30px;
             border: none;
             border-radius: 30px;
+            text-decoration: none;
             text-transform: uppercase;
             font-weight: bold;
             letter-spacing: 1px;
@@ -157,6 +146,7 @@
             transition: background 0.3s ease, transform 0.2s ease;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
             width: 90%;
             max-width: 400px;
@@ -174,62 +164,52 @@
         }
 
         .gear-specs {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    background: #d9d9d9;
-    border: 1px solid black;
-    padding: 20px;
-    box-sizing: border-box; 
-}
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            box-sizing: border-box; 
+        }
 
-.specs-section {
-    width: 100%;
-}
+        .specs-section {
+            width: 100%;
+        }
 
-.specs-section h3 {
-    width: 100%;
-    padding: 10px;
-    background:rgb(173, 174, 176);
-    color: #fff;
-    text-align: center;
-    border: 1px solid black;
-    margin-bottom: 10px;
-}
+        .specs-section h3 {
+            width: 100%;
+            padding: 10px;
+            color: black;
+            text-align: center;
+        }
+        
+        .specs-section li, .specs-section .li {
+            width: 100%;
+            list-style: none;
+            padding: 10px;
+            background: #fafafa;
+            margin: 5px 0;
+            text-align: left;
+        }
 
-.specs-section ul {
-    list-style: none;
-    padding: 0;
-}
+        .specs-section li::before {
+            content: '✔️';
+            color: #4CAF50;
+            margin-right: 8px;
+        }
 
-.specs-section li {
-    width: 100%;
-    padding: 10px;
-    background: #fff;
-    border: 1px solid #ddd;
-    text-align: left;
-}
-
-.specs-section li::before {
-    content: '✔️';
-    color: #4CAF50;
-    margin-right: 8px;
-}
-
-.specs-section p {
-    width: 100%;
-    padding: 10px;
-    background: #fff;
-    border: 1px solid #ddd;
-    text-align: center;
-}
+        .specs-section p {
+            width: 100%;
+            padding: 10px;
+            background: #fff;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
 
     </style>
 </head>
 
 <body>
-    <?php echo view("includes/header.php"); ?>
+    <?php echo view(name: "includes/header.php"); ?>
 
     <?php if (session()->getFlashdata('success')): ?>
         <div class="alert-success">
@@ -266,7 +246,7 @@
 
         <div class="earphone-container">
             <div class="left earphone">
-            <button onclick="showModal('left')">Select Left Gear</button>
+                <button onclick="showModal('left')">Select Left Gear</button>
                 <div id="leftGearContainer">
                     <p>No product selected for comparison.</p>
                 </div>
@@ -274,7 +254,7 @@
             </div>
 
             <div class="right earphone">
-            <button onclick="showModal('right')">Select Right Gear</button>
+                <button onclick="showModal('right')">Select Right Gear</button>
                 <div id="rightGearContainer">
                     <p>No product selected for comparison.</p>
                 </div>
@@ -492,7 +472,7 @@
                 <ul>${soundSignature}</ul>
 
                 <h3>Frequency Response:</h3>
-                <p>${specs.frequencyResponse || 'N/A'}</p>
+                <p class="li">${specs.frequencyResponse || 'N/A'}</p>
 
                 <h3>Technical Specifications:</h3>
                 <ul>${technicalSpecs}</ul>
