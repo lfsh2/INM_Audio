@@ -9,10 +9,242 @@
     <!-- CSS LINKS -->
     <link rel="stylesheet" href=" <?= base_url('assets/css/navbar.css') ?>">
     <link rel="stylesheet" href=" <?= base_url('assets/css/footer.css') ?>">
-    <link rel="stylesheet" href=" <?= base_url('assets/css/customize.css') ?>">
+    <!-- <link rel="stylesheet" href=" <?= base_url('assets/css/customize.css') ?>"> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>INM Costumization</title>
+    <style>
+ body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .main-container {
+            display: flex;
+            flex-direction: row;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .earphone-container {
+            flex: 1.5;
+            background-color: #1e1e1e;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #canvas-container {
+            height: 100%;
+            width: 100%;
+            background-color: #121212;
+            position: relative;
+        }
+        
+        .model-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            pointer-events: none;
+        }
+        
+        .customization-panel {
+            flex: 1;
+            max-width: 400px;
+            background-color: #1e1e1e;
+            padding: 0;
+            overflow-y: auto;
+            border-left: 1px solid #333;
+        }
+        
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .nav-button {
+            background-color: #2d2d2d;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            width: 48%;
+        }
+        
+        .nav-button:hover {
+            background-color: #3d3d3d;
+        }
+        
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+            padding: 15px;
+        }
+        
+        .color-option {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            border: 2px solid transparent;
+        }
+        
+        .color-option:hover {
+            transform: scale(1.1);
+        }
+        
+        .color-option.selected {
+            border: 2px solid #fff;
+            transform: scale(1.1);
+        }
+        
+        .section-header {
+            padding: 15px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            border-bottom: 1px solid #333;
+        }
+        
+        .section-header .icon {
+            margin-right: 10px;
+            transition: transform 0.3s;
+        }
+        
+        .section-header.collapsed .icon {
+            transform: rotate(-90deg);
+        }
+        
+        .section-content {
+            padding: 0 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .section-content.expanded {
+            max-height: 1000px;
+            padding: 15px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .texture-option {
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .texture-option::after {
+            content: attr(data-name);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            font-size: 10px;
+            padding: 2px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        
+        .texture-option:hover::after {
+            opacity: 1;
+        }
+        
+        .control-slider {
+            width: 100%;
+            margin: 10px 0;
+        }
+        
+        .control-slider label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        
+        .control-slider input[type="range"] {
+            width: 100%;
+            background: #333;
+            height: 5px;
+            border-radius: 5px;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        
+        .control-slider input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #007bff;
+            cursor: pointer;
+        }
+        
+        .material-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .material-option {
+            background-color: #2d2d2d;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 12px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .material-option.selected {
+            background-color: #007bff;
+        }
+        
+        .premium-textures {
+            margin-top: 15px;
+            border-top: 1px solid #444;
+            padding-top: 15px;
+        }
+        
+        .premium-textures h4 {
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #f0ad4e;
+        }
+        
+        .help-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: #444;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -22,115 +254,294 @@
     <div class="main-container">
         <div class="earphone-container">
             <div id="canvas-container"></div>
-            
-            <div class="size-guide">
-                <h3>Size Guide</h3>
-                <img src="<?= base_url('assets/img/sizeguide2.webp') ?>" alt="IEM Size Guide" class="img-fluid">
+            <div class="model-controls">
+                <p>Click and drag to rotate the model</p>
             </div>
         </div>
 
         <div class="customization-panel">
-            <div class="control">
-                <div class="control-group">
-                    <label for="designName">Design Name:</label>
-                    <input type="text" id="designName" placeholder="Enter your design name">
+            <div class="navigation-buttons">
+                <button class="nav-button" id="backButton">Back</button>
+                <button class="nav-button" id="nextButton">Next</button>
+            </div>
+
+            <div class="section-header" id="leftShellHeader">
+                <span class="icon">▼</span>
+                <span>Left Shell</span>
+                <span id="leftShellInfo">Clear</span>
+            </div>
+            <div class="section-content expanded" id="leftShellContent">
+                <div class="color-grid" id="leftShellColors">
+                    <div class="color-option selected" style="background-color: #f2e6d8;" data-color="#f2e6d8"></div>
+                    <div class="color-option" style="background-color: #1a1a1a;" data-color="#1a1a1a"></div>
+                    <div class="color-option" style="background-color: #1e5cb3;" data-color="#1e5cb3"></div>
+                    <div class="color-option" style="background-color: #ff7b25;" data-color="#ff7b25"></div>
+                    <div class="color-option" style="background-color: #7fc6e4;" data-color="#7fc6e4"></div>
+                    <div class="color-option" style="background-color: #8b0f55;" data-color="#8b0f55"></div>
+                    <div class="color-option" style="background-color: #b83d8b;" data-color="#b83d8b"></div>
+                    <div class="color-option" style="background-color: #ff9ebc;" data-color="#ff9ebc"></div>
+                    <div class="color-option" style="background-color: #00b2a9;" data-color="#00b2a9"></div>
+                    <div class="color-option" style="background-color: #2c8437;" data-color="#2c8437"></div>
+                    <div class="color-option" style="background-color: #d1d1d1;" data-color="#d1d1d1"></div>
+                    <div class="color-option" style="background-color: #5a5a5a;" data-color="#5a5a5a"></div>
+                    <div class="color-option" style="background-color: #a7c7e7;" data-color="#a7c7e7"></div>
+                    <div class="color-option" style="background-color: #c25450;" data-color="#c25450"></div>
+                    <div class="color-option" style="background-color: #e9a94a;" data-color="#e9a94a"></div>
+                    <div class="color-option" style="background-color: #9370db;" data-color="#9370db"></div>
+                    <div class="color-option" style="background-color: #b5835a;" data-color="#b5835a"></div>
+                    <div class="color-option" style="background-color: #daa520;" data-color="#daa520"></div>
+                    <div class="color-option" style="background-color: #90ee90;" data-color="#90ee90"></div>
+                    <div class="color-option" style="background-color: #2e8b57;" data-color="#2e8b57"></div>
+                    <div class="color-option" style="background-color: #000000;" data-color="#000000"></div>
+                </div>
+
+                <div class="premium-textures">
+                    <h4>Premium Textures</h4>
+                    <div class="color-grid" id="leftShellTextures">
+                        <div class="color-option texture-option" style="background-image: url('assets/textures/abalone-gold.webp');" data-texture="abalone-gold.webp" data-name="Abalone Gold"></div>
+                        <div class="color-option texture-option" style="background-image: url('assets/textures/abalone-silver.webp');" data-texture="abalone-silver.webp" data-name="Abalone Silver"></div>
+                        <div class="color-option texture-option" style="background-image: url('assets/textures/abalone.webp');" data-texture="abalone.webp" data-name="Abalone"></div>
+                        <div class="color-option texture-option" style="background-image: url('assets/textures/carbon.jpeg');" data-texture="carbon.jpeg" data-name="Carbon Fiber"></div>
+                        <div class="color-option texture-option" style="background-image: url('assets/textures/celluloid-black.webp');" data-texture="celluloid-black.webp" data-name="Celluloid"></div>
+                        <div class="color-option texture-option" style="background-image: url('assets/textures/flakes-gold.webp');" data-texture="flakes-gold.webp" data-name="Gold Flakes"></div>
+                        <div class="color-option texture-option" style="background-image: url('assets/textures/flakes-silver.webp');" data-texture="flakes-silver.webp" data-name="Silver Flakes"></div>
+                        <div class="color-option texture-option" style="background-image: url('assets/textures/galaxy-black.webp');" data-texture="galaxy-black.webp" data-name="Galaxy Black"></div>
+                        <div class="color-option texture-option" style="background-image: url('assets/textures/galaxy-blue.webp');" data-texture="galaxy-blue.webp" data-name="Galaxy Blue"></div>
+                        <div class="color-option texture-option" style="background-image: url('assets/textures/wood.jpeg');" data-texture="wood.jpeg" data-name="Wood"></div>
+                        <div class="color-option texture-option" style="background-image: url('assets/textures/steampunk.webp');" data-texture="steampunk.webp" data-name="Steampunk"></div>
+                        <div class="color-option texture-option" style="background-image: url('assets/textures/sparkle-purple.webp');" data-texture="sparkle-purple.webp" data-name="Sparkle Purple"></div>
+                        <div class="color-option texture-option" style="background-image: url('assets/textures/sparkle-blue.webp');" data-texture="sparkle-blue.webp" data-name="Sparkle Blue"></div>
+                        <div class="color-option texture-option" style="background-image: url('assets/textures/scattered-copper.webp');" data-texture="scattered-copper.webp" data-name="Scattered Copper"></div>
+                        <div class="color-option texture-option" style="background-color: #333; display: flex; justify-content: center; align-items: center;" data-texture="custom" data-name="Custom">
+                            <span class="help-icon">+</span>
+                        </div>
+                    </div>
+                    <input type="file" id="leftShellTextureUpload" accept="image/*" style="display: none;">
                 </div>
             </div>
 
+            <div class="section-header" id="rightShellHeader">
+                <span class="icon">▼</span>
+                <span>Right Shell</span>
+                <span id="rightShellInfo">Clear</span>
+            </div>
+            <div class="section-content expanded" id="rightShellContent">
+                <div class="color-grid" id="rightShellColors">
+                    <div class="color-option selected" style="background-color: #f2e6d8;" data-color="#f2e6d8"></div>
+                    <div class="color-option" style="background-color: #1a1a1a;" data-color="#1a1a1a"></div>
+                    <div class="color-option" style="background-color: #1e5cb3;" data-color="#1e5cb3"></div>
+                    <div class="color-option" style="background-color: #ff7b25;" data-color="#ff7b25"></div>
+                    <div class="color-option" style="background-color: #7fc6e4;" data-color="#7fc6e4"></div>
+                    <div class="color-option" style="background-color: #8b0f55;" data-color="#8b0f55"></div>
+                    <div class="color-option" style="background-color: #b83d8b;" data-color="#b83d8b"></div>
+                    <div class="color-option" style="background-color: #ff9ebc;" data-color="#ff9ebc"></div>
+                    <div class="color-option" style="background-color: #00b2a9;" data-color="#00b2a9"></div>
+                    <div class="color-option" style="background-color: #2c8437;" data-color="#2c8437"></div>
+                    <div class="color-option" style="background-color: #d1d1d1;" data-color="#d1d1d1"></div>
+                    <div class="color-option" style="background-color: #5a5a5a;" data-color="#5a5a5a"></div>
+                    <div class="color-option" style="background-color: #a7c7e7;" data-color="#a7c7e7"></div>
+                    <div class="color-option" style="background-color: #c25450;" data-color="#c25450"></div>
+                    <div class="color-option" style="background-color: #e9a94a;" data-color="#e9a94a"></div>
+                    <div class="color-option" style="background-color: #9370db;" data-color="#9370db"></div>
+                    <div class="color-option" style="background-color: #b5835a;" data-color="#b5835a"></div>
+                    <div class="color-option" style="background-color: #daa520;" data-color="#daa520"></div>
+                    <div class="color-option" style="background-color: #90ee90;" data-color="#90ee90"></div>
+                    <div class="color-option" style="background-color: #2e8b57;" data-color="#2e8b57"></div>
+                    <div class="color-option" style="background-color: #000000;" data-color="#000000"></div>
+                </div>
+
+                <div class="premium-textures">
+                    <h4>Premium Textures</h4>
+                    <div class="color-grid" id="rightShellTextures">
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/abalone-gold.webp') ?>');" data-texture="abalone-gold.webp" data-name="Abalone Gold"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/abalone-silver.webp') ?>');" data-texture="abalone-silver.webp" data-name="Abalone Silver"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/abalone.webp') ?>');" data-texture="abalone.webp" data-name="Abalone"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/carbon.jpeg') ?>');" data-texture="carbon.jpeg" data-name="Carbon Fiber"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/celluloid-black.webp') ?>');" data-texture="celluloid-black.webp" data-name="Celluloid"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/flakes-gold.webp') ?>');" data-texture="flakes-gold.webp" data-name="Gold Flakes"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/flakes-silver.webp') ?>');" data-texture="flakes-silver.webp" data-name="Silver Flakes"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/galaxy-black.webp') ?>');" data-texture="galaxy-black.webp" data-name="Galaxy Black"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/galaxy-blue.webp') ?>');" data-texture="galaxy-blue.webp" data-name="Galaxy Blue"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/wood.jpeg') ?>');" data-texture="wood.jpeg" data-name="Wood"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/steampunk.webp') ?>');" data-texture="steampunk.webp" data-name="Steampunk"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/sparkle-purple.webp') ?>');" data-texture="sparkle-purple.webp" data-name="Sparkle Purple"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/sparkle-blue.webp') ?>');" data-texture="sparkle-blue.webp" data-name="Sparkle Blue"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/scattered-copper.webp') ?>');" data-texture="scattered-copper.webp" data-name="Scattered Copper"></div>
+
+                        <div class="color-option texture-option" style="background-color: #333; display: flex; justify-content: center; align-items: center;" data-texture="custom" data-name="Custom">
+                            <span class="help-icon">+</span>
+                        </div>
+                    </div>
+                    <input type="file" id="rightShellTextureUpload" accept="image/*" style="display: none;">
+                </div>
+            </div>
+
+            <div class="section-header" id="leftFaceplateHeader">
+                <span class="icon">▼</span>
+                <span>Left Faceplate</span>
+                <span id="leftFaceplateInfo">Clear</span>
+            </div>
+            <div class="section-content expanded" id="leftFaceplateContent">
+                <div class="color-grid" id="leftFaceplateColors">
+                    <div class="color-option selected" style="background-color: #f2e6d8;" data-color="#f2e6d8"></div>
+                    <div class="color-option" style="background-color: #1a1a1a;" data-color="#1a1a1a"></div>
+                    <div class="color-option" style="background-color: #1e5cb3;" data-color="#1e5cb3"></div>
+                    <div class="color-option" style="background-color: #ff7b25;" data-color="#ff7b25"></div>
+                    <div class="color-option" style="background-color: #7fc6e4;" data-color="#7fc6e4"></div>
+                    <div class="color-option" style="background-color: #8b0f55;" data-color="#8b0f55"></div>
+                    <div class="color-option" style="background-color: #b83d8b;" data-color="#b83d8b"></div>
+                    <div class="color-option" style="background-color: #ff9ebc;" data-color="#ff9ebc"></div>
+                    <div class="color-option" style="background-color: #00b2a9;" data-color="#00b2a9"></div>
+                    <div class="color-option" style="background-color: #2c8437;" data-color="#2c8437"></div>
+                    <div class="color-option" style="background-color: #d1d1d1;" data-color="#d1d1d1"></div>
+                    <div class="color-option" style="background-color: #5a5a5a;" data-color="#5a5a5a"></div>
+                </div>
+
+                <div class="premium-textures">
+                    <h4>Premium Textures</h4>
+                    <div class="color-grid" id="leftFaceplateTextures">
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/abalone-gold.webp') ?>');" data-texture="abalone-gold.webp" data-name="Abalone Gold"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/abalone-silver.webp') ?>');" data-texture="abalone-silver.webp" data-name="Abalone Silver"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/abalone.webp') ?>');" data-texture="abalone.webp" data-name="Abalone"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/carbon.jpeg') ?>');" data-texture="carbon.jpeg" data-name="Carbon Fiber"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/celluloid-black.webp') ?>');" data-texture="celluloid-black.webp" data-name="Celluloid"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/flakes-gold.webp') ?>');" data-texture="flakes-gold.webp" data-name="Gold Flakes"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/flakes-silver.webp') ?>');" data-texture="flakes-silver.webp" data-name="Silver Flakes"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/galaxy-black.webp') ?>');" data-texture="galaxy-black.webp" data-name="Galaxy Black"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/galaxy-blue.webp') ?>');" data-texture="galaxy-blue.webp" data-name="Galaxy Blue"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/wood.jpeg') ?>');" data-texture="wood.jpeg" data-name="Wood"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/steampunk.webp') ?>');" data-texture="steampunk.webp" data-name="Steampunk"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/sparkle-purple.webp') ?>');" data-texture="sparkle-purple.webp" data-name="Sparkle Purple"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/sparkle-blue.webp') ?>');" data-texture="sparkle-blue.webp" data-name="Sparkle Blue"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/scattered-copper.webp') ?>');" data-texture="scattered-copper.webp" data-name="Scattered Copper"></div>
+
+                        <div class="color-option texture-option" style="background-color: #333; display: flex; justify-content: center; align-items: center;" data-texture="custom" data-name="Custom">
+                            <span class="help-icon">+</span>
+                        </div>
+                    </div>
+                    <input type="file" id="leftFaceplateTextureUpload" accept="image/*" style="display: none;">
+                </div>
+            </div>
+
+            <div class="section-header" id="rightFaceplateHeader">
+                <span class="icon">▼</span>
+                <span>Right Faceplate</span>
+                <span id="rightFaceplateInfo">Clear</span>
+            </div>
+            <div class="section-content expanded" id="rightFaceplateContent">
+                <div class="color-grid" id="rightFaceplateColors">
+                    <div class="color-option selected" style="background-color: #f2e6d8;" data-color="#f2e6d8"></div>
+                    <div class="color-option" style="background-color: #1a1a1a;" data-color="#1a1a1a"></div>
+                    <div class="color-option" style="background-color: #1e5cb3;" data-color="#1e5cb3"></div>
+                    <div class="color-option" style="background-color: #ff7b25;" data-color="#ff7b25"></div>
+                    <div class="color-option" style="background-color: #7fc6e4;" data-color="#7fc6e4"></div>
+                    <div class="color-option" style="background-color: #8b0f55;" data-color="#8b0f55"></div>
+                    <div class="color-option" style="background-color: #b83d8b;" data-color="#b83d8b"></div>
+                    <div class="color-option" style="background-color: #ff9ebc;" data-color="#ff9ebc"></div>
+                    <div class="color-option" style="background-color: #00b2a9;" data-color="#00b2a9"></div>
+                    <div class="color-option" style="background-color: #2c8437;" data-color="#2c8437"></div>
+                    <div class="color-option" style="background-color: #d1d1d1;" data-color="#d1d1d1"></div>
+                    <div class="color-option" style="background-color: #5a5a5a;" data-color="#5a5a5a"></div>
+                </div>
+
+                <div class="premium-textures">
+                    <h4>Premium Textures</h4>
+                    <div class="color-grid" id="rightFaceplateTextures">
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/abalone-gold.webp') ?>');" data-texture="abalone-gold.webp" data-name="Abalone Gold"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/abalone-silver.webp') ?>');" data-texture="abalone-silver.webp" data-name="Abalone Silver"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/abalone.webp') ?>');" data-texture="abalone.webp" data-name="Abalone"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/carbon.jpeg') ?>');" data-texture="carbon.jpeg" data-name="Carbon Fiber"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/celluloid-black.webp') ?>');" data-texture="celluloid-black.webp" data-name="Celluloid"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/flakes-gold.webp') ?>');" data-texture="flakes-gold.webp" data-name="Gold Flakes"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/flakes-silver.webp') ?>');" data-texture="flakes-silver.webp" data-name="Silver Flakes"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/galaxy-black.webp') ?>');" data-texture="galaxy-black.webp" data-name="Galaxy Black"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/galaxy-blue.webp') ?>');" data-texture="galaxy-blue.webp" data-name="Galaxy Blue"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/wood.jpeg') ?>');" data-texture="wood.jpeg" data-name="Wood"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/steampunk.webp') ?>');" data-texture="steampunk.webp" data-name="Steampunk"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/sparkle-purple.webp') ?>');" data-texture="sparkle-purple.webp" data-name="Sparkle Purple"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/sparkle-blue.webp') ?>');" data-texture="sparkle-blue.webp" data-name="Sparkle Blue"></div>
+                        <div class="color-option texture-option" style="background-image: url('<?= base_url('assets/textures/scattered-copper.webp') ?>');" data-texture="scattered-copper.webp" data-name="Scattered Copper"></div>
+
+                        <div class="color-option texture-option" style="background-color: #333; display: flex; justify-content: center; align-items: center;" data-texture="custom" data-name="Custom">
+                            <span class="help-icon">+</span>
+                        </div>
+                    </div>
+                    <input type="file" id="rightFaceplateTextureUpload" accept="image/*" style="display: none;">
+                </div>
+            </div>
+
+            <div class="section-header" id="materialHeader">
+                <span class="icon">▼</span>
+                <span>Material & Lighting</span>
+            </div>
+            <div class="section-content expanded" id="materialContent">
+                <h4>Material Type</h4>
+                <div class="material-options">
+                    <button class="material-option selected" data-material="glossy">Glossy</button>
+                    <button class="material-option" data-material="matte">Matte</button>
+                    <button class="material-option" data-material="metallic">Metallic</button>
+                    <button class="material-option" data-material="ceramic">Ceramic</button>
+                </div>
+
+                <h4 style="margin-top: 20px;">Lighting</h4>
+                <div class="control-slider">
+                    <label><span>Ambient Light</span><span id="ambientValue">0.7</span></label>
+                    <input type="range" id="ambientIntensity" min="0" max="1" step="0.1" value="0.7">
+                </div>
+
+                <div class="control-slider">
+                    <label><span>Key Light</span><span id="keyValue">1.2</span></label>
+                    <input type="range" id="keyIntensity" min="0" max="2" step="0.1" value="1.2">
+                </div>
+
+                <div class="control-slider">
+                    <label><span>Fill Light</span><span id="fillValue">0.8</span></label>
+                    <input type="range" id="fillIntensity" min="0" max="1.5" step="0.1" value="0.8">
+                </div>
+
+                <div class="control-slider">
+                    <label><span>Rim Light</span><span id="rimValue">0.7</span></label>
+                    <input type="range" id="rimIntensity" min="0" max="1.5" step="0.1" value="0.7">
+                </div>
+
+                <div style="display: flex; gap: 10px; margin-top: 15px;">
+                    <div style="flex: 1;">
+                        <label>Key Light Color</label>
+                        <input type="color" id="keyLightColor" value="#ffffff" style="width: 100%; height: 30px;">
+                    </div>
+                    <div style="flex: 1;">
+                        <label>Fill Light Color</label>
+                        <input type="color" id="fillLightColor" value="#ffffff" style="width: 100%; height: 30px;">
+                    </div>
+                </div>
+            </div>
 
             <div class="controls">
-                <div class="control-group">
-                    <label for="leftColorPicker">Back IEM Color:</label>
-                    <input type="color" id="leftColorPicker" value="#ffffff">
-                </div>
-                <div class="control-group">
-                    <label for="rightColorPicker">Front IEM Color:</label>
-                    <input type="color" id="rightColorPicker" value="#ffffff">
-                </div>
-            </div>
-
-            <div class="control">
-                <div class="control-group">
-                    <label for="leftTextureSelect">Back IEM Texture:</label>
-                    <select id="leftTextureSelect">
-                        <option value="none">None</option>
-                        <option value="abalone-gold.webp">Carbon Fiber</option>
-                        <option value="clouds.jpeg">Clouds</option>
-                        <option value="pearls.jpeg">Pearlscent</option>
-                        <option value="abstract.jpeg">Abstract No.1</option>
-                        <option value="abstract2.jpeg">Abstract No.2</option>
-                        <option value="anime1.jpeg">Akatsuki</option>
-                        <option value="anime2.jpeg">Piattos</option>
-                        <option value="beach.jpeg">Beach</option>
-                        <option value="warning.jpeg">Yellow and Black Warning</option>
-                        <option value="lol.jpeg">Skulls</option>
-                        <option value="lux.jpeg">Luxury</option>
-                        <option value="marb.jpeg">Marble Blue</option>
-                        <option value="red2.jpeg">Katana</option>
-                        <option value="wood.jpeg">Wood</option>
-                        <option value="lacks.jpeg">Golden Shower</option>
-                    </select>
-                    <input type="file" id="leftTextureUpload" accept="image/*">
-                </div>
-                <div class="control-group">
-                    <label for="rightTextureSelect">Front IEM Texture:</label>
-                    <select id="rightTextureSelect">
-                        <option value="none">None</option>
-                        <option value="carbon.jpeg">Carbon Fiber</option>
-                        <option value="clouds.jpeg">Clouds</option>
-                        <option value="pearls.jpeg">Pearlscent</option>
-                        <option value="abstract.jpeg">Abstract No.1</option>
-                        <option value="abstract2.jpeg">Abstract No.2</option>
-                        <option value="anime1.jpeg">Akatsuki</option>
-                        <option value="anime2.jpeg">Piattos</option>
-                        <option value="beach.jpeg">Beach</option>
-                        <option value="warning.jpeg">Yellow and Black Warning</option>
-                        <option value="lol.jpeg">Skulls</option>
-                        <option value="lux.jpeg">Luxury</option>
-                        <option value="marb.jpeg">Marble Blue</option>
-                        <option value="red2.jpeg">Katana</option>
-                        <option value="wood.jpeg">Wood</option>
-                        <option value="lacks.jpeg">Golden Shower</option>
-                    </select>
-                    <input type="file" id="rightTextureUpload" accept="image/*">
-                </div>
-            </div>
-
-            <div class="controls">
-                <div class="control-group">
-                    <label for="materialSelect">Material Type:</label>
-                    <select id="materialSelect">
-                        <option value="glossy">Glossy</option>
-                        <option value="matte">Matte</option>
-                    </select>
-                </div>
-                
                 <div class="control-group">
                     <label for="sizeSelect">Select Size:</label>
                     <select id="sizeSelect">
-                        <option value="none">None</option>
                         <option value="super small">SS</option>
                         <option value="small">S</option>
                         <option value="medium small">MS</option>
-                        <option value="medium">M</option>
+                        <option value="medium" selected>M</option>
                         <option value="medium large">ML</option>
                         <option value="large">L</option>
                     </select>
                 </div>
             </div>
 
-            <div class="control">
+            <!-- <div class="control">
                 <div class="control-group">
-                    <label for="userDesignUpload">Upload Design:</label>
+                    <label for="userDesignUpload">Upload Custom Logo/Design:</label>
                     <input type="file" id="userDesignUpload" accept="image/*">
+                    <small class="text-muted">This will be applied to the right faceplate</small>
                 </div>
-            </div>
+            </div> -->
 
             <div class="control">
                 <div class="control-group">
                     <label for="categorySelect">Select Category:</label>
                     <select id="categorySelect">
-                        <option value="none">None</option>
                         <option value="Vanilla Series">Vanilla Series</option>
                         <option value="Stage Series">Stage Series</option>
                         <option value="Prestige Series">Prestige Series</option>
@@ -139,19 +550,28 @@
 
                 <div class="specs-section">
                     <h3>Specifications</h3>
-                    <ul id="specsList"></ul>
+                    <ul id="specsList" class="list-group">
+                        <li class="list-group-item">Driver Type: Balanced Armature</li>
+                        <li class="list-group-item">Cable Type: 3.5mm Silver-Plated Copper</li>
+                        <li class="list-group-item">Frequency Range: 20Hz - 20kHz</li>
+                    </ul>
                 </div>
 
-                <div class="sound-test">
-                    <audio id="soundTest" controls></audio>
+                <div class="sound-test mt-3">
+                    <h3>Sound Test</h3>
+                    <audio id="soundTest" controls class="w-100"></audio>
                     <canvas id="visualizer"></canvas>
                 </div>
             </div>
 
-
-
             <div class="controls d-flex justify-content-center">
-                <button id="saveDesign">Save Design</button>
+                <button id="saveDesign" class="btn btn-primary">Save Design</button>
+            </div>
+
+            <div class="control mt-3">
+                <h3>Keyboard Controls</h3>
+                <p>Press 'R' to toggle rotation of the model</p>
+                <p>Use mouse to rotate and scroll to zoom the view</p>
             </div>
         </div>
     </div>
@@ -159,203 +579,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three/examples/js/loaders/GLTFLoader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three/examples/js/controls/OrbitControls.js"></script>
-    <!-- <script defer src="<?= base_url('assets/js/costumizer.js') ?>"></script> -->
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-    const container = document.getElementById("canvas-container");
-
-    const leftColorPicker = document.getElementById("leftColorPicker");
-    const rightColorPicker = document.getElementById("rightColorPicker");
-    const leftTextureUpload = document.getElementById("leftTextureUpload");
-    const rightTextureUpload = document.getElementById("rightTextureUpload");
-    const userDesignUpload = document.getElementById("userDesignUpload");
-    const materialSelect = document.getElementById("materialSelect");
-    const leftTextureSelect = document.getElementById("leftTextureSelect");
-    const rightTextureSelect = document.getElementById("rightTextureSelect");
-
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setSize(container.clientWidth, container.clientHeight);
-    container.appendChild(renderer.domElement);
-
-    const controls = new THREE.OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
-    controls.dampingFactor = 0.05;
-    controls.maxDistance = 5;
-    controls.minDistance = 1;
-
-    const ambientLight = new THREE.AmbientLight(0xffffff, 1.5);
-    scene.add(ambientLight);
-
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 3);
-    directionalLight.position.set(3, 3, 5);
-    scene.add(directionalLight);
-
-    const backLight = new THREE.DirectionalLight(0xffffff, 1.5);
-    backLight.position.set(-3, -3, -5);
-    scene.add(backLight);
-
-    const loader = new THREE.GLTFLoader();
-    let iemModel, leftIEM, rightIEM;
-
-    const loadingText = document.createElement("p");
-    loadingText.innerText = "Loading IEM Model...";
-    container.appendChild(loadingText);
-
-    loader.load("assets/models/origiem.glb", function (gltf) {
-        container.removeChild(loadingText);
-
-        iemModel = gltf.scene;
-
-        iemModel.traverse((child) => {
-            if (child.isMesh) {
-                child.material = new THREE.MeshStandardMaterial({
-                    color: 0xffffff,
-                    metalness: 0.8,
-                    roughness: 0.2,
-                });
-
-                if (!leftIEM) {
-                    leftIEM = child;
-                } else {
-                    rightIEM = child;
-                }
-            }
-        });
-
-        const box = new THREE.Box3().setFromObject(iemModel);
-        const center = box.getCenter(new THREE.Vector3());
-        iemModel.position.sub(center);
-
-        const size = box.getSize(new THREE.Vector3()).length();
-        const scaleFactor = 1.5 / size;
-        iemModel.scale.set(scaleFactor, scaleFactor, scaleFactor);
-
-        const newBox = new THREE.Box3().setFromObject(iemModel);
-        const newCenter = newBox.getCenter(new THREE.Vector3());
-        iemModel.position.sub(newCenter);
-
-        scene.add(iemModel);
-
-        const modelSize = newBox.getSize(new THREE.Vector3()).length();
-        camera.position.set(0, 0, modelSize * 1.5);
-        camera.lookAt(0, 0, 0);
-
-        animate();
-
-        if (materialSelect) {
-            materialSelect.value = "glossy";
-        }
-    }, undefined, function (error) {
-        console.error("Error loading model:", error);
-        loadingText.innerText = "Error loading model!";
-    });
-
-    leftColorPicker.addEventListener("input", () => {
-        if (leftIEM) leftIEM.material.color.set(leftColorPicker.value);
-    });
-
-    rightColorPicker.addEventListener("input", () => {
-        if (rightIEM) rightIEM.material.color.set(rightColorPicker.value);
-    });
-
-    function applyTextureFromFolder(textureName, object) {
-        if (textureName !== "none" && object) {
-            const texture = new THREE.TextureLoader().load(`assets/textures/${textureName}`);
-            texture.wrapS = THREE.RepeatWrapping;
-            texture.wrapT = THREE.RepeatWrapping;
-            object.material.map = texture;
-            object.material.needsUpdate = true;
-        } else if (object) {
-            object.material.map = null;
-            object.material.needsUpdate = true;
-        }
-    }
-
-    leftTextureSelect.addEventListener("change", () => {
-        applyTextureFromFolder(leftTextureSelect.value, leftIEM);
-        leftTextureUpload.value = "";
-    });
-
-    rightTextureSelect.addEventListener("change", () => {
-        applyTextureFromFolder(rightTextureSelect.value, rightIEM);
-        rightTextureUpload.value = "";
-    });
-
-    function applyUploadedTexture(event, object) {
-        const file = event.target.files[0];
-        if (file && object) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                const texture = new THREE.TextureLoader().load(e.target.result);
-                texture.wrapS = THREE.RepeatWrapping;
-                texture.wrapT = THREE.RepeatWrapping;
-                object.material.map = texture;
-                object.material.needsUpdate = true;
-            };
-            reader.readAsDataURL(file);
-        }
-    }
-
-    leftTextureUpload.addEventListener("change", (event) => {
-        applyUploadedTexture(event, leftIEM);
-        leftTextureSelect.value = "none";
-    });
-
-    rightTextureUpload.addEventListener("change", (event) => {
-        applyUploadedTexture(event, rightIEM);
-        rightTextureSelect.value = "none";
-    });
-
-    userDesignUpload.addEventListener("change", function (event) {
-        const file = event.target.files[0];
-        if (file && rightIEM) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                const texture = new THREE.TextureLoader().load(e.target.result);
-                texture.wrapS = THREE.RepeatWrapping;
-                texture.wrapT = THREE.RepeatWrapping;
-                texture.repeat.set(1, 1);
-
-                rightIEM.material.map = texture;
-                rightIEM.material.needsUpdate = true;
-            };
-            reader.readAsDataURL(file);
-        }
-    });
-
-    materialSelect.addEventListener("change", function () {
-        if (leftIEM && rightIEM) {
-            const type = materialSelect.value;
-            const roughness = type === "matte" ? 0.8 : 0.2;
-            const metalness = type === "glossy" ? 0.8 : 0.2;
-
-            leftIEM.material.roughness = roughness;
-            leftIEM.material.metalness = metalness;
-            rightIEM.material.roughness = roughness;
-            rightIEM.material.metalness = metalness;
-        }
-    });
-
-    function animate() {
-        requestAnimationFrame(animate);
-        controls.update();
-        renderer.render(scene, camera);
-    }
-
-    window.addEventListener("resize", () => {
-        camera.aspect = container.clientWidth / container.clientHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(container.clientWidth, container.clientHeight);
-    });
-});
-
-    </script>
-
-
-    
+    <script defer src="<?= base_url('assets/js/costumizer.js') ?>"></script>
     <script>
         const categorySelect = document.getElementById("categorySelect");
         const soundTest = document.getElementById("soundTest");
@@ -471,6 +695,116 @@
                 .then(data => alert(data.message))
                 .catch(error => console.error("Error saving customization:", error));
 
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sectionHeaders = document.querySelectorAll('.section-header');
+            sectionHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    const icon = this.querySelector('.icon');
+
+                    if (content.classList.contains('expanded')) {
+                        content.classList.remove('expanded');
+                        this.classList.add('collapsed');
+                        if (icon) icon.style.transform = 'rotate(-90deg)';
+                    } else {
+                        content.classList.add('expanded');
+                        this.classList.remove('collapsed');
+                        if (icon) icon.style.transform = 'rotate(0deg)';
+                    }
+                });
+            });
+
+            const colorOptions = document.querySelectorAll('.color-option');
+            colorOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const grid = this.closest('.color-grid');
+                    if (grid) {
+                        grid.querySelectorAll('.color-option').forEach(opt => {
+                            opt.classList.remove('selected');
+                        });
+                    }
+
+                    this.classList.add('selected');
+                });
+            });
+
+            const customTextureButtons = document.querySelectorAll('.texture-option[data-texture="custom"]');
+            customTextureButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const grid = this.closest('.color-grid');
+                    const section = grid.closest('.section-content');
+
+                    if (section) {
+                        const uploadInput = section.querySelector('input[type="file"]');
+                        if (uploadInput) {
+                            uploadInput.click();
+                        }
+                    }
+                });
+            });
+
+            const materialOptions = document.querySelectorAll('.material-option');
+            materialOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    materialOptions.forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                });
+            });
+
+            const backButton = document.getElementById('backButton');
+            const nextButton = document.getElementById('nextButton');
+
+            if (backButton && nextButton) {
+                backButton.addEventListener('click', function() {
+                    const expandedSections = document.querySelectorAll('.section-content.expanded');
+                    if (expandedSections.length > 0) {
+                        const currentSection = expandedSections[0].previousElementSibling;
+                        const prevSection = currentSection.previousElementSibling?.previousElementSibling;
+
+                        if (prevSection && prevSection.classList.contains('section-header')) {
+                            document.querySelectorAll('.section-content').forEach(content => {
+                                content.classList.remove('expanded');
+                            });
+                            document.querySelectorAll('.section-header').forEach(header => {
+                                header.classList.add('collapsed');
+                                const icon = header.querySelector('.icon');
+                                if (icon) icon.style.transform = 'rotate(-90deg)';
+                            });
+
+                            prevSection.classList.remove('collapsed');
+                            const icon = prevSection.querySelector('.icon');
+                            if (icon) icon.style.transform = 'rotate(0deg)';
+                            prevSection.nextElementSibling.classList.add('expanded');
+                        }
+                    }
+                });
+
+                nextButton.addEventListener('click', function() {
+                    const expandedSections = document.querySelectorAll('.section-content.expanded');
+                    if (expandedSections.length > 0) {
+                        const currentSection = expandedSections[0].nextElementSibling;
+
+                        if (currentSection && currentSection.classList.contains('section-header')) {
+                            document.querySelectorAll('.section-content').forEach(content => {
+                                content.classList.remove('expanded');
+                            });
+                            document.querySelectorAll('.section-header').forEach(header => {
+                                header.classList.add('collapsed');
+                                const icon = header.querySelector('.icon');
+                                if (icon) icon.style.transform = 'rotate(-90deg)';
+                            });
+
+                            currentSection.classList.remove('collapsed');
+                            const icon = currentSection.querySelector('.icon');
+                            if (icon) icon.style.transform = 'rotate(0deg)';
+                            currentSection.nextElementSibling.classList.add('expanded');
+                        }
+                    }
+                });
+            }
         });
     </script>
 </body>
