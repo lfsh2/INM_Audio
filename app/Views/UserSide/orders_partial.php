@@ -26,6 +26,28 @@
                         <div class="block">
                             <div class="sub-info">
                                 <h4><?= esc($order['product_name'] ?? 'Product #'.$order['product_id']) ?></h4>
+                                
+                                <?php if ($order['is_custom_iem'] == 1) : ?>
+                                    <p class="product-type"><strong>Type:</strong> Custom IEM</p>
+                                    
+                                    <?php if (!empty($order['category'])) : ?>
+                                        <p class="category"><strong>Category:</strong> <?= esc($order['category']) ?></p>
+                                    <?php endif; ?>
+                                    
+                                    <?php 
+                                    // For custom IEMs, try to extract details from the custom_details JSON
+                                    if (!empty($order['custom_details'])) {
+                                        $customDetails = json_decode($order['custom_details'], true);
+                                        if (is_array($customDetails)) :
+                                    ?>
+                                        <?php if (!empty($customDetails['design_name'])) : ?>
+                                            <p class="design"><strong>Design:</strong> <?= esc($customDetails['design_name']) ?></p>
+                                        <?php endif; ?>
+                                    <?php 
+                                        endif;
+                                    }
+                                    ?>
+                                <?php endif; ?>
         
                                 <div class="group">
                                     <?php if (!empty($order['color'])) : ?>

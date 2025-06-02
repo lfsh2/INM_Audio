@@ -63,15 +63,37 @@ class AdminController extends BaseController
         $gearModel = new GearModel();
         $orderModel = new OrderModel();
         $placedOrdersModel = new Placed_Orders_Model();
-    
-        $allOrders = $placedOrdersModel->getAllOrders();
-        $recentOrders = array_filter($allOrders, function($order) {
-            return in_array(strtolower($order->order_status), ['complete', 'completed']);
-        });
-
+        
+        // Get both regular and custom IEM orders for the dashboard
+        $db = \Config\Database::connect();
+        
+        // Get recent completed orders (both regular and custom IEM)
+        $recentOrdersQuery = "SELECT o.*, 
+            CASE 
+                WHEN o.is_custom_iem = 1 THEN ic.design_name
+                ELSE p.product_name 
+            END as product_name,
+            CASE 
+                WHEN o.is_custom_iem = 1 THEN 'Custom IEM'
+                ELSE c.category 
+            END as category,
+            CASE 
+                WHEN o.is_custom_iem = 1 THEN '/assets/img/custom-iem-placeholder.jpg'
+                ELSE p.image_url 
+            END as image_url
+            FROM orders o
+            LEFT JOIN products p ON o.product_id = p.product_id AND o.is_custom_iem = 0
+            LEFT JOIN category c ON p.category_id = c.category_id
+            LEFT JOIN iem_customizations ic ON o.product_id = ic.id AND o.is_custom_iem = 1
+            WHERE o.order_status IN ('delivered', 'complete', 'completed')
+            ORDER BY o.created_at DESC LIMIT 10";
+            
+        $query = $db->query($recentOrdersQuery);
+        $recentOrders = $query->getResultArray();
+        
+        // Get low stock products for notifications
         $lowStockProducts = $gearModel->getLowStockProducts(5);
         if (!empty($lowStockProducts)) {
-            $db = \Config\Database::connect();
             foreach ($lowStockProducts as $product) {
                 $db->table('notifications')->insert([
                     'message' => "Stock is low for {$product['product_name']}. Only {$product['stock_quantity']} left.",
@@ -81,17 +103,48 @@ class AdminController extends BaseController
             }
         }
     
+        // Get custom IEM order statistics
+        $customIemOrdersQuery = "SELECT 
+            COUNT(*) as total_custom_orders,
+            SUM(CASE WHEN order_status = 'pending' THEN 1 ELSE 0 END) as pending_custom,
+            SUM(CASE WHEN order_status = 'shipped' THEN 1 ELSE 0 END) as shipped_custom,
+            SUM(CASE WHEN order_status = 'delivered' OR order_status = 'complete' OR order_status = 'completed' THEN 1 ELSE 0 END) as completed_custom,
+            SUM(CASE WHEN order_status = 'cancelled' THEN 1 ELSE 0 END) as cancelled_custom,
+            SUM(price) as total_custom_revenue
+            FROM orders WHERE is_custom_iem = 1";
+            
+        $customQuery = $db->query($customIemOrdersQuery);
+        $customStats = $customQuery->getRowArray();
+        
+        // Calculate combined statistics
+        $totalCustomOrders = $customStats['total_custom_orders'] ?? 0;
+        $totalRegularOrders = $orderModel->getTotalOrders() ?? 0;
+        $totalAllOrders = $totalRegularOrders + $totalCustomOrders;
+        
+        // Get revenue statistics
+        $regularRevenueQuery = $db->query("SELECT SUM(price) as total FROM orders WHERE is_custom_iem = 0 AND (order_status = 'delivered' OR order_status = 'complete' OR order_status = 'completed')");
+        $regularRevenueResult = $regularRevenueQuery->getRowArray();
+        $totalRegularRevenue = $regularRevenueResult['total'] ?? 0;
+        
+        $totalCustomRevenue = $customStats['total_custom_revenue'] ?? 0;
+        $totalAllRevenue = $totalRegularRevenue + $totalCustomRevenue;
+        
         $data = [
             'adminAccount'    => $adminAccountModel->getUser('admin_account_id', session()->get('admin_id')),
             'numberItems'     => $gearModel->countAllGears(),
-            'totalOrders'     => $orderModel->getTotalOrders(),
+            'totalOrders'     => $totalAllOrders,
             'totalPlaced'     => $placedOrdersModel->getTotalPlaced()->totalPlacedOrders ?? 0,
-            'totalConfirmed'  => $orderModel->getTotalConfirmed(),
-            'totalCancelled'  => $orderModel->getTotalCancelled(),
-            'totalComplete'   => $orderModel->getTotalComplete(),
-            'totalRevenue'    => $orderModel->getTotalRevenue(),
+            'totalConfirmed'  => $orderModel->getTotalConfirmed() + ($customStats['pending_custom'] ?? 0),
+            'totalCancelled'  => $orderModel->getTotalCancelled() + ($customStats['cancelled_custom'] ?? 0),
+            'totalComplete'   => $orderModel->getTotalComplete() + ($customStats['completed_custom'] ?? 0),
+            'totalRevenue'    => $totalAllRevenue,
             'recentOrders'    => $recentOrders,
-            'lowStockProducts' => $lowStockProducts
+            'lowStockProducts' => $lowStockProducts,
+            'customStats'     => $customStats,
+            'totalCustomOrders' => $totalCustomOrders,
+            'totalRegularOrders' => $totalRegularOrders,
+            'totalCustomRevenue' => $totalCustomRevenue,
+            'totalRegularRevenue' => $totalRegularRevenue
         ];
     
         return $this->checkAdminSession('AdminSide/dashboard', $data);
@@ -132,15 +185,34 @@ class AdminController extends BaseController
 
     public function orders_transactions() { 
         $orderModel = new OrderModel();
-    
-        $orders = $orderModel->select('orders.*, products.product_name')
-        ->join('products', 'orders.product_id = products.product_id', 'left')
-        ->orderBy('orders.created_at', 'DESC')
-        ->findAll();    
+        $db = \Config\Database::connect();
+        
+        // Get regular product orders
+        $regularOrdersQuery = "SELECT orders.*, products.product_name, products.image_url 
+                              FROM orders 
+                              LEFT JOIN products ON orders.product_id = products.product_id 
+                              WHERE orders.is_custom_iem = 0 
+                              ORDER BY orders.created_at DESC";
+        $regularOrders = $db->query($regularOrdersQuery)->getResultArray();
+        
+        // Get custom IEM orders
+        $customIEMOrdersQuery = "SELECT orders.*, iem_customizations.design_name as product_name, 'Custom IEM' as product_type 
+                                FROM orders 
+                                LEFT JOIN iem_customizations ON orders.product_id = iem_customizations.id 
+                                WHERE orders.is_custom_iem = 1 
+                                ORDER BY orders.created_at DESC";
+        $customIEMOrders = $db->query($customIEMOrdersQuery)->getResultArray();
+        
+        // Merge and sort by created_at date
+        $allOrders = array_merge($regularOrders, $customIEMOrders);
+        usort($allOrders, function($a, $b) {
+            return strtotime($b['created_at']) - strtotime($a['created_at']);
+        });
+        
         $data = [
-            'orders' => $orders
+            'orders' => $allOrders
         ];
-    
+
         return $this->checkAdminSession('AdminSide/orders_transactions', $data);
     }
 
@@ -164,24 +236,66 @@ class AdminController extends BaseController
 
     public function update_order_status() {
         $orderModel = new OrderModel();
-    
+        $db = \Config\Database::connect();
+
         $order_id = $this->request->getPost('order_id');
         $new_status = $this->request->getPost('order_status');
-    
-        $order = $orderModel->find($order_id);
+        
+        // Use direct database query to avoid Eloquent Builder issues
+        $query = $db->query("SELECT * FROM orders WHERE order_id = {$order_id}");
+        $order = $query->getRowArray();
+        
         if (!$order) {
             return $this->response->setJSON(['success' => false, 'message' => 'Order not found']);
         }
-    
-        $orderModel->update($order_id, ['order_status' => $new_status]);
-    
-        return $this->response->setJSON(['success' => true, 'message' => 'Order status updated successfully']);
+        
+        // Add date fields based on status
+        $updateData = ['order_status' => $new_status];
+        
+        // Set appropriate date fields based on the new status
+        if ($new_status === 'shipped') {
+            $updateData['shipping_date'] = date('Y-m-d H:i:s');
+        } elseif ($new_status === 'delivered') {
+            $updateData['delivery_date'] = date('Y-m-d H:i:s');
+        } elseif ($new_status === 'complete') {
+            $updateData['date_completed'] = date('Y-m-d H:i:s');
+        } elseif ($new_status === 'cancelled') {
+            $updateData['date_cancelled'] = date('Y-m-d H:i:s');
+        }
+        
+        // Update the order
+        $orderModel->update($order_id, $updateData);
+        
+        // Get product or design name for the message
+        $productName = 'Order';
+        if ($order['is_custom_iem'] == 1) {
+            $customQuery = $db->query("SELECT design_name FROM iem_customizations WHERE id = {$order['product_id']}");
+            $customData = $customQuery->getRowArray();
+            if ($customData) {
+                $productName = 'Custom IEM: ' . $customData['design_name'];
+            } else {
+                $productName = 'Custom IEM';
+            }
+        } else {
+            $productQuery = $db->query("SELECT product_name FROM products WHERE product_id = {$order['product_id']}");
+            $productData = $productQuery->getRowArray();
+            if ($productData) {
+                $productName = $productData['product_name'];
+            }
+        }
+        
+        $statusMessage = ucfirst($new_status);
+        if ($new_status === 'to ship') {
+            $statusMessage = 'Ready to Ship';
+        }
+        
+        return $this->response->setJSON([
+            'success' => true, 
+            'message' => $productName . ' status updated to ' . $statusMessage,
+            'order_id' => $order_id,
+            'new_status' => $new_status
+        ]);
     }
-    
-    
-    
-    
-##--------------------------------------------------------- for Post approval for community
 public function pending_posts()
 {
     if (!$this->isAdmin()) {
@@ -838,6 +952,83 @@ public function getRevenueData()
 
     return $this->response->setJSON(['labels' => $labels, 'values' => $values]);
 }
+
+public function getRevenueChartData() {
+    $timeframe = $this->request->getGet('timeframe') ?? 'yearly';
+    $db = \Config\Database::connect();
+    $labels = [];
+    $values = [];
+    
+    // Get current year and month
+    $currentYear = date('Y');
+    $currentMonth = date('m');
+    
+    if ($timeframe === 'yearly') {
+        // Get yearly revenue data for the last 5 years
+        for ($i = 4; $i >= 0; $i--) {
+            $year = $currentYear - $i;
+            $labels[] = $year;
+            
+            // Get regular product revenue
+            $regularQuery = $db->query("SELECT SUM(price) as total FROM orders WHERE YEAR(created_at) = {$year} AND is_custom_iem = 0 AND (order_status = 'delivered' OR order_status = 'complete' OR order_status = 'completed')");
+            $regularResult = $regularQuery->getRowArray();
+            $regularRevenue = $regularResult['total'] ?? 0;
+            
+            // Get custom IEM revenue
+            $customQuery = $db->query("SELECT SUM(price) as total FROM orders WHERE YEAR(created_at) = {$year} AND is_custom_iem = 1 AND (order_status = 'delivered' OR order_status = 'complete' OR order_status = 'completed')");
+            $customResult = $customQuery->getRowArray();
+            $customRevenue = $customResult['total'] ?? 0;
+            
+            $values[] = $regularRevenue + $customRevenue;
+        }
+    } else if ($timeframe === 'monthly') {
+        // Get monthly revenue data for the current year
+        $months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        
+        for ($i = 1; $i <= 12; $i++) {
+            $labels[] = $months[$i-1];
+            
+            // Get regular product revenue
+            $regularQuery = $db->query("SELECT SUM(price) as total FROM orders WHERE YEAR(created_at) = {$currentYear} AND MONTH(created_at) = {$i} AND is_custom_iem = 0 AND (order_status = 'delivered' OR order_status = 'complete' OR order_status = 'completed')");
+            $regularResult = $regularQuery->getRowArray();
+            $regularRevenue = $regularResult['total'] ?? 0;
+            
+            // Get custom IEM revenue
+            $customQuery = $db->query("SELECT SUM(price) as total FROM orders WHERE YEAR(created_at) = {$currentYear} AND MONTH(created_at) = {$i} AND is_custom_iem = 1 AND (order_status = 'delivered' OR order_status = 'complete' OR order_status = 'completed')");
+            $customResult = $customQuery->getRowArray();
+            $customRevenue = $customResult['total'] ?? 0;
+            
+            $values[] = $regularRevenue + $customRevenue;
+        }
+    } else if ($timeframe === 'weekly') {
+        // Get weekly revenue data for the current month
+        $daysInMonth = cal_days_in_month(CAL_GREGORIAN, $currentMonth, $currentYear);
+        $weeks = ceil($daysInMonth / 7);
+        
+        for ($i = 1; $i <= $weeks; $i++) {
+            $startDay = ($i - 1) * 7 + 1;
+            $endDay = min($i * 7, $daysInMonth);
+            $labels[] = "Week {$i}";
+            
+            // Get regular product revenue
+            $regularQuery = $db->query("SELECT SUM(price) as total FROM orders WHERE YEAR(created_at) = {$currentYear} AND MONTH(created_at) = {$currentMonth} AND DAY(created_at) BETWEEN {$startDay} AND {$endDay} AND is_custom_iem = 0 AND (order_status = 'delivered' OR order_status = 'complete' OR order_status = 'completed')");
+            $regularResult = $regularQuery->getRowArray();
+            $regularRevenue = $regularResult['total'] ?? 0;
+            
+            // Get custom IEM revenue
+            $customQuery = $db->query("SELECT SUM(price) as total FROM orders WHERE YEAR(created_at) = {$currentYear} AND MONTH(created_at) = {$currentMonth} AND DAY(created_at) BETWEEN {$startDay} AND {$endDay} AND is_custom_iem = 1 AND (order_status = 'delivered' OR order_status = 'complete' OR order_status = 'completed')");
+            $customResult = $customQuery->getRowArray();
+            $customRevenue = $customResult['total'] ?? 0;
+            
+            $values[] = $regularRevenue + $customRevenue;
+        }
+    }
+    
+    return $this->response->setJSON([
+        'labels' => $labels,
+        'values' => $values
+    ]);
+}
 public function getOrderStatusData()
 {
     $db = \Config\Database::connect();
@@ -866,6 +1057,31 @@ public function getOrderStatusData()
     ]);
 }
 
+public function getOrderStatusChartData() {
+    $db = \Config\Database::connect();
+    
+    // Get combined order status data for both regular and custom IEM orders
+    $query = $db->query("SELECT 
+        SUM(CASE WHEN order_status = 'delivered' OR order_status = 'complete' OR order_status = 'completed' THEN 1 ELSE 0 END) as completed,
+        SUM(CASE WHEN order_status = 'pending' THEN 1 ELSE 0 END) as pending,
+        SUM(CASE WHEN order_status = 'shipped' THEN 1 ELSE 0 END) as shipped,
+        SUM(CASE WHEN order_status = 'cancelled' THEN 1 ELSE 0 END) as cancelled
+        FROM orders");
+    
+    $result = $query->getRowArray();
+    
+    return $this->response->setJSON([
+        'labels' => ['Completed', 'Pending', 'Shipped', 'Cancelled'],
+        'values' => [
+            (int)$result['completed'],
+            (int)$result['pending'],
+            (int)$result['shipped'],
+            (int)$result['cancelled']
+        ],
+        'colors' => ['#4CAF50', '#FFC107', '#2196F3', '#F44336']
+    ]);
+}
+
 
 public function getRecentOrders()
 {
@@ -884,6 +1100,34 @@ public function getRecentOrders()
     $result = $db->query($query)->getResultArray();
     
     return $this->response->setJSON($result);
+}
+
+public function getRecentOrdersData() {
+    $db = \Config\Database::connect();
+    
+    // Get both regular and custom IEM recent orders
+    $query = $db->query("SELECT o.*, 
+        CASE 
+            WHEN o.is_custom_iem = 1 THEN ic.design_name
+            ELSE p.product_name 
+        END as product_name,
+        CASE 
+            WHEN o.is_custom_iem = 1 THEN 'Custom IEM'
+            ELSE c.category 
+        END as category,
+        CASE 
+            WHEN o.is_custom_iem = 1 THEN '/assets/img/custom-iem-placeholder.jpg'
+            ELSE p.image_url 
+        END as image_url
+        FROM orders o
+        LEFT JOIN products p ON o.product_id = p.product_id AND o.is_custom_iem = 0
+        LEFT JOIN category c ON p.category_id = c.category_id
+        LEFT JOIN iem_customizations ic ON o.product_id = ic.id AND o.is_custom_iem = 1
+        ORDER BY o.created_at DESC LIMIT 10");
+    
+    $recentOrders = $query->getResultArray();
+    
+    return $this->response->setJSON($recentOrders);
 }
 
 

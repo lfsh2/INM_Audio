@@ -28,6 +28,11 @@ $routes->group('', function($routes) {
     $routes->post('IEMCustomizationController/saveDesign', 'IEMCustomizationController::saveDesign');
     $routes->get('/login', 'HomeController::login');
     $routes->get('/signup', 'HomeController::signup');
+    
+    // Customization checkout routes
+    $routes->post('customization/checkout', 'CustomizationPaymentController::checkout');
+    $routes->get('customization/checkout/success/(:num)', 'CustomizationPaymentController::success/$1');
+    $routes->get('customization/checkout/cancel/(:num)', 'CustomizationPaymentController::cancel/$1');
 });
 
 
@@ -103,6 +108,11 @@ $routes->group('', function($routes) {
     $routes->get('/customize', 'HomeController::customize');
     $routes->get('/customize/(:num)', 'ShopController::customize/$1');
     $routes->get('/customize/design/(:num)', 'IEMCustomizationController::design/$1');
+    
+    // Customization routes
+    $routes->post('/IEMCustomizationController/saveDesign', 'IEMCustomizationController::saveDesign');
+    $routes->get('/user/myDesign', 'IEMCustomizationController::myDesign');
+    $routes->delete('/customization/delete/(:num)', 'IEMCustomizationController::delete/$1');
 });
 
 $routes->get('/admin/pending_posts', 'AdminController::pending_posts');
@@ -143,18 +153,24 @@ $routes->group('/admin/', function($routes) {
         // charts
         $routes->get('chart-data/revenue', 'AdminController::getRevenueData');
         $routes->get('chart-data/products', 'AdminController::getProductTrends');
+        $routes->get('orders_transactions', 'AdminController::orders_transactions');
+        $routes->get('chart-data/revenue', 'AdminController::getRevenueChartData');
+        $routes->get('chart-data/order-status', 'AdminController::getOrderStatusChartData');
+        $routes->get('chart-data/recent-orders', 'AdminController::getRecentOrdersData');
+        $routes->get('notifications/low-stock', 'AdminController::getLowStockNotifications');
+        $routes->post('update_order_status', 'AdminController::update_order_status');
         
       //  $routes->get('dashboard1', 'AdminController::dashboard1');
 
         $routes->get('chart-data/recent-orders', 'AdminController::getRecentOrders');
-
-        $routes->get('orders_transactions', 'AdminController::orders_transactions');
-        $routes->get('chart-data/order-status', 'AdminController::getOrderStatusData'); 
-        $routes->get('delete_order/(:num)', 'AdminController::delete_order/$1');
-
-        $routes->post('update_order_status', 'AdminController::update_order_status');
-
-
+        // Admin routes
+        $routes->get('admin/dashboard', 'OrderController::dashboard');
+        $routes->get('admin/orders_transactions', 'OrderController::orderTransactions');
+        $routes->get('admin/complete_order/(:num)', 'OrderController::completeOrder/$1');
+        $routes->get('admin/cancel_order/(:num)', 'OrderController::cancelOrder/$1');
+        $routes->get('admin/delete_order/(:num)', 'OrderController::deleteOrder/$1');
+        $routes->post('admin/update_order_status', 'OrderController::updateOrderStatus');
+        $routes->get('admin/order_details/(:num)', 'OrderController::viewOrderDetails/$1');
 
         ## gear management
         $routes->get('management', 'AdminController::gearManagement');

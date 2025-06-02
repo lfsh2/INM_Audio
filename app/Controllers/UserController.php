@@ -62,6 +62,7 @@ class UserController extends BaseController
         $orderModel = new OrderModel();
         $userId = session()->get('user_id');
         
+        // Get both regular and custom IEM orders
         $orders = $orderModel->getUserOrdersWithProducts($userId);
         
         $data = [
@@ -96,7 +97,10 @@ class UserController extends BaseController
         $orderModel = new OrderModel();
         $userId = session()->get('user_id');
     
-        $order = $orderModel->find($orderId);
+        // Use direct database query to avoid Eloquent Builder issues
+        $db = \Config\Database::connect();
+        $query = $db->query("SELECT * FROM orders WHERE order_id = {$orderId}");
+        $order = $query->getRowArray();
         
         if (!$order) {
             return $this->response->setJSON([
@@ -118,16 +122,43 @@ class UserController extends BaseController
                 'message' => 'Only pending orders can be cancelled.'
             ]);
         }
+        
+        // Get product name for the message
+        $productName = 'Order';
+        if ($order['is_custom_iem'] == 1) {
+            $customQuery = $db->query("SELECT design_name FROM iem_customizations WHERE id = {$order['product_id']}");
+            $customData = $customQuery->getRowArray();
+            if ($customData) {
+                $productName = 'Custom IEM: ' . $customData['design_name'];
+            } else {
+                $productName = 'Custom IEM';
+            }
+        } else {
+            $productQuery = $db->query("SELECT product_name FROM products WHERE product_id = {$order['product_id']}");
+            $productData = $productQuery->getRowArray();
+            if ($productData) {
+                $productName = $productData['product_name'];
+            }
+        }
     
-        $orderModel->update($orderId, [
+        // Update the order status to cancelled
+        $result = $orderModel->update($orderId, [
             'order_status' => 'cancelled',
             'date_cancelled' => date('Y-m-d H:i:s')
         ]);
         
-        return $this->response->setJSON([
-            'success' => true,
-            'message' => 'Order cancelled successfully.'
-        ]);
+        if ($result) {
+            return $this->response->setJSON([
+                'success' => true, 
+                'message' => $productName . ' has been cancelled successfully.',
+                'order_id' => $orderId
+            ]);
+        } else {
+            return $this->response->setJSON([
+                'success' => false, 
+                'message' => 'Failed to cancel the order. Please try again or contact support.'
+            ]);
+        }
     }
 
     ## User likes

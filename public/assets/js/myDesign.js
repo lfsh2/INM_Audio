@@ -89,7 +89,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    // Run the function for each design
     if (window.designsData) {
         window.designsData.forEach(design => {
             populateSpecs(design.id, design.category);

@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Checkout Successful</title>
+    <script>
+        // Redirect to index page after 3 seconds
+        setTimeout(function() {
+            window.location.href = "<?= base_url('/') ?>";
+        }, 3000);
+    </script>
     <style>
         body {
             display: flex;

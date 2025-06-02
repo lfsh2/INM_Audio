@@ -51,7 +51,80 @@
 			color: white;
 		}
 
-		
+		/* Custom IEM Stats Styling */
+		.order-type-stats {
+			margin-bottom: 20px;
+		}
+
+		.stats-container {
+			display: flex;
+			gap: 20px;
+			width: 100%;
+		}
+
+		.stats-card {
+			flex: 1;
+			background: #fff;
+			border-radius: 12px;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+			padding: 20px;
+			transition: transform 0.3s ease;
+		}
+
+		.stats-card:hover {
+			transform: translateY(-5px);
+		}
+
+		.stats-card.custom-iem {
+			border-left: 5px solid #9c27b0;
+		}
+
+		.stats-header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 15px;
+			border-bottom: 1px solid #eee;
+			padding-bottom: 10px;
+		}
+
+		.stats-header h3 {
+			margin: 0;
+			color: #333;
+			font-size: 18px;
+		}
+
+		.stats-header i {
+			font-size: 24px;
+			color: #3C91E6;
+		}
+
+		.stats-card.custom-iem .stats-header i {
+			color: #9c27b0;
+		}
+
+		.stats-body {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 15px;
+		}
+
+		.stat-item {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.stat-label {
+			font-size: 14px;
+			color: #666;
+			margin-bottom: 5px;
+		}
+
+		.stat-value {
+			font-size: 18px;
+			font-weight: bold;
+			color: #333;
+		}
 	</style>
 </head>
 
@@ -101,6 +174,53 @@
 					</span>
 				</li>
 			</ul>
+
+			<!-- CUSTOM IEM STATS -->
+			<div class="order-type-stats">
+				<div class="stats-container">
+					<div class="stats-card">
+						<div class="stats-header">
+							<h3>Regular Products</h3>
+							<i class='bx bxs-package'></i>
+						</div>
+						<div class="stats-body">
+							<div class="stat-item">
+								<span class="stat-label">Orders:</span>
+								<span class="stat-value"><?= $totalRegularOrders ?? 0; ?></span>
+							</div>
+							<div class="stat-item">
+								<span class="stat-label">Revenue:</span>
+								<span class="stat-value"><?= ($totalRegularRevenue > 0) ? "₱" . number_format($totalRegularRevenue, 2) : "₱0"; ?></span>
+							</div>
+						</div>
+					</div>
+
+					<div class="stats-card custom-iem">
+						<div class="stats-header">
+							<h3>Custom IEMs</h3>
+							<i class='bx bxs-earbuds'></i>
+						</div>
+						<div class="stats-body">
+							<div class="stat-item">
+								<span class="stat-label">Orders:</span>
+								<span class="stat-value"><?= $totalCustomOrders ?? 0; ?></span>
+							</div>
+							<div class="stat-item">
+								<span class="stat-label">Revenue:</span>
+								<span class="stat-value"><?= ($totalCustomRevenue > 0) ? "₱" . number_format($totalCustomRevenue, 2) : "₱0"; ?></span>
+							</div>
+							<div class="stat-item">
+								<span class="stat-label">Pending:</span>
+								<span class="stat-value"><?= $customStats['pending_custom'] ?? 0; ?></span>
+							</div>
+							<div class="stat-item">
+								<span class="stat-label">Completed:</span>
+								<span class="stat-value"><?= $customStats['completed_custom'] ?? 0; ?></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
 			<!-- CHARTS -->
 			<div class="table-data chart">

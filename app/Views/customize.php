@@ -564,8 +564,16 @@
                 </div>
             </div>
 
-            <div class="controls d-flex justify-content-center">
-                <button id="saveDesign" class="btn btn-primary">Save Design</button>
+            <!-- Save Design button moved to the submit-design-section below -->
+
+            <div class="submit-design-section mt-4">
+                <h3>Save Your Design</h3>
+                <div class="form-group">
+                    <label for="designName">Design Name</label>
+                    <input type="text" id="designName" class="form-control" placeholder="Enter a name for your design" required>
+                </div>
+                <button id="saveDesign" class="btn btn-primary w-100 mt-3">Save Design</button>
+                <div id="saveMessage" class="mt-2 text-center"></div>
             </div>
 
             <div class="control mt-3">
@@ -671,18 +679,67 @@
     </script>
     <script>
         document.getElementById("saveDesign").addEventListener("click", function() {
+            // Get the design name from the input field
+            const designName = document.getElementById("designName").value.trim();
+            if (!designName) {
+                document.getElementById("saveMessage").innerHTML = '<div class="alert alert-danger">Please enter a design name</div>';
+                return;
+            }
+            
+            // Get selected colors for shells
+            const leftShellColorEl = document.querySelector('#leftShellColors .color-option.selected');
+            const leftShellColor = leftShellColorEl ? leftShellColorEl.getAttribute('data-color') : '#f2e6d8';
+            
+            const rightShellColorEl = document.querySelector('#rightShellColors .color-option.selected');
+            const rightShellColor = rightShellColorEl ? rightShellColorEl.getAttribute('data-color') : '#f2e6d8';
+            
+            // Get selected colors for faceplates (if available, otherwise use shell colors)
+            const leftFaceplateColorEl = document.querySelector('#leftFaceplateColors .color-option.selected');
+            const leftFaceplateColor = leftFaceplateColorEl ? leftFaceplateColorEl.getAttribute('data-color') : leftShellColor;
+            
+            const rightFaceplateColorEl = document.querySelector('#rightFaceplateColors .color-option.selected');
+            const rightFaceplateColor = rightFaceplateColorEl ? rightFaceplateColorEl.getAttribute('data-color') : rightShellColor;
+            
+            // Get selected textures for shells
+            const leftTextureEl = document.querySelector('#leftShellTextures .color-option.selected');
+            const leftTexture = leftTextureEl ? leftTextureEl.getAttribute('data-texture') : '';
+            
+            const rightTextureEl = document.querySelector('#rightShellTextures .color-option.selected');
+            const rightTexture = rightTextureEl ? rightTextureEl.getAttribute('data-texture') : '';
+            
+            // Get selected textures for faceplates (if available, otherwise use shell textures)
+            const leftFaceplateTextureEl = document.querySelector('#leftFaceplateTextures .color-option.selected');
+            const leftFaceplateTexture = leftFaceplateTextureEl ? leftFaceplateTextureEl.getAttribute('data-texture') : leftTexture;
+            
+            const rightFaceplateTextureEl = document.querySelector('#rightFaceplateTextures .color-option.selected');
+            const rightFaceplateTexture = rightFaceplateTextureEl ? rightFaceplateTextureEl.getAttribute('data-texture') : rightTexture;
+            
+            // Get selected material
+            const materialEl = document.querySelector('.material-option.selected');
+            const material = materialEl ? materialEl.getAttribute('data-material') : 'glossy';
+            
+            // Get size and category
+            const size = document.getElementById("sizeSelect").value;
+            const category = document.getElementById("categorySelect").value;
+            
+            // Prepare data object with all four components
             const customizationData = {
-                designName: document.getElementById("designName").value.trim(),
-                leftColor: document.getElementById("leftColorPicker").value,
-                rightColor: document.getElementById("rightColorPicker").value,
-                leftTexture: document.getElementById("leftTextureSelect").value,
-                rightTexture: document.getElementById("rightTextureSelect").value,
-                material: document.getElementById("materialSelect").value,
-                size: document.getElementById("sizeSelect").value,
-                category: document.getElementById("categorySelect").value,
+                designName: designName,
+                leftColor: leftShellColor,
+                rightColor: rightShellColor,
+                leftFaceplateColor: leftFaceplateColor,
+                rightFaceplateColor: rightFaceplateColor,
+                leftTexture: leftTexture,
+                rightTexture: rightTexture,
+                leftFaceplateTexture: leftFaceplateTexture,
+                rightFaceplateTexture: rightFaceplateTexture,
+                material: material,
+                size: size,
+                category: category
             };
-
+            
             console.log("Saving Customization:", customizationData);
+            document.getElementById("saveMessage").innerHTML = '<div class="spinner-border text-primary" role="status"><span class="sr-only">Saving...</span></div>';
 
             fetch("<?= site_url('IEMCustomizationController/saveDesign') ?>", {
                     method: "POST",
@@ -692,13 +749,53 @@
                     body: JSON.stringify(customizationData),
                 })
                 .then(response => response.json())
-                .then(data => alert(data.message))
-                .catch(error => console.error("Error saving customization:", error));
-
+                .then(data => {
+                    if (data.status === 'success') {
+                        document.getElementById("saveMessage").innerHTML = '<div class="alert alert-success">' + data.message + '</div>';
+                        // No redirect, just show the success message
+                    } else if (data.status === 'login_required') {
+                        // Redirect to login page if user is not logged in
+                        document.getElementById("saveMessage").innerHTML = '<div class="alert alert-warning">' + data.message + '</div>';
+                        setTimeout(() => {
+                            window.location.href = "<?= site_url('login') ?>";
+                        }, 1500);
+                    } else {
+                        document.getElementById("saveMessage").innerHTML = '<div class="alert alert-danger">' + data.message + '</div>';
+                    }
+                })
+                .catch(error => {
+                    console.error("Error saving customization:", error);
+                    document.getElementById("saveMessage").innerHTML = '<div class="alert alert-danger">Error saving design. Please try again.</div>';
+                });
         });
     </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Get URL parameters for series and model
+            const urlParams = new URLSearchParams(window.location.search);
+            const series = urlParams.get('series');
+            const model = urlParams.get('model');
+            
+            // If series parameter exists, auto-select the appropriate series
+            if (series) {
+                console.log('Series from URL:', series);
+                console.log('Model from URL:', model);
+                
+                // Set the selected series in a hidden field or variable for form submission
+                const seriesInput = document.createElement('input');
+                seriesInput.type = 'hidden';
+                seriesInput.id = 'selected_series';
+                seriesInput.name = 'selected_series';
+                seriesInput.value = series;
+                document.querySelector('.customization-panel').appendChild(seriesInput);
+                
+                const modelInput = document.createElement('input');
+                modelInput.type = 'hidden';
+                modelInput.id = 'selected_model';
+                modelInput.name = 'selected_model';
+                modelInput.value = model;
+                document.querySelector('.customization-panel').appendChild(modelInput);
+            }
             const sectionHeaders = document.querySelectorAll('.section-header');
             sectionHeaders.forEach(header => {
                 header.addEventListener('click', function() {
