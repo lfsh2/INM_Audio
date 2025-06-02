@@ -85,11 +85,28 @@ class IEMCustomizationController extends BaseController
 
         if ($userData) {
             $data['user_name'] = $userData['firstname'] . ' ' . $userData['lastname'];
-            $data['user_address'] = $userData['address'];
             $data['user_phone'] = $userData['phone_number'];
+            
+            // Build complete address
+            $address = $userData['address'] ?? '';
+            $city_municipality = $userData['city_municipality'] ?? '';
+            $zipcode = $userData['zipcode'] ?? '';
+            $country = $userData['country'] ?? '';
+            
+            $data['user_address'] = $address;
+            $data['user_city_municipality'] = $city_municipality;
+            $data['user_zipcode'] = $zipcode;
+            $data['user_country'] = $country;
+            
+            // Full address for display
+            $data['user_full_address'] = trim($address . ' ' . $city_municipality . ' ' . $zipcode . ' ' . $country);
         } else {
             $data['user_name'] = '';
             $data['user_address'] = '';
+            $data['user_city_municipality'] = '';
+            $data['user_zipcode'] = '';
+            $data['user_country'] = '';
+            $data['user_full_address'] = '';
             $data['user_phone'] = '';
         }
     

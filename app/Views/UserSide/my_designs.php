@@ -20,7 +20,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
     <style>
-        .modal {
+        /* Remove custom modal styles that might conflict with Bootstrap */
+        /* .modal {
             display: none;
             position: fixed;
             z-index: 1050;
@@ -30,7 +31,7 @@
             height: 100%;
             overflow: hidden;
             background-color: rgba(0, 0, 0, 0.4);
-        }
+        } */
 
         .modal-dialog {
             z-index: 1051;
@@ -489,7 +490,6 @@
                             function openCheckoutModal(designId, price) {
                                 console.log('Opening checkout modal for design ID:', designId, 'price:', price);
                                 
-                                // Get the design details for the summary
                                 const designCard = document.querySelector(`.design-card:has(#canvas-container-${designId})`);
                                 let designName = 'Custom IEM';
                                 let category = '';
@@ -507,7 +507,6 @@
                                     }
                                 }
                                 
-                                // Target the specific modal for this design
                                 const modalId = `checkoutModal-${designId}`;
                                 const modal = document.getElementById(modalId);
                                 
@@ -516,7 +515,6 @@
                                     return;
                                 }
                                 
-                                // Set the design ID and price in the form
                                 const designIdInput = modal.querySelector('#designId');
                                 const designPriceInput = modal.querySelector('#designPrice');
                                 const summaryDesignName = modal.querySelector('#summaryDesignName');
@@ -991,11 +989,37 @@
             </div>
         </div>
     </div>
+    <!-- Fixed script imports -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-
-</body>
-
-</html>
+    <!-- Simplified modal initialization -->
+    <script>
+        $(document).ready(function() {
+            // Initialize modals when they're shown
+            $('[id^="checkoutModal-"]').on('show.bs.modal', function() {
+                const modal = $(this);
+                const designId = modal.attr('id').replace('checkoutModal-', '');
+                console.log('Modal opening for design ID:', designId);
+                
+                // Get design details
+                const designCard = $(`.design-card:has(#canvas-container-${designId})`);
+                const designName = designCard.find('.design-details p:nth-child(1)').text().replace('Design Name:', '').trim();
+                const category = designCard.find('.design-details p:nth-child(4)').text().replace('Category:', '').trim();
+                const price = designCard.find('.design-details p:nth-child(5)').text().replace('Price:', '').trim();
+                
+                // Update form fields
+                modal.find('#designId').val(designId);
+                modal.find('#designPrice').val(price.replace('₱', '').replace(',', ''));
+                
+                // Populate shipping information fields
+                modal.find('#fullname').val('<?= $user_name ?>' || 'Not set in profile');
+                modal.find('#phone').val('<?= $user_phone ?>' || 'Not set in profile');
+                modal.find('#address').val('<?= $user_address ?>' || 'Not set in profile');
+                modal.find('#cityMunicipality').val('<?= $user_city_municipality ?>' || 'Not set in profile');
+                modal.find('#country').val('<?= $user_country ?>' || 'Not set in profile');
+            
+        }
+    );
+    });
+    </script>
+       
