@@ -64,10 +64,8 @@ class AdminController extends BaseController
         $orderModel = new OrderModel();
         $placedOrdersModel = new Placed_Orders_Model();
         
-        // Get both regular and custom IEM orders for the dashboard
         $db = \Config\Database::connect();
         
-        // Get recent completed orders (both regular and custom IEM)
         $recentOrdersQuery = "SELECT o.*, 
             CASE 
                 WHEN o.is_custom_iem = 1 THEN ic.design_name
@@ -117,9 +115,10 @@ class AdminController extends BaseController
         $customStats = $customQuery->getRowArray();
         
         // Calculate combined statistics
+        $totalAllOrders = $orderModel->getTotalOrders() ?? 0;
+        // Calculate total custom orders and regular orders for the breakdown section
         $totalCustomOrders = $customStats['total_custom_orders'] ?? 0;
-        $totalRegularOrders = $orderModel->getTotalOrders() ?? 0;
-        $totalAllOrders = $totalRegularOrders + $totalCustomOrders;
+        $totalRegularOrders = $totalAllOrders - $totalCustomOrders;
         
         // Get revenue statistics
         $regularRevenueQuery = $db->query("SELECT SUM(price) as total FROM orders WHERE is_custom_iem = 0 AND (order_status = 'delivered' OR order_status = 'complete' OR order_status = 'completed')");

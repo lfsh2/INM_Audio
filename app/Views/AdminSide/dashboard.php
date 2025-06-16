@@ -57,13 +57,10 @@
 		}
 
 		.stats-container {
-			display: flex;
-			gap: 20px;
 			width: 100%;
 		}
 
 		.stats-card {
-			flex: 1;
 			background: #fff;
 			border-radius: 12px;
 			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -178,23 +175,6 @@
 			<!-- CUSTOM IEM STATS -->
 			<div class="order-type-stats">
 				<div class="stats-container">
-					<div class="stats-card">
-						<div class="stats-header">
-							<h3>Regular Products</h3>
-							<i class='bx bxs-package'></i>
-						</div>
-						<div class="stats-body">
-							<div class="stat-item">
-								<span class="stat-label">Orders:</span>
-								<span class="stat-value"><?= $totalRegularOrders ?? 0; ?></span>
-							</div>
-							<div class="stat-item">
-								<span class="stat-label">Revenue:</span>
-								<span class="stat-value"><?= ($totalRegularRevenue > 0) ? "₱" . number_format($totalRegularRevenue, 2) : "₱0"; ?></span>
-							</div>
-						</div>
-					</div>
-
 					<div class="stats-card custom-iem">
 						<div class="stats-header">
 							<h3>Custom IEMs</h3>
@@ -254,7 +234,7 @@
 								<th>Order No.</th>
 								<th>Name</th>
 								<th>Phone</th>
-								<th>Product</th>
+								<!-- <th>Product</th> -->
 								<th>Quantity</th>
 								<th>Total Price</th>
 								<th>Payment Type</th>
@@ -360,10 +340,6 @@
                             <td>${order.order_id}</td>
                             <td>${order.shipping_name}</td>
                             <td>${order.shipping_phone}</td>
-                            <td>
-                                <img src="${order.image_url}" alt="Product Image" width="50">
-                                <p>${order.product_name}</p>
-                            </td>
                             <td>${order.quantity}</td>
                             <td>₱${parseFloat(order.price * order.quantity).toFixed(2)}</td>
                             <td>${order.payment_method}</td>

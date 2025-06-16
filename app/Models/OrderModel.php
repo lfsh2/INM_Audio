@@ -23,21 +23,19 @@ class OrderModel extends Model
     {
         $db = \Config\Database::connect();
         
-        // Get regular product orders
         $regularOrdersBuilder = $db->table('orders');
         $regularOrdersBuilder->select('orders.*, products.product_name, products.image_url');
         $regularOrdersBuilder->join('products', 'products.product_id = orders.product_id', 'left');
         $regularOrdersBuilder->where('orders.user_id', $userId);
-        $regularOrdersBuilder->where('orders.is_custom_iem', 0); // Only regular product orders
+        $regularOrdersBuilder->where('orders.is_custom_iem', 0); 
         $regularOrdersBuilder->orderBy('orders.created_at', 'DESC');
         $regularOrders = $regularOrdersBuilder->get()->getResultArray();
         
-        // Get custom IEM orders
         $customIEMOrdersBuilder = $db->table('orders');
         $customIEMOrdersBuilder->select('orders.*, iem_customizations.design_name as product_name, "Custom IEM" as series, iem_customizations.category');
         $customIEMOrdersBuilder->join('iem_customizations', 'iem_customizations.id = orders.product_id', 'left');
         $customIEMOrdersBuilder->where('orders.user_id', $userId);
-        $customIEMOrdersBuilder->where('orders.is_custom_iem', 1); // Only custom IEM orders
+        $customIEMOrdersBuilder->where('orders.is_custom_iem', 1); 
         $customIEMOrdersBuilder->orderBy('orders.created_at', 'DESC');
         $customIEMOrders = $customIEMOrdersBuilder->get()->getResultArray();
         
@@ -58,7 +56,7 @@ class OrderModel extends Model
         $builder->select('orders.*, iem_customizations.design_name, iem_customizations.category');
         $builder->join('iem_customizations', 'iem_customizations.id = orders.product_id', 'left');
         $builder->where('orders.user_id', $userId);
-        $builder->where('orders.is_custom_iem', 1); // Only custom IEM orders
+        $builder->where('orders.is_custom_iem', 1); 
         $builder->orderBy('orders.created_at', 'DESC');
         
         return $builder->get()->getResultArray();
@@ -74,7 +72,7 @@ class OrderModel extends Model
         $regularOrdersBuilder->join('products', 'products.product_id = orders.product_id', 'left');
         $regularOrdersBuilder->where('orders.user_id', $userId);
         $regularOrdersBuilder->where('orders.order_status', $status);
-        $regularOrdersBuilder->where('orders.is_custom_iem', 0); // Only regular product orders
+        $regularOrdersBuilder->where('orders.is_custom_iem', 0); 
         $regularOrdersBuilder->orderBy('orders.created_at', 'DESC');
         $regularOrders = $regularOrdersBuilder->get()->getResultArray();
         
@@ -84,7 +82,7 @@ class OrderModel extends Model
         $customIEMOrdersBuilder->join('iem_customizations', 'iem_customizations.id = orders.product_id', 'left');
         $customIEMOrdersBuilder->where('orders.user_id', $userId);
         $customIEMOrdersBuilder->where('orders.order_status', $status);
-        $customIEMOrdersBuilder->where('orders.is_custom_iem', 1); // Only custom IEM orders
+        $customIEMOrdersBuilder->where('orders.is_custom_iem', 1); 
         $customIEMOrdersBuilder->orderBy('orders.created_at', 'DESC');
         $customIEMOrders = $customIEMOrdersBuilder->get()->getResultArray();
         
@@ -96,10 +94,13 @@ class OrderModel extends Model
         
         return $allOrders;
     }
-   
-    public function getTotalOrders()
+     public function getTotalOrders()
     {
-        return $this->countAll();
+        $db = \Config\Database::connect();
+        // Count all orders including both regular and custom IEM orders
+        $query = $db->query("SELECT COUNT(*) as total_orders FROM orders");
+        $result = $query->getRow();
+        return $result->total_orders;
     }
     
     public function getTotalCustomIEMOrders()

@@ -52,6 +52,7 @@
             height: 128px;
             background: #f2f2f2;
             margin-top: 20px;
+            border: 1px solid #ccc;
         }
     </style>
 </head>
