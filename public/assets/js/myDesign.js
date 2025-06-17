@@ -156,11 +156,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
             renderer.setSize(container.clientWidth, container.clientHeight);
             renderer.setPixelRatio(window.devicePixelRatio);
-            container.appendChild(renderer.domElement);
-
-            const controls = new THREE.OrbitControls(camera, renderer.domElement);
+            container.appendChild(renderer.domElement);            const controls = new THREE.OrbitControls(camera, renderer.domElement);
             controls.enableDamping = true;
-            controls.autoRotate = true;
+            controls.autoRotate = false;
             controls.autoRotateSpeed = 2.0;
 
             const light = new THREE.AmbientLight(0xffffff, 1.5);

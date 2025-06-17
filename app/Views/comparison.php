@@ -205,6 +205,27 @@
             text-align: center;
         }
 
+        .sound-test {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fafafa;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .sound-test audio {
+            width: 100%;
+            margin-bottom: 10px;
+            border-radius: 20px;
+        }
+
+        .sound-test canvas {
+            width: 100%;
+            height: 100px;
+            background: #000;
+            border-radius: 8px;
+        }
+
     </style>
 </head>
 
@@ -449,41 +470,152 @@
             const technicalSpecs = specs.technicalSpecs ? specs.technicalSpecs.map(item => `<li>${item}</li>`).join('') : '<li>N/A</li>';
 
             gearContainer.innerHTML = `
-            <div class="img-block">
-                <img src="${img}" alt="${name}">
-                <p>${name}</p>
-            </div>
-            <div class="info-block">
-                <label for="description">Description</label>
-                <p>${description}</p>
-                <label for="price">Price</label>
-                <p>₱${price}</p>
-                <label for="stock">Stock</label>
-                <p>${stock} pcs available</p>
-            </div>
-        `;
+                <div class="img-block">
+                    <img src="${img}" alt="${name}">
+                    <p>${name}</p>
+                </div>
+                <div class="info-block">
+                    <label for="description">Description</label>
+                    <p>${description}</p>
+                    <label for="price">Price</label>
+                    <p>₱${price}</p>
+                    <label for="stock">Stock</label>
+                    <p>${stock} pcs available</p>
+                </div>
+            `;
 
             gearSpecsContainer.innerHTML = `
-            <div class="specs-section">
-                <h3>Driver Configuration:</h3>
-                <ul>${driverConfig}</ul>
+                <div class="specs-section">
+                    <h3>Driver Configuration:</h3>
+                    <ul>${driverConfig}</ul>
 
-                <h3>Sound Signature:</h3>
-                <ul>${soundSignature}</ul>
+                    <h3>Sound Signature:</h3>
+                    <ul>${soundSignature}</ul>
 
-                <h3>Frequency Response:</h3>
-                <p class="li">${specs.frequencyResponse || 'N/A'}</p>
+                    <h3>Frequency Response:</h3>
+                    <p class="li">${specs.frequencyResponse || 'N/A'}</p>
 
-                <h3>Technical Specifications:</h3>
-                <ul>${technicalSpecs}</ul>
-            </div>
-        `;
+                    <h3>Technical Specifications:</h3>
+                    <ul>${technicalSpecs}</ul>
+                    
+                    <h3>Sound Test:</h3>
+                    <div class="sound-test">
+                        <audio id="${selectedSide}SoundTest" controls class="w-100"></audio>
+                        <canvas id="${selectedSide}Visualizer" width="300" height="100"></canvas>
+                    </div>
+                </div>
+            `;
+
+            // Initialize audio after adding elements to DOM
+            setTimeout(() => {
+                updateAudioSource(selectedSide, category);
+                initializeAudioVisualizer(selectedSide);
+            }, 100);
 
             closeModal();
         }
+
+        let audioContexts = {};
+        let analysers = {};
+
+        function updateAudioSource(side, category) {
+            const soundTest = document.getElementById(`${side}SoundTest`);
+            let audioSrc = "";
+
+            switch (category) {
+                case "Vanilla Series":
+                    audioSrc = "assets/sounds/vanilla.mp3";
+                    break;
+                case "Stage Series":
+                    audioSrc = "assets/sounds/stage.mp3";
+                    break;
+                case "Prestige Series":
+                    audioSrc = "assets/sounds/prestige.mp3";
+                    break;
+                case "Personalized Series":
+                    audioSrc = "assets/sounds/personalized.mp3";
+                    break;
+            }
+
+            soundTest.src = "<?= base_url() ?>/" + audioSrc;
+        }
+
+        function initializeAudioVisualizer(side) {
+            const soundTest = document.getElementById(`${side}SoundTest`);
+            const canvas = document.getElementById(`${side}Visualizer`);
+            
+            if (!canvas || !soundTest) return;
+            
+            if (audioContexts[side]) {
+                audioContexts[side].close();
+                delete audioContexts[side];
+                delete analysers[side];
+            }
+            
+            const ctx = canvas.getContext("2d");
+            
+            audioContexts[side] = new (window.AudioContext || window.webkitAudioContext)();
+            const analyser = audioContexts[side].createAnalyser();
+            const source = audioContexts[side].createMediaElementSource(soundTest);
+            source.connect(analyser);
+            analyser.connect(audioContexts[side].destination);
+            
+            analyser.fftSize = 256;
+            analysers[side] = analyser;
+
+            function drawVisualizer() {
+                if (!analysers[side]) return;
+                
+                requestAnimationFrame(() => drawVisualizer());
+                
+                const bufferLength = analysers[side].frequencyBinCount;
+                const dataArray = new Uint8Array(bufferLength);
+                analysers[side].getByteFrequencyData(dataArray);
+                
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                const barWidth = (canvas.width / bufferLength) * 2.5;
+                let x = 0;
+                
+                for (let i = 0; i < bufferLength; i++) {
+                    const barHeight = dataArray[i] / 2;
+                    
+                    ctx.fillStyle = `rgb(${barHeight + 100}, 50, 150)`;
+                    ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+                    
+                    x += barWidth + 1;
+                }
+            }
+            
+            soundTest.addEventListener('play', () => {
+                if (audioContexts[side].state === "suspended") {
+                    audioContexts[side].resume();
+                }
+                drawVisualizer();
+            });
+        }
+
+        document.querySelector('.clear-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+
+            Object.keys(audioContexts).forEach(side => {
+                if (audioContexts[side]) {
+                    audioContexts[side].close();
+                    delete audioContexts[side];
+                    delete analysers[side];
+                }
+            });
+
+            fetch('<?= base_url('clearComparison') ?>')
+                .then(() => {
+                    document.getElementById('leftGearContainer').innerHTML = '<p>No product selected for comparison.</p>';
+                    document.getElementById('rightGearContainer').innerHTML = '<p>No product selected for comparison.</p>';
+                    
+                    document.getElementById('leftGearSpecs').innerHTML = '';
+                    document.getElementById('rightGearSpecs').innerHTML = '';
+                })
+                .catch(error => console.error('Error clearing comparison:', error));
+        });
     </script>
-
-
 </body>
-
 </html>

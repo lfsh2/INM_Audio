@@ -6,6 +6,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const leftFaceplateColors = document.getElementById('leftFaceplateColors');
     const rightFaceplateColors = document.getElementById('rightFaceplateColors');
     
+    const backgroundModeToggle = document.getElementById('backgroundModeToggle');
+    const isDarkMode = localStorage.getItem('backgroundMode') !== 'light';
+    
+    const darkModeColor = new THREE.Color(0x121212);
+    const lightModeColor = new THREE.Color(0xf0f0f0);
+    
     const leftShellTextures = document.getElementById('leftShellTextures');
     const rightShellTextures = document.getElementById('rightShellTextures');
     const leftFaceplateTextures = document.getElementById('leftFaceplateTextures');
@@ -32,10 +38,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const leftShellInfo = document.getElementById("leftShellInfo");
     const rightShellInfo = document.getElementById("rightShellInfo");
     const leftFaceplateInfo = document.getElementById("leftFaceplateInfo");
-    const rightFaceplateInfo = document.getElementById("rightFaceplateInfo");
-
-    const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x121212);
+    const rightFaceplateInfo = document.getElementById("rightFaceplateInfo");    const scene = new THREE.Scene();
+    scene.background = isDarkMode ? darkModeColor : lightModeColor;
     
     const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -398,6 +402,29 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    function toggleBackgroundMode(isDark) {
+        const newColor = isDark ? darkModeColor : lightModeColor;
+        scene.background = newColor;
+        
+        if (isDark) {
+            lightSettings.ambientIntensity = 1.2;
+            lightSettings.keyIntensity = 2.0;
+            lightSettings.fillIntensity = 1.4;
+        } else {
+            lightSettings.ambientIntensity = 1.0;
+            lightSettings.keyIntensity = 1.7;
+            lightSettings.fillIntensity = 1.2;
+        }
+        
+        updateLighting();
+        
+        localStorage.setItem('backgroundMode', isDark ? 'dark' : 'light');
+        
+        if (backgroundModeToggle) {
+            backgroundModeToggle.checked = isDark;
+        }
+    }
+
     const loadingText = document.createElement("p");
     loadingText.innerText = "Loading IEM Model...";
     loadingText.style.color = "white";
@@ -573,6 +600,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
         updateMaterialProperties('glossy');
         updateLighting();
+        
+        if (backgroundModeToggle) {
+            backgroundModeToggle.checked = isDarkMode;
+            backgroundModeToggle.addEventListener("change", function() {
+                toggleBackgroundMode(this.checked);
+            });
+        }
+        
+        toggleBackgroundMode(isDarkMode);
+        
         animate();
 
     }, undefined, function (error) {
@@ -602,4 +639,28 @@ document.addEventListener("DOMContentLoaded", function () {
             link.click();
         });
     }
+
+    function updateBackgroundColor() {
+        const color = isDarkMode ? darkModeColor : lightModeColor;
+        scene.background = color;
+        
+        [leftShell, rightShell, leftFaceplate, rightFaceplate].forEach(part => {
+            if (part && part.material) {
+                part.material.color.set(isDarkMode ? 0xf2e6d8 : 0x333333);
+                part.material.emissive.set(isDarkMode ? 0x000000 : 0xffffff);
+                part.material.needsUpdate = true;
+            }
+        });
+    }
+
+    if (backgroundModeToggle) {
+        backgroundModeToggle.addEventListener('click', function() {
+            isDarkMode = !isDarkMode;
+            localStorage.setItem('backgroundMode', isDarkMode ? 'dark' : 'light');
+            updateBackgroundColor();
+        });
+    }
+
+    updateBackgroundColor();
+
 });

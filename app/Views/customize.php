@@ -231,18 +231,67 @@
             color: #f0ad4e;
         }
         
-        .help-icon {
+        /* Background Mode Toggle Switch */
+        .background-mode-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .toggle-switch {
+            position: relative;
             display: inline-block;
-            width: 20px;
-            height: 20px;
-            background-color: #444;
-            color: white;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 20px;
-            font-size: 14px;
+            width: 50px;
+            height: 24px;
+        }
+        
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .toggle-slider {
+            position: absolute;
             cursor: pointer;
-            margin-left: 10px;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #333;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .toggle-slider {
+            background-color: #007bff;
+        }
+        
+        input:checked + .toggle-slider:before {
+            transform: translateX(26px);
+        }
+        
+        .toggle-label {
+            font-size: 14px;
+        }
+        
+        .toggle-icon {
+            margin-right: 8px;
+            font-size: 16px;
         }
     </style>
 </head>
@@ -263,6 +312,18 @@
             <div class="navigation-buttons">
                 <button class="nav-button" id="backButton">Back</button>
                 <button class="nav-button" id="nextButton">Next</button>
+            </div>
+
+            <!-- Background Mode Toggle -->
+            <div class="background-mode-toggle">
+                <div class="toggle-label">
+                    <span class="toggle-icon"><i class="fas fa-moon"></i></span>
+                    <span>Dark Mode</span>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="backgroundModeToggle" checked>
+                    <span class="toggle-slider"></span>
+                </label>
             </div>
 
             <div class="section-header" id="leftShellHeader">
@@ -442,6 +503,15 @@
                     <div class="color-option" style="background-color: #2c8437;" data-color="#2c8437"></div>
                     <div class="color-option" style="background-color: #d1d1d1;" data-color="#d1d1d1"></div>
                     <div class="color-option" style="background-color: #5a5a5a;" data-color="#5a5a5a"></div>
+                    <div class="color-option" style="background-color: #a7c7e7;" data-color="#a7c7e7"></div>
+                    <div class="color-option" style="background-color: #c25450;" data-color="#c25450"></div>
+                    <div class="color-option" style="background-color: #e9a94a;" data-color="#e9a94a"></div>
+                    <div class="color-option" style="background-color: #9370db;" data-color="#9370db"></div>
+                    <div class="color-option" style="background-color: #b5835a;" data-color="#b5835a"></div>
+                    <div class="color-option" style="background-color: #daa520;" data-color="#daa520"></div>
+                    <div class="color-option" style="background-color: #90ee90;" data-color="#90ee90"></div>
+                    <div class="color-option" style="background-color: #2e8b57;" data-color="#2e8b57"></div>
+                    <div class="color-option" style="background-color: #000000;" data-color="#000000"></div>
                 </div>
 
                 <div class="premium-textures">
@@ -679,50 +749,42 @@
     </script>
     <script>
         document.getElementById("saveDesign").addEventListener("click", function() {
-            // Get the design name from the input field
             const designName = document.getElementById("designName").value.trim();
             if (!designName) {
                 document.getElementById("saveMessage").innerHTML = '<div class="alert alert-danger">Please enter a design name</div>';
                 return;
             }
             
-            // Get selected colors for shells
             const leftShellColorEl = document.querySelector('#leftShellColors .color-option.selected');
             const leftShellColor = leftShellColorEl ? leftShellColorEl.getAttribute('data-color') : '#f2e6d8';
             
             const rightShellColorEl = document.querySelector('#rightShellColors .color-option.selected');
             const rightShellColor = rightShellColorEl ? rightShellColorEl.getAttribute('data-color') : '#f2e6d8';
             
-            // Get selected colors for faceplates (if available, otherwise use shell colors)
             const leftFaceplateColorEl = document.querySelector('#leftFaceplateColors .color-option.selected');
             const leftFaceplateColor = leftFaceplateColorEl ? leftFaceplateColorEl.getAttribute('data-color') : leftShellColor;
             
             const rightFaceplateColorEl = document.querySelector('#rightFaceplateColors .color-option.selected');
             const rightFaceplateColor = rightFaceplateColorEl ? rightFaceplateColorEl.getAttribute('data-color') : rightShellColor;
             
-            // Get selected textures for shells
             const leftTextureEl = document.querySelector('#leftShellTextures .color-option.selected');
             const leftTexture = leftTextureEl ? leftTextureEl.getAttribute('data-texture') : '';
             
             const rightTextureEl = document.querySelector('#rightShellTextures .color-option.selected');
             const rightTexture = rightTextureEl ? rightTextureEl.getAttribute('data-texture') : '';
             
-            // Get selected textures for faceplates (if available, otherwise use shell textures)
             const leftFaceplateTextureEl = document.querySelector('#leftFaceplateTextures .color-option.selected');
             const leftFaceplateTexture = leftFaceplateTextureEl ? leftFaceplateTextureEl.getAttribute('data-texture') : leftTexture;
             
             const rightFaceplateTextureEl = document.querySelector('#rightFaceplateTextures .color-option.selected');
             const rightFaceplateTexture = rightFaceplateTextureEl ? rightFaceplateTextureEl.getAttribute('data-texture') : rightTexture;
             
-            // Get selected material
             const materialEl = document.querySelector('.material-option.selected');
             const material = materialEl ? materialEl.getAttribute('data-material') : 'glossy';
             
-            // Get size and category
             const size = document.getElementById("sizeSelect").value;
             const category = document.getElementById("categorySelect").value;
             
-            // Prepare data object with all four components
             const customizationData = {
                 designName: designName,
                 leftColor: leftShellColor,
@@ -771,17 +833,40 @@
     </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Get URL parameters for series and model
+            const backgroundModeToggle = document.getElementById('backgroundModeToggle');
+            const toggleIcon = document.querySelector('.toggle-icon i');
+            const toggleLabel = document.querySelector('.toggle-label span:last-child');
+            
+            function updateToggleUI(isDark) {
+                if (isDark) {
+                    toggleIcon.className = 'fas fa-moon';
+                    toggleLabel.textContent = 'Dark Mode';
+                } else {
+                    toggleIcon.className = 'fas fa-sun';
+                    toggleLabel.textContent = 'Light Mode';
+                }
+            }
+            
+            const isDarkMode = localStorage.getItem('backgroundMode') !== 'light';
+            updateToggleUI(isDarkMode);
+            
+            if (backgroundModeToggle) {
+                backgroundModeToggle.addEventListener('change', function() {
+                    updateToggleUI(this.checked);
+                });
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
             const urlParams = new URLSearchParams(window.location.search);
             const series = urlParams.get('series');
             const model = urlParams.get('model');
             
-            // If series parameter exists, auto-select the appropriate series
             if (series) {
                 console.log('Series from URL:', series);
                 console.log('Model from URL:', model);
                 
-                // Set the selected series in a hidden field or variable for form submission
                 const seriesInput = document.createElement('input');
                 seriesInput.type = 'hidden';
                 seriesInput.id = 'selected_series';

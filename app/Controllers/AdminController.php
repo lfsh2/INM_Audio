@@ -149,13 +149,19 @@ class AdminController extends BaseController
         return $this->checkAdminSession('AdminSide/dashboard', $data);
     }
 
-    public function getLowStockNotifications()
-    {
-        $gearModel = new GearModel();
-
-        $lowStockProducts = $gearModel->getLowStockProducts(5);
-
-        return $this->response->setJSON($lowStockProducts);
+    public function getLowStockNotifications() {
+        $db = \Config\Database::connect();
+    
+        $query = $db->query("
+            SELECT product_id, product_name, stock_quantity, category_id 
+            FROM products 
+            WHERE stock_quantity <= 5 
+            AND category_id != 4
+            ORDER BY stock_quantity ASC
+        ");
+    
+        $lowStockItems = $query->getResultArray();
+        return $this->response->setJSON($lowStockItems);
     }
 
     public function lowStockNotifications() {
@@ -1163,4 +1169,54 @@ public function getRecentOrdersData() {
     //     return $this->response->setJSON(['count' => $this->load->notif->getUnreadCount()]);
     // }
 
-}   
+    public function getMetrics() {
+        $db = \Config\Database::connect();
+
+        // Get total revenue
+        $revenueQuery = $db->query("
+            SELECT SUM(o.total_price) as total_revenue
+            FROM orders o
+            WHERE o.order_status != 'Cancelled'
+        ");
+        $revenue = $revenueQuery->getRow();
+        $totalRevenue = $revenue ? $revenue->total_revenue : 0;
+
+        // Get total orders
+        $ordersQuery = $db->query("
+            SELECT COUNT(*) as total_orders
+            FROM orders
+        ");
+        $orders = $ordersQuery->getRow();
+        $totalOrders = $orders ? $orders->total_orders : 0;
+
+        // Get custom IEM orders
+        $customQuery = $db->query("
+            SELECT COUNT(*) as total_custom
+            FROM orders o
+            JOIN order_items oi ON o.order_id = oi.order_id
+            JOIN products p ON oi.product_id = p.product_id
+            WHERE p.category_id = 4
+        ");
+        $custom = $customQuery->getRow();
+        $totalCustomOrders = $custom ? $custom->total_custom : 0;
+
+        // Get active users (users who placed orders in the last 30 days)
+        $usersQuery = $db->query("
+            SELECT COUNT(DISTINCT user_id) as active_users
+            FROM orders
+            WHERE created_at >= DATE_SUB(NOW(), INTERVAL 30 DAY)
+        ");
+        $users = $usersQuery->getRow();
+        $activeUsers = $users ? $users->active_users : 0;
+
+        $data = [
+            'totalRevenue' => $totalRevenue,
+            'totalOrders' => $totalOrders,
+            'totalCustomOrders' => $totalCustomOrders,
+            'activeUsers' => $activeUsers
+        ];
+
+        return $this->response->setJSON($data);
+    }
+
+}

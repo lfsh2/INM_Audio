@@ -157,6 +157,7 @@ $routes->group('/admin/', function($routes) {
         $routes->get('chart-data/revenue', 'AdminController::getRevenueChartData');
         $routes->get('chart-data/order-status', 'AdminController::getOrderStatusChartData');
         $routes->get('chart-data/recent-orders', 'AdminController::getRecentOrdersData');
+        $routes->get('chart-data/metrics', 'AdminController::getMetrics');
         $routes->get('notifications/low-stock', 'AdminController::getLowStockNotifications');
         $routes->post('update_order_status', 'AdminController::update_order_status');
         

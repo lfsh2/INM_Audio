@@ -788,7 +788,7 @@
                                         const controls = new THREE.OrbitControls(camera, renderer.domElement);
                                         controls.enableDamping = true;
                                         controls.dampingFactor = 0.1;
-                                        controls.autoRotate = true;
+                                        controls.autoRotate = false;
                                         controls.autoRotateSpeed = 2.0;
                                         controls.minDistance = 1;
                                         controls.maxDistance = 5;
