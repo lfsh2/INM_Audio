@@ -663,4 +663,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
     updateBackgroundColor();
 
+    // Expose a function to apply cropped texture to a part
+    window.applyCroppedTextureToPart = function(partType, dataUrl) {
+        let targetMesh = null;
+        switch (partType) {
+            case 'leftShell': targetMesh = leftShell; break;
+            case 'rightShell': targetMesh = rightShell; break;
+            case 'leftFaceplate': targetMesh = leftFaceplate; break;
+            case 'rightFaceplate': targetMesh = rightFaceplate; break;
+        }
+        if (targetMesh) {
+            applyTextureToMesh(dataUrl, targetMesh, 1, 1);
+            updateInfoDisplay(partType, 'Custom Texture');
+        }
+    };
+    // If there were pending cropped textures before model loaded
+    if (window._pendingCroppedTextures) {
+        window._pendingCroppedTextures.forEach(({ part, dataUrl }) => {
+            window.applyCroppedTextureToPart(part, dataUrl);
+        });
+        window._pendingCroppedTextures = [];
+    }
+
 });
