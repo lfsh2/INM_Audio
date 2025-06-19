@@ -12,7 +12,7 @@
     <!-- <link rel="stylesheet" href=" <?= base_url('assets/css/customize.css') ?>"> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" integrity="sha512-6l5Qw6Qn6Qn5Qw6Qn6Qn5Qw6Qn6Qn5Qw6Qn6Qn5Qw6Qn6Qn5Qw6Qn6Qn5Qw6Qn6Qn5Qw6Qn6Qn5Qw6Qn6Qn5Qw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" integrity="sha512-4tYjgxBjUJ6rxinOtfwM1HNPH1lZkJRK2I4bg9XBESIVzY/EzDWsFgVZ9cA81kKlKl4FVaS37H5nKtHT9asyHw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>INM Costumization</title>
     <style>
  body {
@@ -23,6 +23,32 @@
             padding: 0;
         }
         
+        /* Cropper styles */
+        .img-container {
+            max-height: 400px;
+            overflow: hidden;
+        }
+        
+        .cropper-container {
+            max-width: 100% !important;
+            max-height: 400px !important;
+        }
+        
+        .cropper-view-box,
+        .cropper-face {
+            border-radius: 0%;
+        }
+        
+        .cropper-controls {
+            margin-top: 15px;
+        }
+        
+        .cropper-controls .btn {
+            margin: 0 2px;
+            padding: 5px 10px;
+        }
+        
+        /* Main container */
         .main-container {
             display: flex;
             flex-direction: row;
@@ -300,7 +326,7 @@
 <body>
 
     <?php echo view("includes/header.php"); ?>
-    <?php echo view("includes/cropper_modal.php"); ?>
+    <!-- Using standalone cropper implementation from simple-crop.js -->
 
     <div class="main-container">
         <div class="earphone-container">
@@ -660,8 +686,10 @@
     <script src="https://cdn.jsdelivr.net/npm/three/examples/js/loaders/GLTFLoader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js" integrity="sha512-6l5Qw6Qn6Qn5Qw6Qn6Qn5Qw6Qn6Qn5Qw6Qn6Qn5Qw6Qn6Qn5Qw6Qn6Qn5Qw6Qn6Qn5Qw6Qn6Qn5Qw6Qn6Qn5Qw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script defer src="<?= base_url('assets/js/costumizer.js') ?>"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js" integrity="sha512-6lplKUSl86rUVprDIjiKKsYoSzYrpUOgQtUXgzpNHSYZb3Y7xV7/mJL5bF+KEXZRPtJ4RJOwhJ/qGfXMT9umJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="<?= base_url('assets/js/debug.js') ?>"></script>
+    <script src="<?= base_url('assets/js/simple-crop.js') ?>"></script>
+    <script src="<?= base_url('assets/js/costumizer.js') ?>"></script>
     <script>
         const categorySelect = document.getElementById("categorySelect");
         const soundTest = document.getElementById("soundTest");
@@ -994,105 +1022,9 @@
         });
     </script>
     <script>
-        // Cropper integration for texture uploads
-let cropper = null;
-let currentTextureTarget = null;
-
-function openCropperModal(file, targetPart) {
-    const reader = new FileReader();
-    reader.onload = function (e) {
-        const cropperImage = document.getElementById('cropperImage');
-        cropperImage.src = e.target.result;
-        currentTextureTarget = targetPart;
-        if (cropper) {
-            cropper.destroy();
-        }
-        // Wait for image to load
-        cropperImage.onload = function () {
-            cropper = new Cropper(cropperImage, {
-                aspectRatio: 1,
-                viewMode: 1,
-                autoCropArea: 1,
-                background: false,
-                movable: true,
-                zoomable: true,
-                rotatable: true,
-                scalable: true
-            });
-        };
-        // Show modal
-        const cropperModal = new bootstrap.Modal(document.getElementById('cropperModal'));
-        cropperModal.show();
-    };
-    reader.readAsDataURL(file);
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Patch upload input listeners for cropper
-    const leftShellTextureUpload = document.getElementById("leftShellTextureUpload");
-    const rightShellTextureUpload = document.getElementById("rightShellTextureUpload");
-    const leftFaceplateTextureUpload = document.getElementById("leftFaceplateTextureUpload");
-    const rightFaceplateTextureUpload = document.getElementById("rightFaceplateTextureUpload");
-
-    if (leftShellTextureUpload) {
-        leftShellTextureUpload.addEventListener("change", function(event) {
-            if (event.target.files[0]) openCropperModal(event.target.files[0], 'leftShell');
-        });
-    }
-    if (rightShellTextureUpload) {
-        rightShellTextureUpload.addEventListener("change", function(event) {
-            if (event.target.files[0]) openCropperModal(event.target.files[0], 'rightShell');
-        });
-    }
-    if (leftFaceplateTextureUpload) {
-        leftFaceplateTextureUpload.addEventListener("change", function(event) {
-            if (event.target.files[0]) openCropperModal(event.target.files[0], 'leftFaceplate');
-        });
-    }
-    if (rightFaceplateTextureUpload) {
-        rightFaceplateTextureUpload.addEventListener("change", function(event) {
-            if (event.target.files[0]) openCropperModal(event.target.files[0], 'rightFaceplate');
-        });
-    }
-
-    // Handle crop & apply
-    document.getElementById('cropImageBtn').addEventListener('click', function() {
-        if (cropper && currentTextureTarget) {
-            const croppedCanvas = cropper.getCroppedCanvas({
-                width: 512,
-                height: 512,
-                imageSmoothingQuality: 'high'
-            });
-            const croppedDataUrl = croppedCanvas.toDataURL('image/png');
-            // Custom event to pass cropped image to Three.js logic
-            document.dispatchEvent(new CustomEvent('customTextureCropped', {
-                detail: {
-                    part: currentTextureTarget,
-                    dataUrl: croppedDataUrl
-                }
-            }));
-            // Hide modal
-            bootstrap.Modal.getInstance(document.getElementById('cropperModal')).hide();
-            cropper.destroy();
-            cropper = null;
-            currentTextureTarget = null;
-        }
-    });
-});
-// Listen for customTextureCropped event and apply to 3D model
-if (typeof THREE !== 'undefined') {
-    document.addEventListener('customTextureCropped', function(e) {
-        const { part, dataUrl } = e.detail;
-        // Wait for the 3D model to be loaded and available
-        if (window.applyCroppedTextureToPart) {
-            window.applyCroppedTextureToPart(part, dataUrl);
-        } else {
-            // If not ready, queue it
-            window._pendingCroppedTextures = window._pendingCroppedTextures || [];
-            window._pendingCroppedTextures.push({ part, dataUrl });
-        }
-    });
-}
+        // The cropper functionality has been moved to simple-crop.js
+        // This script block is kept for backward compatibility
+        console.log('Using standalone cropper implementation from simple-crop.js');
     </script>
 </body>
 
